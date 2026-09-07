@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RoughClick Digital — Ideas in Motion</title>
+  <meta name="description" content="RoughClick Digital transforms ideas into purposeful digital experiences — from high-performance websites and custom applications to social media content.">
+  
+  <link rel="icon" type="image/png" href="../assets/brand/rc-logo-modern-light.png">
+  <link rel="stylesheet" href="../assets/css/common.css">
+  <link rel="stylesheet" href="css/modern-style.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+</head>
+<body class="modern-theme">
+
+  <!-- Concept Navigation Floating Bar -->
+  <div class="rc-concept-bar" role="navigation" aria-label="Concept Switcher">
+    <span style="font-size:0.75rem; color:#A1A1AA; font-weight:700; text-transform:uppercase; letter-spacing:0.05em;">Concept:</span>
+    <a href="../concept-1-luxury/index.html" class="inactive">Concept 1 (Luxury)</a>
+    <a href="../concept-2-modern/index.html" class="active-modern">Concept 2 (Modern)</a>
+    <a href="../index.html" class="hub-link">⚡ Comparison Hub</a>
+  </div>
+
+  <!-- Header -->
+  <header class="modern-header">
+    <div class="rc-container modern-nav-wrap">
+      <a href="index.html" class="brand-header-link" aria-label="RoughClick Digital Home">
+        <img src="../assets/brand/rc-logo-modern-light.png" alt="RoughClick Digital" style="height:52px; width:auto;">
+      </a>
+
+      <nav class="nav-links-modern" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link-modern active">Home</a>
+        <a href="services.html" class="nav-link-modern ">Services</a>
+        <a href="blog.html" class="nav-link-modern ">Blog</a>
+        <a href="contact.html" class="nav-link-modern ">Contact</a>
+      </nav>
+
+      <div style="display:flex; align-items:center; gap:16px;">
+        <a href="contact.html" class="btn-modern-primary">Let's Build Something</a>
+        <button class="mobile-nav-toggle-modern" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer-backdrop-modern" style="position:fixed; inset:0; background:rgba(15,61,86,0.6); backdrop-filter:blur(6px); z-index:1000; opacity:0; pointer-events:none; transition:opacity 0.3s ease;"></div>
+  <aside class="mobile-drawer-modern" style="position:fixed; top:0; right:-100%; width:85%; max-width:360px; height:100vh; background:#FFFFFF; z-index:1001; padding:30px 24px; display:flex; flex-direction:column; justify-content:space-between; transition:right 0.35s ease; box-shadow:-10px 0 30px rgba(0,0,0,0.15);">
+    <div>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;">
+        <img src="../assets/brand/rc-logo-modern-light.png" alt="RoughClick Digital" style="height:44px;">
+        <button class="mobile-drawer-close-modern" style="font-size:1.5rem; color:var(--rc-deep-teal); cursor:pointer; background:none; border:none;" aria-label="Close menu">&times;</button>
+      </div>
+      <nav style="display:flex; flex-direction:column; gap:18px;">
+        <a href="index.html" class="nav-link-modern active" style="font-size:1.1rem;">Home</a>
+        <a href="services.html" class="nav-link-modern" style="font-size:1.1rem;">Services</a>
+        <a href="blog.html" class="nav-link-modern" style="font-size:1.1rem;">Blog</a>
+        <a href="admin-blog.html" class="nav-link-modern" style="font-size:1.1rem; color:var(--rc-teal-accent);">CMS Admin Preview</a>
+        <a href="contact.html" class="nav-link-modern" style="font-size:1.1rem;">Contact</a>
+      </nav>
+    </div>
+    <div>
+      <a href="contact.html" class="btn-modern-primary" style="width:100%; text-align:center;">Let's Build Something</a>
+    </div>
+  </aside>
+
+  <main>
+    <!-- Futuristic Modern Hero with Particle Canvas -->
+    <section class="modern-hero" style="position:relative; overflow:hidden;">
+      <!-- Interactive Teal Tech Particle Mesh Canvas -->
+      <canvas id="modernHeroParticles" class="rc-particles-bg"></canvas>
+
+      <div class="rc-container" style="position:relative; z-index:2;">
+        <div class="modern-hero-grid">
+          <div>
+            <!-- Futuristic Status Ticker -->
+            <div class="hud-status-ticker rc-reveal">
+              <span class="hud-pulse-dot"></span>
+              <span>ENGINEERING PLATFORM • V2.4 ACTIVE</span>
+            </div>
+
+            <h1 class="hero-title-modern rc-reveal rc-delay-1">
+              <span style="display:block; font-size:clamp(1.15rem, 2vw, 1.5rem); font-weight:800; letter-spacing:0.06em; text-transform:uppercase; color:var(--rc-teal-accent); margin-bottom:12px;">RoughClick Digital</span>
+              Turning Ideas Into <span class="accent">Digital Experiences</span>
+            </h1>
+            <p class="hero-subcopy-modern rc-reveal rc-delay-2">
+              From websites and custom applications to social media content, we create digital experiences designed around your business.
+            </p>
+            <div style="display:flex; gap:14px; flex-wrap:wrap; align-items:center;" class="rc-reveal rc-delay-3">
+              <a href="contact.html" class="btn-modern-primary">Let's Build Something</a>
+              <a href="services.html" class="btn-modern-secondary">Explore Services</a>
+            </div>
+
+            <!-- Live KPI Counter Strip -->
+            <div class="kpi-metric-strip rc-reveal rc-delay-4">
+              <div class="kpi-stat-item">
+                <div class="kpi-stat-number" data-counter-target="99.9" data-counter-suffix="%">0%</div>
+                <div class="kpi-stat-label">System Uptime</div>
+              </div>
+              <div class="kpi-stat-item">
+                <div class="kpi-stat-number" data-counter-target="0.7" data-counter-suffix="s" data-counter-prefix="< ">0s</div>
+                <div class="kpi-stat-label">Load Speed</div>
+              </div>
+              <div class="kpi-stat-item">
+                <div class="kpi-stat-number" data-counter-target="100" data-counter-suffix="%">0%</div>
+                <div class="kpi-stat-label">Custom Architecture</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-tech-card rc-reveal rc-delay-2">
+            <div class="hero-canvas-modern">
+              <img src="../assets/brand/rc-logo-modern-dark.png" alt="RoughClick Digital" class="modern-logo-emblem" style="max-height:220px; width:auto;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brand Introduction -->
+    <section class="modern-section">
+      <div class="rc-container">
+        <div style="background:var(--rc-white); border:1px solid var(--rc-border-subtle); border-radius:12px; padding:clamp(2rem, 4vw, 3.5rem); box-shadow:var(--rc-card-shadow);" class="rc-reveal">
+          <div class="responsive-2col-grid">
+            <div>
+              <span class="modern-badge">About Us</span>
+              <h2 style="font-size:clamp(1.8rem, 3vw, 2.4rem); margin-top:12px; margin-bottom:14px;">Focused On Business Solutions</h2>
+              <p style="color:var(--rc-slate); line-height:1.75; font-size:1.02rem;">
+                <strong>RoughClick Digital</strong> transforms ideas into purposeful digital experiences — from high-performance websites and custom software tools to full-cycle social media management.
+              </p>
+            </div>
+            <div style="border-left:3px solid var(--rc-teal-accent); padding-left:24px;">
+              <p style="font-size:1.25rem; font-weight:700; color:var(--rc-deep-teal); line-height:1.5; margin-bottom:16px;">
+                "Designed around your business. Built on modern web architecture for real-world growth."
+              </p>
+              <div style="display:flex; gap:20px; font-size:0.86rem; color:var(--rc-slate-light);">
+                <div><strong>01</strong> Zero Template Bloat</div>
+                <div><strong>02</strong> Clean Modular Code</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Services Section -->
+    <section class="modern-section bg-light">
+      <div class="rc-container">
+        <div style="margin-bottom:3rem;" class="rc-reveal">
+          <span class="modern-badge">What We Do</span>
+          <h2 style="font-size:clamp(1.8rem, 3.5vw, 2.6rem); margin-top:10px; margin-bottom:10px;">Core Digital Services</h2>
+          <p style="color:var(--rc-slate-light); max-width:600px;">
+            Modular service offerings built to scale seamlessly as your business expands.
+          </p>
+        </div>
+
+        <div class="modern-services-grid">
+          <!-- Service 1 -->
+          <article class="modern-service-card rc-reveal rc-delay-1">
+            <div>
+              <div class="service-icon-modern">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              </div>
+              <h3 class="service-title-modern">Website Development</h3>
+              <p class="service-desc-modern">
+                High-performance static, dynamic, and SEO-optimized web presences engineered for search ranking and conversion.
+              </p>
+              <div class="modern-pill-list">
+                <span class="modern-pill">Static Web</span>
+                <span class="modern-pill">Dynamic Portals</span>
+                <span class="modern-pill">SEO-Optimized</span>
+              </div>
+            </div>
+            <a href="services.html#website-development" class="modern-link-arrow">
+              View Deliverables &rarr;
+            </a>
+          </article>
+
+          <!-- Service 2 -->
+          <article class="modern-service-card rc-reveal rc-delay-2">
+            <div>
+              <div class="service-icon-modern">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/><rect x="2" y="2" width="20" height="20" rx="3"/></svg>
+              </div>
+              <h3 class="service-title-modern">Custom Application Development</h3>
+              <p class="service-desc-modern">
+                Custom web applications, business automation software, real-time dashboards, and specialized digital tools.
+              </p>
+              <div class="modern-pill-list">
+                <span class="modern-pill">Custom Web Apps</span>
+                <span class="modern-pill">Business Apps</span>
+                <span class="modern-pill">Dashboards</span>
+              </div>
+            </div>
+            <a href="services.html#custom-application-development" class="modern-link-arrow">
+              View Deliverables &rarr;
+            </a>
+          </article>
+
+          <!-- Service 3 -->
+          <article class="modern-service-card rc-reveal rc-delay-3">
+            <div>
+              <div class="service-icon-modern">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <h3 class="service-title-modern">Social Media Content Creation</h3>
+              <p class="service-desc-modern">
+                Strategic visual storytelling, annual campaign planning, high-impact creatives, and brand asset systems.
+              </p>
+              <div class="modern-pill-list">
+                <span class="modern-pill">Annual Content</span>
+                <span class="modern-pill">Social Creatives</span>
+                <span class="modern-pill">Asset Design</span>
+              </div>
+            </div>
+            <a href="services.html#social-media-content-creation" class="modern-link-arrow">
+              View Deliverables &rarr;
+            </a>
+          </article>
+
+          <!-- Service 4 -->
+          <article class="modern-service-card rc-reveal rc-delay-4">
+            <div>
+              <div class="service-icon-modern">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+              </div>
+              <h3 class="service-title-modern">Social Media Post Updating</h3>
+              <p class="service-desc-modern">
+                Scheduled post management, swift graphic updates, ongoing maintenance, and consistent profile upkeep.
+              </p>
+              <div class="modern-pill-list">
+                <span class="modern-pill">Post Updates</span>
+                <span class="modern-pill">Maintenance Support</span>
+                <span class="modern-pill">Ongoing Management</span>
+              </div>
+            </div>
+            <a href="services.html#social-media-post-updating" class="modern-link-arrow">
+              View Deliverables &rarr;
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Us & Pillars -->
+    <section class="modern-section">
+      <div class="rc-container">
+        <div style="text-align:center; max-width:640px; margin:0 auto 3rem auto;" class="rc-reveal">
+          <span class="modern-badge">Why RoughClick Digital</span>
+          <h2 style="font-size:clamp(1.8rem, 3.5vw, 2.6rem); margin-top:10px; margin-bottom:10px;">The Engineering Advantage</h2>
+          <p style="color:var(--rc-slate-light);">
+            We combine clean technological execution with brand clarity.
+          </p>
+        </div>
+
+        <div class="modern-pillars-grid">
+          <div class="modern-pillar-card rc-reveal rc-delay-1">
+            <div style="font-size:1.3rem; color:var(--rc-teal-accent); margin-bottom:10px;">⚡</div>
+            <h3 style="font-size:1.15rem; margin-bottom:8px;">Engineered for Speed</h3>
+            <p style="font-size:0.88rem; color:var(--rc-slate); line-height:1.6;">
+              Optimized for sub-second speeds, zero code bloat, and top Core Web Vitals performance.
+            </p>
+          </div>
+
+          <div class="modern-pillar-card rc-reveal rc-delay-2">
+            <div style="font-size:1.3rem; color:var(--rc-teal-accent); margin-bottom:10px;">🎯</div>
+            <h3 style="font-size:1.15rem; margin-bottom:8px;">Business-Aligned Solutions</h3>
+            <p style="font-size:0.88rem; color:var(--rc-slate); line-height:1.6;">
+              Every build is customized around your business workflow rather than constrained by templates.
+            </p>
+          </div>
+
+          <div class="modern-pillar-card rc-reveal rc-delay-3">
+            <div style="font-size:1.3rem; color:var(--rc-teal-accent); margin-bottom:10px;">🔄</div>
+            <h3 style="font-size:1.15rem; margin-bottom:8px;">Digital Innovation</h3>
+            <p style="font-size:0.88rem; color:var(--rc-slate); line-height:1.6;">
+              Fluid micro-interactions, responsive states, and kinetic digital storytelling.
+            </p>
+          </div>
+
+          <div class="modern-pillar-card rc-reveal rc-delay-4">
+            <div style="font-size:1.3rem; color:var(--rc-teal-accent); margin-bottom:10px;">🧱</div>
+            <h3 style="font-size:1.15rem; margin-bottom:8px;">Modular Architecture</h3>
+            <p style="font-size:0.88rem; color:var(--rc-slate); line-height:1.6;">
+              Easily expand your digital services portfolio as your business scales over time.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4-Step Process -->
+    <section class="modern-section bg-light">
+      <div class="rc-container">
+        <div style="margin-bottom:3rem;" class="rc-reveal">
+          <span class="modern-badge">Our Process</span>
+          <h2 style="font-size:clamp(1.8rem, 3.5vw, 2.6rem); margin-top:10px; margin-bottom:10px;">How We Deliver</h2>
+          <p style="color:var(--rc-slate-light); max-width:600px;">
+            A structured, transparent 4-stage engineering lifecycle.
+          </p>
+        </div>
+
+        <div class="modern-process-grid">
+          <div class="modern-process-step rc-reveal rc-delay-1">
+            <div class="modern-step-num">STAGE 01</div>
+            <h3 style="font-size:1.1rem; margin-bottom:6px;">Discovery</h3>
+            <p style="font-size:0.84rem; color:var(--rc-slate); line-height:1.55;">
+              Analyzing requirements, audience personas, and operational goals.
+            </p>
+          </div>
+
+          <div class="modern-process-step rc-reveal rc-delay-2">
+            <div class="modern-step-num">STAGE 02</div>
+            <h3 style="font-size:1.1rem; margin-bottom:6px;">Architecture</h3>
+            <p style="font-size:0.84rem; color:var(--rc-slate); line-height:1.55;">
+              Defining system data models, UI wireframes, and design components.
+            </p>
+          </div>
+
+          <div class="modern-process-step rc-reveal rc-delay-3">
+            <div class="modern-step-num">STAGE 03</div>
+            <h3 style="font-size:1.1rem; margin-bottom:6px;">Development</h3>
+            <p style="font-size:0.84rem; color:var(--rc-slate); line-height:1.55;">
+              Building with clean semantic HTML, CSS, and robust JS standards.
+            </p>
+          </div>
+
+          <div class="modern-process-step rc-reveal rc-delay-4">
+            <div class="modern-step-num">STAGE 04</div>
+            <h3 style="font-size:1.1rem; margin-bottom:6px;">Deployment</h3>
+            <p style="font-size:0.84rem; color:var(--rc-slate); line-height:1.55;">
+              Production rollout, SEO verification, and ongoing content support.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Work Placeholders -->
+    <section class="modern-section">
+      <div class="rc-container">
+        <div style="margin-bottom:3rem;" class="rc-reveal">
+          <span class="modern-badge">Portfolio</span>
+          <h2 style="font-size:clamp(1.8rem, 3.5vw, 2.6rem); margin-top:10px; margin-bottom:10px;">Featured Work Placeholders</h2>
+          <p style="color:var(--rc-slate-light); max-width:600px;">
+            Clean case study placeholders ready for client live project assets.
+          </p>
+        </div>
+
+        <div class="modern-portfolio-grid">
+          <div class="modern-portfolio-card rc-reveal rc-delay-1">
+            <div class="modern-portfolio-frame">
+              <span class="modern-badge" style="background:#FFFFFF; color:var(--rc-deep-teal); font-size:0.72rem;">Application Frame</span>
+              <div style="font-weight:600; font-size:0.95rem; margin-top:8px;">Enterprise Operations Dashboard</div>
+              <div style="font-size:0.75rem; color:#94A3B8; margin-top:4px;">[Case Study Placeholder]</div>
+            </div>
+            <div class="modern-portfolio-content">
+              <div style="font-size:0.75rem; font-weight:700; color:var(--rc-teal-accent); text-transform:uppercase; margin-bottom:4px;">Custom Application</div>
+              <h3 style="font-size:1.15rem; margin-bottom:6px;">Operations & Analytics Hub</h3>
+              <p style="font-size:0.86rem; color:var(--rc-slate); line-height:1.55;">Real-time KPI dashboards and automated workflow queues.</p>
+            </div>
+          </div>
+
+          <div class="modern-portfolio-card rc-reveal rc-delay-2">
+            <div class="modern-portfolio-frame">
+              <span class="modern-badge" style="background:#FFFFFF; color:var(--rc-deep-teal); font-size:0.72rem;">Website Frame</span>
+              <div style="font-weight:600; font-size:0.95rem; margin-top:8px;">Modern Flagship Portal</div>
+              <div style="font-size:0.75rem; color:#94A3B8; margin-top:4px;">[Case Study Placeholder]</div>
+            </div>
+            <div class="modern-portfolio-content">
+              <div style="font-size:0.75rem; font-weight:700; color:var(--rc-teal-accent); text-transform:uppercase; margin-bottom:4px;">Website Development</div>
+              <h3 style="font-size:1.15rem; margin-bottom:6px;">High-Traffic Corporate Portal</h3>
+              <p style="font-size:0.86rem; color:var(--rc-slate); line-height:1.55;">SEO-optimized web presence with sub-second page rendering.</p>
+            </div>
+          </div>
+
+          <div class="modern-portfolio-card rc-reveal rc-delay-3">
+            <div class="modern-portfolio-frame">
+              <span class="modern-badge" style="background:#FFFFFF; color:var(--rc-deep-teal); font-size:0.72rem;">Content Frame</span>
+              <div style="font-weight:600; font-size:0.95rem; margin-top:8px;">Multi-Platform Visual System</div>
+              <div style="font-size:0.75rem; color:#94A3B8; margin-top:4px;">[Case Study Placeholder]</div>
+            </div>
+            <div class="modern-portfolio-content">
+              <div style="font-size:0.75rem; font-weight:700; color:var(--rc-teal-accent); text-transform:uppercase; margin-bottom:4px;">Social Media Content</div>
+              <h3 style="font-size:1.15rem; margin-bottom:6px;">Year-Round Social Assets</h3>
+              <p style="font-size:0.86rem; color:var(--rc-slate); line-height:1.55;">Thematic content templates and scheduled post management.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Blog Preview -->
+    <section class="modern-section bg-light">
+      <div class="rc-container">
+        <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:2.5rem; flex-wrap:wrap; gap:16px;" class="rc-reveal">
+          <div>
+            <span class="modern-badge">Knowledge Hub</span>
+            <h2 style="font-size:clamp(1.8rem, 3.5vw, 2.5rem); margin-top:8px; margin-bottom:0;">Latest Perspectives</h2>
+          </div>
+          <a href="blog.html" class="btn-modern-secondary">View All Insights &rarr;</a>
+        </div>
+
+        <div class="modern-blog-grid">
+          <article class="modern-blog-card rc-reveal rc-delay-1">
+            <div>
+              <div style="font-size:0.78rem; color:var(--rc-slate-light); margin-bottom:10px;">
+                <span style="font-weight:700; color:var(--rc-deep-teal);">Web Development</span> • 4 min read
+              </div>
+              <h3 style="font-size:1.2rem; margin-bottom:8px;">Architecting Digital Experiences: Why Performance Is the Ultimate Brand Differentiator</h3>
+              <p style="font-size:0.86rem; color:var(--rc-slate); line-height:1.6; margin-bottom:16px;">
+                Technical performance directly drives conversion rates. Why zero-bloat web code matters.
+              </p>
+            </div>
+            <a href="blog.html" class="modern-link-arrow">Read Article &rarr;</a>
+          </article>
+
+          <article class="modern-blog-card rc-reveal rc-delay-2">
+            <div>
+              <div style="font-size:0.78rem; color:var(--rc-slate-light); margin-bottom:10px;">
+                <span style="font-weight:700; color:var(--rc-deep-teal);">Application Development</span> • 6 min read
+              </div>
+              <h3 style="font-size:1.2rem; margin-bottom:8px;">Custom Applications vs. Off-The-Shelf SaaS: When to Build for Scale</h3>
+              <p style="font-size:0.86rem; color:var(--rc-slate); line-height:1.6; margin-bottom:16px;">
+                Understanding the ROI turning point of building tailored internal software tools.
+              </p>
+            </div>
+            <a href="blog.html" class="modern-link-arrow">Read Article &rarr;</a>
+          </article>
+
+          <article class="modern-blog-card rc-reveal rc-delay-3">
+            <div>
+              <div style="font-size:0.78rem; color:var(--rc-slate-light); margin-bottom:10px;">
+                <span style="font-weight:700; color:var(--rc-deep-teal);">Content Strategy</span> • 5 min read
+              </div>
+              <h3 style="font-size:1.2rem; margin-bottom:8px;">Crafting a Cohesive Social Media Visual Identity for Modern Brands</h3>
+              <p style="font-size:0.86rem; color:var(--rc-slate); line-height:1.6; margin-bottom:16px;">
+                Structured grid systems and motion design frameworks for digital brand recall.
+              </p>
+            </div>
+            <a href="blog.html" class="modern-link-arrow">Read Article &rarr;</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Strong CTA -->
+    <section class="modern-section bg-dark">
+      <div class="rc-container" style="text-align:center;">
+        <span class="modern-badge rc-reveal" style="background:rgba(20,184,166,0.2); color:#FFFFFF; border-color:var(--rc-teal-accent);">Let's Connect</span>
+        <h2 class="rc-reveal rc-delay-1" style="font-size:clamp(2rem, 4vw, 3.2rem); margin-top:14px; margin-bottom:12px;">Ready to Build Something Meaningful?</h2>
+        <p class="rc-reveal rc-delay-2" style="max-width:580px; margin:0 auto 2rem auto; font-size:1.05rem;">
+          Get in touch with our Coimbatore team for website builds, custom software applications, and social media creative solutions.
+        </p>
+        <div style="display:flex; justify-content:center; gap:14px; flex-wrap:wrap;" class="rc-reveal rc-delay-3">
+          <a href="contact.html" class="btn-modern-primary" style="background:var(--rc-teal-accent); color:var(--rc-deep-teal); font-weight:700;">Let's Build Something</a>
+          <a href="services.html" class="btn-modern-secondary" style="background:transparent; color:#FFFFFF; border-color:rgba(255,255,255,0.3);">Explore Services</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modern Footer -->
+  <footer class="modern-footer">
+    <div class="rc-container">
+      <div style="display:grid; grid-template-columns:1.5fr 1fr 1fr 1.2fr; gap: clamp(2rem, 4vw, 3rem); margin-bottom:50px;">
+        <div>
+          <div style="margin-bottom:16px;">
+            <img src="../assets/brand/rc-logo-modern-dark.png" alt="RoughClick Digital" style="height:52px; width:auto;">
+          </div>
+          <p style="font-size:0.86rem; line-height:1.7; max-width:320px; color:#CBD5E1;">
+            RoughClick Digital transforms ideas into purposeful digital experiences — from websites and applications to social media content.
+          </p>
+        </div>
+
+        <div>
+          <h4>Navigation</h4>
+          <ul style="display:flex; flex-direction:column; gap:10px; font-size:0.88rem;">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html">Blog Portal</a></li>
+            <li><a href="admin-blog.html">CMS Admin (Prototype)</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Services</h4>
+          <ul style="display:flex; flex-direction:column; gap:10px; font-size:0.88rem;">
+            <li><a href="services.html#website-development">Website Development</a></li>
+            <li><a href="services.html#custom-application-development">Custom Applications</a></li>
+            <li><a href="services.html#social-media-content-creation">Social Media Content</a></li>
+            <li><a href="services.html#social-media-post-updating">Social Media Management</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Coimbatore Office</h4>
+          <div style="display:flex; flex-direction:column; gap:12px; font-size:0.86rem;">
+            <div>📍 <strong>Address:</strong> [Coimbatore Office Address]</div>
+            <div>✉️ <strong>Email:</strong> [Email Address]</div>
+            <div>📞 <strong>Phone:</strong> [Phone Number]</div>
+          </div>
+          <div style="margin-top:16px;">
+            <a href="contact.html" class="btn-modern-secondary" style="padding:6px 12px; font-size:0.76rem; background:transparent; color:#FFFFFF; border-color:rgba(255,255,255,0.2);">Connect on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; font-size:0.8rem;">
+        <div>© 2026 RoughClick Digital. All rights reserved.</div>
+        <div>Coimbatore, India</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/shared-data.js"></script>
+  <script src="js/modern-app.js"></script>
+  <script src="../assets/js/particles.js"></script>
+</body>
+</html>

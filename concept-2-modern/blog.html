@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insights & Articles — RoughClick Digital Blog</title>
+  <meta name="description" content="Technical perspectives on web architecture, custom software development, digital design, and social media brand strategy.">
+  
+  <link rel="icon" type="image/svg+xml" href="../assets/brand/favicon.svg">
+  <link rel="stylesheet" href="../assets/css/common.css">
+  <link rel="stylesheet" href="css/modern-style.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+</head>
+<body class="modern-theme">
+
+        <!-- Concept Navigation Floating Bar -->
+  <div class="rc-concept-bar" role="navigation" aria-label="Concept Switcher">
+    <span style="font-size:0.75rem; color:#A1A1AA; font-weight:700; text-transform:uppercase; letter-spacing:0.05em;">Concept:</span>
+    <a href="../concept-1-luxury/blog.html" class="inactive">Concept 1 (Luxury)</a>
+    <a href="../concept-2-modern/blog.html" class="active-modern">Concept 2 (Modern)</a>
+    <a href="../index.html" class="hub-link">⚡ Comparison Hub</a>
+  </div>
+
+  <!-- Header -->
+  <header class="modern-header">
+    <div class="rc-container modern-nav-wrap">
+      <a href="index.html" class="brand-header-link" aria-label="RoughClick Digital Home">
+        <img src="../assets/brand/rc-logo-modern-light.png" alt="RoughClick" style="height:52px; width:auto;">
+      </a>
+
+      <nav class="nav-links-modern" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link-modern ">Home</a>
+        <a href="services.html" class="nav-link-modern ">Services</a>
+        <a href="blog.html" class="nav-link-modern active">Blog</a>
+        <a href="contact.html" class="nav-link-modern ">Contact</a>
+      </nav>
+
+      <div style="display:flex; align-items:center; gap:16px;">
+        <a href="contact.html" class="btn-modern-primary">Let's Build Something</a>
+        <button class="mobile-nav-toggle-modern" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer-backdrop-modern" style="position:fixed; inset:0; background:rgba(15,61,86,0.6); backdrop-filter:blur(6px); z-index:1000; opacity:0; pointer-events:none; transition:opacity 0.3s ease;"></div>
+  <aside class="mobile-drawer-modern" style="position:fixed; top:0; right:-100%; width:85%; max-width:360px; height:100vh; background:#FFFFFF; z-index:1001; padding:30px 24px; display:flex; flex-direction:column; justify-content:space-between; transition:right 0.35s ease; box-shadow:-10px 0 30px rgba(0,0,0,0.15);">
+    <div>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;">
+        <img src="../assets/brand/rc-logo-modern-light.png" alt="RoughClick Digital" style="height:36px;">
+        <button class="mobile-drawer-close-modern" style="font-size:1.5rem; color:var(--rc-deep-teal); cursor:pointer; background:none; border:none;" aria-label="Close menu">&times;</button>
+      </div>
+      <nav style="display:flex; flex-direction:column; gap:18px;">
+        <a href="index.html" class="nav-link-modern" style="font-size:1.1rem;">Home</a>
+        <a href="services.html" class="nav-link-modern" style="font-size:1.1rem;">Services</a>
+        <a href="blog.html" class="nav-link-modern active" style="font-size:1.1rem;">Blog</a>
+        <a href="admin-blog.html" class="nav-link-modern" style="font-size:1.1rem; color:var(--rc-teal-accent);">CMS Admin Preview</a>
+        <a href="contact.html" class="nav-link-modern" style="font-size:1.1rem;">Contact</a>
+      </nav>
+    </div>
+    <div>
+      <a href="contact.html" class="btn-modern-primary" style="width:100%; text-align:center;">Let's Build Something</a>
+    </div>
+  </aside>
+
+  <main>
+    <!-- Blog Hero -->
+    <section class="modern-hero" style="padding-bottom:30px;">
+      <div class="rc-container">
+        <div style="max-width:760px;">
+          <span class="modern-badge">Knowledge Hub</span>
+          <h1 class="hero-title-modern">
+            Perspectives on <span class="accent">Tech, Design & Growth</span>
+          </h1>
+          <p class="hero-subcopy-modern">
+            Practical insights on web performance, software scalability, and strategic social brand positioning.
+          </p>
+        </div>
+
+        <!-- Real-time Filter Bar -->
+        <div style="display:flex; flex-direction:column; gap:14px; margin-top:20px;">
+          <div style="max-width:520px;">
+            <input type="text" id="modernBlogSearch" placeholder="Search keywords or topics..." style="width:100%; padding:12px 18px; border-radius:6px; border:1px solid var(--rc-border-subtle); background:#FFFFFF; font-size:0.92rem; color:var(--rc-slate); box-shadow:var(--rc-card-shadow);">
+          </div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="modern-cat-btn active" data-category="all" style="padding:6px 14px; border-radius:6px; font-size:0.8rem; font-weight:600; cursor:pointer; background:var(--rc-deep-teal); color:#FFFFFF; border:1px solid var(--rc-deep-teal);">All Topics</button>
+            <button class="modern-cat-btn" data-category="Web Development" style="padding:6px 14px; border-radius:6px; font-size:0.8rem; font-weight:600; cursor:pointer; background:#FFFFFF; color:var(--rc-deep-teal); border:1px solid var(--rc-border-subtle);">Web Development</button>
+            <button class="modern-cat-btn" data-category="Application Development" style="padding:6px 14px; border-radius:6px; font-size:0.8rem; font-weight:600; cursor:pointer; background:#FFFFFF; color:var(--rc-deep-teal); border:1px solid var(--rc-border-subtle);">Application Development</button>
+            <button class="modern-cat-btn" data-category="Content Strategy" style="padding:6px 14px; border-radius:6px; font-size:0.8rem; font-weight:600; cursor:pointer; background:#FFFFFF; color:var(--rc-deep-teal); border:1px solid var(--rc-border-subtle);">Content Strategy</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Post Spotlight -->
+    <section class="modern-section" style="padding-top:20px; padding-bottom:30px;">
+      <div class="rc-container">
+        <div style="background:#FFFFFF; border:1px solid var(--rc-border-subtle); border-radius:12px; padding: clamp(1.5rem, 3.5vw, 3rem); box-shadow:var(--rc-card-shadow);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <span class="modern-badge">Featured Spotlight</span>
+            <span style="font-size:0.8rem; color:var(--rc-slate-light);">Sep 2026</span>
+          </div>
+          <h2 style="font-size:clamp(1.6rem, 2.5vw, 2.2rem); margin-bottom:12px; color:var(--rc-deep-teal);">
+            Architecting Digital Experiences: Why Performance Is the Ultimate Brand Differentiator
+          </h2>
+          <p style="color:var(--rc-slate); line-height:1.7; font-size:0.98rem; max-width:800px; margin-bottom:20px;">
+            In an era of sub-second attention spans, the technical performance of your website directly impacts user trust and conversion rates. Discover how zero-bloat web architecture drives measurable business outcomes.
+          </p>
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;">
+            <div style="font-size:0.84rem; color:var(--rc-slate-light);">
+              By RoughClick Editorial • 4 min read • Web Development
+            </div>
+            <button class="btn-modern-primary btn-read-modern" data-blog-id="blog-01" style="font-size:0.85rem; padding:10px 20px;">Read Article &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- All Articles -->
+    <section class="modern-section bg-light" style="padding-top:30px;">
+      <div class="rc-container">
+        <h3 style="font-size:1.4rem; margin-bottom:20px; color:var(--rc-deep-teal);">All Perspectives</h3>
+        
+        <div class="modern-blog-grid">
+          <article class="modern-blog-card modern-blog-item" data-category="Web Development">
+            <div>
+              <div style="font-size:0.78rem; color:var(--rc-slate-light); margin-bottom:8px;">
+                <span style="font-weight:700; color:var(--rc-deep-teal);">Web Development</span> • 4 min read
+              </div>
+              <h4 style="font-size:1.2rem; margin-bottom:8px; color:var(--rc-deep-teal);">Architecting Digital Experiences: Why Performance Is the Ultimate Brand Differentiator</h4>
+              <p style="font-size:0.86rem; color:var(--rc-slate); line-height:1.6; margin-bottom:16px;">
+                Technical performance directly drives conversion rates. Why zero-bloat web code matters.
+              </p>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--rc-border-subtle); padding-top:14px;">
+              <span style="font-size:0.75rem; color:var(--rc-slate-light);">RoughClick Editorial</span>
+              <button class="modern-link-arrow btn-read-modern" data-blog-id="blog-01" style="background:none; border:none; cursor:pointer;">Read Article &rarr;</button>
+            </div>
+          </article>
+
+          <article class="modern-blog-card modern-blog-item" data-category="Application Development">
+            <div>
+              <div style="font-size:0.78rem; color:var(--rc-slate-light); margin-bottom:8px;">
+                <span style="font-weight:700; color:var(--rc-deep-teal);">Application Development</span> • 6 min read
+              </div>
+              <h4 style="font-size:1.2rem; margin-bottom:8px; color:var(--rc-deep-teal);">Custom Applications vs. Off-The-Shelf SaaS: When to Build for Scale</h4>
+              <p style="font-size:0.86rem; color:var(--rc-slate); line-height:1.6; margin-bottom:16px;">
+                Understanding the ROI turning point of building tailored internal software tools.
+              </p>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--rc-border-subtle); padding-top:14px;">
+              <span style="font-size:0.75rem; color:var(--rc-slate-light);">Engineering Lead</span>
+              <button class="modern-link-arrow btn-read-modern" data-blog-id="blog-02" style="background:none; border:none; cursor:pointer;">Read Article &rarr;</button>
+            </div>
+          </article>
+
+          <article class="modern-blog-card modern-blog-item" data-category="Content Strategy">
+            <div>
+              <div style="font-size:0.78rem; color:var(--rc-slate-light); margin-bottom:8px;">
+                <span style="font-weight:700; color:var(--rc-deep-teal);">Content Strategy</span> • 5 min read
+              </div>
+              <h4 style="font-size:1.2rem; margin-bottom:8px; color:var(--rc-deep-teal);">Crafting a Cohesive Social Media Visual Identity for Modern Brands</h4>
+              <p style="font-size:0.86rem; color:var(--rc-slate); line-height:1.6; margin-bottom:16px;">
+                Structured grid systems and motion design frameworks for digital brand recall.
+              </p>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--rc-border-subtle); padding-top:14px;">
+              <span style="font-size:0.75rem; color:var(--rc-slate-light);">Design Studio</span>
+              <button class="modern-link-arrow btn-read-modern" data-blog-id="blog-03" style="background:none; border:none; cursor:pointer;">Read Article &rarr;</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CMS Publishing Interface Callout -->
+    <section class="modern-section">
+      <div class="rc-container">
+        <div style="background:#FFFFFF; border:1px solid var(--rc-border-subtle); border-radius:10px; padding:28px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; box-shadow:var(--rc-card-shadow);">
+          <div>
+            <span class="modern-badge">CMS Ready</span>
+            <h3 style="font-size:1.3rem; margin-top:8px; margin-bottom:4px; color:var(--rc-deep-teal);">Desktop & Mobile Publishing Workflow</h3>
+            <p style="font-size:0.88rem; color:var(--rc-slate); max-width:620px;">
+              Experience the publishing interface designed for direct client article creation and scheduling across both desktop and smartphones.
+            </p>
+          </div>
+          <a href="admin-blog.html" class="btn-modern-primary">Open Admin Workflow &rarr;</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Interactive Modal Reader -->
+  <div id="modernArticleModal" style="position:fixed; inset:0; background:rgba(15,61,86,0.7); backdrop-filter:blur(8px); z-index:9999; display:none; align-items:center; justify-content:center; padding:20px;">
+    <div style="background:#FFFFFF; border-radius:10px; max-width:740px; width:100%; max-height:85vh; overflow-y:auto; padding:32px; position:relative; box-shadow:0 20px 50px rgba(0,0,0,0.25);">
+      <button id="modernModalClose" style="position:absolute; top:20px; right:20px; color:var(--rc-slate); font-size:1.5rem; cursor:pointer; background:none; border:none;" aria-label="Close">&times;</button>
+      <div id="modernModalBody"></div>
+    </div>
+  </div>
+
+        <!-- Modern Footer -->
+    <!-- Modern Footer -->
+  <footer class="modern-footer">
+    <div class="rc-container">
+      <div style="display:grid; grid-template-columns:1.5fr 1fr 1fr 1.2fr; gap: clamp(2rem, 4vw, 3rem); margin-bottom:50px;">
+        <div>
+          <div style="margin-bottom:16px;">
+            <img src="../assets/brand/rc-logo-modern-dark.png" alt="RoughClick Digital" style="height:52px; width:auto;">
+          </div>
+          <p style="font-size:0.86rem; line-height:1.7; max-width:320px; color:#CBD5E1;">
+            RoughClick Digital transforms ideas into purposeful digital experiences — from websites and applications to social media content.
+          </p>
+        </div>
+
+        <div>
+          <h4>Navigation</h4>
+          <ul style="display:flex; flex-direction:column; gap:10px; font-size:0.88rem;">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html">Blog Portal</a></li>
+            <li><a href="admin-blog.html">CMS Admin (Prototype)</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Services</h4>
+          <ul style="display:flex; flex-direction:column; gap:10px; font-size:0.88rem;">
+            <li><a href="services.html#website-development">Website Development</a></li>
+            <li><a href="services.html#custom-application-development">Custom Applications</a></li>
+            <li><a href="services.html#social-media-content-creation">Social Media Content</a></li>
+            <li><a href="services.html#social-media-post-updating">Social Media Management</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Coimbatore Office</h4>
+          <div style="display:flex; flex-direction:column; gap:12px; font-size:0.86rem;">
+            <div>📍 <strong>Address:</strong> [Coimbatore Office Address]</div>
+            <div>✉️ <strong>Email:</strong> [Email Address]</div>
+            <div>📞 <strong>Phone:</strong> [Phone Number]</div>
+          </div>
+          <div style="margin-top:16px;">
+            <a href="contact.html" class="btn-modern-secondary" style="padding:6px 12px; font-size:0.76rem; background:transparent; color:#FFFFFF; border-color:rgba(255,255,255,0.2);">Connect on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; font-size:0.8rem;">
+        <div>© 2026 RoughClick Digital. All rights reserved.</div>
+        <div>Coimbatore, India</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/shared-data.js"></script>
+  <script src="js/modern-app.js"></script>
+  <script src="../assets/js/particles.js"></script>
+</body>
+</html>

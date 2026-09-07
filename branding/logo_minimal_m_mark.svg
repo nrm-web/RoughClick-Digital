@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="400" height="320" rx="16" fill="#4B5842"/>
+  
+  <g transform="translate(100, 40)">
+    <!-- Top Blue Block -->
+    <rect x="25" y="20" width="130" height="130" fill="#0088CC" rx="4"/>
+    
+    <!-- Bottom Green Block -->
+    <rect x="75" y="70" width="130" height="130" fill="#66CC33" rx="4"/>
+    
+    <!-- Bold 'm' Monogram -->
+    <path d="M 40 160 L 40 90 C 40 70 58 60 75 60 C 92 60 100 75 100 95 L 100 160 L 100 95 C 100 75 118 60 135 60 C 152 60 160 75 160 95 L 160 160 L 180 160 L 180 90 C 180 60 155 45 132 45 C 112 45 100 58 95 68 C 90 58 78 45 58 45 C 35 45 20 60 20 90 L 20 160 Z" fill="#0A0A0A"/>
+  </g>
+</svg>

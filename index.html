@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RoughClick Digital — Design Concepts Review Hub</title>
+  <meta name="description" content="Master review and concept comparison portal for RoughClick Digital. Compare Concept 1 (Luxury Digital) vs Concept 2 (Modern Digital).">
+  
+  <link rel="icon" type="image/png" href="assets/brand/rc-logo-luxury-dark.png">
+  <link rel="stylesheet" href="assets/css/common.css">
+  
+  <style>
+    :root {
+      --hub-dark: #0A0D14;
+      --hub-surface: #121824;
+      --hub-border: #1E293B;
+      --hub-text: #E2E8F0;
+      --hub-muted: #94A3B8;
+      
+      --c1-gold: #C9A227;
+      --c1-black: #0B0B0B;
+      --c1-ivory: #F7F3EA;
+      
+      --c2-teal: #14B8A6;
+      --c2-deep-teal: #0F3D56;
+      --c2-light-grey: #F1F5F9;
+    }
+
+    body {
+      background-color: var(--hub-dark);
+      color: var(--hub-text);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      padding-bottom: 80px;
+    }
+
+    .hub-header {
+      border-bottom: 1px solid var(--hub-border);
+      padding: 20px 0;
+      background: rgba(18, 24, 36, 0.8);
+      backdrop-filter: blur(12px);
+    }
+
+    .hub-logo-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .badge-master {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(20, 184, 166, 0.15);
+      color: var(--c2-teal);
+      border: 1px solid rgba(20, 184, 166, 0.3);
+    }
+
+    .concept-hero-intro {
+      text-align: center;
+      padding: 45px 0 30px 0;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .concept-hero-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .concept-hero-desc {
+      font-size: 1.05rem;
+      color: var(--hub-muted);
+      line-height: 1.7;
+    }
+
+    /* Comparison Cards Grid */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 30px;
+    }
+
+    .concept-card {
+      background: var(--hub-surface);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    }
+
+    .concept-card.luxury {
+      border: 1px solid rgba(201, 162, 39, 0.35);
+    }
+
+    .concept-card.luxury:hover {
+      border-color: var(--c1-gold);
+      box-shadow: 0 20px 45px rgba(201, 162, 39, 0.15);
+      transform: translateY(-4px);
+    }
+
+    .concept-card.modern {
+      border: 1px solid rgba(20, 184, 166, 0.35);
+    }
+
+    .concept-card.modern:hover {
+      border-color: var(--c2-teal);
+      box-shadow: 0 20px 45px rgba(20, 184, 166, 0.15);
+      transform: translateY(-4px);
+    }
+
+    .concept-preview-frame {
+      height: 280px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .concept-preview-frame.luxury-bg {
+      background: radial-gradient(circle at center, #1C1A17 0%, #0B0B0B 100%);
+      border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+    }
+
+    .concept-preview-frame.modern-bg {
+      background: radial-gradient(circle at center, #0F3D56 0%, #082332 100%);
+      border-bottom: 1px solid rgba(20, 184, 166, 0.2);
+    }
+
+    .concept-body {
+      padding: 32px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .concept-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+    }
+
+    .color-swatches {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 18px 0;
+    }
+
+    .swatch {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+    }
+
+    .swatch:hover::after {
+      content: attr(data-label);
+      position: absolute;
+      bottom: 34px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #000000;
+      color: #FFFFFF;
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .page-link-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 20px 0;
+    }
+
+    .page-pill {
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--hub-border);
+      font-size: 0.82rem;
+      color: var(--hub-text);
+      font-weight: 500;
+    }
+
+    .page-pill:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #FFFFFF;
+    }
+
+    /* Live Switcher */
+    .viewport-toggle-wrap {
+      margin-top: 60px;
+      background: var(--hub-surface);
+      border: 1px solid var(--hub-border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .tab-btn {
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--hub-muted);
+      transition: all 0.2s ease;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .tab-btn.active-tab {
+      background: #1E293B;
+      color: #FFFFFF;
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .live-iframe-wrap {
+      width: 100%;
+      height: 700px;
+      border: 1px solid var(--hub-border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 18px;
+      background: #000;
+    }
+
+    .live-iframe-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    @media (max-width: 900px) {
+      .comparison-grid {
+        grid-template-columns: 1fr;
+      }
+      .live-iframe-wrap {
+        height: 500px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/css/animations.css">
+</head>
+<body>
+
+  <!-- Hub Header -->
+  <header class="hub-header" style="position:relative; overflow:hidden;">
+  <canvas class="rc-particles-bg" data-particle-color="#14B8A6" style="opacity:0.35;"></canvas>
+    <div class="rc-container hub-logo-banner">
+      <div style="display:flex; align-items:center; gap:16px;">
+        <img src="assets/brand/rc-logo-luxury-dark.png" alt="RoughClick" style="height:48px; width:auto;">
+      </div>
+
+      <div style="display:flex; align-items:center; gap:12px;">
+        <a href="branding/vector_showcase.html" style="font-size:0.75rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:6px 14px; border-radius:999px; background:rgba(201,162,39,0.15); color:var(--c1-gold); border:1px solid rgba(201,162,39,0.3); text-decoration:none;">
+          🎨 Download Vector SVGs
+        </a>
+        <span class="badge-master">RoughClick Digital</span>
+        <span style="font-size:0.8rem; color:var(--hub-muted);">Coimbatore, India</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="rc-container">
+    
+    <!-- Hero Intro -->
+    <div class="concept-hero-intro">
+      <div style="display:flex; justify-content:center; margin-bottom:12px;">
+        <div class="hud-status-ticker">
+          <span class="hud-pulse-dot"></span>
+          <span>ROUGHCLICK DIGITAL • MASTER REVIEW PORTAL ACTIVE</span>
+        </div>
+      </div>
+      <h1 class="concept-hero-title">Two UI Concepts for RoughClick Digital</h1>
+      <p class="concept-hero-desc">
+        Both concepts use the exact provided <strong>RoughClick</strong> logo, with colors adapted to each design palette.
+      </p>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="comparison-grid">
+      
+      <!-- CONCEPT 1 -->
+      <div class="concept-card luxury">
+        <div class="concept-preview-frame luxury-bg">
+          <img src="assets/brand/rc-logo-luxury-dark.png" alt="RoughClick Luxury Emblem" style="max-height:180px; width:auto;">
+          <div style="font-size:0.75rem; color:var(--c1-gold); font-weight:700; letter-spacing:0.15em; text-transform:uppercase; margin-top:14px;">
+            Palette Option A — Luxury & Premium
+          </div>
+        </div>
+
+        <div class="concept-body">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <h2 class="concept-name">Concept 1: Luxury Digital</h2>
+              <span style="font-size:0.75rem; background:rgba(201,162,39,0.2); color:var(--c1-gold); padding:4px 10px; border-radius:4px; font-weight:700;">PREMIUM</span>
+            </div>
+            <p style="font-size:0.92rem; color:var(--hub-muted); line-height:1.6; margin-top:8px;">
+              Sophisticated, minimal, elegant, high-end, confident, and editorial. Generous whitespace, refined obsidian surface, subtle gold accents, and clean typography.
+            </p>
+
+            <div style="margin-top:16px;">
+              <span style="font-size:0.78rem; font-weight:700; color:#FFFFFF; text-transform:uppercase; letter-spacing:0.05em;">Color Palette:</span>
+              <div class="color-swatches">
+                <div class="swatch" style="background:#0B0B0B;" data-label="Black #0B0B0B"></div>
+                <div class="swatch" style="background:#F7F3EA;" data-label="Ivory #F7F3EA"></div>
+                <div class="swatch" style="background:#C9A227;" data-label="Gold #C9A227"></div>
+                <div class="swatch" style="background:#FFFFFF;" data-label="White #FFFFFF"></div>
+                <div class="swatch" style="background:#8C8275;" data-label="Warm Grey #8C8275"></div>
+              </div>
+            </div>
+
+            <div style="margin-top:16px;">
+              <span style="font-size:0.78rem; font-weight:700; color:#FFFFFF; text-transform:uppercase; letter-spacing:0.05em;">Direct Page Links:</span>
+              <div class="page-link-pills">
+                <a href="concept-1-luxury/index.html" class="page-pill">🏠 Home</a>
+                <a href="concept-1-luxury/services.html" class="page-pill">⚡ Services</a>
+                <a href="concept-1-luxury/blog.html" class="page-pill">📰 Blog Portal</a>
+                <a href="concept-1-luxury/admin-blog.html" class="page-pill" style="color:var(--c1-gold);">⚙️ CMS Admin</a>
+                <a href="concept-1-luxury/contact.html" class="page-pill">📍 Contact</a>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:24px; border-top:1px solid rgba(255,255,255,0.08); padding-top:20px;">
+            <a href="concept-1-luxury/index.html" style="display:flex; justify-content:center; align-items:center; gap:8px; padding:14px; background:var(--c1-gold); color:#0B0B0B; font-weight:800; border-radius:6px; font-size:0.95rem; text-decoration:none; font-family:'Montserrat', sans-serif;">
+              Launch Full Luxury Experience &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONCEPT 2 -->
+      <div class="concept-card modern">
+        <div class="concept-preview-frame modern-bg">
+          <img src="assets/brand/rc-logo-modern-dark.png" alt="RoughClick Modern Emblem" style="max-height:180px; width:auto;">
+          <div style="font-size:0.75rem; color:var(--c2-teal); font-weight:700; letter-spacing:0.15em; text-transform:uppercase; margin-top:14px;">
+            Palette Option B — Clean & Professional
+          </div>
+        </div>
+
+        <div class="concept-body">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <h2 class="concept-name">Concept 2: Modern Digital</h2>
+              <span style="font-size:0.75rem; background:rgba(20,184,166,0.2); color:var(--c2-teal); padding:4px 10px; border-radius:4px; font-weight:700;">TECH-DRIVEN</span>
+            </div>
+            <p style="font-size:0.92rem; color:var(--hub-muted); line-height:1.6; margin-top:8px;">
+              Clean, technology-driven, approachable, structured, fresh, and high-energy. Deep teal brand presence, vibrant teal accents, light grey structural backgrounds, and crisp modern typography.
+            </p>
+
+            <div style="margin-top:16px;">
+              <span style="font-size:0.78rem; font-weight:700; color:#FFFFFF; text-transform:uppercase; letter-spacing:0.05em;">Color Palette:</span>
+              <div class="color-swatches">
+                <div class="swatch" style="background:#0F3D56;" data-label="Deep Teal #0F3D56"></div>
+                <div class="swatch" style="background:#FFFFFF;" data-label="White #FFFFFF"></div>
+                <div class="swatch" style="background:#F1F5F9;" data-label="Light Grey #F1F5F9"></div>
+                <div class="swatch" style="background:#14B8A6;" data-label="Teal #14B8A6"></div>
+                <div class="swatch" style="background:#334155;" data-label="Slate #334155"></div>
+              </div>
+            </div>
+
+            <div style="margin-top:16px;">
+              <span style="font-size:0.78rem; font-weight:700; color:#FFFFFF; text-transform:uppercase; letter-spacing:0.05em;">Direct Page Links:</span>
+              <div class="page-link-pills">
+                <a href="concept-2-modern/index.html" class="page-pill">🏠 Home</a>
+                <a href="concept-2-modern/services.html" class="page-pill">⚡ Services</a>
+                <a href="concept-2-modern/blog.html" class="page-pill">📰 Blog Portal</a>
+                <a href="concept-2-modern/admin-blog.html" class="page-pill" style="color:var(--c2-teal);">⚙️ CMS Admin</a>
+                <a href="concept-2-modern/contact.html" class="page-pill">📍 Contact</a>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:24px; border-top:1px solid rgba(255,255,255,0.08); padding-top:20px;">
+            <a href="concept-2-modern/index.html" style="display:flex; justify-content:center; align-items:center; gap:8px; padding:14px; background:var(--c2-teal); color:#0F3D56; font-weight:800; border-radius:6px; font-size:0.95rem; text-decoration:none; font-family:'Montserrat', sans-serif;">
+              Launch Full Modern Experience &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Live Interactive Switcher -->
+    <div class="viewport-toggle-wrap">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; margin-bottom:12px;">
+        <div>
+          <h3 style="font-size:1.3rem; color:#FFFFFF; margin-bottom:4px; font-family:'Montserrat', sans-serif;">Live Interactive Preview</h3>
+          <p style="font-size:0.86rem; color:var(--hub-muted);">Switch between concepts instantly without leaving this hub.</p>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <button id="btnViewConcept1" class="tab-btn active-tab" onclick="switchPreview('concept-1-luxury/index.html', this)">Concept 1: Luxury</button>
+          <button id="btnViewConcept2" class="tab-btn" onclick="switchPreview('concept-2-modern/index.html', this)">Concept 2: Modern</button>
+        </div>
+      </div>
+
+      <div class="live-iframe-wrap">
+        <iframe id="previewIframe" src="concept-1-luxury/index.html" title="RoughClick Digital Live Preview"></iframe>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    function switchPreview(url, btn) {
+      document.getElementById('previewIframe').src = url;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active-tab'));
+      btn.classList.add('active-tab');
+    }
+  </script>
+  <script src="assets/js/particles.js"></script>
+</body>
+</html>

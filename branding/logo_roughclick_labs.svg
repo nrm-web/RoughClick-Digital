@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 180" width="100%" height="100%">
+  <rect width="600" height="180" rx="12" fill="#090D16"/>
+  
+  <g transform="translate(40, 30)">
+    <circle cx="60" cy="60" r="54" fill="#111827" stroke="#06B6D4" stroke-width="2"/>
+    <!-- Flask Innovation Symbol -->
+    <path d="M50 32 L70 32 M60 32 L60 50 L80 80 C84 86 80 94 72 94 L48 94 C40 94 36 86 40 80 L60 50" fill="none" stroke="#22D3EE" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="54" cy="76" r="4" fill="#38BDF8"/>
+    <circle cx="66" cy="82" r="3" fill="#818CF8"/>
+    <circle cx="60" cy="68" r="2.5" fill="#38BDF8"/>
+  </g>
+  
+  <text x="180" y="85" font-family="'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="38" fill="#FFFFFF">
+    ROUGHCLICK<tspan fill="#06B6D4"> LABS</tspan>
+  </text>
+  <text x="182" y="118" font-family="'Segoe UI', Roboto, sans-serif" font-weight="600" font-size="16" fill="#9CA3AF" letter-spacing="3">
+    DIGITAL SOLUTIONS &amp; APPS
+  </text>
+  <text x="182" y="142" font-family="'Segoe UI', Roboto, sans-serif" font-style="italic" font-size="13" fill="#22D3EE">
+    "Transforming Ideas into Digital Reality"
+  </text>
+</svg>

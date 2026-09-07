@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 180" width="100%" height="100%">
+  <rect width="500" height="180" rx="16" fill="#0D1527"/>
+  
+  <g transform="translate(40, 30)">
+    <circle cx="60" cy="60" r="50" fill="none" stroke="#FFFFFF" stroke-width="4"/>
+    <!-- Sleek Geometric M Monogram -->
+    <path d="M 32 80 L 32 40 L 60 70 L 88 40 L 88 80" fill="none" stroke="#38BDF8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="60" cy="30" r="5" fill="#818CF8"/>
+  </g>
+  
+  <text x="175" y="95" font-family="'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="44" fill="#FFFFFF" letter-spacing="1">
+    MEVORI<tspan fill="#38BDF8"> DIGITAL</tspan>
+  </text>
+  <text x="177" y="125" font-family="'Segoe UI', Roboto, sans-serif" font-weight="600" font-size="14" fill="#94A3B8" letter-spacing="3">
+    GROWTH &amp; MARKETING STUDIO
+  </text>
+</svg>

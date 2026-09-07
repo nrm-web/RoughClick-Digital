@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publishing Studio (Prototype) — RoughClick Digital</title>
+  <meta name="description" content="Conceptual CMS-ready publishing interface for desktop and mobile article creation.">
+  
+  <link rel="icon" type="image/svg+xml" href="../assets/brand/favicon.svg">
+  <link rel="stylesheet" href="../assets/css/common.css">
+  <link rel="stylesheet" href="css/luxury-style.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+</head>
+<body class="luxury-theme">
+
+  <!-- Concept Navigation Floating Bar -->
+  <div class="rc-concept-bar" role="navigation" aria-label="Concept Switcher">
+    <span style="font-size:0.75rem; color:#A1A1AA; font-weight:700; text-transform:uppercase; letter-spacing:0.05em;">Concept:</span>
+    <a href="../concept-1-luxury/admin-blog.html" class="active-luxury">Concept 1 (Luxury)</a>
+    <a href="../concept-2-modern/admin-blog.html" class="inactive">Concept 2 (Modern)</a>
+    <a href="../index.html" class="hub-link">⚡ Comparison Hub</a>
+  </div>
+
+  <!-- Header -->
+  <header class="luxury-header">
+    <div class="rc-container luxury-nav-wrap">
+      <a href="index.html" class="brand-logo-link" aria-label="RoughClick Digital Home" style="display:flex; align-items:center; gap:14px; text-decoration:none;">
+        <img src="../assets/brand/rc-logo-luxury-dark.png" alt="RoughClick Digital" class="brand-logo-img" style="height:46px; width:auto;">
+        <div>
+          <div style="font-family:'Montserrat', sans-serif; font-size:1.35rem; font-weight:900; letter-spacing:1.5px; color:var(--rc-ivory); line-height:1.1;">
+            ROUGHCLICK <span style="color:var(--rc-gold);">DIGITAL</span>
+          </div>
+          <div style="font-size:0.72rem; font-weight:700; letter-spacing:0.25em; color:var(--rc-warm-grey); text-transform:uppercase;">
+            
+          </div>
+        </div>
+      </a>
+
+      <div style="display:flex; align-items:center; gap:16px;">
+        <span class="luxury-tag" style="background:rgba(201,162,39,0.2);">CMS Publishing Simulation</span>
+        <a href="blog.html" class="btn-luxury-secondary" style="padding:8px 16px; font-size:0.8rem;">&larr; Public Blog View</a>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding-top:110px; padding-bottom:80px;">
+    <div class="rc-container">
+      
+      <!-- Top Disclaimer Banner -->
+      <div style="background:rgba(201,162,39,0.08); border:1px solid var(--rc-gold-border); border-radius:8px; padding:18px 24px; margin-bottom:30px; display:flex; align-items:flex-start; gap:14px;">
+        <span style="font-size:1.4rem;">💡</span>
+        <div>
+          <h4 style="font-size:0.95rem; color:var(--rc-gold); margin-bottom:4px;">CMS Publishing Architecture Prototype</h4>
+          <p style="font-size:0.84rem; color:var(--rc-ivory-dim); line-height:1.5;">
+            This prototype demonstrates the client publishing experience from both <strong>Desktop and Mobile</strong> devices. This frontend is CMS-ready and will connect to your chosen backend (e.g., Strapi, Sanity, Decap, or custom database) upon UI approval.
+          </p>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1.2fr 0.8fr; gap:30px;">
+        
+        <!-- Left: Article Creation Form -->
+        <div class="brand-intro-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid var(--rc-border-subtle); padding-bottom:14px;">
+            <h2 style="font-size:1.35rem; color:var(--rc-ivory);">Create / Edit Article</h2>
+            <span style="font-size:0.75rem; color:var(--rc-warm-grey);">Auto-saving Drafts</span>
+          </div>
+
+          <form id="adminPublishForm">
+            <div style="margin-bottom:18px;">
+              <label for="postTitle" style="display:block; font-size:0.84rem; color:var(--rc-ivory); margin-bottom:6px; font-weight:600;">Article Title</label>
+              <input type="text" id="postTitle" required placeholder="e.g. Navigating Digital Transformation in 2026" style="width:100%; padding:12px; background:var(--rc-surface); border:1px solid var(--rc-gold-border); border-radius:6px; color:var(--rc-ivory); font-size:0.95rem;">
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:18px;">
+              <div>
+                <label for="postCategory" style="display:block; font-size:0.84rem; color:var(--rc-ivory); margin-bottom:6px; font-weight:600;">Category</label>
+                <select id="postCategory" style="width:100%; padding:12px; background:var(--rc-surface); border:1px solid var(--rc-gold-border); border-radius:6px; color:var(--rc-ivory); font-size:0.9rem;">
+                  <option value="Web Development">Web Development</option>
+                  <option value="Application Development">Application Development</option>
+                  <option value="Content Strategy">Content Strategy</option>
+                  <option value="Social Media Management">Social Media Management</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="postSlug" style="display:block; font-size:0.84rem; color:var(--rc-ivory); margin-bottom:6px; font-weight:600;">URL Slug (Auto-generated)</label>
+                <input type="text" id="postSlug" placeholder="article-url-slug" style="width:100%; padding:12px; background:var(--rc-surface); border:1px solid var(--rc-border-subtle); border-radius:6px; color:var(--rc-warm-grey); font-size:0.9rem;">
+              </div>
+            </div>
+
+            <div style="margin-bottom:18px;">
+              <label style="display:block; font-size:0.84rem; color:var(--rc-ivory); margin-bottom:6px; font-weight:600;">Featured Image</label>
+              <div style="border:2px dashed var(--rc-gold-border); border-radius:6px; padding:20px; text-align:center; background:rgba(255,255,255,0.02); cursor:pointer;">
+                <span style="font-size:1.2rem;">📁</span>
+                <p style="font-size:0.82rem; color:var(--rc-ivory-dim); margin-top:4px;">Drag and drop image or click to browse (1200x630 recommended)</p>
+              </div>
+            </div>
+
+            <div style="margin-bottom:24px;">
+              <label for="postContent" style="display:block; font-size:0.84rem; color:var(--rc-ivory); margin-bottom:6px; font-weight:600;">Article Content (Markdown / Rich Text)</label>
+              <textarea id="postContent" rows="8" required placeholder="Write your insight here... You can use headings, lists, and quotes." style="width:100%; padding:14px; background:var(--rc-surface); border:1px solid var(--rc-gold-border); border-radius:6px; color:var(--rc-ivory); font-size:0.95rem; resize:vertical; line-height:1.6;"></textarea>
+            </div>
+
+            <div style="display:flex; gap:12px; justify-content:flex-end;">
+              <button type="button" class="btn-luxury-secondary" style="padding:10px 20px;">Save Draft</button>
+              <button type="submit" class="btn-luxury-primary" style="padding:10px 24px;">Publish Article</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Right: Real-time Live Preview & Post Manager -->
+        <div style="display:flex; flex-direction:column; gap:24px;">
+          <!-- Live Preview Box -->
+          <div class="brand-intro-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+              <span class="luxury-tag">Live Reading Preview</span>
+              <span style="font-size:0.75rem; color:var(--rc-warm-grey);">Mobile + Desktop View</span>
+            </div>
+            <div id="adminLivePreview" style="background:var(--rc-surface); border:1px solid var(--rc-border-subtle); border-radius:6px; padding:20px; min-height:220px;">
+              <div style="border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:12px; margin-bottom:12px;">
+                <span class="luxury-tag">Web Development</span>
+                <h3 style="font-size:1.3rem; margin-top:8px; margin-bottom:4px;">Navigating Digital Transformation in 2026</h3>
+                <div style="font-size:0.75rem; color:var(--rc-warm-grey);">By RoughClick • Just Now • 3 min read</div>
+              </div>
+              <p style="font-size:0.88rem; color:var(--rc-ivory-dim); line-height:1.6;">
+                Article content will mirror live as you type in the editor...
+              </p>
+            </div>
+          </div>
+
+          <!-- Existing Articles Stream -->
+          <div class="brand-intro-card">
+            <h3 style="font-size:1.15rem; color:var(--rc-ivory); margin-bottom:16px;">Published Articles Feed</h3>
+            <div id="adminPostList">
+              <div style="padding:12px; background:var(--rc-surface); border:1px solid var(--rc-border-subtle); border-radius:6px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                  <div style="font-weight:600; color:var(--rc-ivory); font-size:0.88rem;">Architecting Digital Experiences</div>
+                  <div style="font-size:0.75rem; color:var(--rc-warm-grey);">Web Development • Sep 2026</div>
+                </div>
+                <span style="font-size:0.75rem; background:rgba(201,162,39,0.2); color:var(--rc-gold); padding:2px 8px; border-radius:4px;">Published</span>
+              </div>
+              <div style="padding:12px; background:var(--rc-surface); border:1px solid var(--rc-border-subtle); border-radius:6px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                  <div style="font-weight:600; color:var(--rc-ivory); font-size:0.88rem;">Custom Applications vs. Off-The-Shelf SaaS</div>
+                  <div style="font-size:0.75rem; color:var(--rc-warm-grey);">App Dev • Aug 2026</div>
+                </div>
+                <span style="font-size:0.75rem; background:rgba(201,162,39,0.2); color:var(--rc-gold); padding:2px 8px; border-radius:4px;">Published</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script src="../assets/js/shared-data.js"></script>
+  <script src="js/luxury-app.js"></script>
+  <script src="../assets/js/particles.js"></script>
+</body>
+</html>

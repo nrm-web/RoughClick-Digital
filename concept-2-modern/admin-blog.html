@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CMS Studio (Prototype) — RoughClick Digital</title>
+  <meta name="description" content="Conceptual CMS-ready publishing interface for desktop and mobile article creation.">
+  
+  <link rel="icon" type="image/svg+xml" href="../assets/brand/favicon.svg">
+  <link rel="stylesheet" href="../assets/css/common.css">
+  <link rel="stylesheet" href="css/modern-style.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+</head>
+<body class="modern-theme">
+
+  <!-- Concept Navigation Floating Bar -->
+  <div class="rc-concept-bar" role="navigation" aria-label="Concept Switcher">
+    <span style="font-size:0.75rem; color:#A1A1AA; font-weight:700; text-transform:uppercase; letter-spacing:0.05em;">Concept:</span>
+    <a href="../concept-1-luxury/admin-blog.html" class="inactive">Concept 1 (Luxury)</a>
+    <a href="../concept-2-modern/admin-blog.html" class="active-modern">Concept 2 (Modern)</a>
+    <a href="../index.html" class="hub-link">⚡ Comparison Hub</a>
+  </div>
+
+  <!-- Modern Header -->
+  <header class="modern-header">
+    <div class="rc-container modern-nav-wrap">
+      <a href="index.html" aria-label="RoughClick Digital Home" style="display:flex; align-items:center; gap:14px; text-decoration:none;">
+        <img src="../assets/brand/rc-logo-modern-light.png" alt="RoughClick Digital" class="brand-logo-img-modern" style="height:46px; width:auto;">
+        <div>
+          <div style="font-family:'Montserrat', sans-serif; font-size:1.35rem; font-weight:900; letter-spacing:1px; color:var(--rc-deep-teal); line-height:1.1;">
+            ROUGHCLICK <span style="color:var(--rc-teal-accent);">DIGITAL</span>
+          </div>
+          <div style="font-size:0.72rem; font-weight:700; letter-spacing:0.25em; color:var(--rc-slate-light); text-transform:uppercase;">
+            
+          </div>
+        </div>
+      </a>
+
+      <div style="display:flex; align-items:center; gap:16px;">
+        <span class="modern-badge">CMS Publishing Prototype</span>
+        <a href="blog.html" class="btn-modern-secondary" style="padding:6px 14px; font-size:0.8rem;">&larr; Public Blog</a>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding-top:105px; padding-bottom:70px;">
+    <div class="rc-container">
+      
+      <!-- Disclaimer Banner -->
+      <div style="background:var(--rc-teal-light); border:1px solid var(--rc-teal-accent); border-radius:8px; padding:16px 20px; margin-bottom:24px; display:flex; align-items:flex-start; gap:12px;">
+        <span style="font-size:1.3rem;">💡</span>
+        <div>
+          <h4 style="font-size:0.92rem; color:var(--rc-deep-teal); margin-bottom:2px;">Publishing Interface & CMS-Ready Architecture</h4>
+          <p style="font-size:0.84rem; color:var(--rc-slate); line-height:1.5;">
+            This prototype showcases the publishing workflow for authoring content from <strong>both Desktop and Mobile phones</strong>. A backend/CMS will be connected after UI approval.
+          </p>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1.2fr 0.8fr; gap:28px;">
+        
+        <!-- Left: Form -->
+        <div style="background:#FFFFFF; border:1px solid var(--rc-border-subtle); border-radius:10px; padding:24px; box-shadow:var(--rc-card-shadow);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; border-bottom:1px solid var(--rc-border-subtle); padding-bottom:12px;">
+            <h2 style="font-size:1.3rem; color:var(--rc-deep-teal);">Article Composer</h2>
+            <span style="font-size:0.75rem; color:var(--rc-slate-light);">Drafting Mode</span>
+          </div>
+
+          <form id="modernPublishForm">
+            <div style="margin-bottom:16px;">
+              <label for="mTitle" style="display:block; font-size:0.84rem; color:var(--rc-slate); margin-bottom:6px; font-weight:600;">Title</label>
+              <input type="text" id="mTitle" required placeholder="e.g. Modern Web Architecture Patterns for 2026" style="width:100%; padding:11px; border:1px solid var(--rc-border-subtle); border-radius:6px; font-size:0.92rem; color:var(--rc-slate);">
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:16px;">
+              <div>
+                <label for="mCategory" style="display:block; font-size:0.84rem; color:var(--rc-slate); margin-bottom:6px; font-weight:600;">Category</label>
+                <select id="mCategory" style="width:100%; padding:11px; border:1px solid var(--rc-border-subtle); border-radius:6px; font-size:0.88rem; color:var(--rc-slate);">
+                  <option value="Web Development">Web Development</option>
+                  <option value="Application Development">Application Development</option>
+                  <option value="Content Strategy">Content Strategy</option>
+                  <option value="Social Media Management">Social Media Management</option>
+                </select>
+              </div>
+              <div>
+                <label for="mSlug" style="display:block; font-size:0.84rem; color:var(--rc-slate); margin-bottom:6px; font-weight:600;">Slug</label>
+                <input type="text" id="mSlug" placeholder="article-slug" style="width:100%; padding:11px; border:1px solid var(--rc-border-subtle); border-radius:6px; font-size:0.88rem; color:var(--rc-slate-light);">
+              </div>
+            </div>
+
+            <div style="margin-bottom:16px;">
+              <label style="display:block; font-size:0.84rem; color:var(--rc-slate); margin-bottom:6px; font-weight:600;">Cover Image</label>
+              <div style="border:2px dashed var(--rc-border-subtle); border-radius:6px; padding:16px; text-align:center; background:var(--rc-light-grey); cursor:pointer;">
+                <span style="font-size:1.1rem;">📷</span>
+                <p style="font-size:0.8rem; color:var(--rc-slate-light); margin-top:4px;">Upload media or select from asset library</p>
+              </div>
+            </div>
+
+            <div style="margin-bottom:20px;">
+              <label for="mContent" style="display:block; font-size:0.84rem; color:var(--rc-slate); margin-bottom:6px; font-weight:600;">Content</label>
+              <textarea id="mContent" rows="7" required placeholder="Write your post here... Supports markdown formatting." style="width:100%; padding:12px; border:1px solid var(--rc-border-subtle); border-radius:6px; font-size:0.92rem; color:var(--rc-slate); resize:vertical;"></textarea>
+            </div>
+
+            <div style="display:flex; justify-content:flex-end; gap:10px;">
+              <button type="button" class="btn-modern-secondary" style="padding:8px 16px;">Save Draft</button>
+              <button type="submit" class="btn-modern-primary" style="padding:8px 20px;">Publish Article</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Right: Real-time Live Preview -->
+        <div style="display:flex; flex-direction:column; gap:20px;">
+          <div style="background:#FFFFFF; border:1px solid var(--rc-border-subtle); border-radius:10px; padding:20px; box-shadow:var(--rc-card-shadow);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+              <span class="modern-badge">Live Preview</span>
+              <span style="font-size:0.75rem; color:var(--rc-slate-light);">Responsive Feed</span>
+            </div>
+            <div id="modernLivePreview" style="background:var(--rc-light-grey); border-radius:6px; padding:16px; min-height:180px;">
+              <div style="border-bottom:1px solid #E2E8F0; padding-bottom:10px; margin-bottom:10px;">
+                <span class="modern-badge" style="background:#FFFFFF;">Web Development</span>
+                <h3 style="font-size:1.2rem; color:var(--rc-deep-teal); margin-top:6px;">Modern Web Architecture Patterns</h3>
+                <div style="font-size:0.75rem; color:var(--rc-slate-light);">Draft Preview</div>
+              </div>
+              <p style="font-size:0.86rem; color:var(--rc-slate); line-height:1.55;">
+                Real-time content mirroring from composer...
+              </p>
+            </div>
+          </div>
+
+          <div style="background:#FFFFFF; border:1px solid var(--rc-border-subtle); border-radius:10px; padding:20px; box-shadow:var(--rc-card-shadow);">
+            <h3 style="font-size:1.1rem; color:var(--rc-deep-teal); margin-bottom:12px;">Article Stream</h3>
+            <div id="modernPostList">
+              <div style="padding:10px; background:var(--rc-light-grey); border-radius:6px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                  <div style="font-weight:600; font-size:0.86rem; color:var(--rc-deep-teal);">Architecting Digital Experiences</div>
+                  <div style="font-size:0.75rem; color:var(--rc-slate-light);">Web Development</div>
+                </div>
+                <span class="modern-badge" style="font-size:0.7rem; padding:2px 6px;">Published</span>
+              </div>
+              <div style="padding:10px; background:var(--rc-light-grey); border-radius:6px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                  <div style="font-weight:600; font-size:0.86rem; color:var(--rc-deep-teal);">Custom Applications vs. Off-The-Shelf SaaS</div>
+                  <div style="font-size:0.75rem; color:var(--rc-slate-light);">App Dev</div>
+                </div>
+                <span class="modern-badge" style="font-size:0.7rem; padding:2px 6px;">Published</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script src="../assets/js/shared-data.js"></script>
+  <script src="js/modern-app.js"></script>
+  <script src="../assets/js/particles.js"></script>
+</body>
+</html>

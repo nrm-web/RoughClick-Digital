@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="accentGrad8_navy_cyan" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00D2FF" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#00D2FF" stop-opacity="1"/>
+    </linearGradient>
+    <filter id="glow8_navy_cyan" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#00D2FF" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="600" rx="20" fill="#FFFFFF"/>
+
+  <!-- LOGO 8 EMBLEM: Interlocking RC with Negative Space Bracket < > -->
+  <g transform="translate(230, 90) scale(1.05)">
+    <!-- R STEM & TOP LOOP -->
+    <path d="M 0 0 L 50 0 L 50 220 L 0 220 Z" fill="#0A192F"/>
+    <!-- R UPPER BOWL (Curved/Chamfered) -->
+    <path d="M 50 0 L 140 0 C 185 0 205 30 205 60 C 205 90 185 120 140 120 L 50 120 L 50 75 L 135 75 C 155 75 160 65 160 60 C 160 55 155 45 135 45 L 50 45 Z" fill="#0A192F"/>
+    <!-- R DIAGONAL LEG (Interlocking into C) -->
+    <path d="M 50 120 L 110 120 L 195 220 L 135 220 Z" fill="#0A192F"/>
+
+    <!-- C OUTER CONTOUR -->
+    <path d="M 215 35 C 275 35 320 75 320 120 C 320 165 275 205 215 205 L 160 205 L 190 165 L 215 165 C 245 165 270 145 270 120 C 270 95 245 75 215 75 L 180 75 L 155 35 Z" fill="#0A192F"/>
+
+    <!-- EMBEDDED CODING BRACKET < > HIGHLIGHT -->
+    <!-- Left Bracket < -->
+    <path d="M 160 90 L 130 120 L 160 150 L 175 135 L 155 120 L 175 105 Z" fill="url(#accentGrad8_navy_cyan)" filter="url(#glow8_navy_cyan)"/>
+    <!-- Right Bracket > -->
+    <path d="M 195 90 L 225 120 L 195 150 L 180 135 L 200 120 L 180 105 Z" fill="#0A192F"/>
+    <!-- Central Connection Node / Accent -->
+    <circle cx="177" cy="120" r="4.5" fill="url(#accentGrad8_navy_cyan)"/>
+  </g>
+
+  <!-- WORDMARK: ROUGHCLICK -->
+  <text x="400" y="440" 
+        font-family="'Montserrat', 'Inter', Arial, sans-serif" 
+        font-size="46" 
+        font-weight="900" 
+        letter-spacing="5" 
+        text-anchor="middle" 
+        fill="#0A192F">ROUGHCLICK</text>
+
+  <!-- MASTER TAGLINE: IDEAS IN MOTION -->
+  <text x="400" y="485" 
+        font-family="'Inter', Arial, sans-serif" 
+        font-size="18" 
+        font-weight="700" 
+        letter-spacing="8" 
+        text-anchor="middle" 
+        fill="#64748B">IDEAS IN MOTION</text>
+        
+  <circle cx="400" cy="515" r="3.5" fill="#00D2FF"/>
+</svg>

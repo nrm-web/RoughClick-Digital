@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 180" width="100%" height="100%">
+  <rect width="520" height="180" rx="16" fill="#0A1120"/>
+  
+  <g transform="translate(45, 30)">
+    <!-- Outer Circle Badge -->
+    <circle cx="60" cy="60" r="50" fill="none" stroke="#FFFFFF" stroke-width="4"/>
+    
+    <!-- Connected 3 People / Network Nodes (Buzl Style) -->
+    <!-- Top Person -->
+    <circle cx="60" cy="40" r="8" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+    <!-- Left Person -->
+    <circle cx="42" cy="68" r="8" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+    <!-- Right Person -->
+    <circle cx="78" cy="68" r="8" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+    
+    <!-- Interconnecting Network Lines -->
+    <path d="M 46 62 C 52 50 68 50 74 62" fill="none" stroke="#FFFFFF" stroke-width="2.5"/>
+    <path d="M 40 85 C 45 76 75 76 80 85" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+    <path d="M 60 48 L 60 62" fill="none" stroke="#FFFFFF" stroke-width="2.5"/>
+  </g>
+  
+  <!-- Clean Lowercase Typography: roughclick -->
+  <text x="180" y="98" font-family="'Segoe UI', Roboto, Helvetica, sans-serif" font-weight="700" font-size="46" fill="#FFFFFF" letter-spacing="-1">
+    rough<tspan fill="#38BDF8">click</tspan>
+  </text>
+  <text x="182" y="132" font-family="'Segoe UI', Roboto, sans-serif" font-weight="500" font-size="15" fill="#94A3B8" letter-spacing="3">
+    digital marketing agency
+  </text>
+</svg>

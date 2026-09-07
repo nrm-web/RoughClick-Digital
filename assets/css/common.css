@@ -1,0 +1,215 @@
+/* ==========================================================================
+   ROUGHCLICK DIGITAL - Universal Base & Utility System
+   Brand: RoughClick Digital | Ideas in Motion
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  font-size: 16px;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+img, svg, picture, video {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+button, input, textarea, select {
+  font: inherit;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* Container Utilities */
+.rc-container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1.25rem, 4vw, 2.5rem);
+  padding-right: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.rc-container-wide {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1.25rem, 5vw, 3rem);
+  padding-right: clamp(1.25rem, 5vw, 3rem);
+}
+
+.rc-container-narrow {
+  width: 100%;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1.25rem, 4vw, 2rem);
+  padding-right: clamp(1.25rem, 4vw, 2rem);
+}
+
+/* Screen Reader */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Concept Switcher Floating Bar */
+.rc-concept-bar {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(11, 11, 11, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  font-size: 0.82rem;
+  color: #FFFFFF;
+}
+
+.rc-concept-bar a {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+}
+
+.rc-concept-bar a.active-luxury {
+  background: #C9A227;
+  color: #0B0B0B;
+}
+
+.rc-concept-bar a.active-modern {
+  background: #14B8A6;
+  color: #0F3D56;
+}
+
+.rc-concept-bar a.inactive {
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.rc-concept-bar a.inactive:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.rc-concept-bar .hub-link {
+  color: #A1A1AA;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.rc-concept-bar .hub-link:hover {
+  color: #FFFFFF;
+}
+
+@media (max-width: 640px) {
+  .rc-concept-bar {
+    width: 92%;
+    justify-content: space-between;
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+  .rc-concept-bar a {
+    padding: 5px 10px;
+  }
+}
+
+/* Universal Mobile Responsiveness Utilities */
+.responsive-split-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: flex-start;
+}
+
+.responsive-2col-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  align-items: center;
+}
+
+.form-row-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 860px) {
+  .responsive-split-grid,
+  .responsive-2col-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-row-2col {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Ensure logo in header scales gracefully on small phones */
+  .brand-header-link img {
+    height: 42px !important;
+  }
+  
+  .luxury-header, .modern-header {
+    height: 70px !important;
+  }
+  
+  body {
+    padding-bottom: 90px; /* Leave space for bottom concept bar */
+  }
+}
+

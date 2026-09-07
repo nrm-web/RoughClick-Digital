@@ -1,0 +1,109 @@
+# ==============================================================================
+# ROUGHCLICK DIGITAL - GITIGNORE
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. AI Agents, Prompts, Skills & Assistant Metadata (CRITICAL)
+# ------------------------------------------------------------------------------
+.gemini/
+.antigravity/
+.ai/
+.agent/
+.agents/
+.prompt/
+.prompts/
+.skill/
+.skills/
+.system_generated/
+.cursor/
+.claude/
+.windsurf/
+.cascade/
+.copilot/
+brain/
+scratch/
+*prompt*
+*prompts*
+*skill*
+*skills*
+*agent*
+!node_modules/
+*.prompt.md
+*.agent.md
+*.skill.md
+SKILL.md
+PROMPT.md
+AGENT.md
+walkthrough.md
+implementation_plan.md
+task.md
+
+# ------------------------------------------------------------------------------
+# 2. Dependencies & Package Managers
+# ------------------------------------------------------------------------------
+/node_modules
+/.pnp
+.pnp.js
+
+# ------------------------------------------------------------------------------
+# 3. Next.js Build Outputs & Cache
+# ------------------------------------------------------------------------------
+/.next/
+/out/
+/build
+/dist
+.next
+out
+
+# ------------------------------------------------------------------------------
+# 4. Logs & Debug Traces
+# ------------------------------------------------------------------------------
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# ------------------------------------------------------------------------------
+# 5. Environment Variables & Secret Credentials
+# ------------------------------------------------------------------------------
+.env
+.env*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ------------------------------------------------------------------------------
+# 6. Operating System & Editor Files
+# ------------------------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+[Tt]humbs.db
+desktop.ini
+
+# ------------------------------------------------------------------------------
+# 7. IDE & Editor Metadata
+# ------------------------------------------------------------------------------
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# ------------------------------------------------------------------------------
+# 8. Testing & Coverage
+# ------------------------------------------------------------------------------
+coverage/
+.nyc_output/
+*.lcov

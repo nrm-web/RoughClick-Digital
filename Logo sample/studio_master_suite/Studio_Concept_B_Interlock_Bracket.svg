@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 750" width="100%" height="100%">
+  <defs>
+    <linearGradient id="limeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F59B"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <filter id="glowLime" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#10B981" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <rect width="1000" height="750" fill="#FFFFFF"/>
+
+  <!-- EMBLEM: STUDIO EVOLUTION OF LOGO 8 (INTERLOCKING BRACKET NODE) -->
+  <g transform="translate(320, 120)">
+    <!-- R SOLID (Deep Midnight Navy) -->
+    <path d="M 0 0 L 52 0 L 52 240 L 0 240 Z" fill="#0A192F"/>
+    <path d="M 52 0 L 150 0 C 195 0 215 30 215 65 C 215 100 190 130 145 130 L 52 130 L 52 82 L 140 82 C 160 82 165 72 165 65 C 165 58 160 48 140 48 L 52 48 Z" fill="#0A192F"/>
+    <path d="M 52 130 L 115 130 L 210 240 L 145 240 Z" fill="#0A192F"/>
+
+    <!-- C SOLID (Opening to the RIGHT) -->
+    <path d="M 230 35 C 295 35 345 75 345 120 C 345 165 295 205 230 205 L 175 205 L 205 160 L 230 160 C 265 160 295 140 295 120 C 295 100 265 80 230 80 L 195 80 L 170 35 Z" fill="#0A192F"/>
+
+    <!-- EMBEDDED ILLUMINATED CODING BRACKET < > -->
+    <path d="M 175 90 L 140 120 L 175 150 L 192 133 L 168 120 L 192 107 Z" fill="url(#limeGrad)" filter="url(#glowLime)"/>
+    <circle cx="195" cy="120" r="5" fill="url(#limeGrad)"/>
+  </g>
+
+  <!-- TYPOGRAPHY: ROUGHCLICK -->
+  <text x="500" y="530" font-family="'Montserrat', 'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="52" font-weight="900" letter-spacing="8" text-anchor="middle" fill="#0A192F">ROUGHCLICK</text>
+
+  <!-- MASTER TAGLINE -->
+  <text x="500" y="585" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="10" text-anchor="middle" fill="#64748B">IDEAS IN MOTION</text>
+
+  <circle cx="500" cy="625" r="4" fill="#10B981"/>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" width="100%" height="100%">
+  <rect width="400" height="320" rx="16" fill="#0F172A"/>
+  
+  <g transform="translate(100, 40)">
+    <!-- Cyan Blue Block -->
+    <rect x="25" y="20" width="130" height="130" fill="#06B6D4" rx="8"/>
+    
+    <!-- Purple Block -->
+    <rect x="75" y="70" width="130" height="130" fill="#8B5CF6" rx="8"/>
+    
+    <!-- Bold 'd' Monogram -->
+    <text x="55" y="150" font-family="'Segoe UI', Arial, sans-serif" font-weight="900" font-size="120" fill="#FFFFFF">
+      d
+    </text>
+  </g>
+</svg>

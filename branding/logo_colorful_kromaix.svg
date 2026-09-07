@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 220" width="100%" height="100%">
+  <defs>
+    <linearGradient id="gradK" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#84CC16"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="gradK2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+  </defs>
+  <rect width="560" height="220" rx="16" fill="#071318"/>
+  
+  <g transform="translate(45, 45)">
+    <!-- Vibrant Neon Circle -->
+    <circle cx="65" cy="65" r="54" fill="none" stroke="url(#gradK2)" stroke-width="5"/>
+    
+    <!-- Bold Colorful K Monogram -->
+    <path d="M 38 35 L 38 95 M 38 65 L 85 35 M 48 58 L 92 95" fill="none" stroke="url(#gradK)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  
+  <!-- Brand Name -->
+  <text x="195" y="105" font-family="'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="42" fill="#FFFFFF" letter-spacing="1">
+    KROMAIX<tspan fill="#84CC16"> STUDIO</tspan>
+  </text>
+  
+  <!-- PROMINENT TAGLINE -->
+  <text x="197" y="140" font-family="'Segoe UI', Roboto, sans-serif" font-weight="600" font-size="16" fill="#06B6D4">
+    "Amplifying Brand Visibility Everywhere"
+  </text>
+  
+  <text x="197" y="165" font-family="'Segoe UI', Roboto, sans-serif" font-weight="500" font-size="13" fill="#A7F3D0" letter-spacing="3">
+    CREATIVE MARKETING &amp; WEB
+  </text>
+</svg>

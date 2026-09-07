@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="gradB1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+  </defs>
+  <rect width="500" height="200" rx="16" fill="#061325"/>
+  
+  <g transform="translate(35, 35)">
+    <!-- Digital Brackets < m > -->
+    <path d="M 35 30 L 15 65 L 35 100" fill="none" stroke="#06B6D4" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 95 30 L 115 65 L 95 100" fill="none" stroke="#06B6D4" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Minimal Monogram m -->
+    <path d="M 48 95 L 48 60 C 48 48 58 48 65 60 C 72 48 82 48 82 60 L 82 95" fill="none" stroke="url(#gradB1)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  
+  <text x="180" y="95" font-family="'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="36" fill="#FFFFFF" letter-spacing="1">
+    MEDIACRAFT
+  </text>
+  <text x="182" y="125" font-family="'Segoe UI', Roboto, sans-serif" font-weight="600" font-size="14" fill="#06B6D4" letter-spacing="4">
+    DIGITAL &amp; CODE AGENCY
+  </text>
+  <text x="182" y="148" font-family="'Segoe UI', Roboto, sans-serif" font-style="italic" font-size="12" fill="#10B981">
+    "Crafting Bespoke Web &amp; Marketing"
+  </text>
+</svg>

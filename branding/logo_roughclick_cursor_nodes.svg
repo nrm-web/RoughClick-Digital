@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 180" width="100%" height="100%">
+  <rect width="520" height="180" rx="16" fill="#0D1527"/>
+  
+  <g transform="translate(45, 30)">
+    <!-- Outer Circle Badge -->
+    <circle cx="60" cy="60" r="50" fill="none" stroke="#FFFFFF" stroke-width="4"/>
+    
+    <!-- Cursor Click + Digital Nodes Ring -->
+    <path d="M 52 35 L 75 75 L 63 70 L 53 90 L 45 86 L 55 66 L 42 63 Z" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="round"/>
+    
+    <!-- Pulse Waves / Click Aura -->
+    <path d="M 72 38 C 82 45 88 58 85 70" fill="none" stroke="#38BDF8" stroke-width="3" stroke-linecap="round"/>
+    <path d="M 38 42 C 30 52 30 68 38 78" fill="none" stroke="#38BDF8" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  
+  <text x="180" y="98" font-family="'Segoe UI', Roboto, Helvetica, sans-serif" font-weight="700" font-size="46" fill="#FFFFFF" letter-spacing="-1">
+    rough<tspan fill="#38BDF8">click</tspan>
+  </text>
+  <text x="182" y="132" font-family="'Segoe UI', Roboto, sans-serif" font-weight="500" font-size="15" fill="#94A3B8" letter-spacing="3">
+    web • app • marketing
+  </text>
+</svg>
