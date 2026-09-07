@@ -13,23 +13,18 @@ export function ThemeProvider({ children }) {
 
   useEffect(() => {
     setMounted(true);
-    const saved = localStorage.getItem('rc_theme');
-    if (saved === 'dark' || saved === 'light') {
-      setTheme(saved);
-      document.documentElement.setAttribute('data-theme', saved);
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setTheme('dark');
-      document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-      document.documentElement.setAttribute('data-theme', 'light');
-    }
+    // Always open in light mode first
+    document.documentElement.setAttribute('data-theme', 'light');
+    try {
+      localStorage.removeItem('rc_theme');
+      sessionStorage.removeItem('rc_theme');
+    } catch (e) {}
   }, []);
 
   const toggleTheme = () => {
     const next = theme === 'light' ? 'dark' : 'light';
     setTheme(next);
     document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('rc_theme', next);
   };
 
   return (
