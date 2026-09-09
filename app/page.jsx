@@ -24,11 +24,6 @@ export default function HomePage() {
         <div className="rc-container hero-container-rel">
           <div className="hero-grid-2col">
             <div>
-              <span className="hero-eyebrow-tag">
-                <span className="brand-pill-beacon" aria-hidden="true" />
-                ROUGHCLICK DIGITAL
-              </span>
-
               <h1 className="hero-main-title">
                 Architecting High-Performance <span className="text-cyan">Digital Experiences</span>
               </h1>

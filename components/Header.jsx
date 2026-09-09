@@ -45,19 +45,25 @@ export default function Header() {
     <>
       <header className={`mockup-header ${isScrolled ? 'scrolled' : ''}`}>
         <div className="rc-container header-flex-wrap">
-          {/* Brand Logo — Theme Aware: Modern in Light Mode, Luxury in Dark Mode */}
+          {/* Brand Logo & Name — Theme Aware: Modern in Light Mode, Luxury in Dark Mode */}
           <Link href="/" className="header-brand-logo" aria-label="RoughClick Digital">
-            <img
-              src="/brand/roughclick-modern-light.svg"
-              alt="RoughClick Digital"
-              className="logo-concept-modern"
-            />
-            <img
-              src="/brand/roughclick-luxury-dark.svg"
-              alt="RoughClick Digital"
-              className="logo-concept-luxury"
-              onError={(e) => { e.currentTarget.src = '/brand/roughclick-luxury-dark.png'; }}
-            />
+            <div className="header-logo-image-box">
+              <img
+                src="/brand/roughclick-modern-light.svg"
+                alt="RoughClick Digital"
+                className="logo-concept-modern"
+              />
+              <img
+                src="/brand/roughclick-luxury-dark.svg"
+                alt="RoughClick Digital"
+                className="logo-concept-luxury"
+                onError={(e) => { e.currentTarget.src = '/brand/roughclick-luxury-dark.png'; }}
+              />
+            </div>
+            <div className="header-brand-name-wrap">
+              <span className="brand-word-rough">ROUGHCLICK</span>
+              <span className="brand-word-digital">DIGITAL</span>
+            </div>
           </Link>
 
           {/* Desktop Navigation Links with Active Underline */}
@@ -142,19 +148,25 @@ export default function Header() {
           >
             <div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 28 }}>
-                <img
-                  src="/brand/roughclick-modern-light.svg"
-                  alt="RoughClick Digital"
-                  className="logo-concept-modern"
-                  style={{ height: 38, width: 'auto' }}
-                />
-                <img
-                  src="/brand/roughclick-luxury-dark.svg"
-                  alt="RoughClick Digital"
-                  className="logo-concept-luxury"
-                  style={{ height: 38, width: 'auto' }}
-                  onError={(e) => { e.currentTarget.src = '/brand/roughclick-luxury-dark.png'; }}
-                />
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <img
+                    src="/brand/roughclick-modern-light.svg"
+                    alt="RoughClick Digital"
+                    className="logo-concept-modern"
+                    style={{ height: 36, width: 'auto' }}
+                  />
+                  <img
+                    src="/brand/roughclick-luxury-dark.svg"
+                    alt="RoughClick Digital"
+                    className="logo-concept-luxury"
+                    style={{ height: 36, width: 'auto' }}
+                    onError={(e) => { e.currentTarget.src = '/brand/roughclick-luxury-dark.png'; }}
+                  />
+                  <div className="header-brand-name-wrap" style={{ fontSize: '0.95rem' }}>
+                    <span className="brand-word-rough">ROUGHCLICK</span>
+                    <span className="brand-word-digital">DIGITAL</span>
+                  </div>
+                </div>
                 <button
                   onClick={() => toggleMobile(false)}
                   style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-heading)' }}

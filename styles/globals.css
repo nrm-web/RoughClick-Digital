@@ -305,10 +305,67 @@ a {
   gap: 20px;
 }
 
+.header-brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.header-logo-image-box {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.header-logo-image-box img,
 .header-brand-logo img {
-  height: 44px;
+  height: 42px;
   width: auto;
   display: block;
+}
+
+.header-brand-name-wrap {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: var(--font-heading, 'Inter', -apple-system, sans-serif);
+  font-size: 1.30rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.brand-word-rough {
+  color: var(--text-heading);
+  letter-spacing: 0.04em;
+  transition: color 0.2s ease;
+}
+
+.brand-word-digital {
+  color: #00B4D8;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  transition: color 0.2s ease;
+}
+
+[data-theme="dark"] .brand-word-rough {
+  color: #F7F3EA;
+}
+
+[data-theme="dark"] .brand-word-digital {
+  color: #C9A227;
+}
+
+@media (max-width: 640px) {
+  .header-brand-name-wrap {
+    font-size: 1.05rem;
+    gap: 6px;
+  }
 }
 
 .header-nav-menu {
