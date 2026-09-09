@@ -107,3 +107,32 @@ desktop.ini
 coverage/
 .nyc_output/
 *.lcov
+
+# ------------------------------------------------------------------------------
+# 9. Non-Deployment Assets, Planning Docs, Prototypes & Helper Scripts
+# ------------------------------------------------------------------------------
+CLIENT APPROVED/
+CLIENT_DELIVERABLES_LOGOS/
+CLIENT_READY_LOGOS_FOR_WHATSAPP/
+branding/
+assets/
+concept-1-luxury/
+concept-2-modern/
+prototype/
+Logo sample/
+Suitable logo samples/
+ROUGHCLICK_FINAL_DELIVERABLES/
+ROUGHCLICK_EPS_AND_XML_LOGOS/
+ROUGHCLICK_VECTOR_LOGOS*/
+*.zip
+*.pdf
+*.xlsx
+*.txt
+*.html
+!public/**/*.html
+*.py
+*.sh
+scratch/
+scripts/
+dist/
+
