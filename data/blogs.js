@@ -89,7 +89,7 @@ Digital presence is not about being everywhere at once—it is about ensuring th
     content: `
 ### The Reality of Nearby Searches
 
-When decision-makers or consumers need immediate services, their primary action is to search locally. Whether looking for an engineering partner, creative studio, or professional service provider, localized search algorithms favor businesses with verified, complete, and active profiles.
+When decision-makers or consumers need immediate services, their primary action is to search locally. Whether looking for an engineering partner, creative digital agency, or professional service provider, localized search algorithms favor businesses with verified, complete, and active profiles.
 
 ### Key Factors in Profile Discoverability
 
@@ -111,7 +111,7 @@ An optimized business profile should directly complement your website. Linking p
     tags: ["Social Media", "Content Strategy", "Design"],
     date: "Jul 2026",
     readTime: "4 min read",
-    author: "RoughClick Studio",
+    author: "RoughClick Digital Team",
     featured: false,
     excerpt: "Consistency beats sporadic intensity. How structured content planning, creative templates, and organized calendars maintain an active brand footprint.",
     content: `

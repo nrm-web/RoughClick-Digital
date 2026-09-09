@@ -102,18 +102,9 @@ export default function Header() {
             {/* Mobile Hamburger Button */}
             <button
               type="button"
-              className="md:hidden"
+              className="header-mobile-toggle"
               onClick={() => toggleMobile(!mobileOpen)}
               aria-label="Toggle navigation menu"
-              style={{
-                background: 'none',
-                border: 'none',
-                cursor: 'pointer',
-                color: 'var(--text-heading)',
-                padding: 6,
-                display: 'flex',
-                alignItems: 'center'
-              }}
             >
               {mobileOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
