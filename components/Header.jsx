@@ -48,15 +48,14 @@ export default function Header() {
           {/* Brand Logo — Theme Aware: Modern in Light Mode, Luxury in Dark Mode */}
           <Link href="/" className="header-brand-logo" aria-label="RoughClick Digital">
             <img
-              src="/brand/roughclick-modern-light.svg"
+              src="/brand/rc-logo-modern-h-light.svg"
               alt="RoughClick Digital"
               className="logo-concept-modern"
             />
             <img
-              src="/brand/roughclick-luxury-dark.svg"
+              src="/brand/rc-logo-luxury-h-dark.svg"
               alt="RoughClick Digital"
               className="logo-concept-luxury"
-              onError={(e) => { e.currentTarget.src = '/brand/roughclick-luxury-dark.png'; }}
             />
           </Link>
 
@@ -143,17 +142,16 @@ export default function Header() {
             <div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 28 }}>
                 <img
-                  src="/brand/roughclick-modern-light.svg"
+                  src="/brand/rc-logo-modern-h-light.svg"
                   alt="RoughClick Digital"
                   className="logo-concept-modern"
                   style={{ height: 38, width: 'auto' }}
                 />
                 <img
-                  src="/brand/roughclick-luxury-dark.svg"
+                  src="/brand/rc-logo-luxury-h-dark.svg"
                   alt="RoughClick Digital"
                   className="logo-concept-luxury"
                   style={{ height: 38, width: 'auto' }}
-                  onError={(e) => { e.currentTarget.src = '/brand/roughclick-luxury-dark.png'; }}
                 />
                 <button
                   onClick={() => toggleMobile(false)}

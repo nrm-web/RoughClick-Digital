@@ -16,17 +16,16 @@ export default function Footer() {
           <div>
             <Link href="/" aria-label="RoughClick Digital Home">
               <img
-                src="/brand/roughclick-modern-dark.svg"
+                src="/brand/rc-logo-modern-h-dark.svg"
                 alt="RoughClick Digital"
                 className="logo-concept-modern"
                 style={{ height: 44, width: 'auto', marginBottom: 14 }}
               />
               <img
-                src="/brand/roughclick-luxury-dark.svg"
+                src="/brand/rc-logo-luxury-h-dark.svg"
                 alt="RoughClick Digital"
                 className="logo-concept-luxury"
                 style={{ height: 44, width: 'auto', marginBottom: 14 }}
-                onError={(e) => { e.currentTarget.src = '/brand/roughclick-luxury-dark.png'; }}
               />
             </Link>
             <p style={{ fontSize: '0.78rem', color: 'var(--footer-text)', lineHeight: 1.6, maxWidth: 240 }}>
