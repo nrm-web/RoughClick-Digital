@@ -196,7 +196,7 @@ export default function BlogListClient({ initialPosts = [] }) {
       )}
 
       {/* Blog Article Grid */}
-      <section className="modern-section bg-subtle" style={{ paddingTop: '2rem' }}>
+      <section className="modern-section bg-subtle" style={{ paddingTop: '2.5rem', paddingBottom: 'clamp(5rem, 8vw, 7.5rem)' }}>
         <div className="rc-container">
           <div style={{ marginBottom: 28, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <h3 style={{ fontSize: '1.4rem', color: 'var(--text-primary)' }}>

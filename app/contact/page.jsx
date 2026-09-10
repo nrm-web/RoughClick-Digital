@@ -36,7 +36,7 @@ export default function ContactPage() {
       </section>
 
       {/* Main Grid: Form + Office Channels */}
-      <section className="modern-section" style={{ paddingTop: '1rem' }}>
+      <section className="modern-section" style={{ paddingTop: '1.5rem', paddingBottom: 'clamp(5rem, 8vw, 7.5rem)' }}>
         <div className="rc-container">
           <div style={{
             display: 'grid',
