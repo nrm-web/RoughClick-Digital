@@ -25,7 +25,10 @@ import {
   RefreshCw,
   Clock,
   Layers,
-  Check
+  Check,
+  Camera,
+  UploadCloud,
+  X
 } from 'lucide-react';
 
 export default function AdminBlogPage() {
@@ -34,6 +37,7 @@ export default function AdminBlogPage() {
   // Navigation & View State
   const [activeTab, setActiveTab] = useState('directory'); // 'directory', 'editor', 'copilot'
   const [deviceView, setDeviceView] = useState('desktop'); // 'desktop' or 'mobile'
+  const [composerMobileTab, setComposerMobileTab] = useState('editor'); // 'editor' (write) or 'preview'
   const [filterStatus, setFilterStatus] = useState('all'); // 'all', 'published', 'draft'
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -226,6 +230,99 @@ export default function AdminBlogPage() {
     }
   };
 
+  // Mobile camera / photo gallery file upload handler with automatic client-side compression
+  const handleImageFileUpload = (e, target = 'cover') => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Reset input value so same photo can be re-selected if desired
+    e.target.value = '';
+
+    if (!file.type.startsWith('image/')) {
+      alert('Please select a valid image file (JPG, PNG, WebP).');
+      return;
+    }
+
+    showToast('Optimizing smartphone photo for web...');
+
+    const reader = new FileReader();
+    reader.onload = (readerEvent) => {
+      const img = new Image();
+      img.onload = () => {
+        try {
+          // Resize photo to max 1280px dimension to ensure ultra-fast loading
+          const maxDim = 1280;
+          let width = img.width;
+          let height = img.height;
+
+          if (width > maxDim || height > maxDim) {
+            if (width > height) {
+              height = Math.round((height * maxDim) / width);
+              width = maxDim;
+            } else {
+              width = Math.round((width * maxDim) / height);
+              height = maxDim;
+            }
+          }
+
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+
+          // Compress to Web JPEG at 0.82 quality (~80KB - 160KB)
+          const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.82);
+
+          if (target === 'cover') {
+            setCoverImage(compressedDataUrl);
+            showToast('Featured cover photo added from device!');
+          } else if (target === 'inline') {
+            const cleanName = file.name ? file.name.replace(/\.[^/.]+$/, '') : 'Article Photo';
+            const markdownImage = `\n\n![${cleanName}](${compressedDataUrl})\n\n`;
+            setContent((prev) => prev + markdownImage);
+            showToast('Photo inserted into article body!');
+          }
+        } catch (err) {
+          console.error('Error compressing image:', err);
+          if (target === 'cover') {
+            setCoverImage(readerEvent.target.result);
+          } else {
+            setContent((prev) => prev + `\n\n![Article Photo](${readerEvent.target.result})\n\n`);
+          }
+          showToast('Photo attached successfully!');
+        }
+      };
+      img.onerror = () => {
+        alert('Could not process this image. Please try another photo.');
+      };
+      img.src = readerEvent.target.result;
+    };
+    reader.onerror = () => {
+      alert('Failed to read file from your device.');
+    };
+    reader.readAsDataURL(file);
+  };
+
+  // Helper to insert markdown formatting (convenient on smartphone keyboards)
+  const insertMarkdownHelper = (prefix, suffix = '') => {
+    const textarea = document.getElementById('blog-content-editor');
+    if (!textarea) {
+      setContent((prev) => prev + prefix + 'text' + suffix);
+      return;
+    }
+    const start = textarea.selectionStart || 0;
+    const end = textarea.selectionEnd || 0;
+    const selected = content.substring(start, end);
+    const replacement = prefix + (selected || 'text') + suffix;
+    const newContent = content.substring(0, start) + replacement + content.substring(end);
+    setContent(newContent);
+    setTimeout(() => {
+      textarea.focus();
+      textarea.setSelectionRange(start + prefix.length, start + replacement.length - suffix.length);
+    }, 50);
+  };
+
   // Agentic AI Generator Trigger
   const handleGenerateWithAgent = async (e) => {
     e.preventDefault();
@@ -309,9 +406,9 @@ export default function AdminBlogPage() {
   const seoDescLength = seoDescription.length || excerpt.length;
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: 'var(--bg-canvas)', color: 'var(--text-primary)' }}>
+    <div style={{ minHeight: '100vh', backgroundColor: 'var(--bg-canvas)', color: 'var(--text-primary)', overflowX: 'hidden' }}>
       {/* Top Bar */}
-      <header style={{
+      <header className="admin-top-bar" style={{
         position: 'sticky',
         top: 0,
         zIndex: 50,
@@ -355,8 +452,8 @@ export default function AdminBlogPage() {
         </div>
 
         {/* Tab Switcher & Actions */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <div style={{
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap', maxWidth: '100%' }}>
+          <div className="admin-header-nav" style={{
             display: 'flex',
             backgroundColor: 'var(--bg-canvas)',
             border: '1px solid var(--border-subtle)',
@@ -365,6 +462,7 @@ export default function AdminBlogPage() {
           }}>
             <button
               onClick={() => setActiveTab('directory')}
+              className="admin-nav-btn"
               style={{
                 padding: '6px 14px',
                 fontSize: '0.84rem',
@@ -381,6 +479,7 @@ export default function AdminBlogPage() {
             </button>
             <button
               onClick={() => setActiveTab('editor')}
+              className="admin-nav-btn"
               style={{
                 padding: '6px 14px',
                 fontSize: '0.84rem',
@@ -397,6 +496,7 @@ export default function AdminBlogPage() {
             </button>
             <button
               onClick={() => setActiveTab('copilot')}
+              className="admin-nav-btn"
               style={{
                 padding: '6px 14px',
                 fontSize: '0.84rem',
@@ -840,23 +940,45 @@ export default function AdminBlogPage() {
               </div>
             </div>
 
+            {/* Mobile View Toggle: Write vs Preview on small screens */}
+            <div className="admin-composer-mobile-toggle">
+              <button
+                type="button"
+                onClick={() => setComposerMobileTab('editor')}
+                style={{
+                  backgroundColor: composerMobileTab === 'editor' ? 'var(--rc-teal-accent)' : 'transparent',
+                  color: composerMobileTab === 'editor' ? '#ffffff' : 'var(--text-muted)'
+                }}
+              >
+                ✏️ Write Article
+              </button>
+              <button
+                type="button"
+                onClick={() => setComposerMobileTab('preview')}
+                style={{
+                  backgroundColor: composerMobileTab === 'preview' ? 'var(--rc-teal-accent)' : 'transparent',
+                  color: composerMobileTab === 'preview' ? '#ffffff' : 'var(--text-muted)'
+                }}
+              >
+                👁️ Live Preview
+              </button>
+            </div>
+
             {/* Split Screen Grid */}
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'minmax(0, 1.1fr) minmax(0, 0.9fr)',
-              gap: 24,
-              alignItems: 'start'
-            }}>
+            <div className="admin-composer-split">
               {/* LEFT COLUMN: Post Inputs & Marketer SEO Controls */}
-              <div style={{
-                backgroundColor: 'var(--bg-surface)',
-                border: '1px solid var(--border-subtle)',
-                borderRadius: 14,
-                padding: 24,
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 20
-              }}>
+              <div
+                className={`admin-composer-col-editor ${composerMobileTab === 'preview' ? 'hidden-on-mobile' : ''}`}
+                style={{
+                  backgroundColor: 'var(--bg-surface)',
+                  border: '1px solid var(--border-subtle)',
+                  borderRadius: 14,
+                  padding: 24,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 20
+                }}
+              >
                 {/* Title */}
                 <div>
                   <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, marginBottom: 6 }}>
@@ -887,7 +1009,7 @@ export default function AdminBlogPage() {
                 </div>
 
                 {/* Slug & Category Row */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 14 }}>
+                <div className="admin-2col-inputs">
                   <div>
                     <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, marginBottom: 6 }}>
                       Permalink Slug
@@ -952,7 +1074,7 @@ export default function AdminBlogPage() {
                 </div>
 
                 {/* Tags & Estimated Read Time */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 14 }}>
+                <div className="admin-2col-inputs">
                   <div>
                     <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, marginBottom: 6 }}>
                       Tags (comma-separated)
@@ -998,37 +1120,149 @@ export default function AdminBlogPage() {
                   </div>
                 </div>
 
-                {/* Cover Image URL */}
-                <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
-                    <label style={{ fontSize: '0.82rem', fontWeight: 600 }}>
-                      Featured Cover Image URL (Optional)
+                {/* Featured Cover Photo */}
+                <div style={{
+                  padding: 16,
+                  borderRadius: 10,
+                  backgroundColor: 'var(--bg-canvas)',
+                  border: '1px solid var(--border-subtle)'
+                }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10, flexWrap: 'wrap', gap: 8 }}>
+                    <div>
+                      <label style={{ fontSize: '0.84rem', fontWeight: 700, display: 'block' }}>
+                        Featured Cover Photo
+                      </label>
+                      <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>
+                        Displayed on article header & blog directory cards
+                      </span>
+                    </div>
+
+                    {/* Primary Mobile Action: Camera / Phone Gallery Button */}
+                    <label
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: 6,
+                        padding: '7px 14px',
+                        borderRadius: 8,
+                        backgroundColor: 'var(--rc-teal-accent)',
+                        color: '#ffffff',
+                        fontSize: '0.8rem',
+                        fontWeight: 600,
+                        cursor: 'pointer',
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+                      }}
+                    >
+                      <Camera size={15} />
+                      <span>Choose from Phone / Camera</span>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        style={{ display: 'none' }}
+                        onChange={(e) => handleImageFileUpload(e, 'cover')}
+                      />
                     </label>
-                    <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>
-                      Supports direct URLs or /images/...
-                    </span>
                   </div>
-                  <input
-                    type="url"
-                    value={coverImage}
-                    onChange={(e) => setCoverImage(e.target.value)}
-                    placeholder="https://images.unsplash.com/... or /images/blog/cover.jpg"
-                    style={{
-                      width: '100%',
-                      padding: '10px 12px',
+
+                  {/* Preview if image is present */}
+                  {coverImage ? (
+                    <div style={{ position: 'relative', marginTop: 10, borderRadius: 8, overflow: 'hidden', border: '1px solid var(--border-subtle)' }}>
+                      <img
+                        src={coverImage}
+                        alt="Cover preview"
+                        style={{ width: '100%', maxHeight: 220, objectFit: 'cover', display: 'block' }}
+                        onError={(e) => { e.target.style.display = 'none'; }}
+                      />
+                      <div style={{
+                        position: 'absolute',
+                        top: 8,
+                        right: 8,
+                        display: 'flex',
+                        gap: 6
+                      }}>
+                        <label
+                          style={{
+                            padding: '5px 10px',
+                            backgroundColor: 'rgba(0,0,0,0.75)',
+                            color: '#fff',
+                            borderRadius: 6,
+                            fontSize: '0.74rem',
+                            fontWeight: 600,
+                            cursor: 'pointer',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: 4
+                          }}
+                        >
+                          <Camera size={13} />
+                          <span>Change</span>
+                          <input
+                            type="file"
+                            accept="image/*"
+                            style={{ display: 'none' }}
+                            onChange={(e) => handleImageFileUpload(e, 'cover')}
+                          />
+                        </label>
+                        <button
+                          type="button"
+                          onClick={() => setCoverImage('')}
+                          style={{
+                            padding: '5px 10px',
+                            backgroundColor: 'rgba(239, 68, 68, 0.85)',
+                            color: '#fff',
+                            border: 'none',
+                            borderRadius: 6,
+                            fontSize: '0.74rem',
+                            fontWeight: 600,
+                            cursor: 'pointer',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: 4
+                          }}
+                        >
+                          <Trash2 size={13} />
+                          <span>Remove</span>
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <div style={{
+                      border: '2px dashed var(--border-subtle)',
                       borderRadius: 8,
-                      border: '1px solid var(--border-subtle)',
-                      backgroundColor: 'var(--bg-canvas)',
-                      color: 'var(--text-primary)',
-                      fontSize: '0.85rem',
-                      outline: 'none'
-                    }}
-                  />
-                  {coverImage && (
-                    <div style={{ marginTop: 8, borderRadius: 6, overflow: 'hidden', maxHeight: 120, border: '1px solid var(--border-subtle)' }}>
-                      <img src={coverImage} alt="Cover preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={(e) => e.target.style.display = 'none'} />
+                      padding: '16px 14px',
+                      textAlign: 'center',
+                      backgroundColor: 'var(--bg-surface)',
+                      marginTop: 8
+                    }}>
+                      <Camera size={24} color="var(--text-muted)" style={{ margin: '0 auto 6px', display: 'block' }} />
+                      <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', margin: 0 }}>
+                        Tap <strong>Choose from Phone / Camera</strong> above to snap a photo or pick from your phone gallery.
+                      </p>
                     </div>
                   )}
+
+                  {/* Optional URL paste field */}
+                  <div style={{ marginTop: 10 }}>
+                    <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', display: 'block', marginBottom: 4 }}>
+                      Or paste external image web URL (e.g. Unsplash, CDN):
+                    </span>
+                    <input
+                      type="url"
+                      value={coverImage.startsWith('data:') ? '' : coverImage}
+                      onChange={(e) => setCoverImage(e.target.value)}
+                      placeholder={coverImage.startsWith('data:') ? 'Photo loaded from mobile device' : 'https://images.unsplash.com/...'}
+                      style={{
+                        width: '100%',
+                        padding: '7px 10px',
+                        borderRadius: 6,
+                        border: '1px solid var(--border-subtle)',
+                        backgroundColor: 'var(--bg-surface)',
+                        color: 'var(--text-primary)',
+                        fontSize: '0.8rem',
+                        outline: 'none'
+                      }}
+                    />
+                  </div>
                 </div>
 
                 {/* Excerpt (Executive Summary) */}
@@ -1058,19 +1292,134 @@ export default function AdminBlogPage() {
 
                 {/* Markdown Content Body */}
                 <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6, flexWrap: 'wrap', gap: 6 }}>
                     <label style={{ fontSize: '0.82rem', fontWeight: 600 }}>
                       Article Body (Markdown Supported)
                     </label>
                     <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>
-                      Supports H3 (###), lists (-), bold (**), quotes (&gt;), images (![alt](url))
+                      Supports H3 (###), lists (-), bold (**), quotes (&gt;), photos
                     </span>
                   </div>
+
+                  {/* Formatting & Mobile Photo Insertion Toolbar */}
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 6,
+                    flexWrap: 'wrap',
+                    marginBottom: 8,
+                    padding: '6px 8px',
+                    backgroundColor: 'var(--bg-canvas)',
+                    border: '1px solid var(--border-subtle)',
+                    borderRadius: 8
+                  }}>
+                    <label
+                      title="Insert photo from smartphone camera or gallery into article text"
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: 5,
+                        padding: '4px 10px',
+                        borderRadius: 6,
+                        backgroundColor: 'var(--bg-surface)',
+                        border: '1px solid var(--border-subtle)',
+                        fontSize: '0.78rem',
+                        fontWeight: 600,
+                        color: 'var(--rc-teal-accent)',
+                        cursor: 'pointer'
+                      }}
+                    >
+                      <Camera size={13} />
+                      <span>+ Insert Photo</span>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        style={{ display: 'none' }}
+                        onChange={(e) => handleImageFileUpload(e, 'inline')}
+                      />
+                    </label>
+
+                    <div style={{ height: 16, width: 1, backgroundColor: 'var(--border-subtle)' }} />
+
+                    <button
+                      type="button"
+                      onClick={() => insertMarkdownHelper('### ', '\n')}
+                      style={{
+                        padding: '4px 8px',
+                        borderRadius: 5,
+                        border: '1px solid var(--border-subtle)',
+                        backgroundColor: 'var(--bg-surface)',
+                        fontSize: '0.76rem',
+                        fontWeight: 700,
+                        color: 'var(--text-primary)',
+                        cursor: 'pointer'
+                      }}
+                      title="Heading 3"
+                    >
+                      H3
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => insertMarkdownHelper('**', '**')}
+                      style={{
+                        padding: '4px 8px',
+                        borderRadius: 5,
+                        border: '1px solid var(--border-subtle)',
+                        backgroundColor: 'var(--bg-surface)',
+                        fontSize: '0.76rem',
+                        fontWeight: 700,
+                        color: 'var(--text-primary)',
+                        cursor: 'pointer'
+                      }}
+                      title="Bold Text"
+                    >
+                      B
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => insertMarkdownHelper('- ', '\n')}
+                      style={{
+                        padding: '4px 8px',
+                        borderRadius: 5,
+                        border: '1px solid var(--border-subtle)',
+                        backgroundColor: 'var(--bg-surface)',
+                        fontSize: '0.76rem',
+                        fontWeight: 600,
+                        color: 'var(--text-primary)',
+                        cursor: 'pointer'
+                      }}
+                      title="Bullet Point"
+                    >
+                      &bull; List
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => insertMarkdownHelper('> ', '\n')}
+                      style={{
+                        padding: '4px 8px',
+                        borderRadius: 5,
+                        border: '1px solid var(--border-subtle)',
+                        backgroundColor: 'var(--bg-surface)',
+                        fontSize: '0.76rem',
+                        fontWeight: 600,
+                        color: 'var(--text-primary)',
+                        cursor: 'pointer'
+                      }}
+                      title="Quote"
+                    >
+                      &ldquo; Quote
+                    </button>
+                  </div>
+
                   <textarea
+                    id="blog-content-editor"
                     rows={12}
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
-                    placeholder="### The First Sub-Second Impression&#10;&#10;Write authoritative marketing and technical perspectives here..."
+                    placeholder="### Perspectives on Growth&#10;&#10;Write article content here, or use '+ Insert Photo' to add pictures directly from your mobile phone..."
                     style={{
                       width: '100%',
                       padding: '12px 14px',
@@ -1208,7 +1557,10 @@ export default function AdminBlogPage() {
               </div>
 
               {/* RIGHT COLUMN: Live Split-Screen Viewport Preview */}
-              <div style={{ position: 'sticky', top: 90 }}>
+              <div
+                className={`admin-composer-col-preview ${composerMobileTab === 'editor' ? 'hidden-on-mobile' : ''}`}
+                style={{ position: 'sticky', top: 90 }}
+              >
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
