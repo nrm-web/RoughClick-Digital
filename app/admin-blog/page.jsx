@@ -183,7 +183,13 @@ export default function AdminBlogPage() {
         body: JSON.stringify(postPayload)
       });
 
-      const data = await res.json();
+      let data = {};
+      try {
+        data = await res.json();
+      } catch (e) {
+        throw new Error(`Server returned status ${res.status}.`);
+      }
+
       if (!res.ok) {
         throw new Error(data.error || 'Failed to save post');
       }
@@ -241,9 +247,15 @@ export default function AdminBlogPage() {
         })
       });
 
-      const data = await res.json();
+      let data = {};
+      try {
+        data = await res.json();
+      } catch (jsonErr) {
+        throw new Error(`Server returned unexpected response (status ${res.status}).`);
+      }
+
       if (!res.ok) {
-        throw new Error(data.error || 'Generation failed');
+        throw new Error(data.error || `Generation failed (status ${res.status})`);
       }
 
       const art = data.article;

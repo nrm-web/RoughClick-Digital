@@ -26,8 +26,9 @@ scratch/
 *prompts*
 *skill*
 *skills*
-*agent*
 !node_modules/
+!app/
+!app/**
 *.prompt.md
 *.agent.md
 *.skill.md
