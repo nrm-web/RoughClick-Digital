@@ -288,7 +288,7 @@ export default function ServicesPage() {
               Need a Customized Digital Solution?
             </h2>
             <p style={{ maxWidth: 620, margin: '0 auto 2.2rem auto', color: 'var(--hero-sub-color)', fontSize: '1.05rem', lineHeight: 1.7 }}>
-              Every business has distinct requirements. Tell us about your goals and our Coimbatore team will tailor an integrated digital package for your enterprise.
+              Every business has distinct requirements. Tell us about your goals and our team will tailor an integrated digital package for your enterprise.
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: 16, flexWrap: 'wrap' }}>
               <Link

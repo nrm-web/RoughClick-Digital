@@ -5,7 +5,7 @@ import { MapPin, Mail, Phone, MessageSquare, Clock } from 'lucide-react';
 
 export const metadata = {
   title: 'Contact RoughClick Digital',
-  description: 'Get in touch with RoughClick Digital Coimbatore team for website development, custom applications, and social media digital solutions.'
+  description: 'Get in touch with the RoughClick Digital team for website development, custom applications, and social media digital solutions.'
 };
 
 export default function ContactPage() {
@@ -29,7 +29,7 @@ export default function ContactPage() {
               Start Your <span className="accent">Digital Project</span>
             </h1>
             <p className="hero-subcopy" style={{ fontSize: '1.08rem' }}>
-              Tell us about your organization's digital goals. Our Coimbatore team is ready to evaluate your scope and build a tailored solution across websites, social media, and business presence.
+              Tell us about your organization's digital goals. Our team is ready to evaluate your scope and build a tailored solution across websites, social media, and business presence.
             </p>
           </div>
         </div>
@@ -109,8 +109,8 @@ export default function ContactPage() {
                     <div>
                       <strong style={{ color: 'var(--text-heading)' }}>Email Inquiries</strong>
                       <div style={{ color: 'var(--text-muted)', marginTop: 2 }}>
-                        <a href={`mailto:${BRAND_CONFIG.contact.emailPlaceholder || 'contact@roughclick.com'}`} style={{ color: 'inherit' }}>
-                          {BRAND_CONFIG.contact.emailPlaceholder || '[Email Address]'}
+                        <a href={`mailto:${BRAND_CONFIG.contact.email}`} style={{ color: 'inherit' }}>
+                          {BRAND_CONFIG.contact.email}
                         </a>
                       </div>
                     </div>
@@ -133,8 +133,8 @@ export default function ContactPage() {
                     <div>
                       <strong style={{ color: 'var(--text-heading)' }}>Telephone</strong>
                       <div style={{ color: 'var(--text-muted)', marginTop: 2 }}>
-                        <a href={`tel:${BRAND_CONFIG.contact.phonePlaceholder || '+91'}`} style={{ color: 'inherit' }}>
-                          {BRAND_CONFIG.contact.phonePlaceholder || '[Phone Number]'}
+                        <a href={`tel:${BRAND_CONFIG.contact.phone.replace(/\s+/g, '')}`} style={{ color: 'inherit' }}>
+                          {BRAND_CONFIG.contact.phone}
                         </a>
                       </div>
                     </div>

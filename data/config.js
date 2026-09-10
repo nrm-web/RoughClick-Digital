@@ -112,14 +112,14 @@ export const BRAND_CONFIG = {
     city: "Coimbatore",
     officeLocation: "Coimbatore, Tamil Nadu, India",
     address: "Coimbatore, Tamil Nadu, India",
-    email: "[Email Address]",
-    emailPlaceholder: "[Email Address]",
-    phone: "[Phone Number]",
-    phonePlaceholder: "[Phone Number]",
-    whatsappPlaceholder: "+91 90000 00000",
-    whatsappNumberPlaceholder: "919000000000",
-    WHATSAPP_NUMBER: "919000000000",
-    hours: "Monday – Friday: 9:30 AM – 6:30 PM IST"
+    email: "info@roughclick.com",
+    emailPlaceholder: "info@roughclick.com",
+    phone: "+91 6379166158",
+    phonePlaceholder: "+91 6379166158",
+    whatsappPlaceholder: "+91 6379166158",
+    whatsappNumberPlaceholder: "916379166158",
+    WHATSAPP_NUMBER: "916379166158",
+    hours: "Monday – Friday: 10:00 AM – 5:00 PM IST"
   },
 
   socialLinks: [

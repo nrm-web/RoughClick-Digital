@@ -60,10 +60,6 @@ export default function Header() {
                 onError={(e) => { e.currentTarget.src = '/brand/roughclick-luxury-dark.png'; }}
               />
             </div>
-            <div className="header-brand-name-wrap">
-              <span className="brand-word-rough">ROUGHCLICK</span>
-              <span className="brand-word-digital">DIGITAL</span>
-            </div>
           </Link>
 
           {/* Desktop Navigation Links with Active Underline */}
@@ -159,13 +155,8 @@ export default function Header() {
                     src="/brand/roughclick-luxury-dark.svg"
                     alt="RoughClick Digital"
                     className="logo-concept-luxury"
-                    style={{ height: 36, width: 'auto' }}
                     onError={(e) => { e.currentTarget.src = '/brand/roughclick-luxury-dark.png'; }}
                   />
-                  <div className="header-brand-name-wrap" style={{ fontSize: '0.95rem' }}>
-                    <span className="brand-word-rough">ROUGHCLICK</span>
-                    <span className="brand-word-digital">DIGITAL</span>
-                  </div>
                 </div>
                 <button
                   onClick={() => toggleMobile(false)}

@@ -78,7 +78,7 @@ export default function ContactForm() {
           <CheckCircle2 size={40} style={{ color: 'var(--rc-teal-accent)', margin: '0 auto 12px auto' }} />
           <h3 style={{ fontSize: '1.25rem', marginBottom: 8 }}>Inquiry Sent Successfully</h3>
           <p style={{ fontSize: '0.9rem', color: 'var(--text-body)', lineHeight: 1.6, maxWidth: 460, margin: '0 auto' }}>
-            Thank you for reaching out to RoughClick Digital. Our Coimbatore team will evaluate your scope and respond within 24 hours.
+            Thank you for reaching out to RoughClick Digital. Our team will evaluate your scope and respond within 24 hours.
           </p>
           <button
             type="button"

@@ -24,6 +24,14 @@ export default function HomePage() {
         <div className="rc-container hero-container-rel">
           <div className="hero-grid-2col">
             <div>
+              {/* Hero Section Brand Name */}
+              <div className="hero-brand-masthead" role="banner" aria-label="RoughClick Digital">
+                <div className="hero-brand-masthead-title">
+                  <span className="brand-word-rough">ROUGHCLICK</span>{' '}
+                  <span className="brand-word-digital">DIGITAL</span>
+                </div>
+              </div>
+
               <h1 className="hero-main-title">
                 Architecting High-Performance <span className="text-cyan">Digital Experiences</span>
               </h1>
@@ -482,7 +490,7 @@ export default function HomePage() {
                   <ArrowRight size={16} />
                 </Link>
                 <a
-                  href="https://wa.me/917806935919?text=Hello%20RoughClick%20Digital,%20I%20would%20like%20to%20discuss%20a%20digital%20project."
+                  href="https://wa.me/916379166158?text=Hello%20RoughClick%20Digital,%20I%20would%20like%20to%20discuss%20a%20digital%20project."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-pill-secondary"

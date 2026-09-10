@@ -66,14 +66,14 @@ export default function Footer() {
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <Mail size={15} style={{ color: 'var(--footer-accent)', flexShrink: 0 }} />
-                <a href={`mailto:${BRAND_CONFIG.contact.emailPlaceholder || 'contact@roughclick.com'}`} style={{ color: 'inherit' }}>
-                  {BRAND_CONFIG.contact.emailPlaceholder || '[Email Address]'}
+                <a href={`mailto:${BRAND_CONFIG.contact.email}`} style={{ color: 'inherit' }}>
+                  {BRAND_CONFIG.contact.email}
                 </a>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <Phone size={15} style={{ color: 'var(--footer-accent)', flexShrink: 0 }} />
-                <a href={`tel:${BRAND_CONFIG.contact.phonePlaceholder || '+91'}`} style={{ color: 'inherit' }}>
-                  {BRAND_CONFIG.contact.phonePlaceholder || '[Phone Number]'}
+                <a href={`tel:${BRAND_CONFIG.contact.phone.replace(/\s+/g, '')}`} style={{ color: 'inherit' }}>
+                  {BRAND_CONFIG.contact.phone}
                 </a>
               </div>
               <div style={{ marginTop: 6 }}>
