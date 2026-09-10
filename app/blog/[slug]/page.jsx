@@ -15,7 +15,9 @@ import {
   Sparkles
 } from 'lucide-react';
 
-export const revalidate = 60; // Revalidate at most once every minute
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+export const dynamicParams = true;
 
 export async function generateStaticParams() {
   const posts = await getPublishedPosts();

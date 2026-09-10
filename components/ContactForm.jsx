@@ -14,6 +14,8 @@ export default function ContactForm() {
     message: ''
   });
 
+  const [whatsappUrl, setWhatsappUrl] = useState('');
+
   const [status, setStatus] = useState({
     submitting: false,
     submitted: false,
@@ -27,17 +29,25 @@ export default function ContactForm() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus({ submitting: true, submitted: false, error: null });
 
-    // Client-side simulation of inquiry processing
-    setTimeout(() => {
-      setStatus({
-        submitting: false,
-        submitted: true,
-        error: null
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
       });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to submit inquiry');
+      }
+
+      setWhatsappUrl(data.whatsappUrl || '');
+      setStatus({ submitting: false, submitted: true, error: null });
       setFormData({
         name: '',
         email: '',
@@ -46,7 +56,14 @@ export default function ContactForm() {
         service: '',
         message: ''
       });
-    }, 800);
+    } catch (err) {
+      console.error('Error submitting form:', err);
+      setStatus({
+        submitting: false,
+        submitted: false,
+        error: err.message || 'Error submitting inquiry. Please try again or WhatsApp us directly.'
+      });
+    }
   };
 
   return (
@@ -70,24 +87,52 @@ export default function ContactForm() {
         <div style={{
           backgroundColor: 'var(--rc-teal-light)',
           border: '1px solid var(--rc-teal-accent)',
-          borderRadius: 8,
-          padding: 24,
+          borderRadius: 12,
+          padding: 28,
           textAlign: 'center',
           color: 'var(--text-primary)'
         }}>
-          <CheckCircle2 size={40} style={{ color: 'var(--rc-teal-accent)', margin: '0 auto 12px auto' }} />
-          <h3 style={{ fontSize: '1.25rem', marginBottom: 8 }}>Inquiry Sent Successfully</h3>
-          <p style={{ fontSize: '0.9rem', color: 'var(--text-body)', lineHeight: 1.6, maxWidth: 460, margin: '0 auto' }}>
-            Thank you for reaching out to RoughClick Digital. Our team will evaluate your scope and respond within 24 hours.
+          <CheckCircle2 size={44} style={{ color: 'var(--rc-teal-accent)', margin: '0 auto 12px auto' }} />
+          <h3 style={{ fontSize: '1.35rem', fontWeight: 700, marginBottom: 8 }}>Inquiry Received Successfully</h3>
+          <p style={{ fontSize: '0.92rem', color: 'var(--text-body)', lineHeight: 1.6, maxWidth: 460, margin: '0 auto' }}>
+            Thank you for reaching out to RoughClick Digital. Your details have been logged and our team will evaluate your scope.
           </p>
-          <button
-            type="button"
-            onClick={() => setStatus({ submitting: false, submitted: false, error: null })}
-            className="btn-modern-secondary"
-            style={{ marginTop: 20, fontSize: '0.84rem', padding: '8px 18px' }}
-          >
-            Send Another Inquiry
-          </button>
+
+          {whatsappUrl && (
+            <div style={{ marginTop: 20 }}>
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 8,
+                  backgroundColor: '#25D366',
+                  color: '#ffffff',
+                  padding: '12px 24px',
+                  borderRadius: 8,
+                  fontWeight: 700,
+                  fontSize: '0.92rem',
+                  textDecoration: 'none',
+                  boxShadow: '0 4px 14px rgba(37, 211, 102, 0.35)'
+                }}
+              >
+                <span>💬 Send to Our Team on WhatsApp (One-Tap)</span>
+              </a>
+            </div>
+          )}
+
+          <div style={{ marginTop: 18 }}>
+            <button
+              type="button"
+              onClick={() => setStatus({ submitting: false, submitted: false, error: null })}
+              className="btn-modern-secondary"
+              style={{ fontSize: '0.84rem', padding: '8px 18px' }}
+            >
+              Send Another Inquiry
+            </button>
+          </div>
         </div>
       ) : (
         <form onSubmit={handleSubmit}>

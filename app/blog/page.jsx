@@ -2,7 +2,8 @@ import React from 'react';
 import { getPublishedPosts } from '@/lib/db';
 import BlogListClient from './BlogListClient';
 
-export const revalidate = 60; // Revalidate at most once every minute
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export const metadata = {
   title: 'Knowledge Hub & Strategic Perspectives | RoughClick Digital',
