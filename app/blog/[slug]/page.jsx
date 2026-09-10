@@ -222,6 +222,28 @@ export default async function BlogArticlePage({ params }) {
 
               <ArticleShareBar slug={post.slug} title={post.title} />
             </div>
+
+            {/* Featured Cover Image (if set) */}
+            {post.coverImage && (
+              <div style={{
+                marginTop: 32,
+                borderRadius: 16,
+                overflow: 'hidden',
+                border: '1px solid var(--border-card)',
+                boxShadow: '0 12px 36px rgba(0, 0, 0, 0.08)'
+              }}>
+                <img
+                  src={post.coverImage}
+                  alt={post.title}
+                  style={{
+                    width: '100%',
+                    maxHeight: '480px',
+                    objectFit: 'cover',
+                    display: 'block'
+                  }}
+                />
+              </div>
+            )}
           </div>
         </section>
 
@@ -233,6 +255,40 @@ export default async function BlogArticlePage({ params }) {
             {post.content.split('\n\n').map((paragraph, index) => {
               const trimmed = paragraph.trim();
               if (!trimmed) return null;
+
+              if (trimmed.startsWith('![') && trimmed.includes('](')) {
+                const match = trimmed.match(/!\[(.*?)\]\((.*?)\)/);
+                if (match) {
+                  const alt = match[1];
+                  const src = match[2];
+                  return (
+                    <figure key={index} style={{ margin: '2.5rem 0', textAlign: 'center' }}>
+                      <img
+                        src={src}
+                        alt={alt || 'Article visual'}
+                        style={{
+                          width: '100%',
+                          maxHeight: '520px',
+                          objectFit: 'cover',
+                          borderRadius: '12px',
+                          border: '1px solid var(--border-subtle)',
+                          boxShadow: '0 8px 30px rgba(0,0,0,0.06)'
+                        }}
+                      />
+                      {alt && (
+                        <figcaption style={{
+                          marginTop: '8px',
+                          fontSize: '0.82rem',
+                          color: 'var(--text-muted)',
+                          fontStyle: 'italic'
+                        }}>
+                          {alt}
+                        </figcaption>
+                      )}
+                    </figure>
+                  );
+                }
+              }
 
               if (trimmed.startsWith('### ')) {
                 return (

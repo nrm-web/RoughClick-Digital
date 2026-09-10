@@ -233,6 +233,21 @@ export default function BlogListClient({ initialPosts = [] }) {
             <div className="blog-3col-grid">
               {filteredArticles.map((article) => (
                 <article key={article.slug} className="modern-card">
+                  {article.coverImage && (
+                    <div style={{
+                      margin: '-22px -22px 16px -22px',
+                      height: 160,
+                      overflow: 'hidden',
+                      borderTopLeftRadius: 14,
+                      borderTopRightRadius: 14
+                    }}>
+                      <img
+                        src={article.coverImage}
+                        alt={article.title}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      />
+                    </div>
+                  )}
                   <div>
                     <div style={{
                       display: 'flex',

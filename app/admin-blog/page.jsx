@@ -51,6 +51,7 @@ export default function AdminBlogPage() {
   const [readTime, setReadTime] = useState('4 min read');
   const [author, setAuthor] = useState('RoughClick Editorial');
   const [featured, setFeatured] = useState(false);
+  const [coverImage, setCoverImage] = useState('');
   const [excerpt, setExcerpt] = useState('');
   const [content, setContent] = useState('');
   const [status, setStatus] = useState('draft');
@@ -123,6 +124,7 @@ export default function AdminBlogPage() {
     setReadTime(post.readTime || '4 min read');
     setAuthor(post.author || 'RoughClick Editorial');
     setFeatured(Boolean(post.featured));
+    setCoverImage(post.coverImage || '');
     setExcerpt(post.excerpt || '');
     setContent(post.content || '');
     setStatus(post.status || 'draft');
@@ -142,6 +144,7 @@ export default function AdminBlogPage() {
     setReadTime('4 min read');
     setAuthor('RoughClick Editorial');
     setFeatured(false);
+    setCoverImage('');
     setExcerpt('');
     setContent('');
     setStatus('draft');
@@ -168,6 +171,7 @@ export default function AdminBlogPage() {
       readTime,
       author,
       featured,
+      coverImage: coverImage.trim(),
       excerpt: excerpt.trim(),
       content: content.trim(),
       status: targetStatus,
@@ -994,6 +998,39 @@ export default function AdminBlogPage() {
                   </div>
                 </div>
 
+                {/* Cover Image URL */}
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
+                    <label style={{ fontSize: '0.82rem', fontWeight: 600 }}>
+                      Featured Cover Image URL (Optional)
+                    </label>
+                    <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>
+                      Supports direct URLs or /images/...
+                    </span>
+                  </div>
+                  <input
+                    type="url"
+                    value={coverImage}
+                    onChange={(e) => setCoverImage(e.target.value)}
+                    placeholder="https://images.unsplash.com/... or /images/blog/cover.jpg"
+                    style={{
+                      width: '100%',
+                      padding: '10px 12px',
+                      borderRadius: 8,
+                      border: '1px solid var(--border-subtle)',
+                      backgroundColor: 'var(--bg-canvas)',
+                      color: 'var(--text-primary)',
+                      fontSize: '0.85rem',
+                      outline: 'none'
+                    }}
+                  />
+                  {coverImage && (
+                    <div style={{ marginTop: 8, borderRadius: 6, overflow: 'hidden', maxHeight: 120, border: '1px solid var(--border-subtle)' }}>
+                      <img src={coverImage} alt="Cover preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={(e) => e.target.style.display = 'none'} />
+                    </div>
+                  )}
+                </div>
+
                 {/* Excerpt (Executive Summary) */}
                 <div>
                   <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, marginBottom: 6 }}>
@@ -1026,7 +1063,7 @@ export default function AdminBlogPage() {
                       Article Body (Markdown Supported)
                     </label>
                     <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>
-                      Supports H3 (###), lists (-), bold (**), quotes (&gt;)
+                      Supports H3 (###), lists (-), bold (**), quotes (&gt;), images (![alt](url))
                     </span>
                   </div>
                   <textarea
@@ -1214,6 +1251,13 @@ export default function AdminBlogPage() {
                   }}>
                     {title || 'Article Headline Will Render Here'}
                   </h1>
+
+                  {/* Preview Cover Image */}
+                  {coverImage && (
+                    <div style={{ marginBottom: 16, borderRadius: 8, overflow: 'hidden', maxHeight: 180 }}>
+                      <img src={coverImage} alt="Cover preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={(e) => e.target.style.display = 'none'} />
+                    </div>
+                  )}
 
                   {/* Preview Excerpt */}
                   {excerpt && (
