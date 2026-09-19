@@ -4,10 +4,36 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Globe, Layers, Share2, RefreshCw, Check, Sparkles, Zap, ShieldCheck } from 'lucide-react';
 
+function AnimatedGlobe({ size = 16, className = '' }) {
+  return (
+    <span
+      className={`animated-globe-container ${className}`}
+      style={{ width: size, height: size, display: 'inline-flex', position: 'relative', alignItems: 'center', justifyContent: 'center' }}
+    >
+      <svg
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="icon-svg-globe"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <line x1="2" y1="12" x2="22" y2="12" />
+        <path className="meridian-sweep-1" d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+        <path className="meridian-sweep-2" d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+      </svg>
+    </span>
+  );
+}
+
 const CAPABILITIES = [
   {
     id: 'web-architecture',
-    icon: Globe,
+    icon: AnimatedGlobe,
     number: '01',
     tabTitle: 'Website Development',
     discipline: 'WEB ENGINEERING',
@@ -108,7 +134,10 @@ export default function CapabilitiesInspector() {
             >
               <span className="tab-idx-mono">{cap.number}</span>
               <span className={`tab-symbol-wrap ${symbolClass}`}>
-                <TabIcon size={16} className="tab-icon-svg" />
+                <TabIcon
+                  size={16}
+                  className={`tab-icon-svg ${cap.id === 'custom-applications' ? 'icon-svg-layers' : ''}`}
+                />
               </span>
               <span className="tab-label-text">{cap.tabTitle}</span>
             </button>
@@ -164,7 +193,10 @@ export default function CapabilitiesInspector() {
             <div className="editorial-spec-sheet">
               <div className="spec-sheet-top">
                 <div className="spec-icon-glyph">
-                  <IconComponent size={22} />
+                  <IconComponent
+                    size={22}
+                    className={activeCap.id === 'custom-applications' ? 'icon-svg-layers' : ''}
+                  />
                 </div>
                 <div>
                   <div className="spec-tag-sub">DISCIPLINE SPECIFICATION</div>
@@ -198,7 +230,7 @@ export default function CapabilitiesInspector() {
 
               <div className="spec-cta-wrap">
                 <Link href={activeCap.serviceHref} className="btn-modern-primary" style={{ width: '100%', justifyContent: 'center' }}>
-                  <span>View Complete {activeCap.tabTitle} Scope</span>
+                  <span>View Complete Scope</span>
                   <ArrowRight size={14} />
                 </Link>
               </div>

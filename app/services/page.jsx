@@ -8,9 +8,33 @@ export const metadata = {
   description: 'Explore our core digital services: Website Development, Custom Applications, Social Media Content Creation, and Social Media Management.'
 };
 
+function AnimatedGlobe({ size = 24, className = '' }) {
+  return (
+    <div className="animated-globe-container">
+      <div className="globe-beacon-pulse" aria-hidden="true" />
+      <svg
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={`icon-svg-globe ${className}`}
+      >
+        <circle cx="12" cy="12" r="10" />
+        <line x1="2" y1="12" x2="22" y2="12" />
+        <path className="meridian-sweep-1" d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+        <path className="meridian-sweep-2" d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+      </svg>
+    </div>
+  );
+}
+
 export default function ServicesPage() {
   const iconMap = {
-    '01': Globe,
+    '01': AnimatedGlobe,
     '02': Layers,
     '03': Share2,
     '04': RefreshCw
@@ -116,15 +140,6 @@ export default function ServicesPage() {
                         <span className="rc-badge">{category.number} // {category.tag}</span>
                       </div>
                     </div>
-
-                    <Link
-                      href="/contact"
-                      className="btn-modern-primary"
-                      style={{ fontSize: '0.84rem', padding: '9px 20px' }}
-                    >
-                      <span>Discuss Your Project</span>
-                      <ArrowRight size={14} />
-                    </Link>
                   </div>
 
                   {/* Title & Descriptions */}
@@ -266,7 +281,7 @@ export default function ServicesPage() {
                       className="btn-modern-primary"
                       style={{ fontSize: '0.88rem', padding: '10px 22px' }}
                     >
-                      <span>Let's Build Something</span>
+                      <span>Discuss Your Project</span>
                       <ArrowRight size={15} />
                     </Link>
                   </div>
@@ -287,7 +302,7 @@ export default function ServicesPage() {
             <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', color: '#FFFFFF', marginBottom: 14 }}>
               Need a Customized Digital Solution?
             </h2>
-            <p style={{ maxWidth: 620, margin: '0 auto 2.2rem auto', color: 'var(--hero-sub-color)', fontSize: '1.05rem', lineHeight: 1.7 }}>
+            <p style={{ maxWidth: 640, margin: '0 auto 2.2rem auto', color: 'var(--hero-sub-color)', fontSize: '1.05rem', lineHeight: 1.7 }}>
               Every business has distinct requirements. Tell us about your goals and our team will tailor an integrated digital package for your enterprise.
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: 16, flexWrap: 'wrap' }}>

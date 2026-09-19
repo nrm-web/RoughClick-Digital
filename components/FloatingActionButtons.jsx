@@ -6,10 +6,21 @@ import { BRAND_CONFIG } from '@/data/config';
 
 export default function FloatingActionButtons() {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 280) {
+      const scrollY = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      
+      if (docHeight > 0) {
+        const progress = Math.min(100, Math.max(0, (scrollY / docHeight) * 100));
+        setScrollProgress(progress);
+      } else {
+        setScrollProgress(0);
+      }
+
+      if (scrollY > 150) {
         setShowScrollTop(true);
       } else {
         setShowScrollTop(false);
@@ -17,7 +28,6 @@ export default function FloatingActionButtons() {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    // Check initial position on mount
     handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
@@ -34,19 +44,54 @@ export default function FloatingActionButtons() {
   const cleanPhone = rawPhone.replace(/\D/g, '');
   const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent('Hello RoughClick Digital, I would like to inquire about your services.')}`;
 
+  // SVG Geometry: radius 20, circumference 125.66
+  const radius = 20;
+  const circumference = 2 * Math.PI * radius;
+  const strokeDashoffset = circumference - (scrollProgress / 100) * circumference;
+
   return (
     <aside aria-label="Quick Actions" className="corner-floating-container">
-      {/* 1. MOVE TO TOP BUTTON (conditionally visible on scroll) */}
+      {/* 1. MOVE TO TOP BUTTON (with circular scroll progress ring) */}
       <button
         type="button"
         onClick={scrollToTop}
         className={`corner-btn corner-btn-scrolltop ${showScrollTop ? 'is-visible' : 'is-hidden'}`}
         aria-label="Scroll back to top"
-        title="Scroll to top"
+        title={`Scroll to top (${Math.round(scrollProgress)}%)`}
         tabIndex={showScrollTop ? 0 : -1}
       >
+        <svg
+          className="scroll-progress-ring"
+          width="48"
+          height="48"
+          viewBox="0 0 48 48"
+          aria-hidden="true"
+        >
+          {/* Subtle Background Track */}
+          <circle
+            cx="24"
+            cy="24"
+            r={radius}
+            className="scroll-ring-track"
+            fill="none"
+            strokeWidth="3"
+          />
+          {/* Dynamic Scroll Progress Arc */}
+          <circle
+            cx="24"
+            cy="24"
+            r={radius}
+            className="scroll-ring-indicator"
+            fill="none"
+            strokeWidth="3"
+            strokeDasharray={circumference}
+            strokeDashoffset={strokeDashoffset}
+            strokeLinecap="round"
+          />
+        </svg>
+
         <ArrowUp className="corner-btn-icon corner-icon-arrow" size={20} strokeWidth={2.4} />
-        <span className="corner-btn-tooltip">Back to Top</span>
+        <span className="corner-btn-tooltip">Back to Top ({Math.round(scrollProgress)}%)</span>
       </button>
 
       {/* 2. WHATSAPP BUTTON (always accessible) */}

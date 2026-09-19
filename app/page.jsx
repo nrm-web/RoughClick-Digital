@@ -217,7 +217,6 @@ export default function HomePage() {
             <div className="timeline-step-entry reveal-card">
               <div className="timeline-node-header">
                 <span className="timeline-step-num">01</span>
-                <span className="timeline-duration-badge">DAYS 1–3</span>
               </div>
               <h3 className="timeline-step-title">Scope &amp; Flat Quote</h3>
               <p className="timeline-step-desc">
@@ -232,7 +231,6 @@ export default function HomePage() {
             <div className="timeline-step-entry reveal-card">
               <div className="timeline-node-header">
                 <span className="timeline-step-num">02</span>
-                <span className="timeline-duration-badge">WEEKS 1–2</span>
               </div>
               <h3 className="timeline-step-title">Interactive Prototype</h3>
               <p className="timeline-step-desc">
@@ -247,7 +245,6 @@ export default function HomePage() {
             <div className="timeline-step-entry reveal-card">
               <div className="timeline-node-header">
                 <span className="timeline-step-num">03</span>
-                <span className="timeline-duration-badge">WEEKS 2–3</span>
               </div>
               <h3 className="timeline-step-title">Modular Next.js Build</h3>
               <p className="timeline-step-desc">
@@ -262,7 +259,6 @@ export default function HomePage() {
             <div className="timeline-step-entry reveal-card">
               <div className="timeline-node-header">
                 <span className="timeline-step-num">04</span>
-                <span className="timeline-duration-badge">WEEKS 3–4</span>
               </div>
               <h3 className="timeline-step-title">Turnkey Launch &amp; Handoff</h3>
               <p className="timeline-step-desc">
@@ -277,110 +273,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. FEATURED DEMONSTRATIONS (Open Editorial Proof of Craft) */}
-      <section className="section-craft-fluid">
-        <div className="rc-container">
-          <div className="editorial-split-header reveal-on-scroll">
-            <div>
-              <span className="editorial-category-tag">05 // PROOF OF CRAFT</span>
-              <h2 className="editorial-section-title">Featured Architecture Demonstrations</h2>
-              <p className="editorial-section-subtitle">
-                High-impact showcases across corporate web portals, custom operational software, and brand visual systems.
-              </p>
-            </div>
-            <Link href="/services" className="editorial-secondary-btn">
-              <span>View All Disciplines</span>
-              <ArrowRight size={14} />
-            </Link>
-          </div>
-
-          <div className="editorial-craft-grid reveal-stagger">
-            {/* Case 1 */}
-            <div className="editorial-craft-item reveal-card">
-              <div className="craft-media-frame">
-                <span className="craft-discipline-pill">Website Architecture</span>
-                <img src="/brand/fw_laptop.png" alt="Corporate Web Platform" className="craft-thumb-img" />
-              </div>
-              <div className="craft-info-content">
-                <div className="craft-tags-line">
-                  <span className="craft-tag">Next.js 14 App Router</span>
-                  <span className="craft-tag accent">0.48s LCP</span>
-                </div>
-                <h3 className="craft-item-title">High-Traffic Enterprise Web Portal</h3>
-                <p className="craft-item-desc">
-                  Engineered with Next.js App Router for sub-second rendering, dynamic lead capture flows, and structured schema maximizing organic search visibility.
-                </p>
-                <div className="craft-result-callout">
-                  <span className="result-label">MEASURED OUTCOME:</span>
-                  <span className="result-text">Sub-0.5s speed and +140% rise in organic quote inquiries.</span>
-                </div>
-                <Link href="/services#website-development" className="craft-action-link">
-                  <span>View Web Specifications</span>
-                  <ArrowRight size={13} />
-                </Link>
-              </div>
-            </div>
-
-            {/* Case 2 */}
-            <div className="editorial-craft-item reveal-card">
-              <div className="craft-media-frame">
-                <span className="craft-discipline-pill">Software Engineering</span>
-                <img src="/brand/fw_tablet.png" alt="Operations & Analytics Hub" className="craft-thumb-img" />
-              </div>
-              <div className="craft-info-content">
-                <div className="craft-tags-line">
-                  <span className="craft-tag">Role-Based Auth</span>
-                  <span className="craft-tag accent">Live Telemetry</span>
-                </div>
-                <h3 className="craft-item-title">Operations &amp; Booking Analytics Hub</h3>
-                <p className="craft-item-desc">
-                  Bespoke internal software replacing fragmented spreadsheets with real-time project scheduling, invoice status tracking, and automated client alerts.
-                </p>
-                <div className="craft-result-callout">
-                  <span className="result-label">MEASURED OUTCOME:</span>
-                  <span className="result-text">Automated manual workflows, saving the operations team 15+ hours weekly.</span>
-                </div>
-                <Link href="/services#custom-applications" className="craft-action-link">
-                  <span>View Software Specifications</span>
-                  <ArrowRight size={13} />
-                </Link>
-              </div>
-            </div>
-
-            {/* Case 3 */}
-            <div className="editorial-craft-item reveal-card">
-              <div className="craft-media-frame">
-                <span className="craft-discipline-pill">Creative Direction</span>
-                <img src="/brand/fw_phone.png" alt="Multi-Platform Visual System" className="craft-thumb-img" />
-              </div>
-              <div className="craft-info-content">
-                <div className="craft-tags-line">
-                  <span className="craft-tag">Figma Master Kit</span>
-                  <span className="craft-tag accent">Motion Graphics</span>
-                </div>
-                <h3 className="craft-item-title">Multi-Platform Visual Brand System</h3>
-                <p className="craft-item-desc">
-                  Cohesive brand asset architecture, multi-slide carousel templates, motion overlays, and structured editorial cadence driving high brand recall.
-                </p>
-                <div className="craft-result-callout">
-                  <span className="result-label">MEASURED OUTCOME:</span>
-                  <span className="result-text">Consistent 3x weekly brand cadence and 220% growth in local search reach.</span>
-                </div>
-                <Link href="/services#social-media-content" className="craft-action-link">
-                  <span>View Creative Specifications</span>
-                  <ArrowRight size={13} />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 7. CLIENT FAQ SECTION (Minimalist Hairline Accordion, Zero Card Boxes) */}
+      {/* 5. CLIENT FAQ SECTION (Minimalist Hairline Accordion, Zero Card Boxes) */}
       <section className="section-faq-fluid">
         <div className="rc-container">
           <div className="editorial-section-head reveal-on-scroll">
-            <span className="editorial-category-tag">06 // CLARITY &amp; TRANSPARENCY</span>
+            <span className="editorial-category-tag">05 // CLARITY &amp; TRANSPARENCY</span>
             <h2 className="editorial-section-title">Frequently Asked Questions</h2>
             <p className="editorial-section-subtitle">
               Straightforward answers about project timelines, source code ownership, technical stacks, and post-launch maintenance.
@@ -391,12 +288,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 8. EDITORIAL ARTICLES / PERSPECTIVES */}
+      {/* 6. EDITORIAL ARTICLES / PERSPECTIVES */}
       <section className="section-perspectives-fluid">
         <div className="rc-container">
           <div className="editorial-split-header reveal-on-scroll">
             <div>
-              <span className="editorial-category-tag">07 // PERSPECTIVES &amp; ANALYSIS</span>
+              <span className="editorial-category-tag">06 // PERSPECTIVES &amp; ANALYSIS</span>
               <h2 className="editorial-section-title">Engineering Perspectives</h2>
               <p className="editorial-section-subtitle">
                 Deep dives into modern web performance, custom software design, and digital brand equity.
@@ -470,42 +367,30 @@ export default function HomePage() {
       </section>
 
       {/* 9. DIRECT HUMAN CTA BANNER */}
-      <section className="section-cta-fluid">
-        <div className="cta-ambient-glow" aria-hidden="true" />
+      <section className="section-cta-banner" id="contact-cta">
         <div className="rc-container">
-          <div className="editorial-cta-wrap reveal-on-scroll">
-            <div className="editorial-cta-inner">
-              <span className="editorial-category-tag" style={{ justifyContent: 'center' }}>
-                DIRECT BUILDER CONVERSATION
-              </span>
-              <h2 className="editorial-cta-title">
-                Ready to Build Something That Actually Performs?
-              </h2>
-              <p className="editorial-cta-subtitle">
-                No high-pressure sales reps. You will speak directly with a lead digital engineer to audit your current platform, map technical scope, and provide a clear milestone roadmap.
-              </p>
-              <div className="editorial-cta-actions">
-                <Link href="/contact" className="btn-pill-cyan">
-                  <span>Schedule Discovery Call</span>
-                  <ArrowRight size={16} />
-                </Link>
-                <a
-                  href="https://wa.me/916379166158?text=Hello%20RoughClick%20Digital,%20I%20would%20like%20to%20discuss%20a%20digital%20project."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-pill-secondary"
-                >
-                  <MessageSquare size={16} />
-                  <span>Direct WhatsApp Chat</span>
-                </a>
-              </div>
-              <div className="editorial-cta-trust">
-                <span>⚡ Direct Engineer Access</span>
-                <span className="trust-dot">•</span>
-                <span>🔒 Production-Grade SLA</span>
-                <span className="trust-dot">•</span>
-                <span>🚀 Fixed Milestones &amp; Scope</span>
-              </div>
+          <div className="cta-banner-full">
+            <span className="rc-badge" style={{ marginBottom: 16, backgroundColor: 'rgba(255, 255, 255, 0.15)', color: '#FFFFFF', borderColor: 'rgba(255, 255, 255, 0.3)' }}>
+              Direct Builder Conversation
+            </span>
+            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', color: '#FFFFFF', marginBottom: 14 }}>
+              Ready to Build Something That Actually Performs?
+            </h2>
+            <p style={{ maxWidth: 640, margin: '0 auto 2.2rem auto', color: 'var(--hero-sub-color)', fontSize: '1.05rem', lineHeight: 1.7 }}>
+              No high-pressure sales reps. You will speak directly with a lead digital engineer to audit your current platform, map technical scope, and provide a clear milestone roadmap.
+            </p>
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 24 }}>
+              <Link href="/contact" className="btn-pill-cyan">
+                <span>Schedule Discovery Call</span>
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+            <div className="editorial-cta-trust" style={{ color: 'rgba(255, 255, 255, 0.65)' }}>
+              <span>Direct Engineer Access</span>
+              <span className="trust-dot" style={{ color: 'rgba(255, 255, 255, 0.35)' }}>•</span>
+              <span>Production-Grade SLA</span>
+              <span className="trust-dot" style={{ color: 'rgba(255, 255, 255, 0.35)' }}>•</span>
+              <span>Fixed Milestones &amp; Scope</span>
             </div>
           </div>
         </div>

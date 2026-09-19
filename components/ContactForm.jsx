@@ -304,7 +304,15 @@ export default function ContactForm() {
             type="submit"
             disabled={status.submitting}
             className="btn-modern-primary"
-            style={{ width: '100%', padding: '14px', fontSize: '0.96rem' }}
+            style={{
+              width: '100%',
+              padding: '14px 28px',
+              fontSize: '0.96rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '10px'
+            }}
           >
             {status.submitting ? 'Sending Inquiry...' : (
               <>
