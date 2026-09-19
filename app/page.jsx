@@ -1,20 +1,20 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle, Globe, Layers, Share2, RefreshCw, Zap, ShieldCheck, Clock, Users, Sparkles, MessageSquare, Terminal, FileCode, Check, Code2 } from 'lucide-react';
+import { ArrowRight, CheckCircle, Globe, Layers, Share2, RefreshCw, Zap, ShieldCheck, Clock, Users, Sparkles, MessageSquare, Terminal, FileCode, Check, Code2, Code, Layout, Cpu } from 'lucide-react';
 import HeroParticles from '@/components/HeroParticles';
 import CapabilitiesInspector from '@/components/CapabilitiesInspector';
 import AgencyTruthComparison from '@/components/AgencyTruthComparison';
 import ClientFaqAccordion from '@/components/ClientFaqAccordion';
 
 export const metadata = {
-  title: 'RoughClick Digital | Modern Web Development & Digital Engineering Agency',
-  description: 'Bespoke web architecture, custom applications, and social media creative systems engineered for high-performance businesses. Built by real engineers, not sales reps.',
+  title: 'RoughClick Digital | WordPress, Custom PHP, Wix & Next.js Web Development Agency',
+  description: 'Professional web development services across custom WordPress, bespoke PHP, Wix Studio, and Next.js. We engineer fast, SEO-optimized websites, custom business portals, and local SEO presence.',
 };
 
 export default function HomePage() {
   return (
     <>
-      {/* 1. HERO SECTION (100% PRESERVED CONTENT & VISUAL STRUCTURE) */}
+      {/* 1. HERO SECTION */}
       <section className="modern-hero">
         <HeroParticles />
         <div className="hero-ambient-glow orb-1" aria-hidden="true" />
@@ -37,7 +37,7 @@ export default function HomePage() {
               </h1>
 
               <p className="hero-subtext">
-                We design and engineer bespoke web platforms, custom cloud applications, and data-driven creative systems for modern ambitious brands.
+                From custom WordPress and robust PHP systems to modern Next.js applications, Wix solutions, and complete social presence—we engineer purposeful digital platforms tailored to your business.
               </p>
 
               <div className="hero-btn-group">
@@ -99,7 +99,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. EDITORIAL AGENCY MANIFESTO & STANDARDS (Fluid Editorial Spread, Zero Card Boxes) */}
+      {/* 2. EDITORIAL AGENCY MANIFESTO & STANDARDS */}
       <section className="editorial-manifesto-section">
         <div className="rc-container">
           <div className="editorial-manifesto-grid reveal-on-scroll">
@@ -112,7 +112,7 @@ export default function HomePage() {
                 Hand-Crafted Engineering Built Around Your Business
               </h2>
               <p className="manifesto-lead-p">
-                Most websites today are held together by 40 bloated plugins, slow drag-and-drop builders, and layers of account managers playing telephone. We do the opposite: <strong>clean, custom code engineered by hand</strong> for businesses that value speed, clarity, and real customer conversions.
+                Most websites today are held together by 40 bloated plugins, slow drag-and-drop builders, and layers of account managers playing telephone. We do the opposite: <strong>clean, custom code engineered by hand</strong> across WordPress, Custom PHP, Wix, and Next.js for businesses that value speed, clarity, and real customer conversions.
               </p>
               <p className="manifesto-body-p">
                 RoughClick Digital is a modern digital engineering agency. We partner directly with forward-thinking businesses to build lightning-fast web platforms, custom operational tools, and cohesive visual asset systems that stand the test of time.
@@ -125,7 +125,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right Column: Engineering Benchmarks Ledger (Hairline Lines, Zero Card Boxes) */}
+            {/* Right Column: Engineering Benchmarks Ledger */}
             <div className="manifesto-right-col">
               <div className="editorial-benchmarks-ledger reveal-card">
                 <div className="benchmarks-header">
@@ -161,8 +161,8 @@ export default function HomePage() {
                   <div className="benchmark-entry">
                     <div className="benchmark-idx">04</div>
                     <div className="benchmark-content">
-                      <h4 className="benchmark-title">Maintainable Architecture</h4>
-                      <p className="benchmark-desc">Clean semantic Next.js 14 code with modular components that any professional software engineer can easily scale and maintain.</p>
+                      <h4 className="benchmark-title">Versatile Architecture</h4>
+                      <p className="benchmark-desc">Bespoke WordPress themes, custom PHP 8+ portals, Wix setups, or Next.js frontends engineered with clean semantic code that any professional engineer can scale.</p>
                     </div>
                   </div>
                 </div>
@@ -172,7 +172,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. INTERACTIVE CAPABILITIES DIRECTORY (Fluid Directory, Zero Outer Box) */}
+      {/* 3. INTERACTIVE CAPABILITIES DIRECTORY */}
       <section className="section-capabilities-fluid">
         <div className="rc-container">
           <div className="editorial-section-head reveal-on-scroll">
@@ -187,11 +187,178 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. THE AGENCY TRUTH: BLOATED AGENCY VS ROUGHCLICK DIGITAL (Editorial Ledger) */}
+      {/* 4. PLATFORM SELECTION GUIDE (WORDPRESS, PHP, WIX, NEXT.JS) */}
+      <section className="section-platform-guide">
+        <div className="rc-container">
+          <div className="editorial-section-head reveal-on-scroll">
+            <span className="editorial-category-tag">03 // PLATFORM SELECTION GUIDE</span>
+            <h2 className="editorial-section-title">The Right Platform for Your Business Goals</h2>
+            <p className="editorial-section-subtitle">
+              We select and engineer the technology stack that fits your operational requirements, internal team skills, and growth trajectory—with zero dogmatic lock-in.
+            </p>
+          </div>
+
+          <div className="editorial-platform-grid reveal-stagger">
+            {/* Platform 1: Custom WordPress & WooCommerce */}
+            <div className="editorial-platform-card reveal-card">
+              <div>
+                <div className="platform-card-header">
+                  <span className="platform-badge">Content &amp; E-Commerce</span>
+                  <div className="platform-icon-wrap">
+                    <Layout size={18} />
+                  </div>
+                </div>
+                <h3 className="platform-card-title">Custom WordPress &amp; WooCommerce</h3>
+                <p className="platform-card-desc">
+                  Ideal for businesses needing an intuitive editorial dashboard where non-technical team members can publish articles, update pages, and manage online stores with ease.
+                </p>
+                <ul className="platform-features-list">
+                  <li className="platform-feature-item">
+                    <Check size={14} />
+                    <span>ACF Pro custom fields (zero visual builder bloat)</span>
+                  </li>
+                  <li className="platform-feature-item">
+                    <Check size={14} />
+                    <span>WooCommerce custom checkout &amp; payment gateway</span>
+                  </li>
+                  <li className="platform-feature-item">
+                    <Check size={14} />
+                    <span>Sub-second page speeds with optimized caching</span>
+                  </li>
+                  <li className="platform-feature-item">
+                    <Check size={14} />
+                    <span>100% full client ownership &amp; zero licensing fees</span>
+                  </li>
+                </ul>
+              </div>
+              <Link href="/services#website-development" className="platform-card-cta">
+                <span>Explore WordPress Scope</span>
+                <ArrowRight size={13} />
+              </Link>
+            </div>
+
+            {/* Platform 2: Custom PHP & Database Systems */}
+            <div className="editorial-platform-card reveal-card">
+              <div>
+                <div className="platform-card-header">
+                  <span className="platform-badge">Bespoke Logic</span>
+                  <div className="platform-icon-wrap">
+                    <Code size={18} />
+                  </div>
+                </div>
+                <h3 className="platform-card-title">Custom PHP &amp; Database Systems</h3>
+                <p className="platform-card-desc">
+                  Ideal for companies requiring proprietary business tools, quotation calculators, multi-role client portals, and automated workflows without paying expensive monthly SaaS fees.
+                </p>
+                <ul className="platform-features-list">
+                  <li className="platform-feature-item">
+                    <Check size={14} />
+                    <span>Tailored PHP 8+ MVC backend built for your workflow</span>
+                  </li>
+                  <li className="platform-feature-item">
+                    <Check size={14} />
+                    <span>High-performance MySQL / PostgreSQL relational data</span>
+                  </li>
+                  <li className="platform-feature-item">
+                    <Check size={14} />
+                    <span>Custom RESTful APIs connecting external software</span>
+                  </li>
+                  <li className="platform-feature-item">
+                    <Check size={14} />
+                    <span>Zero per-user monthly SaaS subscription fees</span>
+                  </li>
+                </ul>
+              </div>
+              <Link href="/services#custom-applications" className="platform-card-cta">
+                <span>Explore Custom PHP Scope</span>
+                <ArrowRight size={13} />
+              </Link>
+            </div>
+
+            {/* Platform 3: Wix Studio & Low-Code CMS */}
+            <div className="editorial-platform-card reveal-card">
+              <div>
+                <div className="platform-card-header">
+                  <span className="platform-badge">Fast Go-To-Market</span>
+                  <div className="platform-icon-wrap">
+                    <Sparkles size={18} />
+                  </div>
+                </div>
+                <h3 className="platform-card-title">Wix Studio &amp; Low-Code CMS</h3>
+                <p className="platform-card-desc">
+                  Ideal for boutique creative portfolios, local service businesses, and rapid-launch marketing campaign pages that need polished design with zero server maintenance.
+                </p>
+                <ul className="platform-features-list">
+                  <li className="platform-feature-item">
+                    <Check size={14} />
+                    <span>Rapid turnaround: launch high-converting pages quickly</span>
+                  </li>
+                  <li className="platform-feature-item">
+                    <Check size={14} />
+                    <span>Fully managed cloud hosting, SSL &amp; security patches</span>
+                  </li>
+                  <li className="platform-feature-item">
+                    <Check size={14} />
+                    <span>Granular responsive layout control across viewports</span>
+                  </li>
+                  <li className="platform-feature-item">
+                    <Check size={14} />
+                    <span>Visual CMS allowing effortless client copy edits</span>
+                  </li>
+                </ul>
+              </div>
+              <Link href="/services#website-development" className="platform-card-cta">
+                <span>Explore Wix Solutions</span>
+                <ArrowRight size={13} />
+              </Link>
+            </div>
+
+            {/* Platform 4: Next.js & React Web Engineering */}
+            <div className="editorial-platform-card reveal-card">
+              <div>
+                <div className="platform-card-header">
+                  <span className="platform-badge">Maximum Speed &amp; Scale</span>
+                  <div className="platform-icon-wrap">
+                    <Zap size={18} />
+                  </div>
+                </div>
+                <h3 className="platform-card-title">Next.js &amp; React Platforms</h3>
+                <p className="platform-card-desc">
+                  Ideal for high-growth tech startups, SaaS landing platforms, and enterprise digital products demanding instant page rendering and peak Google Core Web Vitals.
+                </p>
+                <ul className="platform-features-list">
+                  <li className="platform-feature-item">
+                    <Check size={14} />
+                    <span>Sub-700ms LCP speeds on global edge CDN networks</span>
+                  </li>
+                  <li className="platform-feature-item">
+                    <Check size={14} />
+                    <span>Automated JSON-LD schemas &amp; OpenGraph previews</span>
+                  </li>
+                  <li className="platform-feature-item">
+                    <Check size={14} />
+                    <span>Headless CMS integrations (Sanity, Strapi, WordPress)</span>
+                  </li>
+                  <li className="platform-feature-item">
+                    <Check size={14} />
+                    <span>Fluid interactive animations and component scalability</span>
+                  </li>
+                </ul>
+              </div>
+              <Link href="/services#website-development" className="platform-card-cta">
+                <span>Explore Next.js Scope</span>
+                <ArrowRight size={13} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. THE AGENCY TRUTH: BLOATED AGENCY VS ROUGHCLICK DIGITAL */}
       <section className="section-truth-fluid">
         <div className="rc-container">
           <div className="editorial-section-head reveal-on-scroll">
-            <span className="editorial-category-tag">03 // TRANSPARENCY &amp; STANDARDS</span>
+            <span className="editorial-category-tag">04 // TRANSPARENCY &amp; STANDARDS</span>
             <h2 className="editorial-section-title">The Agency Truth: Bloat vs. Precision</h2>
             <p className="editorial-section-subtitle">
               A transparent breakdown of why bespoke engineering and direct builder communication outperform bloated agency retainers.
@@ -202,11 +369,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. CONNECTED DELIVERY TIMELINE (Continuous Flow, Zero Enclosing Box Cards) */}
+      {/* 6. CONNECTED DELIVERY TIMELINE */}
       <section className="section-lifecycle-fluid">
         <div className="rc-container">
           <div className="editorial-section-head reveal-on-scroll">
-            <span className="editorial-category-tag">04 // METHODOLOGY &amp; TIMELINE</span>
+            <span className="editorial-category-tag">05 // METHODOLOGY &amp; TIMELINE</span>
             <h2 className="editorial-section-title">Transparent 4-Step Delivery Lifecycle</h2>
             <p className="editorial-section-subtitle">
               A straightforward, milestone-driven collaboration with tangible checkpoints, rapid iterations, and zero surprise billing.
@@ -246,9 +413,9 @@ export default function HomePage() {
               <div className="timeline-node-header">
                 <span className="timeline-step-num">03</span>
               </div>
-              <h3 className="timeline-step-title">Modular Next.js Build</h3>
+              <h3 className="timeline-step-title">Modular Platform Build</h3>
               <p className="timeline-step-desc">
-                We engineer clean semantic HTML, modular React components, and optimized database pipelines, rigorously tested across real physical mobile and desktop devices.
+                We develop clean semantic code—whether custom WordPress themes, tailored PHP/MySQL backends, Wix Studio setups, or Next.js frontends—rigorously tested across physical devices.
               </p>
               <div className="timeline-deliverable-line">
                 <span className="deliverable-arrow">↳</span>
@@ -273,14 +440,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. CLIENT FAQ SECTION (Minimalist Hairline Accordion, Zero Card Boxes) */}
+      {/* 7. CLIENT FAQ SECTION */}
       <section className="section-faq-fluid">
         <div className="rc-container">
           <div className="editorial-section-head reveal-on-scroll">
-            <span className="editorial-category-tag">05 // CLARITY &amp; TRANSPARENCY</span>
+            <span className="editorial-category-tag">06 // CLARITY &amp; TRANSPARENCY</span>
             <h2 className="editorial-section-title">Frequently Asked Questions</h2>
             <p className="editorial-section-subtitle">
-              Straightforward answers about project timelines, source code ownership, technical stacks, and post-launch maintenance.
+              Straightforward answers about platform selection, source code ownership, technical stacks, and post-launch maintenance.
             </p>
           </div>
 
@@ -288,38 +455,38 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. EDITORIAL ARTICLES / PERSPECTIVES */}
+      {/* 8. EDITORIAL ARTICLES / PERSPECTIVES */}
       <section className="section-perspectives-fluid">
         <div className="rc-container">
           <div className="editorial-split-header reveal-on-scroll">
             <div>
-              <span className="editorial-category-tag">06 // PERSPECTIVES &amp; ANALYSIS</span>
+              <span className="editorial-category-tag">07 // PERSPECTIVES &amp; ANALYSIS</span>
               <h2 className="editorial-section-title">Engineering Perspectives</h2>
               <p className="editorial-section-subtitle">
                 Deep dives into modern web performance, custom software design, and digital brand equity.
               </p>
             </div>
-            <Link href="/blog" className="editorial-secondary-btn">
+            <Link href="/blog" className="btn-modern-primary" style={{ fontSize: '0.88rem', padding: '10px 22px' }}>
               <span>View All Articles</span>
-              <ArrowRight size={14} />
+              <ArrowRight size={15} />
             </Link>
           </div>
 
           <div className="editorial-articles-grid reveal-stagger">
             <article className="editorial-article-entry reveal-card">
               <div className="article-meta-line">
-                <span className="article-category">Performance Engineering</span>
+                <span className="article-category">Platform Guide</span>
                 <span className="article-date">Published Recently</span>
               </div>
               <h3 className="article-headline">
-                <Link href="/blog">
-                  Why 90% of WordPress Sites Fail Google Core Web Vitals in 2026
+                <Link href="/blog/wordpress-vs-nextjs-vs-wix-php-comparison-2026">
+                  WordPress, Custom PHP, Wix, or Next.js: How to Choose the Right Platform in 2026
                 </Link>
               </h3>
               <p className="article-excerpt">
-                An architectural analysis of render-blocking script bloat, unoptimized database queries, and how pre-rendered React architectures deliver sub-700ms speeds.
+                A practical guide for business owners comparing WordPress, custom PHP, Wix, and Next.js across speed, ease of editing, maintenance overhead, and total cost of ownership.
               </p>
-              <Link href="/blog" className="article-read-link">
+              <Link href="/blog/wordpress-vs-nextjs-vs-wix-php-comparison-2026" className="article-read-link">
                 <span>Read Analysis</span>
                 <ArrowRight size={13} />
               </Link>
@@ -327,18 +494,18 @@ export default function HomePage() {
 
             <article className="editorial-article-entry reveal-card">
               <div className="article-meta-line">
-                <span className="article-category">Software Architecture</span>
+                <span className="article-category">WordPress &amp; CMS</span>
                 <span className="article-date">Published Recently</span>
               </div>
               <h3 className="article-headline">
-                <Link href="/blog">
-                  When Spreadsheets Break: The ROI of Custom Internal Web Portals
+                <Link href="/blog/custom-wordpress-development-performance-guide">
+                  Why Custom WordPress Development Outperforms Pre-Built Themes in SEO &amp; Speed
                 </Link>
               </h3>
               <p className="article-excerpt">
-                How growing companies save 15+ hours weekly by replacing fragmented Google Sheets and Excel files with tailor-made web tools and role-based workflows.
+                Commercial themes bundle 40+ unneeded plugins that hurt your Google ranking. Discover how custom WordPress architecture with ACF Pro delivers blazing speeds and higher conversions.
               </p>
-              <Link href="/blog" className="article-read-link">
+              <Link href="/blog/custom-wordpress-development-performance-guide" className="article-read-link">
                 <span>Read Analysis</span>
                 <ArrowRight size={13} />
               </Link>
@@ -346,18 +513,18 @@ export default function HomePage() {
 
             <article className="editorial-article-entry reveal-card">
               <div className="article-meta-line">
-                <span className="article-category">Brand Systems</span>
+                <span className="article-category">Custom Applications</span>
                 <span className="article-date">Published Recently</span>
               </div>
               <h3 className="article-headline">
-                <Link href="/blog">
-                  The Multi-Platform Asset System: Beyond Generic Social Templates
+                <Link href="/blog/strategic-power-of-custom-php-web-development">
+                  The Enduring Power of Custom PHP: When Tailored Code Beats Bloated SaaS
                 </Link>
               </h3>
               <p className="article-excerpt">
-                Why one-off social posts fail to build recognition and how a cohesive Figma design system drives high-recall organic brand consistency.
+                Why growing companies choose custom PHP and MySQL for internal portals, quotation tools, and database applications without paying thousands in recurring monthly SaaS fees.
               </p>
-              <Link href="/blog" className="article-read-link">
+              <Link href="/blog/strategic-power-of-custom-php-web-development" className="article-read-link">
                 <span>Read Analysis</span>
                 <ArrowRight size={13} />
               </Link>

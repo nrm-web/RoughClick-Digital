@@ -1,11 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
 import { SERVICE_CATEGORIES } from '@/data/services';
-import { ArrowRight, CheckCircle, Globe, Layers, Share2, RefreshCw } from 'lucide-react';
+import { ArrowRight, CheckCircle, Globe, Layers, Share2, RefreshCw, Check, Layout, Code, Sparkles, Zap } from 'lucide-react';
 
 export const metadata = {
-  title: 'Digital Services | RoughClick Digital',
-  description: 'Explore our core digital services: Website Development, Custom Applications, Social Media Content Creation, and Social Media Management.'
+  title: 'WordPress, Custom PHP, Wix & Next.js Services | RoughClick Digital',
+  description: 'Comprehensive digital engineering services: Custom WordPress development, bespoke PHP applications, Wix Studio websites, Next.js frontends, and local SEO presence.',
 };
 
 function AnimatedGlobe({ size = 24, className = '' }) {
@@ -55,15 +55,15 @@ export default function ServicesPage() {
         <div className="hero-ambient-glow orb-2" aria-hidden="true" />
         <div className="hero-grid-pattern" aria-hidden="true" />
         <div className="rc-container" style={{ position: 'relative', zIndex: 2 }}>
-          <div style={{ maxWidth: 820 }}>
+          <div style={{ maxWidth: 840 }}>
             <span className="rc-badge" style={{ marginBottom: 16 }}>
-              Digital Capabilities Catalog
+              Multi-Platform Digital Capabilities
             </span>
             <h1 className="hero-title">
               Modular Solutions For <span className="accent">Modern Enterprises</span>
             </h1>
             <p className="hero-subcopy">
-              Explore our full suite of web engineering, custom software solutions, and social media creative systems engineered for measurable business outcomes.
+              Explore our full suite of web engineering across WordPress, Custom PHP, Wix Studio, and Next.js, alongside custom enterprise software and data-driven social media systems engineered for measurable business outcomes.
             </p>
           </div>
 
@@ -170,7 +170,7 @@ export default function ServicesPage() {
                       color: 'var(--color-accent)',
                       marginBottom: 14
                     }}>
-                      Key Value & Benefits
+                      Key Value &amp; Engineering Benefits
                     </div>
                     <div style={{
                       display: 'grid',
@@ -188,7 +188,7 @@ export default function ServicesPage() {
                     </div>
                   </div>
 
-                  {/* Clean Hierarchy: SERVICE GROUPS -> INDIVIDUAL SERVICES */}
+                  {/* Hierarchy: SERVICE GROUPS -> INDIVIDUAL SERVICES */}
                   <div>
                     <h3 style={{
                       fontSize: '1.2rem',
@@ -197,7 +197,7 @@ export default function ServicesPage() {
                       borderLeft: '3px solid var(--color-accent)',
                       paddingLeft: 12
                     }}>
-                      Services Included & Deliverables
+                      Services Included &amp; Verified Deliverables
                     </h3>
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
@@ -292,6 +292,109 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Platform Comparison Matrix Section */}
+      <section className="section-platform-guide">
+        <div className="rc-container">
+          <div className="editorial-section-head reveal-on-scroll">
+            <span className="editorial-category-tag">PLATFORM DECISION MATRIX</span>
+            <h2 className="editorial-section-title">Choosing the Right Architecture for Your Project</h2>
+            <p className="editorial-section-subtitle">
+              Compare our primary web development technologies to determine which platform aligns best with your team's publishing frequency, operational logic, and budget.
+            </p>
+          </div>
+
+          <div className="editorial-platform-grid reveal-stagger">
+            <div className="editorial-platform-card reveal-card">
+              <div>
+                <div className="platform-card-header">
+                  <span className="platform-badge">WordPress &amp; WooCommerce</span>
+                  <div className="platform-icon-wrap"><Layout size={18} /></div>
+                </div>
+                <h3 className="platform-card-title">Custom WordPress</h3>
+                <p className="platform-card-desc">
+                  Ideal for businesses needing full editorial independence, corporate blogs, and WooCommerce stores with zero plugin bloat.
+                </p>
+                <ul className="platform-features-list">
+                  <li className="platform-feature-item"><Check size={14} /><span>ACF Pro structured custom fields</span></li>
+                  <li className="platform-feature-item"><Check size={14} /><span>WooCommerce checkout &amp; payments</span></li>
+                  <li className="platform-feature-item"><Check size={14} /><span>Sub-second page speeds</span></li>
+                </ul>
+              </div>
+              <Link href="/contact" className="platform-card-cta">
+                <span>Inquire About WordPress</span>
+                <ArrowRight size={13} />
+              </Link>
+            </div>
+
+            <div className="editorial-platform-card reveal-card">
+              <div>
+                <div className="platform-card-header">
+                  <span className="platform-badge">Custom PHP &amp; MySQL</span>
+                  <div className="platform-icon-wrap"><Code size={18} /></div>
+                </div>
+                <h3 className="platform-card-title">Custom PHP Systems</h3>
+                <p className="platform-card-desc">
+                  Ideal for bespoke operations portals, quotation engines, and internal databases without costly recurring SaaS subscriptions.
+                </p>
+                <ul className="platform-features-list">
+                  <li className="platform-feature-item"><Check size={14} /><span>Tailored PHP 8+ MVC backend</span></li>
+                  <li className="platform-feature-item"><Check size={14} /><span>High-speed relational data queries</span></li>
+                  <li className="platform-feature-item"><Check size={14} /><span>Zero per-user monthly software fees</span></li>
+                </ul>
+              </div>
+              <Link href="/contact" className="platform-card-cta">
+                <span>Inquire About Custom PHP</span>
+                <ArrowRight size={13} />
+              </Link>
+            </div>
+
+            <div className="editorial-platform-card reveal-card">
+              <div>
+                <div className="platform-card-header">
+                  <span className="platform-badge">Wix Studio &amp; Low-Code</span>
+                  <div className="platform-icon-wrap"><Sparkles size={18} /></div>
+                </div>
+                <h3 className="platform-card-title">Wix Studio Solutions</h3>
+                <p className="platform-card-desc">
+                  Ideal for boutique creative portfolios, local service providers, and fast-launch marketing campaigns with zero server maintenance.
+                </p>
+                <ul className="platform-features-list">
+                  <li className="platform-feature-item"><Check size={14} /><span>Rapid turnaround &amp; deployment</span></li>
+                  <li className="platform-feature-item"><Check size={14} /><span>Managed cloud hosting &amp; SSL</span></li>
+                  <li className="platform-feature-item"><Check size={14} /><span>Visual CMS for effortless edits</span></li>
+                </ul>
+              </div>
+              <Link href="/contact" className="platform-card-cta">
+                <span>Inquire About Wix</span>
+                <ArrowRight size={13} />
+              </Link>
+            </div>
+
+            <div className="editorial-platform-card reveal-card">
+              <div>
+                <div className="platform-card-header">
+                  <span className="platform-badge">Next.js &amp; React</span>
+                  <div className="platform-icon-wrap"><Zap size={18} /></div>
+                </div>
+                <h3 className="platform-card-title">Next.js Applications</h3>
+                <p className="platform-card-desc">
+                  Ideal for high-growth tech startups, SaaS landing platforms, and enterprise digital products demanding peak Core Web Vitals speed.
+                </p>
+                <ul className="platform-features-list">
+                  <li className="platform-feature-item"><Check size={14} /><span>Sub-700ms LCP on global edge CDN</span></li>
+                  <li className="platform-feature-item"><Check size={14} /><span>Automated SEO schema &amp; OpenGraph</span></li>
+                  <li className="platform-feature-item"><Check size={14} /><span>Headless CMS integrations</span></li>
+                </ul>
+              </div>
+              <Link href="/contact" className="platform-card-cta">
+                <span>Inquire About Next.js</span>
+                <ArrowRight size={13} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Bottom Full-Width Conversion CTA */}
       <section className="section-cta-banner">
         <div className="rc-container">
@@ -303,7 +406,7 @@ export default function ServicesPage() {
               Need a Customized Digital Solution?
             </h2>
             <p style={{ maxWidth: 640, margin: '0 auto 2.2rem auto', color: 'var(--hero-sub-color)', fontSize: '1.05rem', lineHeight: 1.7 }}>
-              Every business has distinct requirements. Tell us about your goals and our team will tailor an integrated digital package for your enterprise.
+              Every business has distinct requirements. Tell us about your goals and our team will tailor an integrated digital package across WordPress, PHP, Wix, or Next.js for your enterprise.
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: 16, flexWrap: 'wrap' }}>
               <Link
@@ -326,4 +429,3 @@ export default function ServicesPage() {
     </>
   );
 }
-

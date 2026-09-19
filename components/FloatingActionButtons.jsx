@@ -57,13 +57,13 @@ export default function FloatingActionButtons() {
         onClick={scrollToTop}
         className={`corner-btn corner-btn-scrolltop ${showScrollTop ? 'is-visible' : 'is-hidden'}`}
         aria-label="Scroll back to top"
-        title={`Scroll to top (${Math.round(scrollProgress)}%)`}
+        title="Back to Top"
         tabIndex={showScrollTop ? 0 : -1}
       >
         <svg
           className="scroll-progress-ring"
-          width="48"
-          height="48"
+          width="100%"
+          height="100%"
           viewBox="0 0 48 48"
           aria-hidden="true"
         >
@@ -91,7 +91,7 @@ export default function FloatingActionButtons() {
         </svg>
 
         <ArrowUp className="corner-btn-icon corner-icon-arrow" size={20} strokeWidth={2.4} />
-        <span className="corner-btn-tooltip">Back to Top ({Math.round(scrollProgress)}%)</span>
+        <span className="corner-btn-tooltip">Back to Top</span>
       </button>
 
       {/* 2. WHATSAPP BUTTON (always accessible) */}

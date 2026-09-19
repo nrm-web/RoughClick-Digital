@@ -15,7 +15,7 @@ export const BRAND_CONFIG = {
   hero: {
     headlineStart: "Turning Ideas Into",
     headlineAccent: "Digital Experiences",
-    subcopy: "From websites and custom applications to social media and business presence, we create purposeful digital experiences around your business.",
+    subcopy: "From custom WordPress and robust PHP systems to modern Next.js applications, Wix solutions, and complete social presence—we engineer purposeful digital platforms tailored to your business.",
     primaryCTA: {
       label: "Let's Build Something",
       href: "/contact"
@@ -29,85 +29,85 @@ export const BRAND_CONFIG = {
   about: {
     badge: "About RoughClick Digital",
     heading: "Purposeful Digital Experiences Built Around Your Business",
-    mainText: "RoughClick Digital is the digital branch of RoughClick, turning ideas into purposeful digital experiences for businesses.",
-    supportingText: "We help businesses build, improve and manage their online presence through websites, social media and business profile solutions."
+    mainText: "RoughClick Digital is the digital engineering and creative branch of RoughClick, turning ideas into purposeful, high-performing digital experiences for businesses worldwide.",
+    supportingText: "We help businesses build, modernize, and scale their online footprint through custom WordPress development, bespoke PHP web applications, fast Wix solutions, sub-second Next.js platforms, and comprehensive local SEO and social media presence."
   },
 
   whyChooseUs: [
     {
       icon: "Target",
       title: "Strategy First",
-      desc: "Understand the business before building the solution."
+      desc: "We analyze your business workflow, target market, and budget to select the right platform—whether WordPress, Custom PHP, Wix, or Next.js."
     },
     {
       icon: "Lightbulb",
-      title: "Creative Thinking",
-      desc: "Create digital experiences that are clear, useful and engaging."
+      title: "Clean Architecture",
+      desc: "Zero template bloat. We write clean, semantic code with sub-second speeds, structured SEO schema, and fluid mobile responsiveness."
     },
     {
       icon: "ShieldCheck",
       title: "Reliable Support",
-      desc: "Continued support when your business needs it."
+      desc: "Dependable maintenance, security monitoring, CMS updates, and rapid turnaround for ongoing business revisions."
     },
     {
       icon: "TrendingUp",
-      title: "Results Focused",
-      desc: "Build with purpose and measurable business goals in mind."
+      title: "Results & SEO Focused",
+      desc: "Engineered with measurable commercial goals: organic Google search visibility, high conversion rates, and seamless user journeys."
     }
   ],
 
   approach: [
     {
       step: "01",
-      name: "Understand",
-      desc: "We learn about your business, goals and audience."
+      name: "Understand & Scope",
+      desc: "We analyze your operational needs, audience, and content requirements to recommend the optimal platform."
     },
     {
       step: "02",
-      name: "Create",
-      desc: "We design and build with purpose and creativity."
+      name: "Architect & Build",
+      desc: "We develop with clean, modular code—whether custom WordPress themes, PHP databases, or Next.js frontends."
     },
     {
       step: "03",
-      name: "Launch",
-      desc: "We ensure a smooth and reliable launch."
+      name: "Optimize & Launch",
+      desc: "Rigorous testing for mobile responsiveness, Core Web Vitals, local SEO schema, and secure deployment."
     },
     {
       step: "04",
-      name: "Support",
-      desc: "We stay with you as your digital presence evolves."
+      name: "Maintain & Scale",
+      desc: "Ongoing support, channel synchronization, and continuous performance tuning as your business expands."
     }
   ],
 
-  // Neutral clearly marked project placeholders
+  // Representative multi-platform project showcase
   featuredWork: [
     {
       id: "project-1",
-      category: "Website Development",
-      title: "Corporate Web Platform",
-      badge: "Website Development",
+      category: "WordPress & WooCommerce",
+      title: "Bespoke Corporate WordPress & Storefront",
+      badge: "Custom WordPress",
       frameType: "Website Frame",
-      desc: "High-performance corporate web presence with clean information architecture and sub-second page rendering."
+      desc: "ACF Pro custom theme with zero commercial plugin bloat, custom post types, WooCommerce checkout, and sub-second page loads."
     },
     {
       id: "project-2",
-      category: "Custom Application",
-      title: "Operations & Analytics Portal",
-      badge: "Custom Application",
+      category: "Custom PHP Application",
+      title: "Enterprise Operations & Quotation Portal",
+      badge: "Custom PHP / MySQL",
       frameType: "Application Frame",
-      desc: "Tailored business web application featuring real-time data queues and role-based workflows."
+      desc: "Tailored PHP 8+ database platform featuring real-time quotation generation, multi-role user permissions, and automated client invoicing."
     },
     {
       id: "project-3",
-      category: "Social Media Content",
-      title: "Digital Brand Visual System",
-      badge: "Social Media Content",
-      frameType: "Content Frame",
-      desc: "Multi-channel visual storytelling system with cohesive promotional post layouts and motion assets."
+      category: "Next.js Web Engineering",
+      title: "High-Performance Edge Platform",
+      badge: "Next.js 15 / React 19",
+      frameType: "Website Frame",
+      desc: "Server-side rendered corporate digital presence delivering sub-700ms LCP speeds, automated SEO metadata, and fluid interactive animations."
     }
   ],
 
-  // Verified Placeholders
+  // Contact details
   contact: {
     city: "Coimbatore",
     officeLocation: "Coimbatore, Tamil Nadu, India",
@@ -123,9 +123,10 @@ export const BRAND_CONFIG = {
   },
 
   socialLinks: [
-    { platform: "LinkedIn", href: "#", placeholder: "[LinkedIn Profile]" },
-    { platform: "Instagram", href: "#", placeholder: "[Instagram Profile]" },
-    { platform: "Twitter / X", href: "#", placeholder: "[X Profile]" }
+    { platform: "LinkedIn", href: "https://linkedin.com", placeholder: "LinkedIn Profile" },
+    { platform: "Instagram", href: "https://instagram.com", placeholder: "Instagram Profile" },
+    { platform: "Facebook", href: "https://facebook.com", placeholder: "Facebook Page" },
+    { platform: "YouTube", href: "https://youtube.com", placeholder: "YouTube Channel" }
   ],
 
   copyrightYear: 2026
