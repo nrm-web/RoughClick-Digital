@@ -3,8 +3,13 @@ import { NextResponse } from 'next/server';
 export function middleware(request) {
   const { pathname } = request.nextUrl;
 
-  // Protect /admin-blog and any subpaths, allowing /admin-blog/login to pass through
-  if (pathname.startsWith('/admin-blog') && pathname !== '/admin-blog/login') {
+  // Protect /admin-blog, /admin/inquiries, and /admin-inquiries (allowing /admin-blog/login to pass through)
+  const isProtectedAdminRoute =
+    (pathname.startsWith('/admin-blog') && pathname !== '/admin-blog/login') ||
+    pathname.startsWith('/admin/inquiries') ||
+    pathname.startsWith('/admin-inquiries');
+
+  if (isProtectedAdminRoute) {
     const sessionCookie = request.cookies.get('rc_admin_session')?.value;
 
     if (!sessionCookie) {
@@ -18,5 +23,9 @@ export function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/admin-blog/:path*']
+  matcher: [
+    '/admin-blog/:path*',
+    '/admin/inquiries/:path*',
+    '/admin-inquiries/:path*'
+  ]
 };

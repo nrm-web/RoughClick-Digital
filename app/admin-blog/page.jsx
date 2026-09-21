@@ -28,6 +28,7 @@ import {
   Check,
   Camera,
   UploadCloud,
+  Inbox,
   X
 } from 'lucide-react';
 
@@ -515,6 +516,28 @@ export default function AdminBlogPage() {
               <span>Agentic Co-Pilot</span>
             </button>
           </div>
+
+          <Link
+            href="/admin/inquiries"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
+              padding: '7px 13px',
+              fontSize: '0.82rem',
+              backgroundColor: 'rgba(0, 210, 160, 0.1)',
+              border: '1px solid rgba(0, 210, 160, 0.28)',
+              borderRadius: 8,
+              color: 'var(--rc-teal-accent)',
+              textDecoration: 'none',
+              fontWeight: 600,
+              transition: 'all 0.2s ease'
+            }}
+            title="View customer inquiries & WhatsApp leads"
+          >
+            <Inbox size={15} />
+            <span>Inquiries</span>
+          </Link>
 
           <button
             onClick={handleNewPost}
