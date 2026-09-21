@@ -199,12 +199,13 @@ export default function ContactForm() {
           }}>
             <div>
               <label htmlFor="phone" style={{ display: 'block', fontSize: '0.84rem', fontWeight: 600, marginBottom: 6, color: 'var(--text-primary)' }}>
-                Phone Number
+                Phone Number <span style={{ color: 'var(--rc-teal-accent)' }}>*</span>
               </label>
               <input
                 type="tel"
                 id="phone"
                 name="phone"
+                required
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder="Your phone number"

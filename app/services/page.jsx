@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { SERVICE_CATEGORIES } from '@/data/services';
+import { StartProjectButton, DiscussProjectButton } from '@/components/QuickBookingModal';
 import { ArrowRight, CheckCircle, Globe, Layers, Share2, RefreshCw, Check, Layout, Code, Sparkles, Zap } from 'lucide-react';
 
 export const metadata = {
@@ -276,14 +277,14 @@ export default function ServicesPage() {
                     <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
                       Ready to get started with <strong>{category.title}</strong>?
                     </span>
-                    <Link
-                      href="/contact"
+                    <DiscussProjectButton
+                      service={category.title}
                       className="btn-modern-primary"
                       style={{ fontSize: '0.88rem', padding: '10px 22px' }}
                     >
                       <span>Discuss Your Project</span>
                       <ArrowRight size={15} />
-                    </Link>
+                    </DiscussProjectButton>
                   </div>
                 </div>
               );
@@ -409,13 +410,12 @@ export default function ServicesPage() {
               Every business has distinct requirements. Tell us about your goals and our team will tailor an integrated digital package across WordPress, PHP, Wix, or Next.js for your enterprise.
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: 16, flexWrap: 'wrap' }}>
-              <Link
-                href="/contact"
+              <StartProjectButton
                 className="btn-pill-cyan"
               >
                 <span>Start Your Project</span>
                 <ArrowRight size={15} />
-              </Link>
+              </StartProjectButton>
               <Link
                 href="/blog"
                 className="btn-pill-outline"

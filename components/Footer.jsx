@@ -30,7 +30,15 @@ export default function Footer() {
         <div className="footer-columns-grid">
           {/* Column 1: Brand & Logo */}
           <div>
-            <Link href="/" aria-label="RoughClick Digital Home">
+            <Link
+              href="/"
+              aria-label="RoughClick Digital Home"
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  window.dispatchEvent(new CustomEvent('rc-trigger-preloader'));
+                }
+              }}
+            >
               <img
                 src="/brand/roughclick-modern-dark.svg"
                 alt="RoughClick Digital"

@@ -11,21 +11,24 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Name is required' }, { status: 400 });
     }
     if (!email || !email.trim()) {
-      return NextResponse.json({ error: 'Email is required' }, { status: 400 });
+      return NextResponse.json({ error: 'Email address is required' }, { status: 400 });
     }
-    if (!message || !message.trim()) {
-      return NextResponse.json({ error: 'Message is required' }, { status: 400 });
+    if (!phone || !phone.trim()) {
+      return NextResponse.json({ error: 'Phone number is required' }, { status: 400 });
     }
+
+    const cleanEmail = (email && email.trim()) ? email.trim() : `${(phone || 'lead').replace(/\D/g, '')}@whatsapp.booking`;
+    const cleanMessage = (message && message.trim()) ? message.trim() : `Quick WhatsApp Booking Request. Mobile: ${phone || 'Not provided'}`;
 
     // Save inquiry to persistent storage
     const inquiry = await saveInquiry({
       name: name.trim(),
-      email: email.trim(),
+      email: cleanEmail,
       phone: (phone || '').trim(),
       company: (company || '').trim(),
       service: service || 'Website Services',
-      message: message.trim(),
-      source: 'Website Contact Page'
+      message: cleanMessage,
+      source: body.source || ((email && email.includes('@whatsapp.booking')) ? 'WhatsApp Quick Booking' : 'Website Contact Page')
     });
 
     // Format WhatsApp direct message

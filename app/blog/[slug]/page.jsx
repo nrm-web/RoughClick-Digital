@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { getPostBySlug, getPublishedPosts } from '@/lib/db';
 import ReadingProgressBar from '@/components/ReadingProgressBar';
 import ArticleShareBar from '@/components/ArticleShareBar';
+import { StartProjectButton } from '@/components/QuickBookingModal';
 import {
   ArrowLeft,
   Clock,
@@ -450,10 +451,13 @@ export default async function BlogArticlePage({ params }) {
               Discuss your web performance, local profile visibility, or custom digital platform directly with RoughClick Digital engineers.
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
-              <Link href="/contact" className="btn-modern-primary" style={{ padding: '12px 22px', fontSize: '0.9rem' }}>
+              <StartProjectButton
+                className="btn-modern-primary"
+                style={{ padding: '12px 22px', fontSize: '0.9rem' }}
+              >
                 <span>Start Your Project</span>
                 <ArrowRight size={15} />
-              </Link>
+              </StartProjectButton>
               <a
                 href="https://wa.me/916379166158?text=Hello%20RoughClick%20Digital,%20I%20read%20your%20perspective%20and%20would%20like%20to%20discuss%20a%20project"
                 target="_blank"

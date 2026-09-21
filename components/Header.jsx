@@ -46,7 +46,16 @@ export default function Header() {
       <header className={`mockup-header ${isScrolled ? 'scrolled' : ''}`}>
         <div className="rc-container header-flex-wrap">
           {/* Brand Logo & Name — Theme Aware: Modern in Light Mode, Luxury in Dark Mode */}
-          <Link href="/" className="header-brand-logo" aria-label="RoughClick Digital">
+          <Link
+            href="/"
+            className="header-brand-logo"
+            aria-label="RoughClick Digital"
+            onClick={() => {
+              if (typeof window !== 'undefined') {
+                window.dispatchEvent(new CustomEvent('rc-trigger-preloader'));
+              }
+            }}
+          >
             <div className="header-logo-image-box">
               <img
                 src="/brand/roughclick-modern-light.svg"
@@ -144,7 +153,17 @@ export default function Header() {
           >
             <div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 28 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <Link
+                  href="/"
+                  aria-label="RoughClick Digital"
+                  onClick={() => {
+                    toggleMobile(false);
+                    if (typeof window !== 'undefined') {
+                      window.dispatchEvent(new CustomEvent('rc-trigger-preloader'));
+                    }
+                  }}
+                  style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}
+                >
                   <img
                     src="/brand/roughclick-modern-light.svg"
                     alt="RoughClick Digital"
@@ -157,7 +176,7 @@ export default function Header() {
                     className="logo-concept-luxury"
                     onError={(e) => { e.currentTarget.src = '/brand/roughclick-luxury-dark.png'; }}
                   />
-                </div>
+                </Link>
                 <button
                   onClick={() => toggleMobile(false)}
                   style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-heading)' }}

@@ -1,5 +1,7 @@
 import '@/styles/globals.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { InquiryModalProvider } from '@/components/QuickBookingModal';
+import BrandPreloader from '@/components/BrandPreloader';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import FloatingActionButtons from '@/components/FloatingActionButtons';
@@ -44,15 +46,18 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
+        <BrandPreloader />
         <ThemeProvider>
-          <ScrollAnimationProvider>
-            <Header />
-            <main id="main-content" style={{ minHeight: '80vh' }}>
-              {children}
-            </main>
-            <Footer />
-            <FloatingActionButtons />
-          </ScrollAnimationProvider>
+          <InquiryModalProvider>
+            <ScrollAnimationProvider>
+              <Header />
+              <main id="main-content" style={{ minHeight: '80vh' }}>
+                {children}
+              </main>
+              <Footer />
+              <FloatingActionButtons />
+            </ScrollAnimationProvider>
+          </InquiryModalProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -5559,6 +5559,20 @@ a {
   .hero-metrics-strip {
     gap: 20px;
   }
+  .editorial-cta-trust {
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    letter-spacing: 0.07em;
+  }
+  .editorial-cta-trust .trust-dot {
+    display: block;
+    color: #00D2A0 !important;
+    opacity: 0.85;
+    font-size: 0.95rem;
+    line-height: 1;
+  }
 }
 
 /* ==========================================================================
@@ -5907,4 +5921,769 @@ a {
   }
 }
 
+/* ==========================================================================
+   PROJECT INQUIRY FORM POPUP MODAL
+   ========================================================================== */
+.inquiry-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: modalFadeIn 0.2s ease-out;
+}
 
+.inquiry-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-card);
+  border-radius: 18px;
+  padding: clamp(24px, 4vw, 36px);
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.45);
+  animation: modalCardPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--text-primary);
+  box-sizing: border-box;
+}
+
+.inquiry-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  z-index: 2;
+}
+
+.inquiry-modal-close:hover {
+  background-color: var(--border-subtle);
+  color: var(--text-primary);
+  transform: scale(1.05);
+}
+
+.inquiry-modal-header {
+  margin-bottom: 22px;
+  padding-right: 32px;
+}
+
+.inquiry-modal-title {
+  font-family: var(--font-heading);
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--text-heading);
+  margin: 0 0 6px 0;
+  line-height: 1.25;
+}
+
+.inquiry-modal-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.inquiry-modal-error {
+  background-color: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.86rem;
+  margin-bottom: 16px;
+}
+
+.inquiry-modal-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.inquiry-form-group {
+  margin-bottom: 16px;
+}
+
+.inquiry-form-label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-heading);
+  margin-bottom: 6px;
+}
+
+.inquiry-form-label .req-star {
+  color: var(--rc-teal-accent, #00D2A0);
+  margin-left: 2px;
+}
+
+.inquiry-form-input,
+.inquiry-form-select,
+.inquiry-form-textarea {
+  width: 100%;
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 12px 14px;
+  color: var(--text-primary);
+  font-size: 0.92rem;
+  font-family: inherit;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.inquiry-form-input::placeholder,
+.inquiry-form-textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.75;
+}
+
+.inquiry-form-input:focus,
+.inquiry-form-select:focus,
+.inquiry-form-textarea:focus {
+  border-color: var(--color-accent, #00D2A0);
+  box-shadow: 0 0 0 3px rgba(0, 210, 160, 0.18);
+}
+
+.inquiry-form-select {
+  cursor: pointer;
+  appearance: auto;
+}
+
+.inquiry-form-textarea {
+  resize: vertical;
+  min-height: 96px;
+  line-height: 1.55;
+}
+
+.inquiry-submit-btn {
+  width: 100%;
+  background-color: var(--color-accent, #00D2A0);
+  color: #0b1329;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 24px;
+  font-family: var(--font-heading);
+  font-size: 0.98rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: filter 0.15s ease, transform 0.15s ease;
+  box-shadow: 0 4px 16px rgba(0, 210, 160, 0.25);
+}
+
+.inquiry-submit-btn:hover:not(:disabled) {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.inquiry-submit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.inquiry-modal-success {
+  text-align: center;
+  padding: 24px 12px;
+}
+
+.inquiry-modal-success .success-icon {
+  color: var(--rc-teal-accent, #00D2A0);
+  margin: 0 auto 14px auto;
+}
+
+.inquiry-modal-success .success-title {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--text-heading);
+  margin-bottom: 8px;
+}
+
+.inquiry-modal-success .success-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.inquiry-whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #25D366;
+  color: #ffffff;
+  padding: 13px 26px;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.94rem;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+  transition: all 0.2s ease;
+}
+
+.inquiry-whatsapp-btn:hover {
+  background-color: #20ba59;
+  transform: translateY(-1px);
+}
+
+.inquiry-close-btn {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  border-radius: 8px;
+  padding: 9px 22px;
+  cursor: pointer;
+  font-size: 0.86rem;
+  font-weight: 600;
+  margin-top: 14px;
+  transition: all 0.2s ease;
+}
+
+.inquiry-close-btn:hover {
+  background-color: var(--bg-subtle);
+  color: var(--text-primary);
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalCardPop {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ==========================================================================
+   QUICK BOOKING MODAL (SCHEDULE DISCOVERY CALL VIA WHATSAPP)
+   ========================================================================== */
+.quick-booking-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: qbOverlayFadeIn 0.2s ease-out;
+}
+
+.quick-booking-card {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  background-color: #1f1c19;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 28px;
+  padding: clamp(26px, 5vw, 34px);
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  animation: qbCardPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #ffffff;
+  box-sizing: border-box;
+}
+
+.quick-booking-close {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+  z-index: 2;
+}
+
+.quick-booking-close:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+.quick-booking-header {
+  margin-bottom: 22px;
+}
+
+.quick-booking-eyebrow {
+  font-family: var(--font-heading);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #d97706;
+  margin-bottom: 6px;
+}
+
+.quick-booking-title {
+  font-family: var(--font-heading);
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+  line-height: 1.2;
+}
+
+.quick-booking-subtitle {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.quick-booking-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.quick-booking-group {
+  margin-bottom: 16px;
+}
+
+.quick-booking-label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.quick-booking-label .req-star {
+  color: #ffffff;
+  margin-left: 2px;
+}
+
+.quick-booking-input {
+  width: 100%;
+  background-color: #12100e;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 14px;
+  padding: 13px 18px;
+  color: #ffffff;
+  font-size: 0.94rem;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  font-family: inherit;
+}
+
+.quick-booking-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.quick-booking-input:focus {
+  border-color: #4a7bb0;
+  box-shadow: 0 0 0 3px rgba(74, 123, 176, 0.25);
+}
+
+.quick-booking-date-wrapper {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+}
+
+.quick-booking-date-wrapper .date-input {
+  padding-right: 46px;
+  cursor: pointer;
+  color-scheme: dark;
+}
+
+.quick-booking-date-wrapper .date-input::-webkit-calendar-picker-indicator {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.quick-booking-date-wrapper .calendar-icon-amber {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #d97706;
+  pointer-events: none;
+}
+
+.quick-booking-submit-btn {
+  width: 100%;
+  background-color: #005e4d;
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  padding: 15px 24px;
+  font-family: var(--font-heading);
+  font-size: 1.02rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  margin-top: 18px;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+  box-shadow: none;
+}
+
+.quick-booking-submit-btn:hover {
+  background-color: #006f5c;
+  transform: translateY(-1px);
+}
+
+.quick-booking-submit-btn:active {
+  transform: translateY(0);
+}
+
+.quick-booking-footer-note {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  margin-top: 14px;
+}
+
+.quick-booking-success {
+  text-align: center;
+  padding: 24px 8px;
+}
+
+.quick-booking-success .success-check-icon {
+  color: #00bba7;
+  margin: 0 auto 16px auto;
+}
+
+.quick-booking-success .success-title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.quick-booking-success .success-desc {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.55;
+  margin-bottom: 22px;
+}
+
+.quick-booking-cancel-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.7);
+  border-radius: 9999px;
+  padding: 10px 24px;
+  margin-top: 14px;
+  cursor: pointer;
+  font-size: 0.86rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.quick-booking-cancel-btn:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+@keyframes qbOverlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes qbCardPop {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ==========================================================================
+   ROUGHCLICK DIGITAL - EDITORIAL BRAND PRELOADER
+   ========================================================================== */
+
+.brand-preloader-root {
+  position: fixed;
+  inset: 0;
+  z-index: 9999999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 210, 160, 0.16) 0%, transparent 60%),
+              linear-gradient(145deg, #070D18, #03070D 75%);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.45s cubic-bezier(0.2, 0.85, 0.25, 1),
+              visibility 0.45s cubic-bezier(0.2, 0.85, 0.25, 1);
+}
+
+.brand-preloader-root.is-exiting {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.brand-preloader-close {
+  position: fixed;
+  top: 28px;
+  right: 28px;
+  z-index: 1000000;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  background: rgba(11, 19, 43, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+.brand-preloader-close:hover,
+.brand-preloader-close:focus-visible {
+  border-color: #00D2A0;
+  background: rgba(0, 210, 160, 0.2);
+  color: #00D2A0;
+  transform: scale(1.08);
+}
+
+.brand-preloader-art {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 2;
+  transform-origin: center center;
+  animation: 1.15s cubic-bezier(0.2, 0.85, 0.25, 1) 0s 1 normal both running brand-preloader-reveal;
+}
+
+/* Outer Orbit & Halo Rings */
+.brand-preloader-badge-orbit {
+  position: relative;
+  width: min(76vw, 290px);
+  height: min(76vw, 290px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-preloader-badge-orbit::before {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  border-radius: 50%;
+  border: 1px dashed rgba(0, 210, 160, 0.32);
+  animation: 26s linear infinite brand-preloader-spin;
+  pointer-events: none;
+}
+
+.brand-preloader-badge-orbit::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 210, 160, 0.22);
+  pointer-events: none;
+}
+
+.brand-preloader-badge-halo {
+  position: absolute;
+  inset: -28px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 210, 160, 0.32) 0%, transparent 70%);
+  filter: blur(22px);
+  animation: 1.6s ease-in-out infinite alternate brand-emblem-glow;
+  pointer-events: none;
+}
+
+/* Circular Disk */
+.brand-preloader-badge-disk {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #0B1728 0%, #040810 100%);
+  border: 2px solid rgba(0, 210, 160, 0.45);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.8),
+              0 0 35px rgba(0, 210, 160, 0.22),
+              inset 0 0 30px rgba(0, 210, 160, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+/* Conic Sheen rotating over disk */
+.brand-preloader-badge-sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0deg, transparent 75%, rgba(0, 210, 160, 0.38) 85%, transparent 95%);
+  animation: 1.8s ease-out 0.35s 1 normal both running brand-preloader-light-sweep;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.brand-preloader-logo-img {
+  width: min(50vw, 185px);
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 20px rgba(0, 210, 160, 0.4));
+  position: relative;
+  z-index: 2;
+}
+
+.brand-preloader-subtitle {
+  margin-top: 22px;
+  font-family: var(--font-body, sans-serif);
+  font-size: clamp(0.72rem, 1.8vw, 0.84rem);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+  animation: 0.6s cubic-bezier(0.2, 0.85, 0.25, 1) 0.5s 1 normal both running brand-preloader-title-rise;
+}
+
+.brand-preloader-progress-track {
+  margin-top: 18px;
+  width: 150px;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  position: relative;
+}
+
+.brand-preloader-progress-bar {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #00D2A0, #00F0FF);
+  width: 0%;
+  animation: calc(var(--preloader-duration, 1400ms) - 200ms) cubic-bezier(0.4, 0, 0.2, 1) 0.12s 1 normal both running brand-preloader-bar-fill;
+}
+
+@keyframes brand-preloader-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes brand-preloader-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.88);
+    filter: blur(8px);
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.02);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes brand-preloader-light-sweep {
+  0% {
+    opacity: 0;
+    transform: rotate(-70deg);
+  }
+  30% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(290deg);
+  }
+}
+
+@keyframes brand-preloader-title-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes brand-preloader-bar-fill {
+  0% {
+    width: 0%;
+  }
+  75% {
+    width: 80%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes brand-emblem-glow {
+  0% {
+    opacity: 0.45;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 0.85;
+    transform: scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-preloader-root {
+    display: none !important;
+  }
+}

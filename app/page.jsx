@@ -5,6 +5,7 @@ import HeroParticles from '@/components/HeroParticles';
 import CapabilitiesInspector from '@/components/CapabilitiesInspector';
 import AgencyTruthComparison from '@/components/AgencyTruthComparison';
 import ClientFaqAccordion from '@/components/ClientFaqAccordion';
+import { StartProjectButton, ScheduleCallButton } from '@/components/QuickBookingModal';
 
 export const metadata = {
   title: 'RoughClick Digital | WordPress, Custom PHP, Wix & Next.js Web Development Agency',
@@ -41,10 +42,10 @@ export default function HomePage() {
               </p>
 
               <div className="hero-btn-group">
-                <Link href="/contact" className="btn-pill-cyan">
+                <StartProjectButton className="btn-pill-cyan">
                   <span>Start Your Project</span>
                   <ArrowRight size={16} />
-                </Link>
+                </StartProjectButton>
                 <Link href="/services" className="btn-pill-secondary">
                   <span>Explore Capabilities</span>
                 </Link>
@@ -547,10 +548,10 @@ export default function HomePage() {
               No high-pressure sales reps. You will speak directly with a lead digital engineer to audit your current platform, map technical scope, and provide a clear milestone roadmap.
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 24 }}>
-              <Link href="/contact" className="btn-pill-cyan">
+              <ScheduleCallButton className="btn-pill-cyan" service="Discovery Consultation">
                 <span>Schedule Discovery Call</span>
                 <ArrowRight size={16} />
-              </Link>
+              </ScheduleCallButton>
             </div>
             <div className="editorial-cta-trust" style={{ color: 'rgba(255, 255, 255, 0.65)' }}>
               <span>Direct Engineer Access</span>
