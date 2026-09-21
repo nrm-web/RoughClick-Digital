@@ -80,6 +80,11 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   className={`header-nav-link ${isActive ? 'active' : ''}`}
+                  onClick={() => {
+                    if (typeof window !== 'undefined') {
+                      window.dispatchEvent(new CustomEvent('rc-trigger-preloader'));
+                    }
+                  }}
                 >
                   {link.label}
                 </Link>
@@ -105,7 +110,15 @@ export default function Header() {
             </button>
 
             {/* Primary CTA */}
-            <Link href="/contact" className="btn-header-pill">
+            <Link
+              href="/contact"
+              className="btn-header-pill"
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  window.dispatchEvent(new CustomEvent('rc-trigger-preloader'));
+                }
+              }}
+            >
               <span>Let's Build Something</span>
               <ArrowRight size={15} />
             </Link>
@@ -208,6 +221,12 @@ export default function Header() {
                   <Link
                     key={link.href}
                     href={link.href}
+                    onClick={() => {
+                      toggleMobile(false);
+                      if (typeof window !== 'undefined') {
+                        window.dispatchEvent(new CustomEvent('rc-trigger-preloader'));
+                      }
+                    }}
                     style={{
                       fontSize: '1.1rem',
                       fontWeight: pathname === link.href ? 800 : 600,
@@ -224,6 +243,12 @@ export default function Header() {
               <Link
                 href="/contact"
                 className="btn-header-pill"
+                onClick={() => {
+                  toggleMobile(false);
+                  if (typeof window !== 'undefined') {
+                    window.dispatchEvent(new CustomEvent('rc-trigger-preloader'));
+                  }
+                }}
                 style={{ width: '100%', justifyContent: 'center' }}
               >
                 <span>Let's Build Something</span>
