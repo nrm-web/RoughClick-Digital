@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import {
   Download,
   RefreshCw,
@@ -23,7 +24,8 @@ import {
   Users,
   Clock,
   Sparkles,
-  ArrowLeft
+  ArrowLeft,
+  LogOut
 } from 'lucide-react';
 import { SERVICE_SELECT_OPTIONS } from '@/data/services';
 
@@ -44,6 +46,7 @@ function WhatsAppIcon({ size = 16, className = '', style = {} }) {
 }
 
 export default function AdminInquiriesPage() {
+  const router = useRouter();
   const [inquiries, setInquiries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
@@ -51,6 +54,17 @@ export default function AdminInquiriesPage() {
   const [activeModalInquiry, setActiveModalInquiry] = useState(null);
   const [copiedField, setCopiedField] = useState('');
   const [deletingId, setDeletingId] = useState(null);
+
+  // Logout handler
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' });
+      router.push('/admin-blog/login');
+      router.refresh();
+    } catch (e) {
+      router.push('/admin-blog/login');
+    }
+  };
 
   // Fetch inquiries from API
   const fetchInquiries = async () => {
@@ -272,6 +286,23 @@ export default function AdminInquiriesPage() {
           >
             <span>Blog CMS</span>
           </Link>
+
+          <button
+            onClick={handleLogout}
+            className="btn-modern-secondary"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
+              padding: '10px 16px',
+              fontSize: '0.88rem',
+              cursor: 'pointer'
+            }}
+            title="Sign out of Admin Session"
+          >
+            <LogOut size={16} />
+            <span>Sign Out</span>
+          </button>
         </div>
       </div>
 
