@@ -100,9 +100,17 @@ export default function BrandPreloader() {
             <img
               src="/brand/roughclick-modern-dark.svg"
               alt="RoughClick Digital"
-              className="brand-preloader-logo-img"
+              className="brand-preloader-logo-img preloader-logo-modern"
               width={200}
               height={150}
+            />
+            <img
+              src="/brand/roughclick-luxury-dark.svg"
+              alt="RoughClick Digital"
+              className="brand-preloader-logo-img preloader-logo-luxury"
+              width={200}
+              height={150}
+              onError={(e) => { e.currentTarget.src = '/brand/roughclick-luxury-dark.png'; }}
             />
           </div>
         </div>
