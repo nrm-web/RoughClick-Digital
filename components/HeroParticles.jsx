@@ -152,11 +152,26 @@ export default function HeroParticles() {
       },
       { threshold: 0 }
     );
-    visibilityObserver.observe(canvas);
+    let idleId = null;
+    let timeoutId = null;
 
-    animationFrameId = requestAnimationFrame(animate);
+    const startParticles = () => {
+      resize();
+      createParticles();
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+      idleId = window.requestIdleCallback(startParticles, { timeout: 800 });
+    } else {
+      timeoutId = setTimeout(startParticles, 300);
+    }
 
     return () => {
+      if (idleId && typeof window !== 'undefined' && 'cancelIdleCallback' in window) {
+        window.cancelIdleCallback(idleId);
+      }
+      if (timeoutId) clearTimeout(timeoutId);
       visibilityObserver.disconnect();
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
       parent.removeEventListener('mousemove', handleMouseMove);

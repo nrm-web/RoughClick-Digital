@@ -4,9 +4,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { X } from 'lucide-react';
 
 export default function BrandPreloader() {
-  const [mounted, setMounted] = useState(true);
+  const [mounted, setMounted] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
-  const [durationMs, setDurationMs] = useState(1700);
+  const [durationMs, setDurationMs] = useState(1100);
   const [animKey, setAnimKey] = useState(1);
   const exitTimerRef = useRef(null);
   const cleanupTimerRef = useRef(null);
@@ -21,7 +21,7 @@ export default function BrandPreloader() {
     }, 420);
   };
 
-  const triggerLoader = (duration = 1700) => {
+  const triggerLoader = (duration = 1100) => {
     if (exitTimerRef.current) clearTimeout(exitTimerRef.current);
     if (cleanupTimerRef.current) clearTimeout(cleanupTimerRef.current);
     setDurationMs(duration);
@@ -40,35 +40,13 @@ export default function BrandPreloader() {
 
     const params = new URLSearchParams(window.location.search);
     const forcePreview = params.get('preloader') === '1' || params.get('loader') === '1';
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Detect Lighthouse / PageSpeed / headless audit bots to eliminate synthetic LCP penalties
-    const isAuditBot = /Lighthouse|PageSpeed|Chrome-Lighthouse|Googlebot|HeadlessChrome/i.test(navigator.userAgent);
-
-    // Skip preloader if user already saw it in this session, or if it's an audit bot or prefers reduced motion
-    let hasSeenIntro = false;
-    try {
-      hasSeenIntro = sessionStorage.getItem('rc_intro_seen') === '1';
-    } catch (_) {}
-
-    if ((isAuditBot || hasSeenIntro || prefersReducedMotion) && !forcePreview) {
-      setMounted(false);
-      document.body.style.overflow = '';
-    } else {
-      try {
-        sessionStorage.setItem('rc_intro_seen', '1');
-      } catch (_) {}
-
-      // Fast, snappy initial load (~600ms) that doesn't hold LCP hostage
-      setDurationMs(600);
-      document.body.style.overflow = 'hidden';
-      if (exitTimerRef.current) clearTimeout(exitTimerRef.current);
-      exitTimerRef.current = setTimeout(() => {
-        handleDismiss();
-      }, 600);
+    // Only run on initial load if explicitly requested via URL parameter
+    if (forcePreview) {
+      triggerLoader(1500);
     }
 
-    // Logo Click: Fast, snappy transition (~1.1s / 1100ms)
+    // Logo Click & Custom Navigation: Fast, snappy transition (~1.1s / 1100ms)
     const onTriggerPreloader = () => {
       triggerLoader(1100);
     };

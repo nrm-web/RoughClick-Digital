@@ -66,6 +66,22 @@ export default function RootLayout({ children }) {
     >
       <head>
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link
+          rel="preload"
+          as="image"
+          href="/brand/hero_option_devices_mobile.webp"
+          media="(max-width: 768px)"
+          type="image/webp"
+          fetchPriority="high"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/brand/hero_option_devices.webp"
+          media="(min-width: 769px)"
+          type="image/webp"
+          fetchPriority="high"
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `document.documentElement.setAttribute('data-theme', 'light');`
