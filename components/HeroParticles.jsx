@@ -14,9 +14,12 @@ export default function HeroParticles() {
     const ctx = canvas.getContext('2d');
     let animationFrameId;
     let particles = [];
+    const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
     const isMobile = window.innerWidth < 768;
-    const particleCount = isMobile ? 28 : 55;
-    const maxDistance = isMobile ? 85 : 125;
+    const particleCount = isMobile ? 18 : 50;
+    const maxDistance = isMobile ? 70 : 120;
 
     // Theme-driven colors: Vibrant Teal/Cyan in Light mode, Pure Luxury Gold in Dark mode
     const isDark = theme === 'dark';
@@ -34,9 +37,9 @@ export default function HeroParticles() {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.4,
-          vy: (Math.random() - 0.5) * 0.4,
-          radius: Math.random() * 2.2 + 1.2,
+          vx: (Math.random() - 0.5) * 0.35,
+          vy: (Math.random() - 0.5) * 0.35,
+          radius: Math.random() * 2.0 + 1.0,
           alpha: Math.random() * 0.45 + 0.35,
           pulseSpeed: Math.random() * 0.02 + 0.01,
           pulsePhase: Math.random() * Math.PI * 2
@@ -70,8 +73,14 @@ export default function HeroParticles() {
     parent.addEventListener('mouseleave', handleMouseLeave, { passive: true });
     window.addEventListener('resize', handleResize, { passive: true });
 
+    let isVisible = true;
     let time = 0;
     const animate = () => {
+      if (!isVisible) {
+        animationFrameId = null;
+        return;
+      }
+
       time += 0.02;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -102,10 +111,14 @@ export default function HeroParticles() {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${rgbBase}, ${clampedAlpha})`;
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = `rgba(${rgbBase}, 0.5)`;
+        if (!isMobile) {
+          ctx.shadowBlur = 6;
+          ctx.shadowColor = `rgba(${rgbBase}, 0.5)`;
+        }
         ctx.fill();
-        ctx.shadowBlur = 0; // reset blur for lines
+        if (!isMobile) {
+          ctx.shadowBlur = 0; // reset blur for lines
+        }
 
         // Connect nearby particles
         for (let j = i + 1; j < particles.length; j++) {
@@ -129,10 +142,23 @@ export default function HeroParticles() {
       animationFrameId = requestAnimationFrame(animate);
     };
 
-    animate();
+    // Pause animation when hero is offscreen to save battery and CPU cycles
+    const visibilityObserver = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible && !animationFrameId) {
+          animationFrameId = requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0 }
+    );
+    visibilityObserver.observe(canvas);
+
+    animationFrameId = requestAnimationFrame(animate);
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      visibilityObserver.disconnect();
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
       parent.removeEventListener('mousemove', handleMouseMove);
       parent.removeEventListener('mouseleave', handleMouseLeave);
       window.removeEventListener('resize', handleResize);

@@ -81,19 +81,35 @@ export default function HomePage() {
               </div>
 
               <div className="hero-visual-light-wrap">
-                <img
-                  src="/brand/hero_option_devices.jpg"
-                  alt="RoughClick Digital Ecosystem Showcase"
-                  className="hero-visual-light"
-                />
+                <picture className="hero-visual-light">
+                  <source media="(max-width: 768px)" srcSet="/brand/hero_option_devices_mobile.webp" type="image/webp" />
+                  <source srcSet="/brand/hero_option_devices.webp" type="image/webp" />
+                  <img
+                    src="/brand/hero_option_devices.webp"
+                    alt="RoughClick Digital Ecosystem Showcase"
+                    width={440}
+                    height={330}
+                    fetchPriority="high"
+                    decoding="async"
+                    className="hero-visual-img"
+                  />
+                </picture>
               </div>
 
               <div className="hero-visual-dark-wrap">
-                <img
-                  src="/brand/hero_option_devices_gold.jpg"
-                  alt="RoughClick Digital Luxury Ecosystem Showcase"
-                  className="hero-visual-dark"
-                />
+                <picture className="hero-visual-dark">
+                  <source media="(max-width: 768px)" srcSet="/brand/hero_option_devices_gold_mobile.webp" type="image/webp" />
+                  <source srcSet="/brand/hero_option_devices_gold.webp" type="image/webp" />
+                  <img
+                    src="/brand/hero_option_devices_gold.webp"
+                    alt="RoughClick Digital Luxury Ecosystem Showcase"
+                    width={440}
+                    height={330}
+                    fetchPriority="high"
+                    decoding="async"
+                    className="hero-visual-img"
+                  />
+                </picture>
               </div>
             </div>
           </div>

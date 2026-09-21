@@ -5,7 +5,7 @@
    • DARK MODE   -> CONCEPT 1: LUXURY DIGITAL (Gold, Obsidian Black, Warm Ivory)
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+/* Fonts loaded via next/font in app/layout.jsx for zero render-blocking requests */
 
 /* ==========================================================================
    THEME VARIABLES: CONCEPT 2 (MODERN DIGITAL - LIGHT MODE DEFAULT)
@@ -79,8 +79,9 @@
   --card-glow: rgba(0, 184, 156, 0.16);
 
   /* Fonts & Dimensions */
-  --font-heading: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: var(--font-montserrat), 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-accent: var(--font-pjs), 'Plus Jakarta Sans', sans-serif;
   --header-height: 76px;
   --container-max: 1260px;
 }
@@ -242,8 +243,16 @@ a {
   max-width: 440px;
   height: auto;
   border-radius: 14px;
-  object-fit: cover;
+  overflow: hidden;
   animation: heroLevitate 5s ease-in-out infinite;
+}
+
+.hero-visual-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  object-fit: cover;
 }
 
 .hero-visual-light {
