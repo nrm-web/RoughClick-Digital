@@ -6,7 +6,7 @@ import { X } from 'lucide-react';
 export default function BrandPreloader() {
   const [mounted, setMounted] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
-  const [durationMs, setDurationMs] = useState(1100);
+  const [durationMs, setDurationMs] = useState(1000);
   const [animKey, setAnimKey] = useState(1);
   const exitTimerRef = useRef(null);
   const cleanupTimerRef = useRef(null);
@@ -14,14 +14,14 @@ export default function BrandPreloader() {
   const handleDismiss = () => {
     setIsExiting(true);
     if (cleanupTimerRef.current) clearTimeout(cleanupTimerRef.current);
-    // Remove from DOM after CSS fade-out animation completes (420ms)
+    // Remove from DOM after CSS fade-out animation completes (350ms)
     cleanupTimerRef.current = setTimeout(() => {
       setMounted(false);
       document.body.style.overflow = '';
-    }, 420);
+    }, 350);
   };
 
-  const triggerLoader = (duration = 1100) => {
+  const triggerLoader = (duration = 1000) => {
     if (exitTimerRef.current) clearTimeout(exitTimerRef.current);
     if (cleanupTimerRef.current) clearTimeout(cleanupTimerRef.current);
     setDurationMs(duration);
@@ -48,15 +48,14 @@ export default function BrandPreloader() {
       /Lighthouse|PageSpeed|HeadlessChrome|Chrome-Lighthouse|Googlebot/i.test(navigator.userAgent)
     );
 
-    // For real visitors / client: Always show the preloader on page load!
+    // For real visitors / client: Show preloader on page load for 1s
     if ((!isAuditBot || forcePreview) && !prefersReducedMotion) {
-      // 700ms gives a smooth, premium brand intro without making the user wait
-      triggerLoader(700);
+      triggerLoader(1000);
     }
 
-    // Logo Click & Custom Navigation: Fast, snappy transition (~1.1s / 1100ms)
+    // Logo Click & Custom Navigation: 1s transition
     const onTriggerPreloader = () => {
-      triggerLoader(1100);
+      triggerLoader(1000);
     };
     window.addEventListener('rc-trigger-preloader', onTriggerPreloader);
 

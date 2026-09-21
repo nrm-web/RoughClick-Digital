@@ -6510,7 +6510,7 @@ a {
   text-align: center;
   z-index: 2;
   transform-origin: center center;
-  animation: 1.15s cubic-bezier(0.2, 0.85, 0.25, 1) 0s 1 normal both running brand-preloader-reveal;
+  animation: 0.85s cubic-bezier(0.2, 0.85, 0.25, 1) 0s 1 normal both running brand-preloader-reveal;
 }
 
 /* Outer Orbit & Halo Rings */
@@ -6577,7 +6577,7 @@ a {
   inset: 0;
   border-radius: 50%;
   background: conic-gradient(from 0deg, transparent 0deg, transparent 75%, rgba(0, 210, 160, 0.38) 85%, transparent 95%);
-  animation: 1.8s ease-out 0.35s 1 normal both running brand-preloader-light-sweep;
+  animation: 0.95s ease-out 0.15s 1 normal both running brand-preloader-light-sweep;
   mix-blend-mode: screen;
   pointer-events: none;
 }
@@ -6669,7 +6669,7 @@ a {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.72);
-  animation: 0.6s cubic-bezier(0.2, 0.85, 0.25, 1) 0.5s 1 normal both running brand-preloader-title-rise;
+  animation: 0.45s cubic-bezier(0.2, 0.85, 0.25, 1) 0.3s 1 normal both running brand-preloader-title-rise;
 }
 
 .brand-preloader-progress-track {
@@ -6687,7 +6687,7 @@ a {
   border-radius: 999px;
   background: linear-gradient(90deg, #00D2A0, #00F0FF);
   width: 0%;
-  animation: calc(var(--preloader-duration, 1400ms) - 200ms) cubic-bezier(0.4, 0, 0.2, 1) 0.12s 1 normal both running brand-preloader-bar-fill;
+  animation: calc(var(--preloader-duration, 1000ms) - 150ms) cubic-bezier(0.4, 0, 0.2, 1) 0.1s 1 normal both running brand-preloader-bar-fill;
 }
 
 @keyframes brand-preloader-spin {
