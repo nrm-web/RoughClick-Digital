@@ -10,15 +10,12 @@ export async function POST(request) {
     if (!name || !name.trim()) {
       return NextResponse.json({ error: 'Name is required' }, { status: 400 });
     }
-    if (!email || !email.trim()) {
-      return NextResponse.json({ error: 'Email address is required' }, { status: 400 });
-    }
     if (!phone || !phone.trim()) {
       return NextResponse.json({ error: 'Phone number is required' }, { status: 400 });
     }
 
-    const cleanEmail = (email && email.trim()) ? email.trim() : `${(phone || 'lead').replace(/\D/g, '')}@whatsapp.booking`;
-    const cleanMessage = (message && message.trim()) ? message.trim() : `Quick WhatsApp Booking Request. Mobile: ${phone || 'Not provided'}`;
+    const cleanEmail = (email && email.trim()) ? email.trim() : `${(phone || 'lead').replace(/\D/g, '')}@lead.roughclick.com`;
+    const cleanMessage = (message && message.trim()) ? message.trim() : `Direct Consultation Request. Mobile: ${phone || 'Not provided'}`;
 
     // Save inquiry to persistent storage
     const inquiry = await saveInquiry({
@@ -37,13 +34,13 @@ export async function POST(request) {
       '⚡ *New Project Inquiry - RoughClick Digital*',
       '',
       '👤 *Name*: ' + name.trim(),
-      '📧 *Email*: ' + email.trim(),
+      '📧 *Email*: ' + ((email && email.trim()) ? email.trim() : 'Not provided'),
       '📞 *Phone*: ' + (phone ? phone.trim() : 'Not provided'),
       '🏢 *Organization*: ' + (company ? company.trim() : 'Individual / Startup'),
       '🛠️ *Scope*: ' + (service || 'Website Development & Digital Presence'),
       '',
       '💬 *Message*:',
-      message.trim()
+      (message && message.trim()) ? message.trim() : 'Direct Inquiry / Not provided'
     ].join('\n');
 
     const whatsappUrl = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(whatsappText);

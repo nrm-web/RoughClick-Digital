@@ -168,13 +168,12 @@ export default function ContactForm() {
 
             <div>
               <label htmlFor="email" style={{ display: 'block', fontSize: '0.84rem', fontWeight: 600, marginBottom: 6, color: 'var(--text-primary)' }}>
-                Email Address <span style={{ color: 'var(--rc-teal-accent)' }}>*</span>
+                Email Address
               </label>
               <input
                 type="email"
                 id="email"
                 name="email"
-                required
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="jane@company.com"
@@ -277,12 +276,11 @@ export default function ContactForm() {
 
           <div style={{ marginBottom: 24 }}>
             <label htmlFor="message" style={{ display: 'block', fontSize: '0.84rem', fontWeight: 600, marginBottom: 6, color: 'var(--text-primary)' }}>
-              Message <span style={{ color: 'var(--rc-teal-accent)' }}>*</span>
+              Message
             </label>
             <textarea
               id="message"
               name="message"
-              required
               rows={5}
               value={formData.message}
               onChange={handleChange}

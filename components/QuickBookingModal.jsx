@@ -136,7 +136,7 @@ export function InquiryModalProvider({ children }) {
   // Handle Project Inquiry Submit
   const handleInquirySubmit = async (e) => {
     e.preventDefault();
-    if (!inquiryData.name.trim() || !inquiryData.email.trim() || !inquiryData.phone.trim()) return;
+    if (!inquiryData.name.trim() || !inquiryData.phone.trim()) return;
 
     setInquiryStatus({ submitting: true, submitted: false, error: null });
 
@@ -334,13 +334,12 @@ export function InquiryModalProvider({ children }) {
 
                   <div className="inquiry-form-group">
                     <label htmlFor="inquiry-email" className="inquiry-form-label">
-                      Email Address <span className="req-star">*</span>
+                      Email Address
                     </label>
                     <input
                       type="email"
                       id="inquiry-email"
                       name="email"
-                      required
                       value={inquiryData.email}
                       onChange={(e) => setInquiryData((prev) => ({ ...prev, email: e.target.value }))}
                       placeholder="jane@company.com"
@@ -425,12 +424,11 @@ export function InquiryModalProvider({ children }) {
 
                   <div className="inquiry-form-group">
                     <label htmlFor="inquiry-message" className="inquiry-form-label">
-                      Message <span className="req-star">*</span>
+                      Message
                     </label>
                     <textarea
                       id="inquiry-message"
                       name="message"
-                      required
                       rows={4}
                       value={inquiryData.message}
                       onChange={(e) => setInquiryData((prev) => ({ ...prev, message: e.target.value }))}
