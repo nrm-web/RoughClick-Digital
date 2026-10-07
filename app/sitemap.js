@@ -1,7 +1,7 @@
 import { getPublishedPosts } from '@/lib/db';
 
 export default async function sitemap() {
-  const baseUrl = 'https://roughclick.com';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://roughclick.com';
 
   const publishedPosts = await getPublishedPosts();
 
@@ -36,6 +36,12 @@ export default async function sitemap() {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7
+    },
+    {
+      url: `${baseUrl}/privacy`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.5
     },
     ...blogUrls
   ];

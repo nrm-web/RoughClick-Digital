@@ -5,8 +5,8 @@ import { StartProjectButton, DiscussProjectButton } from '@/components/QuickBook
 import { ArrowRight, CheckCircle, Globe, Layers, Share2, RefreshCw, Check, Layout, Code, Sparkles, Zap } from 'lucide-react';
 
 export const metadata = {
-  title: 'WordPress, Custom PHP, Wix & Next.js Services | RoughClick Digital',
-  description: 'Comprehensive digital engineering services: Custom WordPress development, bespoke PHP applications, Wix Studio websites, Next.js frontends, and local SEO presence.',
+  title: 'Websites, Custom Applications & Digital Services',
+  description: 'Bespoke digital engineering: High-performance websites, custom WordPress themes, PHP web applications, Wix Studio solutions, and local SEO presence.',
 };
 
 function AnimatedGlobe({ size = 24, className = '' }) {

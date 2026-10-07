@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export const metadata = {
-  title: 'Knowledge Hub & Strategic Perspectives | RoughClick Digital',
+  title: 'Knowledge Hub & Strategic Perspectives',
   description: 'Practical perspectives on modern web architecture, digital presence integration, and local business profile discoverability.',
   openGraph: {
     title: 'Knowledge Hub & Strategic Perspectives | RoughClick Digital',

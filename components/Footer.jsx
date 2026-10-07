@@ -66,6 +66,7 @@ export default function Footer() {
               <li><Link href="/services">Services</Link></li>
               <li><Link href="/blog">Blog</Link></li>
               <li><Link href="/contact">Contact</Link></li>
+              <li><Link href="/privacy">Privacy Policy</Link></li>
             </ul>
           </div>
 
@@ -137,8 +138,12 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="footer-bottom-bar">
-          <div>
-            &copy; {currentYear} {BRAND_CONFIG.name}. All rights reserved.
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+            <span>&copy; {currentYear} {BRAND_CONFIG.name}. All rights reserved.</span>
+            <span style={{ opacity: 0.5 }}>&bull;</span>
+            <Link href="/privacy" style={{ color: 'inherit', textDecoration: 'underline' }}>
+              Privacy Policy
+            </Link>
           </div>
           <div style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--footer-text)' }}>
             {BRAND_CONFIG.tagline}

@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { getPublishedPosts } from '@/lib/db';
 
 export async function GET() {
-  const baseUrl = 'https://roughclick.com';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://roughclick.com';
   const posts = await getPublishedPosts();
 
   const rssFeed = `<?xml version="1.0" encoding="UTF-8" ?>

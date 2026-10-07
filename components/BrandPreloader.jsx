@@ -21,6 +21,13 @@ export default function BrandPreloader() {
     cleanupTimerRef.current = setTimeout(() => {
       setMounted(false);
       document.body.style.overflow = '';
+      if (typeof window !== 'undefined' && window.location.hash) {
+        const id = window.location.hash.slice(1);
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
     }, 350);
   };
 

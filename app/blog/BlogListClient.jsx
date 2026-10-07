@@ -76,6 +76,7 @@ export default function BlogListClient({ initialPosts = [] }) {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search perspectives by keyword or topic..."
+                aria-label="Search perspectives by keyword or topic"
                 style={{
                   width: '100%',
                   padding: '12px 16px 12px 42px',

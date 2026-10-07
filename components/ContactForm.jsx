@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { SERVICE_SELECT_OPTIONS } from '@/data/services';
 import { Send, CheckCircle2 } from 'lucide-react';
 
@@ -22,6 +23,23 @@ export default function ContactForm() {
     error: null
   });
 
+  // Pre-select service from URL query parameter (e.g., /contact?service=custom-applications)
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const serviceParam = params.get('service');
+      if (serviceParam) {
+        const found = SERVICE_SELECT_OPTIONS.find(opt => 
+          opt.value.toLowerCase() === serviceParam.toLowerCase() ||
+          opt.label.toLowerCase().includes(serviceParam.toLowerCase())
+        );
+        if (found) {
+          setFormData(prev => ({ ...prev, service: found.value }));
+        }
+      }
+    }
+  }, []);
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -31,6 +49,21 @@ export default function ContactForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!formData.name.trim()) {
+      setStatus({ submitting: false, submitted: false, error: 'Please enter your name.' });
+      return;
+    }
+
+    if (!formData.phone.trim() && !formData.email.trim()) {
+      setStatus({
+        submitting: false,
+        submitted: false,
+        error: 'Please provide either a phone number or an email address so our engineers can follow up.'
+      });
+      return;
+    }
+
     setStatus({ submitting: true, submitted: false, error: null });
 
     try {
@@ -168,7 +201,7 @@ export default function ContactForm() {
 
             <div>
               <label htmlFor="email" style={{ display: 'block', fontSize: '0.84rem', fontWeight: 600, marginBottom: 6, color: 'var(--text-primary)' }}>
-                Email Address
+                Email Address <span style={{ fontSize: '0.76rem', color: 'var(--text-muted)', fontWeight: 400 }}>(Phone or Email required)</span>
               </label>
               <input
                 type="email"
@@ -198,16 +231,15 @@ export default function ContactForm() {
           }}>
             <div>
               <label htmlFor="phone" style={{ display: 'block', fontSize: '0.84rem', fontWeight: 600, marginBottom: 6, color: 'var(--text-primary)' }}>
-                Phone Number <span style={{ color: 'var(--rc-teal-accent)' }}>*</span>
+                Phone Number <span style={{ fontSize: '0.76rem', color: 'var(--text-muted)', fontWeight: 400 }}>(Phone or Email required)</span>
               </label>
               <input
                 type="tel"
                 id="phone"
                 name="phone"
-                required
                 value={formData.phone}
                 onChange={handleChange}
-                placeholder="Your phone number"
+                placeholder="Your mobile or WhatsApp number"
                 style={{
                   width: '100%',
                   padding: '12px 14px',
@@ -320,6 +352,19 @@ export default function ContactForm() {
               </>
             )}
           </button>
+
+          <p style={{
+            fontSize: '0.8rem',
+            color: 'var(--text-muted)',
+            marginTop: 14,
+            textAlign: 'center',
+            lineHeight: 1.5
+          }}>
+            🔒 We respect your privacy. Details are only used to respond to your project request. Read our{' '}
+            <Link href="/privacy" style={{ color: 'var(--color-accent)', textDecoration: 'underline' }}>
+              Privacy Policy
+            </Link>.
+          </p>
         </form>
       )}
     </div>

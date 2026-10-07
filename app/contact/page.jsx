@@ -20,8 +20,8 @@ function WhatsAppIcon({ size = 18, className = '', style = {} }) {
 }
 
 export const metadata = {
-  title: 'Contact RoughClick Digital | WordPress, PHP, Wix & Next.js Consultation',
-  description: 'Schedule a discovery consultation with RoughClick Digital engineers for custom WordPress development, bespoke PHP web applications, Wix Studio setups, Next.js frontends, and local SEO presence.'
+  title: 'Contact Us & Start Your Project',
+  description: 'Discuss your project with RoughClick Digital engineers. Request a consultation for bespoke websites, custom applications, and digital presence solutions.'
 };
 
 export default function ContactPage() {
@@ -102,8 +102,8 @@ export default function ContactPage() {
                       <div style={{ color: 'var(--text-muted)', marginTop: 2 }}>
                         {BRAND_CONFIG.contact.officeLocation || 'Coimbatore, Tamil Nadu, India'}
                       </div>
-                      <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                        Tamil Nadu, India
+                      <div style={{ fontSize: '0.8rem', color: 'var(--color-accent)', marginTop: 2 }}>
+                        Serving Clients Worldwide
                       </div>
                     </div>
                   </div>
@@ -205,7 +205,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Interactive Google Maps Frame Placeholder */}
+              {/* Interactive Google Maps Frame */}
               <div style={{
                 backgroundColor: 'var(--bg-card)',
                 border: '1px solid var(--border-card)',
@@ -214,27 +214,46 @@ export default function ContactPage() {
                 boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04)'
               }}>
                 <div style={{
-                  height: 190,
-                  backgroundColor: 'var(--bg-subtle)',
-                  border: '1px dashed var(--color-accent)',
+                  position: 'relative',
+                  width: '100%',
+                  height: 200,
                   borderRadius: 10,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  textAlign: 'center',
-                  padding: 20
+                  overflow: 'hidden',
+                  border: '1px solid var(--border-subtle)',
+                  backgroundColor: 'var(--bg-subtle)'
                 }}>
-                  <MapPin size={32} style={{ color: 'var(--color-accent)', marginBottom: 8 }} />
-                  <div style={{ fontWeight: 700, fontSize: '0.96rem', color: 'var(--text-heading)' }}>
-                    Interactive Google Maps Location
-                  </div>
-                  <div style={{ fontSize: '0.84rem', color: 'var(--text-muted)', marginTop: 4 }}>
+                  <iframe
+                    title="RoughClick Digital Location Map"
+                    src="https://maps.google.com/maps?q=Coimbatore,%20Tamil%20Nadu,%20India&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
+                <div style={{ marginTop: 12, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div style={{ fontSize: '0.84rem', fontWeight: 600, color: 'var(--text-heading)' }}>
                     Coimbatore, Tamil Nadu, India
                   </div>
-                  <div style={{ fontSize: '0.76rem', color: 'var(--color-accent)', marginTop: 4 }}>
-                    [{BRAND_CONFIG.contact.officeLocation || 'Coimbatore Office'}]
-                  </div>
+                  <a
+                    href="https://maps.google.com/?q=Coimbatore,+Tamil+Nadu,+India"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      fontSize: '0.82rem',
+                      color: 'var(--color-accent)',
+                      textDecoration: 'none',
+                      fontWeight: 600,
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 4
+                    }}
+                  >
+                    <span>View Map</span>
+                    <ArrowRight size={13} />
+                  </a>
                 </div>
               </div>
             </div>

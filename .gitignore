@@ -129,6 +129,7 @@ ROUGHCLICK_VECTOR_LOGOS*/
 *.pdf
 *.xlsx
 *.txt
+!public/robots.txt
 *.html
 !public/**/*.html
 *.py

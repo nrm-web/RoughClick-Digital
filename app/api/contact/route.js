@@ -8,22 +8,26 @@ export async function POST(request) {
     const { name, email, phone, company, service, message } = body;
 
     if (!name || !name.trim()) {
-      return NextResponse.json({ error: 'Name is required' }, { status: 400 });
-    }
-    if (!phone || !phone.trim()) {
-      return NextResponse.json({ error: 'Phone number is required' }, { status: 400 });
+      return NextResponse.json({ error: 'Please enter your name.' }, { status: 400 });
     }
 
-    const cleanEmail = (email && email.trim()) ? email.trim() : `${(phone || 'lead').replace(/\D/g, '')}@lead.roughclick.com`;
-    const cleanMessage = (message && message.trim()) ? message.trim() : `Direct Consultation Request. Mobile: ${phone || 'Not provided'}`;
+    const hasPhone = Boolean(phone && phone.trim());
+    const hasEmail = Boolean(email && email.trim());
+    if (!hasPhone && !hasEmail) {
+      return NextResponse.json({ error: 'Please provide either a phone number or an email address so we can reach you.' }, { status: 400 });
+    }
+
+    const cleanEmail = hasEmail ? email.trim() : `${(phone || 'lead').replace(/\D/g, '')}@lead.roughclick.com`;
+    const cleanPhone = hasPhone ? phone.trim() : 'Email provided only';
+    const cleanMessage = (message && message.trim()) ? message.trim() : `Direct Consultation Request. Reach via: ${hasPhone ? phone.trim() : email.trim()}`;
 
     // Save inquiry to persistent storage
     const inquiry = await saveInquiry({
       name: name.trim(),
       email: cleanEmail,
-      phone: (phone || '').trim(),
+      phone: cleanPhone,
       company: (company || '').trim(),
-      service: service || 'Website Services',
+      service: service || 'Website Development',
       message: cleanMessage,
       source: body.source || ((email && email.includes('@whatsapp.booking')) ? 'WhatsApp Quick Booking' : 'Website Contact Page')
     });

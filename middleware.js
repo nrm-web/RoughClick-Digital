@@ -35,9 +35,13 @@ export function middleware(request) {
 
 export const config = {
   matcher: [
+    '/admin-blog',
     '/admin-blog/:path*',
+    '/admin/inquiries',
     '/admin/inquiries/:path*',
+    '/admin-inquiries',
     '/admin-inquiries/:path*',
+    '/api/admin',
     '/api/admin/:path*'
   ]
 };

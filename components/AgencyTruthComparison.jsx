@@ -8,29 +8,29 @@ const COMPARISON_ROWS = [
     category: 'Architecture & Engineering',
     tag: '01. FOUNDATION',
     icon: Code2,
-    bloatedAgency: 'Generic WordPress themes or drag-and-drop page builders bogged down with 30+ plugins that break upon updates.',
-    roughclick: 'Clean Next.js 14 React architecture hand-crafted with zero template bloat and modular, maintainable code.'
+    bloatedAgency: 'Over-reliance on heavy multipurpose templates and unvetted plugins that degrade speed and cause maintenance instability.',
+    roughclick: 'Purpose-built architecture engineered with clean, semantic markup, modular styling, and only the plugins or dependencies your project actually requires.'
   },
   {
     category: 'Load Velocity & Core Web Vitals',
     tag: '02. PERFORMANCE',
     icon: Zap,
-    bloatedAgency: '3.5s to 5.0s load speeds on mobile; failing Google Core Web Vitals leading to lost customer inquiries.',
-    roughclick: 'Engineered for sub-0.7s instant rendering with 95+ Google Lighthouse scores and superior edge caching.'
+    bloatedAgency: 'Sluggish mobile load speeds and cumulative layout shifts that increase bounce rates and frustrate prospective customers.',
+    roughclick: 'Engineered for sub-second initial rendering, optimized Core Web Vitals benchmarks, modern asset compression, and clean responsive layouts.'
   },
   {
     category: 'Direct Team Access',
     tag: '03. COLLABORATION',
     icon: Users,
-    bloatedAgency: 'Non-technical account managers playing telephone between you and offshore junior contractors.',
-    roughclick: 'Direct communication with the lead software engineer and designer actually crafting your solution.'
+    bloatedAgency: 'Multiple non-technical intermediaries delaying feedback and distorting project requirements during development.',
+    roughclick: 'Direct communication with the technical developers and designers actively planning, coding, and launching your digital platform.'
   },
   {
-    category: 'Code Ownership & Freedom',
-    tag: '04. AUTONOMY',
+    category: 'Code Ownership & Transparency',
+    tag: '04. TRANSPARENCY',
     icon: LockOpen,
-    bloatedAgency: 'Proprietary platform lock-in, monthly hostage maintenance fees, and restricted server access.',
-    roughclick: '100% full source code and intellectual property ownership delivered directly to your private repository.'
+    bloatedAgency: 'Proprietary platform lock-in and opaque third-party accounts that make migrating or maintaining your website difficult.',
+    roughclick: 'Full client ownership of all custom source code, templates, and digital assets created. You maintain direct control over your domain, hosting, and credentials.'
   }
 ];
 
@@ -40,12 +40,12 @@ export default function AgencyTruthComparison() {
       {/* Table-Style Editorial Header (Hairline Border, Zero Box Cards) */}
       <div className="editorial-ledger-header">
         <div className="ledger-col-head typical-side">
-          <span className="ledger-head-eyebrow">INDUSTRY STATUS QUO</span>
-          <h4 className="ledger-head-title">The Bloated Agency Model</h4>
+          <span className="ledger-head-eyebrow">COMMON INDUSTRY PITFALLS</span>
+          <h4 className="ledger-head-title">Typical Project Challenges</h4>
         </div>
         <div className="ledger-col-head roughclick-side">
-          <span className="ledger-head-eyebrow accent-text">THE ROUGHCLICK DIGITAL STANDARD</span>
-          <h4 className="ledger-head-title">How We Build For You</h4>
+          <span className="ledger-head-eyebrow accent-text">THE ROUGHCLICK STANDARD</span>
+          <h4 className="ledger-head-title">Our Delivery Principles</h4>
         </div>
       </div>
 

@@ -29,8 +29,16 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   weight: ['400', '500', '600', '700', '800'],
 });
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://roughclick.com';
+
 export const metadata = {
-  metadataBase: new URL('https://roughclick.com'),
+  metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: './',
+    types: {
+      'application/rss+xml': '/feed.xml',
+    },
+  },
   title: {
     default: 'RoughClick Digital | Ideas in Motion',
     template: '%s | RoughClick Digital'
@@ -44,7 +52,7 @@ export const metadata = {
   openGraph: {
     title: 'RoughClick Digital | Ideas in Motion',
     description: 'Purposeful digital experiences around your business: websites, custom applications, social media services, and local business presence.',
-    url: 'https://roughclick.com',
+    url: SITE_URL,
     siteName: 'RoughClick Digital',
     locale: 'en_US',
     type: 'website',

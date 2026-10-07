@@ -13,11 +13,11 @@ export const BRAND_CONFIG = {
   tagline: "IDEAS IN MOTION",
   
   hero: {
-    headlineStart: "Turning Ideas Into",
-    headlineAccent: "Digital Experiences",
-    subcopy: "From custom WordPress and robust PHP systems to modern Next.js applications, Wix solutions, and complete social presence—we engineer purposeful digital platforms tailored to your business.",
+    headlineStart: "Websites and Digital Tools",
+    headlineAccent: "Built Around Your Business",
+    subcopy: "RoughClick Digital helps businesses create websites, streamline operations, and maintain a consistent online presence — from planning and design to launch and ongoing support.",
     primaryCTA: {
-      label: "Let's Build Something",
+      label: "Discuss Your Project",
       href: "/contact"
     },
     secondaryCTA: {
@@ -79,31 +79,31 @@ export const BRAND_CONFIG = {
     }
   ],
 
-  // Representative multi-platform project showcase
+  // Representative multi-platform project showcase (Architecture Demonstrations)
   featuredWork: [
     {
       id: "project-1",
       category: "WordPress & WooCommerce",
       title: "Bespoke Corporate WordPress & Storefront",
-      badge: "Custom WordPress",
+      badge: "Reference Build",
       frameType: "Website Frame",
-      desc: "ACF Pro custom theme with zero commercial plugin bloat, custom post types, WooCommerce checkout, and sub-second page loads."
+      desc: "ACF Pro custom theme with zero commercial plugin bloat, structured custom post types, WooCommerce flow, and sub-second page loads."
     },
     {
       id: "project-2",
       category: "Custom PHP Application",
-      title: "Enterprise Operations & Quotation Portal",
-      badge: "Custom PHP / MySQL",
+      title: "Operations & Quotation Workflow Portal",
+      badge: "Reference Architecture",
       frameType: "Application Frame",
-      desc: "Tailored PHP 8+ database platform featuring real-time quotation generation, multi-role user permissions, and automated client invoicing."
+      desc: "Tailored PHP 8+ database platform featuring real-time quotation generation, multi-role access controls, and automated PDF export."
     },
     {
       id: "project-3",
-      category: "Next.js Web Engineering",
-      title: "High-Performance Edge Platform",
-      badge: "Next.js 15 / React 19",
+      category: "Modern Web Engineering",
+      title: "High-Performance Digital Presence Platform",
+      badge: "Next.js / React Build",
       frameType: "Website Frame",
-      desc: "Server-side rendered corporate digital presence delivering sub-700ms LCP speeds, automated SEO metadata, and fluid interactive animations."
+      desc: "Server-rendered digital presence delivering sub-second LCP speeds, automated SEO metadata, and fluid interactive responsiveness."
     }
   ],
 

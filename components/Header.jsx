@@ -191,8 +191,11 @@ export default function Header() {
                   />
                 </Link>
                 <button
+                  type="button"
                   onClick={() => toggleMobile(false)}
                   style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-heading)' }}
+                  aria-label="Close navigation menu"
+                  title="Close menu"
                 >
                   <X size={22} />
                 </button>

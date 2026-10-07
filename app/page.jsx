@@ -34,35 +34,35 @@ export default function HomePage() {
               </div>
 
               <h1 className="hero-main-title">
-                Architecting High-Performance <span className="text-cyan">Digital Experiences</span>
+                Websites and Digital Tools <span className="text-cyan">Built Around Your Business</span>
               </h1>
 
               <p className="hero-subtext">
-                From custom WordPress and robust PHP systems to modern Next.js applications, Wix solutions, and complete social presence—we engineer purposeful digital platforms tailored to your business.
+                RoughClick Digital helps businesses create websites, streamline operations, and maintain a consistent online presence — from planning and design to launch and ongoing support.
               </p>
 
               <div className="hero-btn-group">
                 <StartProjectButton className="btn-pill-cyan">
-                  <span>Start Your Project</span>
+                  <span>Discuss Your Project</span>
                   <ArrowRight size={16} />
                 </StartProjectButton>
                 <Link href="/services" className="btn-pill-secondary">
-                  <span>Explore Capabilities</span>
+                  <span>Explore Services</span>
                 </Link>
               </div>
 
               <div className="hero-metrics-strip">
                 <div className="hero-metric-item">
-                  <div className="metric-bold">99.8%</div>
-                  <div className="metric-label">Uptime &amp; Speed Reliability</div>
-                </div>
-                <div className="hero-metric-item">
-                  <div className="metric-bold">&lt; 0.7s</div>
+                  <div className="metric-bold">Sub-Second</div>
                   <div className="metric-label">Core Web Vitals Standard</div>
                 </div>
                 <div className="hero-metric-item">
-                  <div className="metric-bold">100%</div>
-                  <div className="metric-label">In-House Engineering</div>
+                  <div className="metric-bold">Clean Code</div>
+                  <div className="metric-label">Zero Template Bloat</div>
+                </div>
+                <div className="hero-metric-item">
+                  <div className="metric-bold">Direct Access</div>
+                  <div className="metric-label">Dedicated Project Engineers</div>
                 </div>
               </div>
             </div>
@@ -71,13 +71,13 @@ export default function HomePage() {
               <div className="floating-hero-badge badge-pos-top-left" aria-hidden="true">
                 <span className="badge-pulse-indicator" />
                 <span className="badge-text-primary">Sub-Second Speed</span>
-                <span className="badge-text-secondary">&lt; 0.7s LCP Benchmark</span>
+                <span className="badge-text-secondary">Core Web Vitals Optimized</span>
               </div>
 
               <div className="floating-hero-badge badge-pos-bottom-right" aria-hidden="true">
                 <span className="badge-pulse-indicator success" />
-                <span className="badge-text-primary">99.9%</span>
-                <span className="badge-text-secondary">System Availability</span>
+                <span className="badge-text-primary">Production Ready</span>
+                <span className="badge-text-secondary">Cross-Device Tested</span>
               </div>
 
               <div className="hero-visual-light-wrap">
@@ -244,7 +244,7 @@ export default function HomePage() {
                   </li>
                   <li className="platform-feature-item">
                     <Check size={14} />
-                    <span>100% full client ownership &amp; zero licensing fees</span>
+                    <span>Full custom theme ownership &amp; client-managed hosting</span>
                   </li>
                 </ul>
               </div>
@@ -282,7 +282,7 @@ export default function HomePage() {
                   </li>
                   <li className="platform-feature-item">
                     <Check size={14} />
-                    <span>Zero per-user monthly SaaS subscription fees</span>
+                    <span>Zero recurring per-user SaaS license fees</span>
                   </li>
                 </ul>
               </div>
@@ -371,14 +371,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. THE AGENCY TRUTH: BLOATED AGENCY VS ROUGHCLICK DIGITAL */}
+      {/* 5. OUR WORKING APPROACH & STANDARDS */}
       <section className="section-truth-fluid">
         <div className="rc-container">
           <div className="editorial-section-head reveal-on-scroll">
             <span className="editorial-category-tag">04 // TRANSPARENCY &amp; STANDARDS</span>
-            <h2 className="editorial-section-title">The Agency Truth: Bloat vs. Precision</h2>
+            <h2 className="editorial-section-title">Our Working Approach &amp; Delivery Standards</h2>
             <p className="editorial-section-subtitle">
-              A transparent breakdown of why bespoke engineering and direct builder communication outperform bloated agency retainers.
+              How direct communication, clear milestones, and purposeful architecture keep your project focused, fast, and on budget.
             </p>
           </div>
 

@@ -45,18 +45,20 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const post = await getPostBySlug(params.slug);
   if (!post) {
-    return { title: 'Article Not Found | RoughClick Digital' };
+    return { title: 'Article Not Found' };
   }
 
-  const title = post.seoTitle || `${post.title} | RoughClick Digital`;
+  // Strip existing brand suffixes so the root layout template (%s | RoughClick Digital) doesn't duplicate them
+  const rawTitle = post.seoTitle || post.title;
+  const cleanTitle = rawTitle.replace(/\s*\|\s*RoughClick.*$/i, '').trim();
   const description = post.seoDescription || post.excerpt;
 
   return {
-    title,
+    title: cleanTitle,
     description,
     keywords: post.tags || [],
     openGraph: {
-      title,
+      title: `${cleanTitle} | RoughClick Digital`,
       description,
       type: 'article',
       publishedTime: post.publishedAt || post.createdAt,
@@ -66,14 +68,18 @@ export async function generateMetadata({ params }) {
 }
 
 /**
- * Format inline markdown: bold, italic, code tags
+ * Format inline markdown: bold, italic, code tags, and links
  */
 function renderFormattedInline(text) {
   if (!text) return text;
   
-  // Split on bold (**text**)
-  const parts = text.split(/(\*\*.*?\*\*)/g);
+  // Split on bold (**text**), italic (*text*), code (`text`), and markdown links [text](url)
+  const tokenRegex = /(\*\*.*?\*\*|\*[^*]+?\*|`[^`]+?`|\[.*?\]\(.*?\))/g;
+  const parts = text.split(tokenRegex);
+
   return parts.map((part, i) => {
+    if (!part) return null;
+
     if (part.startsWith('**') && part.endsWith('**')) {
       return (
         <strong key={i} style={{ color: 'var(--text-heading)', fontWeight: 700 }}>
@@ -81,7 +87,15 @@ function renderFormattedInline(text) {
         </strong>
       );
     }
-    // Handle inline code `code`
+
+    if (part.startsWith('*') && part.endsWith('*') && !part.startsWith('**')) {
+      return (
+        <em key={i} style={{ fontStyle: 'italic', color: 'var(--text-body)' }}>
+          {part.slice(1, -1)}
+        </em>
+      );
+    }
+
     if (part.startsWith('`') && part.endsWith('`')) {
       return (
         <code
@@ -92,13 +106,35 @@ function renderFormattedInline(text) {
             backgroundColor: 'var(--bg-subtle)',
             border: '1px solid var(--border-subtle)',
             fontSize: '0.88em',
-            color: 'var(--color-accent)'
+            color: 'var(--color-accent)',
+            fontFamily: 'monospace'
           }}
         >
           {part.slice(1, -1)}
         </code>
       );
     }
+
+    if (part.startsWith('[') && part.includes('](') && part.endsWith(')')) {
+      const match = part.match(/\[(.*?)\]\((.*?)\)/);
+      if (match) {
+        const linkText = match[1];
+        const linkHref = match[2];
+        const isExternal = linkHref.startsWith('http');
+        return (
+          <a
+            key={i}
+            href={linkHref}
+            target={isExternal ? '_blank' : undefined}
+            rel={isExternal ? 'noopener noreferrer' : undefined}
+            style={{ color: 'var(--color-accent)', textDecoration: 'underline', fontWeight: 600 }}
+          >
+            {linkText}
+          </a>
+        );
+      }
+    }
+
     return part;
   });
 }
@@ -107,12 +143,13 @@ export default async function BlogArticlePage({ params }) {
   const post = await getPostBySlug(params.slug);
   if (!post) notFound(); // Drafts or non-existent slugs will 404 for public visitors
 
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://roughclick.com';
   const allPublished = await getPublishedPosts();
   const relatedArticles = allPublished
     .filter((p) => p.slug !== post.slug && (p.category === post.category || post.relatedSlugs?.includes(p.slug)))
     .slice(0, 2);
 
-  // Structured Schema for Google Search Console & Rich Snippets
+  // Structured Schema for Google Search Console & Rich Snippets (Fixed logo asset path)
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -125,20 +162,20 @@ export default async function BlogArticlePage({ params }) {
     author: {
       '@type': 'Organization',
       name: post.author || 'RoughClick Editorial',
-      url: 'https://roughclick.com'
+      url: SITE_URL
     },
     publisher: {
       '@type': 'Organization',
       name: 'RoughClick Digital',
-      url: 'https://roughclick.com',
+      url: SITE_URL,
       logo: {
         '@type': 'ImageObject',
-        url: 'https://roughclick.com/roughclick-modern-light.svg'
+        url: `${SITE_URL}/brand/roughclick-modern-light.svg`
       }
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://roughclick.com/blog/${post.slug}`
+      '@id': `${SITE_URL}/blog/${post.slug}`
     }
   };
 
@@ -274,6 +311,22 @@ export default async function BlogArticlePage({ params }) {
               const trimmed = paragraph.trim();
               if (!trimmed) return null;
 
+              // Horizontal Rule (---, ***, ___)
+              if (trimmed === '---' || trimmed === '***' || trimmed === '___') {
+                return (
+                  <hr
+                    key={index}
+                    className="article-divider"
+                    style={{
+                      border: 'none',
+                      borderTop: '1px solid var(--border-subtle)',
+                      margin: '2.5rem 0'
+                    }}
+                  />
+                );
+              }
+
+              // Embedded Markdown Image
               if (trimmed.startsWith('![') && trimmed.includes('](')) {
                 const match = trimmed.match(/!\[(.*?)\]\((.*?)\)/);
                 if (match) {
@@ -308,22 +361,32 @@ export default async function BlogArticlePage({ params }) {
                 }
               }
 
+              // Heading Hierarchy: H2, H3, H4
+              if (trimmed.startsWith('#### ')) {
+                return (
+                  <h4 key={index} style={{ fontSize: '1.15rem', fontWeight: 700, margin: '1.8rem 0 0.6rem', color: 'var(--text-heading)' }}>
+                    {renderFormattedInline(trimmed.replace(/^####\s+/, ''))}
+                  </h4>
+                );
+              }
+
               if (trimmed.startsWith('### ')) {
                 return (
-                  <h3 key={index}>
-                    {trimmed.replace('### ', '')}
+                  <h3 key={index} style={{ fontSize: '1.38rem', fontWeight: 700, margin: '2.2rem 0 0.8rem', color: 'var(--text-heading)' }}>
+                    {renderFormattedInline(trimmed.replace(/^###\s+/, ''))}
                   </h3>
                 );
               }
 
               if (trimmed.startsWith('## ')) {
                 return (
-                  <h2 key={index}>
-                    {trimmed.replace('## ', '')}
+                  <h2 key={index} style={{ fontSize: '1.75rem', fontWeight: 800, margin: '2.6rem 0 1rem', color: 'var(--text-heading)' }}>
+                    {renderFormattedInline(trimmed.replace(/^##\s+/, ''))}
                   </h2>
                 );
               }
 
+              // Blockquote
               if (trimmed.startsWith('> ')) {
                 return (
                   <blockquote key={index}>
@@ -332,26 +395,106 @@ export default async function BlogArticlePage({ params }) {
                 );
               }
 
-              if (trimmed.startsWith('- ')) {
-                const items = trimmed.split('\n').map((item) => item.replace(/^- \s*/, '')).filter(Boolean);
+              // Markdown Tables
+              if (trimmed.includes('|') && trimmed.includes('\n')) {
+                const lines = trimmed.split('\n').map(l => l.trim()).filter(Boolean);
+                if (lines.length >= 2 && lines.some(l => /^\|?\s*[-:]+[-| :]*\|?$/.test(l))) {
+                  const headerLine = lines[0];
+                  const bodyLines = lines.filter((l, idx) => idx !== 0 && !/^\|?\s*[-:]+[-| :]*\|?$/.test(l));
+                  const headers = headerLine.split('|').map(c => c.trim()).filter(Boolean);
+                  const rows = bodyLines.map(row => row.split('|').map(c => c.trim()).filter(Boolean));
+                  return (
+                    <div key={index} style={{ overflowX: 'auto', margin: '2.5rem 0', borderRadius: 12, border: '1px solid var(--border-subtle)', boxShadow: '0 4px 18px rgba(0,0,0,0.03)' }}>
+                      <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
+                        <thead>
+                          <tr style={{ backgroundColor: 'var(--bg-subtle)', borderBottom: '2px solid var(--border-card)' }}>
+                            {headers.map((h, hIdx) => (
+                              <th key={hIdx} style={{ padding: '14px 16px', fontWeight: 700, color: 'var(--text-heading)' }}>
+                                {renderFormattedInline(h)}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {rows.map((row, rIdx) => (
+                            <tr key={rIdx} style={{ borderBottom: '1px solid var(--border-subtle)', backgroundColor: rIdx % 2 === 0 ? 'transparent' : 'var(--bg-subtle)' }}>
+                              {row.map((cell, cIdx) => (
+                                <td key={cIdx} style={{ padding: '12px 16px', color: 'var(--text-body)', lineHeight: 1.5 }}>
+                                  {renderFormattedInline(cell)}
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  );
+                }
+              }
+
+              // Unordered Bullet Lists (with possible leading intro sentence)
+              const rawLines = trimmed.split('\n').filter(Boolean);
+              const firstBulletIdx = rawLines.findIndex(l => /^[-*]\s+/.test(l.trim()));
+              if (firstBulletIdx !== -1) {
+                const introLines = rawLines.slice(0, firstBulletIdx);
+                const bulletLines = rawLines.slice(firstBulletIdx);
+                const bulletItems = [];
+                bulletLines.forEach(l => {
+                  const lTrim = l.trim();
+                  if (/^[-*]\s+/.test(lTrim)) {
+                    bulletItems.push(lTrim.replace(/^[-*]\s+/, ''));
+                  } else if (bulletItems.length > 0) {
+                    bulletItems[bulletItems.length - 1] += ' ' + lTrim;
+                  } else {
+                    bulletItems.push(lTrim);
+                  }
+                });
+
                 return (
-                  <ul key={index}>
-                    {items.map((it, iIdx) => (
-                      <li key={iIdx}>
-                        {renderFormattedInline(it)}
-                      </li>
-                    ))}
-                  </ul>
+                  <div key={index} style={{ margin: '1.2rem 0' }}>
+                    {introLines.length > 0 && (
+                      <p style={{ marginBottom: 12 }}>
+                        {renderFormattedInline(introLines.join(' '))}
+                      </p>
+                    )}
+                    <ul style={{ margin: '0.5rem 0', paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: 8 }}>
+                      {bulletItems.map((it, iIdx) => (
+                        <li key={iIdx} style={{ lineHeight: 1.7, color: 'var(--text-body)' }}>
+                          {renderFormattedInline(it)}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 );
               }
 
-              if (/^\d+\.\s/.test(trimmed)) {
-                const items = trimmed.split('\n').filter(Boolean);
+              // Numbered Ordered Lists (with exact badge numbers preserved & optional intro)
+              const firstNumIdx = rawLines.findIndex(l => /^\d+\.\s+/.test(l.trim()));
+              if (firstNumIdx !== -1) {
+                const introLines = rawLines.slice(0, firstNumIdx);
+                const numLines = rawLines.slice(firstNumIdx);
+                const numItems = [];
+                numLines.forEach(l => {
+                  const lTrim = l.trim();
+                  const match = lTrim.match(/^(\d+)\.\s+(.*)/);
+                  if (match) {
+                    numItems.push({ num: match[1], text: match[2] });
+                  } else if (numItems.length > 0) {
+                    numItems[numItems.length - 1].text += ' ' + lTrim;
+                  } else {
+                    numItems.push({ num: String(numItems.length + 1), text: lTrim });
+                  }
+                });
+
                 return (
-                  <div key={index} style={{ margin: '2.2rem 0', display: 'flex', flexDirection: 'column', gap: 14 }}>
-                    {items.map((it, iIdx) => {
-                      const clean = it.replace(/^\d+\.\s*/, '');
-                      return (
+                  <div key={index} style={{ margin: '2rem 0' }}>
+                    {introLines.length > 0 && (
+                      <p style={{ marginBottom: 14 }}>
+                        {renderFormattedInline(introLines.join(' '))}
+                      </p>
+                    )}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+                      {numItems.map((it, iIdx) => (
                         <div key={iIdx} style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
                           <span style={{
                             width: 26,
@@ -368,18 +511,19 @@ export default async function BlogArticlePage({ params }) {
                             flexShrink: 0,
                             marginTop: 3
                           }}>
-                            {iIdx + 1}
+                            {it.num}
                           </span>
                           <div style={{ flex: 1, lineHeight: 1.75 }}>
-                            {renderFormattedInline(clean)}
+                            {renderFormattedInline(it.text)}
                           </div>
                         </div>
-                      );
-                    })}
+                      ))}
+                    </div>
                   </div>
                 );
               }
 
+              // Standard Paragraph
               return (
                 <p key={index}>
                   {renderFormattedInline(trimmed)}

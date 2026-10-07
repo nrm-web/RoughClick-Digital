@@ -213,6 +213,7 @@ export const SERVICE_CATEGORIES = [
 ];
 
 export const SERVICE_SELECT_OPTIONS = [
+  { value: "unsure-need-advice", label: "Unsure / Need Advice / General Consultation" },
   { value: "static-website", label: "Static Website Development" },
   { value: "dynamic-website", label: "Dynamic Website Development" },
   { value: "custom-wordpress", label: "Custom WordPress & WooCommerce Development" },

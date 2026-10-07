@@ -1,8 +1,16 @@
 import { NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 import { getInquiries } from '@/lib/db';
+import { ADMIN_COOKIE_NAME, verifySessionToken } from '@/lib/auth/session';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
+
+function checkAdminAuth() {
+  const cookieStore = cookies();
+  const token = cookieStore.get(ADMIN_COOKIE_NAME)?.value;
+  return verifySessionToken(token);
+}
 
 function escapeCsvField(val) {
   if (val === null || val === undefined) return '""';
@@ -12,6 +20,13 @@ function escapeCsvField(val) {
 
 export async function GET() {
   try {
+    if (!checkAdminAuth()) {
+      return NextResponse.json(
+        { success: false, error: 'Unauthorized: Admin login required' },
+        { status: 401 }
+      );
+    }
+
     const inquiries = await getInquiries();
 
     const headers = [
