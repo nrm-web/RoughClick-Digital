@@ -75,7 +75,7 @@ export default function HomePage() {
               </div>
 
               <div className="floating-hero-badge badge-pos-bottom-right" aria-hidden="true">
-                <span className="badge-pulse-indicator success" />
+                <span className="badge-pulse-indicator" />
                 <span className="badge-text-primary">Production Ready</span>
                 <span className="badge-text-secondary">Cross-Device Tested</span>
               </div>
