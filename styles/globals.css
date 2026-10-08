@@ -4190,7 +4190,287 @@ a {
   background: var(--bg-subtle);
   color: var(--color-accent);
   border: 1px solid var(--border-card);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+              border-color 0.3s ease,
+              background-color 0.3s ease,
+              box-shadow 0.3s ease;
+  position: relative;
+  overflow: visible;
 }
+
+.editorial-platform-card:hover .platform-icon-wrap,
+.platform-icon-wrap:hover {
+  transform: translateY(-2px) scale(1.08);
+  border-color: var(--color-accent);
+  background-color: var(--color-accent-subtle);
+  box-shadow: 0 0 16px rgba(0, 210, 160, 0.25);
+}
+
+[data-theme='dark'] .editorial-platform-card:hover .platform-icon-wrap,
+[data-theme='dark'] .platform-icon-wrap:hover {
+  box-shadow: 0 0 16px rgba(201, 162, 39, 0.28);
+}
+
+/* ==========================================================================
+   ANIMATED PLATFORM ICONS (Images 1, 2, 3, 4 matched to Image 5 aesthetic)
+   ========================================================================== */
+
+.platform-animated-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.platform-animated-icon svg {
+  overflow: visible;
+  display: block;
+}
+
+/* 1. ANIMATED LAYOUT (Image 1 - WordPress & WooCommerce) */
+.icon-layout-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.anim-layout-frame {
+  transform-origin: center;
+  transition: filter 0.3s ease;
+}
+
+.anim-layout-header {
+  transform-origin: 12px 9px;
+  animation: animLayoutHeader 3.6s ease-in-out infinite;
+}
+
+.anim-layout-sidebar {
+  transform-origin: 9px 15px;
+  animation: animLayoutSidebar 3.6s ease-in-out infinite;
+}
+
+.anim-layout-block-1 {
+  transform-origin: 13px 13px;
+  animation: animLayoutBlock1 3.6s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+.anim-layout-block-2 {
+  transform-origin: 13px 17px;
+  animation: animLayoutBlock2 3.6s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+@keyframes animLayoutHeader {
+  0%, 100% { opacity: 0.85; transform: scaleX(1); }
+  50% { opacity: 1; transform: scaleX(0.96); }
+}
+
+@keyframes animLayoutSidebar {
+  0%, 100% { opacity: 0.85; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(0.92); }
+}
+
+@keyframes animLayoutBlock1 {
+  0%, 100% { transform: scaleX(1); opacity: 0.9; }
+  35% { transform: scaleX(0.35); opacity: 0.25; }
+  65% { transform: scaleX(1.1); opacity: 1; }
+}
+
+@keyframes animLayoutBlock2 {
+  0%, 100% { transform: scaleX(1); opacity: 0.85; }
+  45% { transform: scaleX(0.3); opacity: 0.2; }
+  75% { transform: scaleX(1.1); opacity: 1; }
+}
+
+.editorial-platform-card:hover .anim-layout-block-1,
+.platform-icon-wrap:hover .anim-layout-block-1 {
+  animation: animLayoutBlock1 1.8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+.editorial-platform-card:hover .anim-layout-block-2,
+.platform-icon-wrap:hover .anim-layout-block-2 {
+  animation: animLayoutBlock2 1.8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+/* 2. ANIMATED CODE (Image 2 - Custom PHP & Database Systems) */
+.icon-code-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.anim-code-left {
+  transform-origin: 5px 12px;
+  animation: animCodeBracketLeft 2.8s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+
+.anim-code-right {
+  transform-origin: 19px 12px;
+  animation: animCodeBracketRight 2.8s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+
+.anim-code-cursor {
+  transform-origin: 12px 12px;
+  animation: animCodeCursorBlink 1.4s ease-in-out infinite;
+}
+
+@keyframes animCodeBracketLeft {
+  0%, 100% { transform: translateX(0); }
+  30% { transform: translateX(-2.5px); }
+  60% { transform: translateX(0.5px); }
+  85% { transform: translateX(-1px); }
+}
+
+@keyframes animCodeBracketRight {
+  0%, 100% { transform: translateX(0); }
+  30% { transform: translateX(2.5px); }
+  60% { transform: translateX(-0.5px); }
+  85% { transform: translateX(1px); }
+}
+
+@keyframes animCodeCursorBlink {
+  0%, 45% { opacity: 1; transform: scaleY(1); }
+  50%, 95% { opacity: 0.15; transform: scaleY(0.7); }
+  100% { opacity: 1; transform: scaleY(1); }
+}
+
+.editorial-platform-card:hover .anim-code-left,
+.platform-icon-wrap:hover .anim-code-left {
+  animation: animCodeBracketLeft 1.4s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+
+.editorial-platform-card:hover .anim-code-right,
+.platform-icon-wrap:hover .anim-code-right {
+  animation: animCodeBracketRight 1.4s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+
+.editorial-platform-card:hover .anim-code-cursor,
+.platform-icon-wrap:hover .anim-code-cursor {
+  animation: animCodeCursorBlink 0.7s ease-in-out infinite;
+}
+
+/* 3. ANIMATED SPARKLES (Image 3 - Wix Studio & Low-Code CMS) */
+.icon-sparkles-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.anim-sparkle-primary {
+  transform-origin: 12px 12px;
+  animation: animSparklePrimary 3.4s ease-in-out infinite;
+}
+
+.anim-sparkle-star-1 {
+  transform-origin: 4px 4px;
+  animation: animSparkleStar1 3.4s ease-in-out infinite;
+}
+
+.anim-sparkle-star-2 {
+  transform-origin: 18px 18px;
+  animation: animSparkleStar2 3.4s ease-in-out infinite;
+}
+
+@keyframes animSparklePrimary {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.16) rotate(16deg); }
+  50% { transform: scale(0.92) rotate(0deg); }
+  75% { transform: scale(1.14) rotate(-14deg); }
+}
+
+@keyframes animSparkleStar1 {
+  0%, 100% { transform: scale(0.4) rotate(0deg); opacity: 0.25; }
+  50% { transform: scale(1.25) rotate(45deg); opacity: 1; }
+}
+
+@keyframes animSparkleStar2 {
+  0%, 100% { transform: scale(1.2) rotate(45deg); opacity: 1; }
+  50% { transform: scale(0.35) rotate(0deg); opacity: 0.2; }
+}
+
+.editorial-platform-card:hover .anim-sparkle-primary,
+.platform-icon-wrap:hover .anim-sparkle-primary {
+  animation: animSparklePrimary 1.6s ease-in-out infinite;
+}
+
+.editorial-platform-card:hover .anim-sparkle-star-1,
+.platform-icon-wrap:hover .anim-sparkle-star-1 {
+  animation: animSparkleStar1 1.6s ease-in-out infinite;
+}
+
+.editorial-platform-card:hover .anim-sparkle-star-2,
+.platform-icon-wrap:hover .anim-sparkle-star-2 {
+  animation: animSparkleStar2 1.6s ease-in-out infinite;
+}
+
+/* 4. ANIMATED ZAP (Image 4 - Next.js & React Platforms) */
+.icon-zap-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.anim-zap-bolt {
+  transform-origin: 12px 12px;
+  animation: animZapSurge 3.6s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+@keyframes animZapSurge {
+  0%, 72%, 100% {
+    transform: scale(1) rotate(0deg);
+    filter: drop-shadow(0 0 0 transparent);
+  }
+  78% {
+    transform: scale(1.24) rotate(-4deg);
+    filter: drop-shadow(0 0 6px var(--color-accent));
+  }
+  84% {
+    transform: scale(1.05) rotate(2deg);
+    filter: drop-shadow(0 0 2px var(--color-accent));
+  }
+  90% {
+    transform: scale(1.26) rotate(-2deg);
+    filter: drop-shadow(0 0 8px var(--color-accent));
+  }
+  95% {
+    transform: scale(1.08) rotate(1deg);
+    filter: drop-shadow(0 0 3px var(--color-accent));
+  }
+}
+
+.editorial-platform-card:hover .anim-zap-bolt,
+.platform-icon-wrap:hover .anim-zap-bolt {
+  animation: animZapBuzz 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes animZapBuzz {
+  0% {
+    transform: scale(1.15) rotate(-3deg);
+    filter: drop-shadow(0 0 6px var(--color-accent));
+  }
+  100% {
+    transform: scale(1.24) rotate(3deg);
+    filter: drop-shadow(0 0 10px var(--color-accent));
+  }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .anim-layout-header,
+  .anim-layout-sidebar,
+  .anim-layout-block-1,
+  .anim-layout-block-2,
+  .anim-code-left,
+  .anim-code-right,
+  .anim-code-cursor,
+  .anim-sparkle-primary,
+  .anim-sparkle-star-1,
+  .anim-sparkle-star-2,
+  .anim-zap-bolt {
+    animation: none !important;
+  }
+}
+
 
 .platform-card-title {
   font-family: var(--font-heading);

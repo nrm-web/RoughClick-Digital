@@ -6,6 +6,7 @@ import CapabilitiesInspector from '@/components/CapabilitiesInspector';
 import AgencyTruthComparison from '@/components/AgencyTruthComparison';
 import ClientFaqAccordion from '@/components/ClientFaqAccordion';
 import { StartProjectButton, ScheduleCallButton } from '@/components/QuickBookingModal';
+import { AnimatedLayout, AnimatedCode, AnimatedSparkles, AnimatedZap } from '@/components/AnimatedPlatformIcons';
 
 export const metadata = {
   title: 'RoughClick Digital | WordPress, Custom PHP, Wix & Next.js Web Development Agency',
@@ -222,7 +223,7 @@ export default function HomePage() {
                 <div className="platform-card-header">
                   <span className="platform-badge">Content &amp; E-Commerce</span>
                   <div className="platform-icon-wrap">
-                    <Layout size={18} />
+                    <AnimatedLayout size={18} />
                   </div>
                 </div>
                 <h3 className="platform-card-title">Custom WordPress &amp; WooCommerce</h3>
@@ -260,7 +261,7 @@ export default function HomePage() {
                 <div className="platform-card-header">
                   <span className="platform-badge">Bespoke Logic</span>
                   <div className="platform-icon-wrap">
-                    <Code size={18} />
+                    <AnimatedCode size={18} />
                   </div>
                 </div>
                 <h3 className="platform-card-title">Custom PHP &amp; Database Systems</h3>
@@ -298,7 +299,7 @@ export default function HomePage() {
                 <div className="platform-card-header">
                   <span className="platform-badge">Fast Go-To-Market</span>
                   <div className="platform-icon-wrap">
-                    <Sparkles size={18} />
+                    <AnimatedSparkles size={18} />
                   </div>
                 </div>
                 <h3 className="platform-card-title">Wix Studio &amp; Low-Code CMS</h3>
@@ -336,7 +337,7 @@ export default function HomePage() {
                 <div className="platform-card-header">
                   <span className="platform-badge">Maximum Speed &amp; Scale</span>
                   <div className="platform-icon-wrap">
-                    <Zap size={18} />
+                    <AnimatedZap size={18} />
                   </div>
                 </div>
                 <h3 className="platform-card-title">Next.js &amp; React Platforms</h3>

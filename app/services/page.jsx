@@ -2,7 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import { SERVICE_CATEGORIES } from '@/data/services';
 import { StartProjectButton, DiscussProjectButton } from '@/components/QuickBookingModal';
-import { ArrowRight, CheckCircle, Globe, Layers, Share2, RefreshCw, Check, Layout, Code, Sparkles, Zap } from 'lucide-react';
+import { AnimatedLayout, AnimatedCode, AnimatedSparkles, AnimatedZap } from '@/components/AnimatedPlatformIcons';
+import { ArrowRight, CheckCircle, Globe, Layers, Share2, RefreshCw, Check } from 'lucide-react';
 
 export const metadata = {
   title: 'Websites, Custom Applications & Digital Services',
@@ -309,7 +310,7 @@ export default function ServicesPage() {
               <div>
                 <div className="platform-card-header">
                   <span className="platform-badge">WordPress &amp; WooCommerce</span>
-                  <div className="platform-icon-wrap"><Layout size={18} /></div>
+                  <div className="platform-icon-wrap"><AnimatedLayout size={18} /></div>
                 </div>
                 <h3 className="platform-card-title">Custom WordPress</h3>
                 <p className="platform-card-desc">
@@ -331,7 +332,7 @@ export default function ServicesPage() {
               <div>
                 <div className="platform-card-header">
                   <span className="platform-badge">Custom PHP &amp; MySQL</span>
-                  <div className="platform-icon-wrap"><Code size={18} /></div>
+                  <div className="platform-icon-wrap"><AnimatedCode size={18} /></div>
                 </div>
                 <h3 className="platform-card-title">Custom PHP Systems</h3>
                 <p className="platform-card-desc">
@@ -353,7 +354,7 @@ export default function ServicesPage() {
               <div>
                 <div className="platform-card-header">
                   <span className="platform-badge">Wix Studio &amp; Low-Code</span>
-                  <div className="platform-icon-wrap"><Sparkles size={18} /></div>
+                  <div className="platform-icon-wrap"><AnimatedSparkles size={18} /></div>
                 </div>
                 <h3 className="platform-card-title">Wix Studio Solutions</h3>
                 <p className="platform-card-desc">
@@ -375,7 +376,7 @@ export default function ServicesPage() {
               <div>
                 <div className="platform-card-header">
                   <span className="platform-badge">Next.js &amp; React</span>
-                  <div className="platform-icon-wrap"><Zap size={18} /></div>
+                  <div className="platform-icon-wrap"><AnimatedZap size={18} /></div>
                 </div>
                 <h3 className="platform-card-title">Next.js Applications</h3>
                 <p className="platform-card-desc">
