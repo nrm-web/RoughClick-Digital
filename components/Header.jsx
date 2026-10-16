@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, ArrowRight, Sun, Moon } from 'lucide-react';
@@ -11,6 +11,8 @@ export default function Header() {
   const { theme, toggleTheme, mounted } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const toggleBtnRef = useRef(null);
+  const drawerRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,6 +30,58 @@ export default function Header() {
     setMobileOpen(false);
     document.body.style.overflow = '';
   }, [pathname]);
+
+  // Focus trap & Escape key handler for mobile navigation drawer (RC-14)
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const prevActiveElement = document.activeElement;
+    const focusableSelector = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    
+    // Focus first focusable item inside drawer
+    const timer = setTimeout(() => {
+      const focusable = drawerRef.current?.querySelectorAll(focusableSelector);
+      if (focusable && focusable.length > 0) {
+        focusable[0].focus();
+      }
+    }, 50);
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        setMobileOpen(false);
+        document.body.style.overflow = '';
+        toggleBtnRef.current?.focus();
+        return;
+      }
+
+      if (e.key === 'Tab') {
+        const elements = drawerRef.current?.querySelectorAll(focusableSelector);
+        if (!elements || elements.length === 0) return;
+        const first = elements[0];
+        const last = elements[elements.length - 1];
+
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener('keydown', handleKeyDown);
+      prevActiveElement?.focus?.();
+    };
+  }, [mobileOpen]);
 
   const toggleMobile = (open) => {
     setMobileOpen(open);
@@ -119,16 +173,19 @@ export default function Header() {
                 }
               }}
             >
-              <span>Let's Build Something</span>
+              <span>Discuss Your Project</span>
               <ArrowRight size={15} />
             </Link>
 
             {/* Mobile Hamburger Button */}
             <button
+              ref={toggleBtnRef}
               type="button"
               className="header-mobile-toggle"
               onClick={() => toggleMobile(!mobileOpen)}
-              aria-label="Toggle navigation menu"
+              aria-label="Open navigation menu"
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-nav-drawer"
             >
               {mobileOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -136,9 +193,10 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer (RC-14: Dialog semantics, focus trap, Escape key handling) */}
       {mobileOpen && (
         <div
+          role="presentation"
           style={{
             position: 'fixed',
             inset: 0,
@@ -148,9 +206,17 @@ export default function Header() {
             display: 'flex',
             justifyContent: 'flex-end'
           }}
-          onClick={() => toggleMobile(false)}
+          onClick={() => {
+            toggleMobile(false);
+            toggleBtnRef.current?.focus();
+          }}
         >
           <div
+            id="mobile-nav-drawer"
+            ref={drawerRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile Navigation Menu"
             style={{
               width: '82%',
               maxWidth: 320,
@@ -192,7 +258,10 @@ export default function Header() {
                 </Link>
                 <button
                   type="button"
-                  onClick={() => toggleMobile(false)}
+                  onClick={() => {
+                    toggleMobile(false);
+                    toggleBtnRef.current?.focus();
+                  }}
                   style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-heading)' }}
                   aria-label="Close navigation menu"
                   title="Close menu"
@@ -254,7 +323,7 @@ export default function Header() {
                 }}
                 style={{ width: '100%', justifyContent: 'center' }}
               >
-                <span>Let's Build Something</span>
+                <span>Discuss Your Project</span>
                 <ArrowRight size={15} />
               </Link>
             </div>

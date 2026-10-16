@@ -24,10 +24,15 @@ function WhatsAppIcon({ size = 16, className = '', style = {} }) {
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
+  // RC-Audit / G01: Only show verified RoughClick social profiles. Remove unavailable icons instead of linking to platform homepages.
+  const verifiedSocials = (BRAND_CONFIG.socialLinks || []).filter(
+    (item) => item.href && !['https://linkedin.com', 'https://instagram.com', 'https://facebook.com', 'https://youtube.com', '#'].includes(item.href)
+  );
+
   return (
     <footer className="mockup-footer">
       <div className="rc-container">
-        <div className="footer-columns-grid">
+        <div className={`footer-columns-grid ${verifiedSocials.length === 0 ? 'no-social' : ''}`}>
           {/* Column 1: Brand & Logo */}
           <div>
             <Link
@@ -54,7 +59,7 @@ export default function Footer() {
               />
             </Link>
             <p style={{ fontSize: '0.78rem', color: 'var(--footer-text)', lineHeight: 1.6, maxWidth: 240 }}>
-              Turning ideas into purposeful digital experiences designed around your business.
+              Websites, custom applications, social content, and digital presence support shaped around your business.
             </p>
           </div>
 
@@ -77,7 +82,7 @@ export default function Footer() {
               <li><Link href="/services#website-development">Website Development</Link></li>
               <li><Link href="/services#custom-applications">Custom Applications</Link></li>
               <li><Link href="/services#social-media-content">Social Media Content</Link></li>
-              <li><Link href="/services#social-media-management">Social Media Management</Link></li>
+              <li><Link href="/services#digital-presence-support">Digital Presence Support</Link></li>
             </ul>
           </div>
 
@@ -116,24 +121,22 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 5: Follow Us */}
-          <div>
-            <h4 className="footer-col-title">Follow Us</h4>
-            <div className="footer-social-icons">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-circle-icon" aria-label="LinkedIn">
-                <Linkedin size={16} />
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-circle-icon" aria-label="Instagram">
-                <Instagram size={16} />
-              </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-circle-icon" aria-label="Facebook">
-                <Facebook size={16} />
-              </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="social-circle-icon" aria-label="YouTube">
-                <Youtube size={16} />
-              </a>
+          {/* Column 5: Follow Us (Rendered only if verified profiles exist - G01) */}
+          {verifiedSocials.length > 0 && (
+            <div>
+              <h4 className="footer-col-title">Follow RoughClick Digital</h4>
+              <div className="footer-social-icons">
+                {verifiedSocials.map((s) => (
+                  <a key={s.platform} href={s.href} target="_blank" rel="noopener noreferrer" className="social-circle-icon" aria-label={s.platform}>
+                    {s.platform === 'LinkedIn' && <Linkedin size={16} />}
+                    {s.platform === 'Instagram' && <Instagram size={16} />}
+                    {s.platform === 'Facebook' && <Facebook size={16} />}
+                    {s.platform === 'YouTube' && <Youtube size={16} />}
+                  </a>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* Bottom Bar */}

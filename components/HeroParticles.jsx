@@ -14,9 +14,6 @@ export default function HeroParticles() {
     const ctx = canvas.getContext('2d');
     let animationFrameId;
     let particles = [];
-    const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) return;
-
     const isMobile = window.innerWidth < 768;
     const particleCount = isMobile ? 18 : 50;
     const maxDistance = isMobile ? 70 : 120;
@@ -46,6 +43,21 @@ export default function HeroParticles() {
         });
       }
     };
+
+    const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      resize();
+      createParticles();
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${rgbBase}, ${p.alpha})`;
+        ctx.fill();
+      }
+      return;
+    }
 
     resize();
     createParticles();
@@ -142,23 +154,51 @@ export default function HeroParticles() {
       animationFrameId = requestAnimationFrame(animate);
     };
 
-    // Pause animation when hero is offscreen to save battery and CPU cycles
+    // Pause animation when hero is offscreen to save battery and CPU cycles (RC-23)
+    let isIntersecting = true;
     const visibilityObserver = new IntersectionObserver(
       ([entry]) => {
-        isVisible = entry.isIntersecting;
-        if (isVisible && !animationFrameId) {
-          animationFrameId = requestAnimationFrame(animate);
+        isIntersecting = entry.isIntersecting;
+        isVisible = isIntersecting && !document.hidden;
+        if (isVisible) {
+          if (!animationFrameId) {
+            animationFrameId = requestAnimationFrame(animate);
+          }
+        } else {
+          if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+          }
         }
       },
       { threshold: 0 }
     );
+    visibilityObserver.observe(canvas);
+
+    const handleDocVisibility = () => {
+      isVisible = isIntersecting && !document.hidden;
+      if (isVisible) {
+        if (!animationFrameId) {
+          animationFrameId = requestAnimationFrame(animate);
+        }
+      } else {
+        if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+          animationFrameId = null;
+        }
+      }
+    };
+    document.addEventListener('visibilitychange', handleDocVisibility);
+
     let idleId = null;
     let timeoutId = null;
 
     const startParticles = () => {
       resize();
       createParticles();
-      animationFrameId = requestAnimationFrame(animate);
+      if (isVisible && !animationFrameId) {
+        animationFrameId = requestAnimationFrame(animate);
+      }
     };
 
     if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
@@ -173,6 +213,7 @@ export default function HeroParticles() {
       }
       if (timeoutId) clearTimeout(timeoutId);
       visibilityObserver.disconnect();
+      document.removeEventListener('visibilitychange', handleDocVisibility);
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
       parent.removeEventListener('mousemove', handleMouseMove);
       parent.removeEventListener('mouseleave', handleMouseLeave);

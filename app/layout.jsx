@@ -40,18 +40,18 @@ export const metadata = {
     },
   },
   title: {
-    default: 'RoughClick Digital | Ideas in Motion',
+    default: 'Websites, Applications & Digital Services | RoughClick Digital',
     template: '%s | RoughClick Digital'
   },
-  description: 'RoughClick Digital transforms ideas into purposeful digital experiences — from websites and custom applications to social media and business presence solutions.',
+  description: 'RoughClick Digital helps businesses plan and build websites, custom applications, social content, and ongoing digital presence support.',
   icons: {
     icon: '/favicon.svg',
     shortcut: '/favicon.svg',
     apple: '/brand/roughclick-monogram.svg'
   },
   openGraph: {
-    title: 'RoughClick Digital | Ideas in Motion',
-    description: 'Purposeful digital experiences around your business: websites, custom applications, social media services, and local business presence.',
+    title: 'Websites, Applications & Digital Services | RoughClick Digital',
+    description: 'RoughClick Digital helps businesses plan and build websites, custom applications, social content, and ongoing digital presence support.',
     url: SITE_URL,
     siteName: 'RoughClick Digital',
     locale: 'en_US',
@@ -59,8 +59,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'RoughClick Digital | Ideas in Motion',
-    description: 'Purposeful digital experiences around your business.'
+    title: 'Websites, Applications & Digital Services | RoughClick Digital',
+    description: 'RoughClick Digital helps businesses plan and build websites, custom applications, social content, and ongoing digital presence support.'
   }
 };
 
@@ -97,6 +97,9 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
+        <a href="#main-content" className="skip-to-content">
+          Skip to main content
+        </a>
         <BrandPreloader />
         <ThemeProvider>
           <InquiryModalProvider>

@@ -106,8 +106,9 @@ function renderFormattedInline(text) {
             backgroundColor: 'var(--bg-subtle)',
             border: '1px solid var(--border-subtle)',
             fontSize: '0.88em',
-            color: 'var(--color-accent)',
-            fontFamily: 'monospace'
+            color: 'var(--color-code-inline, #0f766e)',
+            fontFamily: 'monospace',
+            fontWeight: 600
           }}
         >
           {part.slice(1, -1)}
@@ -119,7 +120,10 @@ function renderFormattedInline(text) {
       const match = part.match(/\[(.*?)\]\((.*?)\)/);
       if (match) {
         const linkText = match[1];
-        const linkHref = match[2];
+        const rawHref = (match[2] || '').trim();
+        // RC-26: Sanitize URL protocol - permit only safe web protocols or relative paths
+        const isSafeScheme = /^(https?:\/\/|mailto:|tel:|\/)/i.test(rawHref) && !rawHref.toLowerCase().startsWith('javascript:');
+        const linkHref = isSafeScheme ? rawHref : '#';
         const isExternal = linkHref.startsWith('http');
         return (
           <a
@@ -127,7 +131,7 @@ function renderFormattedInline(text) {
             href={linkHref}
             target={isExternal ? '_blank' : undefined}
             rel={isExternal ? 'noopener noreferrer' : undefined}
-            style={{ color: 'var(--color-accent)', textDecoration: 'underline', fontWeight: 600 }}
+            style={{ color: 'var(--color-accent-dark, #096357)', textDecoration: 'underline', fontWeight: 600 }}
           >
             {linkText}
           </a>
@@ -209,14 +213,14 @@ export default async function BlogArticlePage({ params }) {
       {/* Top Reading Progress Bar */}
       <ReadingProgressBar />
 
-      {/* Google Rich Snippet Schemas */}
+      {/* Google Rich Snippet Schemas with safe script termination escaping (RC-26) */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema).replace(/</g, '\\u003c') }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema).replace(/</g, '\\u003c') }}
       />
 
       <article>
@@ -361,29 +365,46 @@ export default async function BlogArticlePage({ params }) {
                 }
               }
 
-              // Heading Hierarchy: H2, H3, H4
-              if (trimmed.startsWith('#### ')) {
-                return (
-                  <h4 key={index} style={{ fontSize: '1.15rem', fontWeight: 700, margin: '1.8rem 0 0.6rem', color: 'var(--text-heading)' }}>
-                    {renderFormattedInline(trimmed.replace(/^####\s+/, ''))}
-                  </h4>
-                );
-              }
+              // Heading Hierarchy: H2, H3, H4 (line-safe parsing: ensure following paragraph is not absorbed)
+              if (trimmed.startsWith('#')) {
+                const lines = trimmed.split('\n');
+                const firstLine = lines[0].trim();
+                const remainder = lines.slice(1).join('\n').trim();
 
-              if (trimmed.startsWith('### ')) {
-                return (
-                  <h3 key={index} style={{ fontSize: '1.38rem', fontWeight: 700, margin: '2.2rem 0 0.8rem', color: 'var(--text-heading)' }}>
-                    {renderFormattedInline(trimmed.replace(/^###\s+/, ''))}
-                  </h3>
-                );
-              }
+                let headingEl = null;
+                if (firstLine.startsWith('#### ')) {
+                  headingEl = (
+                    <h4 key={index} style={{ fontSize: '1.15rem', fontWeight: 700, margin: '1.8rem 0 0.6rem', color: 'var(--text-heading)' }}>
+                      {renderFormattedInline(firstLine.replace(/^####\s+/, ''))}
+                    </h4>
+                  );
+                } else if (firstLine.startsWith('### ')) {
+                  headingEl = (
+                    <h3 key={index} style={{ fontSize: '1.38rem', fontWeight: 700, margin: '2.2rem 0 0.8rem', color: 'var(--text-heading)' }}>
+                      {renderFormattedInline(firstLine.replace(/^###\s+/, ''))}
+                    </h3>
+                  );
+                } else if (firstLine.startsWith('## ')) {
+                  headingEl = (
+                    <h2 key={index} style={{ fontSize: '1.75rem', fontWeight: 800, margin: '2.6rem 0 1rem', color: 'var(--text-heading)' }}>
+                      {renderFormattedInline(firstLine.replace(/^##\s+/, ''))}
+                    </h2>
+                  );
+                }
 
-              if (trimmed.startsWith('## ')) {
-                return (
-                  <h2 key={index} style={{ fontSize: '1.75rem', fontWeight: 800, margin: '2.6rem 0 1rem', color: 'var(--text-heading)' }}>
-                    {renderFormattedInline(trimmed.replace(/^##\s+/, ''))}
-                  </h2>
-                );
+                if (headingEl) {
+                  if (remainder) {
+                    return (
+                      <React.Fragment key={index}>
+                        {headingEl}
+                        <p style={{ margin: '1.2rem 0', lineHeight: 1.8, color: 'var(--text-body)' }}>
+                          {renderFormattedInline(remainder)}
+                        </p>
+                      </React.Fragment>
+                    );
+                  }
+                  return headingEl;
+                }
               }
 
               // Blockquote
@@ -493,32 +514,35 @@ export default async function BlogArticlePage({ params }) {
                         {renderFormattedInline(introLines.join(' '))}
                       </p>
                     )}
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+                    <ol style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
                       {numItems.map((it, iIdx) => (
-                        <div key={iIdx} style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
-                          <span style={{
-                            width: 26,
-                            height: 26,
-                            borderRadius: '50%',
-                            backgroundColor: 'var(--color-accent-light)',
-                            color: 'var(--color-accent)',
-                            border: '1.5px solid var(--color-accent)',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            fontSize: '0.8rem',
-                            fontWeight: 800,
-                            flexShrink: 0,
-                            marginTop: 3
-                          }}>
+                        <li key={iIdx} style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
+                          <span
+                            aria-hidden="true"
+                            style={{
+                              width: 26,
+                              height: 26,
+                              borderRadius: '50%',
+                              backgroundColor: 'var(--color-accent-light)',
+                              color: 'var(--color-accent-dark, #047857)',
+                              border: '1.5px solid var(--color-accent-dark, #047857)',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              fontSize: '0.8rem',
+                              fontWeight: 800,
+                              flexShrink: 0,
+                              marginTop: 3
+                            }}
+                          >
                             {it.num}
                           </span>
-                          <div style={{ flex: 1, lineHeight: 1.75 }}>
+                          <div style={{ flex: 1, lineHeight: 1.75, color: 'var(--text-body)' }}>
                             {renderFormattedInline(it.text)}
                           </div>
-                        </div>
+                        </li>
                       ))}
-                    </div>
+                    </ol>
                   </div>
                 );
               }

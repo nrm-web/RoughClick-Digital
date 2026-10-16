@@ -35,6 +35,8 @@
   --color-primary: #0A2B3D;
   --color-primary-dark: #071E2B;
   --color-accent: #00B89C;
+  --color-accent-dark: #086d60;
+  --color-code-inline: #086d60;
   --color-accent-vibrant: #00D2A0;
   --color-accent-hover: #009E85;
   --color-accent-light: rgba(0, 210, 160, 0.12);
@@ -114,6 +116,8 @@
   --color-primary: #F7F3EA;
   --color-primary-dark: #DFC05E;
   --color-accent: #C9A227;
+  --color-accent-dark: #DFC05E;
+  --color-code-inline: #DFC05E;
   --color-accent-vibrant: #DFC05E;
   --color-accent-hover: #E8D082;
   --color-accent-light: rgba(201, 162, 39, 0.12);
@@ -2134,6 +2138,10 @@ a {
   gap: clamp(24px, 3.5vw, 40px);
   padding-bottom: 45px;
   border-bottom: 1px solid var(--footer-border);
+}
+
+.footer-columns-grid.no-social {
+  grid-template-columns: 1.5fr 1fr 1.2fr 1.3fr;
 }
 
 .footer-col-title {
@@ -4779,7 +4787,7 @@ a {
 }
 
 .editorial-tab-trigger.is-active {
-  color: #FFFFFF !important;
+  color: #042F2E !important;
   background: #00B89C;
   border: 1.5px solid #00B89C;
   box-shadow: none !important;
@@ -4793,6 +4801,29 @@ a {
   border: 1.5px solid #D4AF37;
   box-shadow: none !important;
   opacity: 1;
+}
+
+/* Accessibility: Skip to Main Content Link (WCAG 2.4.1 Bypass Blocks - RC-17) */
+.skip-to-content {
+  position: fixed;
+  top: -120px;
+  left: 20px;
+  background: #0d9488;
+  color: #ffffff !important;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  z-index: 999999;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: top 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skip-to-content:focus {
+  top: 20px;
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
 }
 
 .tab-idx-mono {

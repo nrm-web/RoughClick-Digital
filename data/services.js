@@ -1,9 +1,9 @@
 /**
  * ROUGHCLICK DIGITAL - Client-Approved Multi-Platform Service Catalog
  * 
- * Includes all original client-approved services from live deployment (Static Website,
- * Dynamic Website, SEO Website, Web Upkeep, Custom Apps, Social Media) alongside the
- * requested WordPress, Custom PHP, Wix Studio, and CMS platform solutions.
+ * Sourced from Section C of the client draft:
+ * S02 Website Development, S03 Custom Applications,
+ * S04 Social Media Content Creation, S05 Social Media Management & Digital Presence.
  */
 
 export const SERVICE_CATEGORIES = [
@@ -11,80 +11,71 @@ export const SERVICE_CATEGORIES = [
     id: "website-development",
     aliases: ["website-services", "web-architecture", "wordpress-development", "php-development", "wix-development"],
     number: "01",
-    tag: "Web Architecture & CMS",
+    tag: "Websites & Online Stores",
     title: "Website Development",
-    homeDescription: "Static websites, dynamic web platforms, custom WordPress & WooCommerce, robust PHP applications, Wix Studio, and high-performance Next.js architectures.",
-    fullDescription: "We engineer responsive, clean-coded, and SEO-optimized web platforms across static builds, dynamic applications, WordPress, custom PHP, Wix Studio, and Next.js. Whether your priority is instantaneous static speed, a database-backed dynamic portal, an easily editable corporate WordPress site, or an enterprise Next.js React platform, we engineer the optimal architecture tailored to your specific business goals, budget, and growth timeline.",
-    valueProposition: "Your website is your primary digital headquarters. Rather than forcing a single framework onto every project, we assess your operational needs and deliver the right balance of speed, content freedom, search visibility, and maintainability.",
+    homeDescription: "Static business sites, dynamic web platforms, WordPress & WooCommerce, custom PHP, Wix Studio, and Next.js website functionality.",
+    fullDescription: "Your website should help visitors understand your business and take an appropriate next step. We work on new websites, redesigns, online stores, and improvements to existing sites, with functionality and editing arrangements suited to your team.",
+    valueProposition: "Who it suits: Businesses that need a clearer online presence, an editable website, an online store, or functionality that their current website does not provide.",
     benefits: [
-      "Custom responsive layouts built on clean semantic code (Static, Dynamic, PHP, WordPress & Wix)",
-      "Sub-second load speeds optimizing Google Core Web Vitals",
-      "Structured SEO schema (JSON-LD) and automated metadata generation",
-      "Modular components engineered for seamless scalability",
-      "Bespoke WordPress & WooCommerce theme builds with zero plugin bloat",
-      "Tailor-made PHP 8+ architectures for proprietary business workflows",
-      "Wix Studio & visual CMS setups for fast-turnaround, client-editable sites"
+      "Business and service websites with clear page structure and navigation",
+      "Campaign, product, and landing pages",
+      "Editable content and publishing workflows",
+      "Online stores and agreed purchase journeys",
+      "Forms, integrations, and database-backed features",
+      "Responsive layouts and accessibility improvements",
+      "Technical SEO foundations and performance review"
     ],
+    proposalNote: "What the proposal should specify: Pages and features, content inputs, editing access, integrations, review stages, hosting, licenses, handoff, and any ongoing support.",
+    scopeNote: "Important scope note: The items above describe available capabilities. The agreed proposal determines what is included in your project and which costs are paid separately.",
+    buttonText: "Discuss Your Website",
     groups: [
       {
-        groupId: "core-web-engineering",
-        groupTitle: "Web Engineering Disciplines",
+        groupId: "detailed-capabilities",
+        groupTitle: "Detailed Capabilities",
         services: [
           {
-            name: "Static Website Development",
-            desc: "Ultra-fast, lightweight, and secure static builds designed for maximum uptime, high security, and zero server bloat. Built with clean HTML5/CSS3 and modern Jamstack architectures."
+            name: "Static Websites",
+            desc: "Business, campaign, and informational websites with an appropriate content structure and a defined method for future updates."
           },
           {
-            name: "Dynamic Website Development",
-            desc: "Database-backed corporate platforms, client portals, custom PHP & Next.js backends, interactive user flows, and dynamic data-driven experiences engineered for scale."
+            name: "Dynamic Websites",
+            desc: "Websites with user interaction, stored information, content management, or other functionality that needs an application backend."
           },
           {
-            name: "SEO-Optimized Website Development",
-            desc: "Structured data schemas (JSON-LD), semantic markup, commercial keyword optimization, search engine compliance, and high crawlability for organic search dominance."
-          }
-        ]
-      },
-      {
-        groupId: "wordpress-php-cms",
-        groupTitle: "WordPress, PHP & CMS Platforms",
-        services: [
-          {
-            name: "Custom WordPress Development",
-            desc: "Bespoke WordPress theme architecture with Advanced Custom Fields (ACF Pro), lightweight clean code, zero commercial theme bloat, and intuitive drag-and-drop content editing for your team."
+            name: "Technical SEO Setup",
+            desc: "Page titles, descriptions, crawlable content, internal links, canonical configuration, sitemap handling, and relevant structured data. These provide a foundation for discovery; they do not guarantee search placement."
           },
           {
-            name: "WooCommerce E-Commerce Stores",
-            desc: "High-converting online storefronts with custom product filters, secure payment gateway integrations (Stripe, PayPal, Razorpay), automated invoice generation, and inventory tracking."
+            name: "WordPress Development",
+            desc: "Themes, content structures, and functionality suited to the website's requirements. Any plugin, page builder, or custom approach should be assessed for maintainability and editing needs."
           },
           {
-            name: "Custom PHP Web Applications",
-            desc: "Tailored PHP 8+ solutions built with clean MVC architectures for businesses requiring proprietary logic, high-performance database processing, and freedom from recurring SaaS subscription fees."
+            name: "WooCommerce Stores",
+            desc: "Store structure, product presentation, checkout, and agreed payment or operational integrations. Payment-provider approval, transaction charges, and third-party subscriptions are separate considerations."
           },
           {
-            name: "Wix Studio & Low-Code CMS",
-            desc: "Fast-launch marketing websites and boutique portfolios built on Wix Studio and modern visual CMS platforms, allowing non-technical marketing teams to publish updates effortlessly."
+            name: "Custom PHP Development",
+            desc: "Website features and database-backed functionality built around a defined requirement, including integrations or modernization of an existing PHP system."
           },
           {
-            name: "CMS Migration & Maintenance",
-            desc: "Seamless, zero-downtime website migrations between platforms (e.g., legacy PHP to WordPress, WordPress to Next.js), paired with automated daily backups, security monitoring, and regular updates."
-          }
-        ]
-      },
-      {
-        groupId: "web-support-optimization",
-        groupTitle: "Web Upkeep & Optimization",
-        services: [
-          {
-            name: "Website Maintenance & Support",
-            desc: "Reliable technical upkeep, continuous security monitoring, regular framework updates, daily cloud backups, and prompt bug fixes."
+            name: "Wix Studio Websites",
+            desc: "Business websites using Wix Studio's hosted design and content tools where its capabilities fit the requirement. Subscription levels and platform limits should be considered in the proposal."
           },
           {
-            name: "Speed & Performance Optimization",
-            desc: "Asset minification, responsive image compression (WebP/AVIF), script deferral, database query tuning, and CDN edge caching to achieve sub-second load times."
+            name: "Next.js and React Websites",
+            desc: "Component-based websites and frontends where custom functionality, integrations, or the chosen architecture justify the approach."
           },
           {
-            name: "Website Redesign & Modernization",
-            desc: "Transform outdated digital presences into clean, modern, mobile-first, and conversion-focused experiences that restore user trust."
+            name: "Migration and Redesign",
+            desc: "Planning content and URL changes, moving approved material, and checking the new website before release. Search traffic and third-party behavior cannot be guaranteed to remain unchanged."
+          },
+          {
+            name: "Maintenance and Support",
+            desc: "Agreed updates, content changes, issue investigation, and other upkeep. Backup responsibilities, monitoring, response expectations, and excluded work must be stated in the support scope."
+          },
+          {
+            name: "Performance Optimization",
+            desc: "Reviewing the causes of slow or unstable experiences, making suitable improvements, and comparing results under documented conditions."
           }
         ]
       }
@@ -94,37 +85,44 @@ export const SERVICE_CATEGORIES = [
     id: "custom-applications",
     aliases: ["custom-application-development", "software-engineering", "internal-tools"],
     number: "02",
-    tag: "Custom Engineering",
-    title: "Custom Application Development",
-    homeDescription: "Tailored web applications, internal business portals, real-time analytics dashboards, and automated operational tools.",
-    fullDescription: "Scale your business operations with purpose-built digital tools. We architect resilient web applications, interactive management dashboards, and specialized software systems that automate manual overhead and unlock productivity.",
-    valueProposition: "Avoid the constraints of generic software. We develop custom applications tailored precisely to your operational workflow, data requirements, and client interaction models.",
+    tag: "Workflows & Operations Tools",
+    title: "Custom Applications",
+    homeDescription: "Turn defined business processes into practical applications with mapped users, workflows, and reporting.",
+    fullDescription: "A custom application can help when a specific business process is difficult to manage through spreadsheets, manual handoffs, or disconnected software. We start by mapping the workflow, users, information, and decisions the tool needs to support.",
+    valueProposition: "Who it suits: Teams with a defined operational problem that cannot be addressed well enough through an existing tool or a simpler process change.",
     benefits: [
-      "Bespoke application logic aligned with your exact business processes",
-      "Secure authentication, role-based access, and encrypted endpoints",
-      "Intuitive real-time dashboards visualizing actionable KPIs",
-      "Clean RESTful APIs ready for cross-platform integration"
+      "Internal operations and staff portals",
+      "Quotation and estimation tools",
+      "Client portals and approval workflows",
+      "Dashboards, reports, and data views",
+      "Database-backed business applications",
+      "Connections to agreed external services",
+      "Automation of repeatable tasks",
+      "Existing application review and modernization"
     ],
+    proposalNote: "What the proposal should specify: User roles, core journeys, data requirements, integrations, acceptance checks, delivery stages, documentation, and ongoing responsibilities.",
+    scopeNote: "Important scope note: Custom software has development and maintenance costs. It does not automatically remove all subscription fees, operating costs, or scaling requirements.",
+    buttonText: "Discuss Your Application",
     groups: [
       {
-        groupId: "custom-application-disciplines",
-        groupTitle: "Application Engineering Disciplines",
+        groupId: "planning-considerations",
+        groupTitle: "Planning Considerations",
         services: [
           {
-            name: "Custom Web Applications",
-            desc: "Full-stack tailored platforms engineered with high performance, scalability, and robust cloud hosting."
+            name: "Workflow Mapping",
+            desc: "What happens today, who is involved, and which steps need to change?"
           },
           {
-            name: "Business & Internal Applications",
-            desc: "Operations portals, employee dashboards, quotation tools, and automated business workflow systems."
+            name: "Data & Access",
+            desc: "What information is collected, who can access it, and how is it retained or removed?"
           },
           {
-            name: "Interactive Analytics Dashboards",
-            desc: "Real-time telemetry panels and data visualizers with multi-tier role filtering and reporting."
+            name: "External Integrations",
+            desc: "Which external systems are required, and what limitations or charges apply?"
           },
           {
-            name: "Specialized Software Solutions",
-            desc: "Domain-specific digital tools and automation routines tailored to unique enterprise challenges."
+            name: "Ongoing Operations",
+            desc: "Who will manage hosting, updates, backups, support, and future changes?"
           }
         ]
       }
@@ -134,37 +132,43 @@ export const SERVICE_CATEGORIES = [
     id: "social-media-content",
     aliases: ["social-media-content-creation", "social-media-services", "creative-design"],
     number: "03",
-    tag: "Creative Visuals",
+    tag: "Creative & Brand Assets",
     title: "Social Media Content Creation",
-    homeDescription: "Strategic visual storytelling, annual content planning, high-impact carousels, and consistent brand asset systems.",
-    fullDescription: "Transform your social media channels into authoritative brand assets. We craft strategic multi-channel creative campaigns, high-impact carousel systems, and refined brand visual kits that elevate recall.",
-    valueProposition: "Generic posts are ignored. We develop intentional, cohesive visual systems that reflect your brand authority across Instagram, LinkedIn, Facebook, and video platforms.",
+    homeDescription: "Consistent visual direction, monthly/annual editorial planning, educational carousels, and reusable brand assets.",
+    fullDescription: "Help your audience recognize your business through useful topics and a consistent visual style. We plan and create social content around your services, customer questions, available images, and current priorities.",
+    valueProposition: "Who it suits: Businesses that need a planned approach to creative content across their chosen social channels.",
     benefits: [
-      "Cohesive brand visual language across every social channel",
-      "Thematic editorial roadmaps preventing gaps in communication",
-      "Educational multi-slide carousels engineered for engagement",
-      "Export packages optimized for desktop and mobile feeds"
+      "Monthly, quarterly, or annual editorial planning",
+      "Topic pillars and content calendars",
+      "Single-image posts and multi-slide carousels",
+      "Promotional and announcement graphics",
+      "Reels and short-form video editing",
+      "Profile banners, highlight covers, and story templates",
+      "Reusable brand assets and visual guidelines"
     ],
+    proposalNote: "What the proposal should specify: Channels, content quantities, formats, source material, writing/design responsibilities, review rounds, publishing responsibility, and delivery schedule.",
+    scopeNote: "Important scope note: Photography, filming, paid advertising, community management, and stock-asset licensing are included only when explicitly agreed. Content production does not guarantee reach, followers, or sales.",
+    buttonText: "Discuss Your Content",
     groups: [
       {
-        groupId: "social-content-disciplines",
-        groupTitle: "Creative Content Disciplines",
+        groupId: "content-shaping",
+        groupTitle: "How Content is Shaped",
         services: [
           {
-            name: "Annual Creative Content Planning",
-            desc: "52-week editorial roadmaps, quarterly thematic pillars, and recurring visual hooks for reliable presence."
+            name: "Audience & Messaging",
+            desc: "Identify the audience, core message, and key communication priorities."
           },
           {
-            name: "Social Media Post & Carousel Creatives",
-            desc: "High-resolution graphic assets, multi-slide educational carousels, and promotional campaign banners."
+            name: "Source Material & Assets",
+            desc: "Use your services, customer questions, and available images as content foundations."
           },
           {
-            name: "Reels & Short-Form Video Editing",
-            desc: "Clean, paced short video formats and motion snippets calibrated for modern vertical feeds."
+            name: "Formats & Deliverables",
+            desc: "Produce single posts, carousels, short-form video snippets, and announcements suited to your target platforms."
           },
           {
-            name: "Brand Asset Design Systems",
-            desc: "Standardized story kits, channel banners, highlight covers, and brand visual guidelines."
+            name: "Approval Workflow",
+            desc: "Structured review and sign-off rounds before any content is released or published."
           }
         ]
       }
@@ -174,37 +178,43 @@ export const SERVICE_CATEGORIES = [
     id: "social-media-management",
     aliases: ["social-media-post-updating", "business-profile-services", "local-seo", "complete-digital-presence"],
     number: "04",
-    tag: "Channel Operations & Local SEO",
-    title: "Social Media Management & Digital Presence",
-    homeDescription: "Scheduled post publishing, Google Business Profile optimization, local map rankings, and complete profile synchronization.",
-    fullDescription: "Reliable post publishing schedules, swift asset adjustments, and continuous channel hygiene so your brand always remains active, verified, and discovered on Google Maps and directories.",
-    valueProposition: "Never let your channels go stale. Our ongoing management keeps your social profiles updated, your local business listings verified, and your brand touchpoints synchronized.",
+    tag: "Channel Upkeep & Profile Sync",
+    title: "Social Media Management and Digital Presence",
+    homeDescription: "Keep your business information current, publish approved posts, update channels, and coordinate local business profiles.",
+    fullDescription: "Keep your business information current and your approved content organized across the channels you use. This service supports the recurring work behind an active, connected online presence.",
+    valueProposition: "Who it suits: Businesses that need agreed ongoing support for publishing, profile updates, website content, and local business information.",
     benefits: [
-      "Consistent, dependable publishing schedules with zero missed slots",
-      "Rapid turnaround for announcements, banner refreshes, and bio updates",
-      "Verified Google Business Profile and local maps presence",
-      "Monthly channel hygiene reviews ensuring all links and info stay accurate"
+      "Publishing approved posts to agreed channels",
+      "Updating profile descriptions, banners, and contact details",
+      "Maintaining agreed website and channel content",
+      "Helping set up or update Google Business Profile and relevant directories",
+      "Reviewing links, opening hours, categories, and business information",
+      "Coordinating website, social, and profile information",
+      "Reporting on agreed activities and available channel metrics"
     ],
+    proposalNote: "What the proposal should specify: Account access, supported channels, publishing frequency, approvals, included updates, response responsibilities, reporting, and any platform costs.",
+    scopeNote: "Important scope note: Business-profile verification and visibility are controlled by the relevant platform. We can assist with accurate setup and required information, but cannot guarantee verification, ranking, or placement.",
+    buttonText: "Discuss Ongoing Support",
     groups: [
       {
-        groupId: "social-management-disciplines",
-        groupTitle: "Management & Profile Operations",
+        groupId: "recurring-support",
+        groupTitle: "Key Support Areas",
         services: [
           {
-            name: "Regular Post Updating & Publishing",
-            desc: "Organized multi-platform publishing following consistent weekly schedules."
+            name: "Channel Publishing",
+            desc: "Dependable publishing of approved materials across agreed platforms."
           },
           {
-            name: "Ongoing Channel Maintenance Support",
-            desc: "Rapid turnaround for notices, bio revisions, profile banner updates, and asset adjustments."
+            name: "Profile & Bio Updates",
+            desc: "Timely updates to bio descriptions, banners, contact numbers, and service listings."
           },
           {
-            name: "Google Business Profile & Maps Setup",
-            desc: "Creation, verification, category optimization, and accurate location pinning on Google & Bing."
+            name: "Google Business & Directories",
+            desc: "Accurate setup assistance, category alignment, and location details on major search maps."
           },
           {
-            name: "Complete Digital Presence Sync",
-            desc: "Unified interconnection across your website, social channels, and local business directories."
+            name: "Digital Presence Coordination",
+            desc: "Keeping information unified across your website, social accounts, and map listings."
           }
         ]
       }
@@ -213,16 +223,16 @@ export const SERVICE_CATEGORIES = [
 ];
 
 export const SERVICE_SELECT_OPTIONS = [
-  { value: "unsure-need-advice", label: "Unsure / Need Advice / General Consultation" },
-  { value: "static-website", label: "Static Website Development" },
-  { value: "dynamic-website", label: "Dynamic Website Development" },
-  { value: "custom-wordpress", label: "Custom WordPress & WooCommerce Development" },
-  { value: "custom-php", label: "Custom PHP Web Application / Database Portal" },
-  { value: "wix-cms", label: "Wix Studio / Modern Low-Code CMS Website" },
-  { value: "nextjs-engineering", label: "Next.js & React High-Performance Web App" },
-  { value: "custom-applications", label: "Custom Business Software & Internal Tools" },
-  { value: "social-media-content", label: "Social Media Content Creation & Design" },
-  { value: "social-media-management", label: "Social Media Management & Local SEO" },
-  { value: "complete-digital-presence", label: "Complete Digital Presence & SEO Package" },
-  { value: "other", label: "Other Inquiries" }
+  { value: "unsure-need-advice", label: "Unsure / Need Advice" },
+  { value: "static-website", label: "Static Website" },
+  { value: "dynamic-website", label: "Dynamic Website" },
+  { value: "wordpress-woocommerce", label: "WordPress or WooCommerce Website" },
+  { value: "custom-php", label: "Custom PHP Application" },
+  { value: "wix-studio", label: "Wix Studio Website" },
+  { value: "nextjs-react", label: "Next.js or React Website/Application" },
+  { value: "custom-applications", label: "Custom Business Application" },
+  { value: "social-media-content", label: "Social Media Content Creation" },
+  { value: "social-management-presence", label: "Social Media Management and Digital Presence" },
+  { value: "combined-digital-services", label: "Combined Digital Services" },
+  { value: "other", label: "Other" }
 ];

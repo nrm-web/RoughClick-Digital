@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Globe, Layers, Share2, RefreshCw, Check, Sparkles, Zap, ShieldCheck } from 'lucide-react';
 
@@ -36,114 +36,141 @@ const CAPABILITIES = [
     icon: Globe,
     number: '01',
     tabTitle: 'Website Development',
-    discipline: 'WEB ENGINEERING & CMS ARCHITECTURE',
-    heading: 'Static Websites, Dynamic Web Platforms & Custom CMS Architectures',
-    summary: 'We build responsive, clean-coded, and SEO-optimized web presences across static builds, dynamic platforms, WordPress, custom PHP, Wix Studio, and Next.js. Whether your priority is instantaneous static speed, an interactive dynamic portal, an easily editable corporate WordPress & WooCommerce site, or an enterprise Next.js React platform, we engineer the optimal architecture with zero bloat and sub-second load times.',
+    discipline: 'WEBSITE DEVELOPMENT',
+    heading: 'Websites That Explain Your Business and Make Enquiries Easier',
+    summary: 'Build a new business website, improve an existing site, or create an online store with the pages and features your customers need. The platform is chosen around content editing, functionality, budget, and ongoing maintenance.',
     deliverables: [
-      'Static Website Development: Ultra-fast, lightweight, and secure static builds with zero server bloat',
-      'Dynamic Website Development: Database-backed corporate platforms, client portals & real-time workflows',
-      'SEO-Optimized Website Development: Structured data schemas (JSON-LD), semantic markup & high crawlability',
-      'Custom WordPress & WooCommerce Development: Bespoke ACF Pro themes, zero plugin bloat & custom storefronts',
-      'Custom PHP 8+ Web Applications: Clean MVC architectures, MySQL/PostgreSQL backends & workflow automation',
-      'Wix Studio & Visual CMS Setup: Fast-turnaround marketing websites, boutique portfolios & client-editable sites',
-      'Website Maintenance, Speed Optimization & Modernization: Sub-second speeds, security upkeep & legacy redesign'
+      'Static business and campaign websites',
+      'Dynamic websites and content-managed pages',
+      'WordPress and WooCommerce development',
+      'Custom PHP and Next.js website functionality',
+      'Wix Studio setup and client-editable layouts',
+      'Website redesign, performance review, and maintenance'
     ],
-    bestFor: 'Businesses seeking tailored web engineering—from ultra-fast static sites to dynamic PHP portals, custom WordPress stores, fast Wix sites, or enterprise Next.js applications.',
-    techStack: ['Static & Dynamic Web', 'WordPress', 'Custom PHP', 'WooCommerce', 'Wix Studio', 'Next.js 15', 'SEO Schema'],
-    statusBadge: 'VERIFIED ARCHITECTURE',
-    stackLabel: 'TECHNOLOGY & FRAMEWORK STACK',
+    bestFor: 'Businesses that need a useful website with clear information, a suitable enquiry or purchase flow, and manageable updates.',
+    techStack: ['Static Websites', 'WordPress', 'WooCommerce', 'PHP', 'Wix Studio', 'Next.js'],
+    statusBadge: 'SERVICE SCOPE',
+    stackLabel: 'PLATFORMS & TECHNOLOGIES',
     metrics: [
-      { label: 'PERFORMANCE & SPEED', val: 'Sub-Second Speeds / Core Web Vitals' },
-      { label: 'SOURCE CODE RIGHTS', val: '100% Client Ownership (No Lock-In)' }
+      { label: 'SCOPE AGREEMENT', val: 'Scope agreed before build begins' },
+      { label: 'CONTENT EDITING', val: 'Editing approach matched to your team' },
+      { label: 'HANDOFF & HOSTING', val: 'Hosting and support clearly explained' }
     ],
-    serviceHref: '/services#website-development'
+    serviceHref: '/services#website-development',
+    linkText: 'Explore Website Development'
   },
   {
     id: 'custom-applications',
     icon: Layers,
     number: '02',
     tabTitle: 'Custom Applications',
-    discipline: 'ENTERPRISE SOFTWARE TOOLS & PORTALS',
-    heading: 'Custom Web Applications, Business Portals & Operational Dashboards',
-    summary: 'Scale your business operations with purpose-built digital tools engineered in custom PHP, Node.js, and React. We architect resilient web applications, interactive management dashboards, and specialized software systems that automate manual overhead and unlock productivity.',
+    discipline: 'CUSTOM APPLICATIONS',
+    heading: 'Tools Built Around the Way Your Team Works',
+    summary: 'Turn a defined business process into a practical application. We help map users, information, approvals, and reporting before building the features needed for that workflow.',
     deliverables: [
-      'Custom Web Applications: Full-stack tailored platforms engineered with high performance, scalability & cloud hosting',
-      'Business & Internal Applications: Operations portals, employee dashboards, quotation tools & automated workflows',
-      'Interactive Analytics Dashboards: Real-time telemetry panels, data visualizers & multi-tier role filtering',
-      'Specialized Software Solutions: Domain-specific digital tools and automation routines for unique business challenges',
-      'REST APIs & System Integrations: Secure endpoints connecting CRMs, payment gateways, ERPs & WhatsApp Business APIs',
-      'Role-Based Access Control: Enterprise RBAC, multi-factor auth, encrypted endpoints & 100% client code ownership'
+      'Quotation and estimation tools',
+      'Client and internal operations portals',
+      'Role-based dashboards and reporting',
+      'Database-backed applications',
+      'Integrations with agreed external systems',
+      'Workflow automation and application modernization'
     ],
-    bestFor: 'Operations managers, logistics portals, employee task queues, bespoke quotation tools, and businesses avoiding costly SaaS subscriptions.',
-    techStack: ['Custom Web Apps', 'PHP 8+ / Node.js', 'React / Next.js', 'PostgreSQL / MySQL', 'REST APIs', 'RBAC Security'],
-    statusBadge: 'VERIFIED ARCHITECTURE',
-    stackLabel: 'ENGINEERING & ARCHITECTURE STACK',
+    bestFor: 'Teams dealing with repeated manual work or information spread across disconnected tools.',
+    techStack: ['PHP', 'Databases (MySQL / PostgreSQL)', 'REST APIs', 'React', 'Next.js'],
+    statusBadge: 'SERVICE SCOPE',
+    stackLabel: 'ENGINEERING & ARCHITECTURE',
     metrics: [
-      { label: 'SECURITY & COMPLIANCE', val: 'Role-Based RBAC / Encrypted Endpoints' },
-      { label: 'IP & CODE RIGHTS', val: '100% Full Client Source Rights' }
+      { label: 'WORKFLOW DEFINITION', val: 'Workflow defined first' },
+      { label: 'ACCESS & DATA', val: 'Access and data handling considered' },
+      { label: 'MAINTENANCE', val: 'Maintenance included in planning' }
     ],
-    serviceHref: '/services#custom-applications'
+    serviceHref: '/services#custom-applications',
+    linkText: 'Explore Custom Applications'
   },
   {
     id: 'creative-content',
     icon: Share2,
     number: '03',
     tabTitle: 'Social Media Content',
-    discipline: 'CREATIVE DIRECTION & BRAND ASSETS',
-    heading: 'Annual Content Planning, Carousel Systems & Brand Visual Assets',
-    summary: 'Transform your social media channels into authoritative brand assets. We craft strategic multi-channel creative campaigns, high-impact educational carousels, short-form video assets, and refined visual design systems that elevate brand recall across Instagram, LinkedIn, Facebook, and video platforms.',
+    discipline: 'SOCIAL MEDIA CONTENT',
+    heading: 'Content That Makes Your Business Easier to Recognize',
+    summary: 'Give your social channels a consistent visual direction and a useful mix of content. We help plan and create material around your services, customers\' questions, announcements, and available brand assets.',
     deliverables: [
-      'Annual Creative Content Planning: 52-week editorial roadmaps, quarterly thematic pillars & recurring visual hooks',
-      'Social Media Post & Carousel Creatives: High-resolution graphic assets, multi-slide educational carousels & campaign banners',
-      'Reels & Short-Form Video Editing: Clean, paced vertical video formats and motion snippets calibrated for modern feeds',
-      'Brand Asset Design Systems: Standardized story kits, channel banners, highlight covers & brand visual guidelines',
-      'Multi-Format Export Packages: Assets calibrated and optimized for desktop, mobile vertical feeds & ad networks'
+      'Editorial topics and content calendars',
+      'Social posts and multi-slide carousels',
+      'Reels and short-form video editing',
+      'Campaign graphics and announcements',
+      'Profile banners, story templates, and reusable brand assets'
     ],
-    bestFor: 'Brands needing a premium, recognizable social media presence without hiring a full in-house creative team.',
-    techStack: ['Annual Planning', 'Carousel Creatives', 'Reels & Video', 'Brand Asset Kits', 'Multi-Format Export'],
-    statusBadge: 'ACTIVE CREATIVE SYSTEM',
-    stackLabel: 'CREATIVE TOOLKIT & ASSET FORMATS',
+    bestFor: 'Businesses that need planned, consistent creative content rather than occasional disconnected posts.',
+    techStack: ['Content Planning', 'Visual Design', 'Carousels', 'Short Video', 'Brand Assets'],
+    statusBadge: 'SERVICE SCOPE',
+    stackLabel: 'CREATIVE FORMATS & PLANNING',
     metrics: [
-      { label: 'CREATIVE ASSET RIGHTS', val: '100% Full Asset & Source Ownership' },
-      { label: 'EDITORIAL CADENCE', val: '52-Week Structured Consistency' }
+      { label: 'CHANNELS & FORMATS', val: 'Agreed channels and formats' },
+      { label: 'APPROVAL FLOW', val: 'Structured approval workflow' },
+      { label: 'OUTPUT CADENCE', val: 'Defined content quantities' }
     ],
-    serviceHref: '/services#social-media-content'
+    serviceHref: '/services#social-media-content',
+    linkText: 'Explore Content Creation'
   },
   {
     id: 'presence-upkeep',
     icon: RefreshCw,
     number: '04',
-    tabTitle: 'Profile & Search Upkeep',
-    discipline: 'CHANNEL OPERATIONS & LOCAL SEARCH',
-    heading: 'Scheduled Post Publishing, Google Maps Setup & Digital Presence Sync',
-    summary: 'Reliable post publishing schedules, swift asset adjustments, and continuous channel hygiene so your brand always remains active, verified, and discovered on Google Maps and directories.',
+    tabTitle: 'Digital Presence Support',
+    discipline: 'DIGITAL PRESENCE SUPPORT',
+    heading: 'Keep Your Online Information Current and Connected',
+    summary: 'Support the ongoing work behind an active business presence. This can include publishing approved posts, updating channel information, maintaining website content, and helping with local business profiles.',
     deliverables: [
-      'Regular Post Updating & Publishing: Organized multi-platform publishing following consistent weekly schedules',
-      'Ongoing Channel Maintenance Support: Rapid turnaround for notices, bio revisions, profile banner updates & asset tweaks',
-      'Google Business Profile & Maps Setup: Creation, verification, category optimization & accurate location pinning on Google & Bing',
-      'Complete Digital Presence Sync: Unified interconnection across your website, social channels, and local business directories',
-      'Proactive Security Updates & Speed Audits: Regular patches, daily backups, edge caching tuning & Core Web Vitals audits'
+      'Publishing to agreed social channels',
+      'Profile descriptions, banners, and contact updates',
+      'Google Business Profile and directory assistance',
+      'Website and channel information checks',
+      'Ongoing content and digital upkeep'
     ],
-    bestFor: 'Businesses wanting dependable technical upkeep, active search visibility, verified Google Maps presence, and zero maintenance headaches.',
-    techStack: ['Scheduled Publishing', 'Google Maps Setup', 'Channel Maintenance', 'Digital Presence Sync', 'Local SEO'],
-    statusBadge: 'CONTINUOUS CHANNEL SYNC',
-    stackLabel: 'MANAGEMENT CHANNELS & DIRECTORIES',
+    bestFor: 'Businesses that need defined, recurring support to keep their digital touchpoints accurate.',
+    techStack: ['Publishing', 'Profile Updates', 'Local Presence', 'Channel Upkeep'],
+    statusBadge: 'SERVICE SCOPE',
+    stackLabel: 'MANAGEMENT CHANNELS & PROFILES',
     metrics: [
-      { label: 'LOCAL SEARCH VISIBILITY', val: 'Google Maps & Business Verification' },
-      { label: 'CHANNEL HYGIENE', val: 'Continuous Upkeep & Directory Sync' }
+      { label: 'RESPONSIBILITIES', val: 'Responsibilities agreed upfront' },
+      { label: 'PLATFORM STANDARDS', val: 'Platform requirements respected' },
+      { label: 'CHANGE REVIEW', val: 'All changes reviewed prior to update' }
     ],
-    serviceHref: '/services#social-media-management'
+    serviceHref: '/services#social-media-management',
+    linkText: 'Explore Digital Presence Support'
   }
 ];
 
 export default function CapabilitiesInspector() {
   const [activeIdx, setActiveIdx] = useState(0);
+  const tabRefs = useRef([]);
   const activeCap = CAPABILITIES[activeIdx];
   const IconComponent = activeCap.icon;
 
+  const handleKeyDown = (e, idx) => {
+    let nextIdx = null;
+    if (e.key === 'ArrowRight') {
+      nextIdx = (idx + 1) % CAPABILITIES.length;
+    } else if (e.key === 'ArrowLeft') {
+      nextIdx = (idx - 1 + CAPABILITIES.length) % CAPABILITIES.length;
+    } else if (e.key === 'Home') {
+      nextIdx = 0;
+    } else if (e.key === 'End') {
+      nextIdx = CAPABILITIES.length - 1;
+    }
+
+    if (nextIdx !== null) {
+      e.preventDefault();
+      setActiveIdx(nextIdx);
+      tabRefs.current[nextIdx]?.focus();
+    }
+  };
+
   return (
     <div className="editorial-capabilities-wrapper">
-      {/* Sleek Minimalist Tab Navigation Bar (Highlighted, Animated Symbols) */}
+      {/* Sleek Minimalist Tab Navigation Bar (Highlighted, Animated Symbols, Roving TabIndex - RC-15) */}
       <div className="editorial-tabs-bar" role="tablist" aria-label="Core Capabilities">
         {CAPABILITIES.map((cap, idx) => {
           const isActive = activeIdx === idx;
@@ -157,10 +184,15 @@ export default function CapabilitiesInspector() {
           return (
             <button
               key={cap.id}
+              ref={(el) => (tabRefs.current[idx] = el)}
+              id={`capability-tab-${cap.id}`}
               role="tab"
               type="button"
+              tabIndex={isActive ? 0 : -1}
               aria-selected={isActive}
+              aria-controls={`capability-panel-${cap.id}`}
               onClick={() => setActiveIdx(idx)}
+              onKeyDown={(e) => handleKeyDown(e, idx)}
               className={`editorial-tab-trigger ${isActive ? 'is-active' : ''}`}
             >
               <span className="tab-idx-mono">{cap.number}</span>
@@ -180,8 +212,15 @@ export default function CapabilitiesInspector() {
         })}
       </div>
 
-      {/* Fluid Editorial Canvas Display (Zero Outer Box, Zero Nested Cards) */}
-      <div className="editorial-cap-canvas reveal-card" key={activeCap.id}>
+      {/* Fluid Editorial Canvas Display (Accessible Tabpanel Pattern - RC-15) */}
+      <div
+        id={`capability-panel-${activeCap.id}`}
+        role="tabpanel"
+        aria-labelledby={`capability-tab-${activeCap.id}`}
+        tabIndex={0}
+        className="editorial-cap-canvas reveal-card"
+        key={activeCap.id}
+      >
         <div className="editorial-cap-grid">
           {/* Main Description & Deliverables */}
           <div className="editorial-cap-main">
@@ -206,7 +245,7 @@ export default function CapabilitiesInspector() {
             </p>
 
             <div className="editorial-deliverables-block">
-              <h4 className="deliverables-subheading">VERIFIED DELIVERABLES &amp; HANDOFFS</h4>
+              <h4 className="deliverables-subheading">DELIVERABLES &amp; SCOPE</h4>
               <div className="editorial-checklist">
                 {activeCap.deliverables.map((item, i) => (
                   <div key={i} className="editorial-check-row">
@@ -282,7 +321,7 @@ export default function CapabilitiesInspector() {
 
               <div className="spec-cta-wrap">
                 <Link href={activeCap.serviceHref} className="btn-modern-primary" style={{ width: '100%', justifyContent: 'center' }}>
-                  <span>View Complete Scope</span>
+                  <span>{activeCap.linkText || 'View Complete Scope'}</span>
                   <ArrowRight size={14} />
                 </Link>
               </div>

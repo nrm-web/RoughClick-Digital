@@ -6,11 +6,11 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export const metadata = {
-  title: 'Knowledge Hub & Strategic Perspectives',
-  description: 'Practical perspectives on modern web architecture, digital presence integration, and local business profile discoverability.',
+  title: 'Practical Digital Guides',
+  description: 'Practical guidance on website platforms, custom applications, social content, local business profiles, and ongoing digital upkeep.',
   openGraph: {
-    title: 'Knowledge Hub & Strategic Perspectives | RoughClick Digital',
-    description: 'Practical perspectives on modern web architecture, digital presence integration, and local business profile discoverability.',
+    title: 'Practical Digital Guides | RoughClick Digital',
+    description: 'Practical guidance on website platforms, custom applications, social content, local business profiles, and ongoing digital upkeep.',
     type: 'website'
   }
 };

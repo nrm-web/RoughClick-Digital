@@ -45,26 +45,7 @@ export default function BrandPreloader() {
     }, duration);
   };
 
-  // Trigger loader on route changes across all pages (Home, Services, Blog, Contact)
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    if (prevPathnameRef.current !== pathname) {
-      prevPathnameRef.current = pathname;
-
-      const isAuditBot = Boolean(
-        navigator.webdriver ||
-        /Lighthouse|PageSpeed|HeadlessChrome|Chrome-Lighthouse|Googlebot/i.test(navigator.userAgent)
-      );
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      if (!isAuditBot && !prefersReducedMotion) {
-        triggerLoader(1000);
-      }
-    }
-  }, [pathname]);
-
-  // Initial load trigger on all pages & event listener
+  // Initial load trigger: equal treatment for visitors and audits, with strict reduced motion check (RC-22)
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
@@ -72,20 +53,29 @@ export default function BrandPreloader() {
     const forcePreview = params.get('preloader') === '1' || params.get('loader') === '1';
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Detect automated audit bots (PageSpeed, Lighthouse, Googlebot, Webdriver) to ensure 95+ score
-    const isAuditBot = Boolean(
-      navigator.webdriver ||
-      /Lighthouse|PageSpeed|HeadlessChrome|Chrome-Lighthouse|Googlebot/i.test(navigator.userAgent)
-    );
-
-    // For real visitors / client: Show preloader on page load for 1s across all pages
-    if ((!isAuditBot || forcePreview) && !prefersReducedMotion) {
-      triggerLoader(1000);
+    // Respect reduced motion strictly
+    if (!prefersReducedMotion) {
+      try {
+        const hasSeen = sessionStorage.getItem('rc_preloader_seen');
+        // Only run on first visit per session, or when explicitly forced
+        if (!hasSeen || forcePreview) {
+          sessionStorage.setItem('rc_preloader_seen', '1');
+          triggerLoader(800);
+        }
+      } catch {
+        // Fallback if sessionStorage is disabled/blocked
+        if (forcePreview) {
+          triggerLoader(800);
+        }
+      }
     }
 
-    // Logo Click & Custom Navigation: 1s transition
-    const onTriggerPreloader = () => {
-      triggerLoader(1000);
+    // Custom event trigger (e.g. logo click or interactive demo)
+    const onTriggerPreloader = (e) => {
+      const motionReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (motionReduced) return;
+      const duration = e?.detail?.duration || 800;
+      triggerLoader(duration);
     };
     window.addEventListener('rc-trigger-preloader', onTriggerPreloader);
 

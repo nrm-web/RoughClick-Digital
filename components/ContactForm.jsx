@@ -109,10 +109,10 @@ export default function ContactForm() {
     }}>
       <div style={{ marginBottom: 24 }}>
         <h2 style={{ fontSize: '1.6rem', marginBottom: 6, color: 'var(--text-primary)' }}>
-          Project Inquiry Form
+          Project Enquiry
         </h2>
-        <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>
-          Complete the details below to discuss your website, social media, or digital presence requirements.
+        <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+          Provide your name, one way to contact you, and the type of help you need. You can choose Unsure / Need Advice if you would like help defining the scope.
         </p>
       </div>
 
@@ -168,7 +168,26 @@ export default function ContactForm() {
           </div>
         </div>
       ) : (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} noValidate>
+          {status.error && (
+            <div
+              role="alert"
+              aria-live="assertive"
+              style={{
+                backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                border: '1px solid #ef4444',
+                borderRadius: '8px',
+                padding: '12px 16px',
+                marginBottom: '18px',
+                color: '#dc2626',
+                fontSize: '0.9rem',
+                fontWeight: 500
+              }}
+            >
+              {status.error}
+            </div>
+          )}
+
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
@@ -183,6 +202,7 @@ export default function ContactForm() {
                 type="text"
                 id="name"
                 name="name"
+                autoComplete="name"
                 required
                 value={formData.name}
                 onChange={handleChange}
@@ -207,6 +227,7 @@ export default function ContactForm() {
                 type="email"
                 id="email"
                 name="email"
+                autoComplete="email"
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="jane@company.com"
@@ -237,6 +258,7 @@ export default function ContactForm() {
                 type="tel"
                 id="phone"
                 name="phone"
+                autoComplete="tel"
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder="Your mobile or WhatsApp number"
@@ -260,6 +282,7 @@ export default function ContactForm() {
                 type="text"
                 id="company"
                 name="company"
+                autoComplete="organization"
                 value={formData.company}
                 onChange={handleChange}
                 placeholder="Your Business Name"
@@ -331,6 +354,19 @@ export default function ContactForm() {
             />
           </div>
 
+          <div style={{
+            fontSize: '0.8rem',
+            color: 'var(--text-muted)',
+            marginBottom: 20,
+            padding: '10px 14px',
+            backgroundColor: 'var(--bg-subtle)',
+            borderRadius: 6,
+            border: '1px solid var(--border-subtle)',
+            lineHeight: 1.5
+          }}>
+            🔒 <strong>Data safety:</strong> Please do not include passwords, payment details, identity documents, or other sensitive information in the enquiry.
+          </div>
+
           <button
             type="submit"
             disabled={status.submitting}
@@ -361,7 +397,7 @@ export default function ContactForm() {
             lineHeight: 1.5
           }}>
             🔒 We respect your privacy. Details are only used to respond to your project request. Read our{' '}
-            <Link href="/privacy" style={{ color: 'var(--color-accent)', textDecoration: 'underline' }}>
+            <Link href="/privacy" style={{ color: 'var(--color-accent-dark, #086d60)', textDecoration: 'underline', fontWeight: 600 }}>
               Privacy Policy
             </Link>.
           </p>

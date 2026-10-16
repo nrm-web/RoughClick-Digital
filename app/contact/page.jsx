@@ -20,8 +20,22 @@ function WhatsAppIcon({ size = 18, className = '', style = {} }) {
 }
 
 export const metadata = {
-  title: 'Contact Us & Start Your Project',
-  description: 'Discuss your project with RoughClick Digital engineers. Request a consultation for bespoke websites, custom applications, and digital presence solutions.'
+  title: 'Discuss Your Project',
+  description: 'Tell RoughClick Digital about your website, application, content, or digital presence requirement. Contact the team in Coimbatore.',
+  alternates: {
+    canonical: '/contact',
+  },
+  openGraph: {
+    title: 'Discuss Your Project | RoughClick Digital',
+    description: 'Tell RoughClick Digital about your website, application, content, or digital presence requirement. Contact the team in Coimbatore.',
+    url: '/contact',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Discuss Your Project | RoughClick Digital',
+    description: 'Tell RoughClick Digital about your website, application, content, or digital presence requirement. Contact the team in Coimbatore.',
+  },
 };
 
 export default function ContactPage() {
@@ -31,27 +45,27 @@ export default function ContactPage() {
 
   return (
     <>
-      {/* Contact Hero */}
+      {/* C01: Contact Hero */}
       <section className="modern-hero" style={{ paddingBottom: '2.5rem' }}>
         <div className="hero-ambient-glow orb-1" aria-hidden="true" />
         <div className="hero-ambient-glow orb-2" aria-hidden="true" />
         <div className="hero-grid-pattern" aria-hidden="true" />
         <div className="rc-container" style={{ position: 'relative', zIndex: 2 }}>
-          <div style={{ maxWidth: 760 }}>
+          <div style={{ maxWidth: 780 }}>
             <span className="rc-badge" style={{ marginBottom: 14 }}>
-              Direct Engineering Consultation
+              LET&apos;S DISCUSS YOUR REQUIREMENT
             </span>
             <h1 className="hero-title" style={{ fontSize: 'clamp(2.2rem, 4.4vw, 3.4rem)' }}>
-              Start Your <span className="accent">Digital Project</span>
+              Tell Us What You Want to <span className="accent">Build or Improve</span>
             </h1>
             <p className="hero-subcopy" style={{ fontSize: '1.08rem' }}>
-              Tell us about your organization's digital goals. Speak directly with an engineer to evaluate your project scope across custom WordPress, bespoke PHP, Wix Studio, Next.js, and local SEO presence.
+              Whether you need a website, a business application, social content, or ongoing digital support, share a few details about your business and the problem you want to solve.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Main Grid: Form + Office Channels */}
+      {/* Main Grid: Form + Office Channels & Guidance */}
       <section className="modern-section" style={{ paddingTop: '1.5rem', paddingBottom: 'clamp(5rem, 8vw, 7.5rem)' }}>
         <div className="rc-container">
           <div style={{
@@ -65,8 +79,9 @@ export default function ContactPage() {
               <ContactForm />
             </div>
 
-            {/* Right: Contact Information & Placeholders */}
+            {/* Right: Contact Information & Guidance */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+              {/* C03: Contact Channels */}
               <div style={{
                 backgroundColor: 'var(--bg-card)',
                 border: '1px solid var(--border-card)',
@@ -79,7 +94,7 @@ export default function ContactPage() {
                 </span>
 
                 <h3 style={{ fontSize: '1.35rem', color: 'var(--text-heading)', marginBottom: 20 }}>
-                  Contact Channels
+                  Contact RoughClick Digital
                 </h3>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 18, fontSize: '0.92rem' }}>
@@ -98,9 +113,9 @@ export default function ContactPage() {
                       <MapPin size={18} />
                     </div>
                     <div>
-                      <strong style={{ color: 'var(--text-heading)' }}>Office Location</strong>
+                      <strong style={{ color: 'var(--text-heading)' }}>Location</strong>
                       <div style={{ color: 'var(--text-muted)', marginTop: 2 }}>
-                        {BRAND_CONFIG.contact.officeLocation || 'Coimbatore, Tamil Nadu, India'}
+                        Coimbatore, Tamil Nadu, India
                       </div>
                       <div style={{ fontSize: '0.8rem', color: 'var(--color-accent)', marginTop: 2 }}>
                         Serving Clients Worldwide
@@ -123,7 +138,7 @@ export default function ContactPage() {
                       <Mail size={18} />
                     </div>
                     <div>
-                      <strong style={{ color: 'var(--text-heading)' }}>Email Inquiries</strong>
+                      <strong style={{ color: 'var(--text-heading)' }}>Email</strong>
                       <div style={{ color: 'var(--text-muted)', marginTop: 2 }}>
                         <a href={`mailto:${BRAND_CONFIG.contact.email}`} style={{ color: 'inherit' }}>
                           {BRAND_CONFIG.contact.email}
@@ -147,7 +162,7 @@ export default function ContactPage() {
                       <Phone size={18} />
                     </div>
                     <div>
-                      <strong style={{ color: 'var(--text-heading)' }}>Telephone</strong>
+                      <strong style={{ color: 'var(--text-heading)' }}>Phone</strong>
                       <div style={{ color: 'var(--text-muted)', marginTop: 2 }}>
                         <a href={`tel:${BRAND_CONFIG.contact.phone.replace(/\s+/g, '')}`} style={{ color: 'inherit' }}>
                           {BRAND_CONFIG.contact.phone}
@@ -173,7 +188,7 @@ export default function ContactPage() {
                     <div>
                       <strong style={{ color: 'var(--text-heading)' }}>Business Hours</strong>
                       <div style={{ color: 'var(--text-muted)', marginTop: 2 }}>
-                        {BRAND_CONFIG.contact.hours}
+                        Monday–Friday, 10:00 AM–5:00 PM IST
                       </div>
                     </div>
                   </div>
@@ -199,9 +214,49 @@ export default function ContactPage() {
                     }}
                   >
                     <WhatsAppIcon size={18} style={{ color: 'var(--color-accent)', transform: 'translateY(-0.5px)' }} />
-                    <span>WhatsApp Direct Chat</span>
+                    <span>Chat on WhatsApp</span>
                     <ArrowRight size={15} strokeWidth={2.4} style={{ transform: 'translateY(0.5px)' }} />
                   </a>
+                </div>
+              </div>
+
+              {/* C04: What to Share Guidance Card */}
+              <div style={{
+                backgroundColor: 'var(--bg-card)',
+                border: '1px solid var(--border-card)',
+                borderRadius: 16,
+                padding: 'clamp(20px, 3vw, 28px)',
+                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04)'
+              }}>
+                <h3 style={{ fontSize: '1.15rem', color: 'var(--text-heading)', marginBottom: 14, fontWeight: 700 }}>
+                  A Few Details Help Us Understand the Project
+                </h3>
+                <ul style={{
+                  margin: '0 0 16px 0',
+                  paddingLeft: '20px',
+                  color: 'var(--text-muted)',
+                  fontSize: '0.9rem',
+                  lineHeight: 1.7,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 6
+                }}>
+                  <li>What your business does.</li>
+                  <li>Your current website or tools, if relevant.</li>
+                  <li>What you want customers or your team to do.</li>
+                  <li>The problem you want to solve.</li>
+                  <li>Any launch constraints or existing material.</li>
+                </ul>
+                <div style={{
+                  padding: '12px 14px',
+                  backgroundColor: 'var(--bg-subtle)',
+                  borderRadius: 8,
+                  border: '1px solid var(--border-subtle)',
+                  fontSize: '0.82rem',
+                  color: 'var(--text-muted)',
+                  lineHeight: 1.5
+                }}>
+                  🔒 <strong>Please note:</strong> Please do not include passwords, payment details, identity documents, or other sensitive information in the enquiry.
                 </div>
               </div>
 
@@ -235,7 +290,7 @@ export default function ContactPage() {
                 </div>
                 <div style={{ marginTop: 12, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div style={{ fontSize: '0.84rem', fontWeight: 600, color: 'var(--text-heading)' }}>
-                    Coimbatore, Tamil Nadu, India
+                    Coimbatore, Tamil Nadu
                   </div>
                   <a
                     href="https://maps.google.com/?q=Coimbatore,+Tamil+Nadu,+India"
@@ -251,10 +306,21 @@ export default function ContactPage() {
                       gap: 4
                     }}
                   >
-                    <span>View Map</span>
+                    <span>View Coimbatore on Google Maps</span>
                     <ArrowRight size={13} />
                   </a>
                 </div>
+                <p style={{
+                  fontSize: '0.8rem',
+                  color: 'var(--text-muted)',
+                  marginTop: 10,
+                  lineHeight: 1.5,
+                  paddingTop: 8,
+                  borderTop: '1px solid var(--border-subtle)',
+                  margin: '10px 0 0 0'
+                }}>
+                  This map shows the city area. Contact us to confirm any in-person meeting arrangements.
+                </p>
               </div>
             </div>
           </div>

@@ -9,8 +9,8 @@ import { StartProjectButton, ScheduleCallButton } from '@/components/QuickBookin
 import { AnimatedLayout, AnimatedCode, AnimatedSparkles, AnimatedZap } from '@/components/AnimatedPlatformIcons';
 
 export const metadata = {
-  title: 'RoughClick Digital | WordPress, Custom PHP, Wix & Next.js Web Development Agency',
-  description: 'Professional web development services across custom WordPress, bespoke PHP, Wix Studio, and Next.js. We engineer fast, SEO-optimized websites, custom business portals, and local SEO presence.',
+  title: 'Websites, Applications & Digital Services | RoughClick Digital',
+  description: 'RoughClick Digital helps businesses plan and build websites, custom applications, social content, and ongoing digital presence support.',
 };
 
 export default function HomePage() {
@@ -39,7 +39,7 @@ export default function HomePage() {
               </h1>
 
               <p className="hero-subtext">
-                RoughClick Digital helps businesses create websites, streamline operations, and maintain a consistent online presence — from planning and design to launch and ongoing support.
+                Bring your services, workflows, and online presence together with a website or digital solution shaped around your business. RoughClick Digital helps with planning, design, development, and ongoing updates.
               </p>
 
               <div className="hero-btn-group">
@@ -54,16 +54,16 @@ export default function HomePage() {
 
               <div className="hero-metrics-strip">
                 <div className="hero-metric-item">
-                  <div className="metric-bold">Sub-Second</div>
-                  <div className="metric-label">Core Web Vitals Standard</div>
+                  <div className="metric-bold">Business-First Planning</div>
+                  <div className="metric-label">Start with your goals and users.</div>
                 </div>
                 <div className="hero-metric-item">
-                  <div className="metric-bold">Clean Code</div>
-                  <div className="metric-label">Zero Template Bloat</div>
+                  <div className="metric-bold">Clear Deliverables</div>
+                  <div className="metric-label">Understand the agreed project scope.</div>
                 </div>
                 <div className="hero-metric-item">
-                  <div className="metric-bold">Direct Access</div>
-                  <div className="metric-label">Dedicated Project Engineers</div>
+                  <div className="metric-bold">Practical Support</div>
+                  <div className="metric-label">Plan for updates after launch.</div>
                 </div>
               </div>
             </div>
@@ -71,14 +71,14 @@ export default function HomePage() {
             <div className="hero-visual-frame">
               <div className="floating-hero-badge badge-pos-top-left" aria-hidden="true">
                 <span className="badge-pulse-indicator" />
-                <span className="badge-text-primary">Sub-Second Speed</span>
-                <span className="badge-text-secondary">Core Web Vitals Optimized</span>
+                <span className="badge-text-primary">Built for Your Business</span>
+                <span className="badge-text-secondary">Websites, applications, and digital presence</span>
               </div>
 
               <div className="floating-hero-badge badge-pos-bottom-right" aria-hidden="true">
                 <span className="badge-pulse-indicator" />
-                <span className="badge-text-primary">Production Ready</span>
-                <span className="badge-text-secondary">Cross-Device Tested</span>
+                <span className="badge-text-primary">From Plan to Launch</span>
+                <span className="badge-text-secondary">Design, development, and handoff</span>
               </div>
 
               <div className="hero-visual-light-wrap">
@@ -117,70 +117,70 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. EDITORIAL AGENCY MANIFESTO & STANDARDS */}
+      {/* 2. EDITORIAL AGENCY MANIFESTO & WORKING PRINCIPLES */}
       <section className="editorial-manifesto-section">
         <div className="rc-container">
           <div className="editorial-manifesto-grid reveal-on-scroll">
-            {/* Left Column: Bold Editorial Statement */}
+            {/* Left Column: Clear Way to Build */}
             <div className="manifesto-left-col">
               <span className="editorial-category-tag">
-                01 // PHILOSOPHY &amp; PRINCIPLES
+                01 // ABOUT ROUGHCLICK DIGITAL
               </span>
               <h2 className="manifesto-headline">
-                Hand-Crafted Engineering Built Around Your Business
+                A Clearer Way to Build Your Digital Presence
               </h2>
               <p className="manifesto-lead-p">
-                Most websites today are held together by 40 bloated plugins, slow drag-and-drop builders, and layers of account managers playing telephone. We do the opposite: <strong>clean, custom code engineered by hand</strong> across WordPress, Custom PHP, Wix, and Next.js for businesses that value speed, clarity, and real customer conversions.
+                Your website should explain your business, make the next step easy, and remain practical to manage. Your internal tools should support the way your team works. Your social channels should help customers recognize and understand your brand.
               </p>
               <p className="manifesto-body-p">
-                RoughClick Digital is a modern digital engineering agency. We partner directly with forward-thinking businesses to build lightning-fast web platforms, custom operational tools, and cohesive visual asset systems that stand the test of time.
+                RoughClick Digital brings these needs together through website development, custom applications, social content, and digital presence support. We begin with the problem you want to solve, then recommend a suitable approach for your content, budget, and ongoing responsibilities.
               </p>
               <div className="manifesto-action-row">
                 <Link href="/services" className="editorial-link-arrow">
-                  <span>Explore Our Full Capabilities</span>
+                  <span>Explore Our Services</span>
                   <ArrowRight size={15} />
                 </Link>
               </div>
             </div>
 
-            {/* Right Column: Engineering Benchmarks Ledger */}
+            {/* Right Column: Working Principles Ledger */}
             <div className="manifesto-right-col">
               <div className="editorial-benchmarks-ledger reveal-card">
                 <div className="benchmarks-header">
-                  <span className="benchmarks-header-title">ENGINEERING BENCHMARKS</span>
-                  <span className="benchmarks-header-tag">ZERO BLOAT</span>
+                  <span className="benchmarks-header-title">WORKING PRINCIPLES</span>
+                  <span className="benchmarks-header-tag">CLEAR COMMITMENTS</span>
                 </div>
 
                 <div className="benchmarks-list">
                   <div className="benchmark-entry">
                     <div className="benchmark-idx">01</div>
                     <div className="benchmark-content">
-                      <h4 className="benchmark-title">Direct Builder Access</h4>
-                      <p className="benchmark-desc">Communicate directly with the software engineer and designer crafting your product. No account managers playing telephone.</p>
+                      <h4 className="benchmark-title">Understand the Requirement</h4>
+                      <p className="benchmark-desc">Define what the website or tool needs to do, who will use it, and how success will be assessed before choosing a platform.</p>
                     </div>
                   </div>
 
                   <div className="benchmark-entry">
                     <div className="benchmark-idx">02</div>
                     <div className="benchmark-content">
-                      <h4 className="benchmark-title">100% Code &amp; IP Ownership</h4>
-                      <p className="benchmark-desc">All source code, design systems, and GitHub repository rights are transferred to you upon launch. Zero proprietary lock-in.</p>
+                      <h4 className="benchmark-title">Keep the Scope Clear</h4>
+                      <p className="benchmark-desc">Agree the pages, features, content responsibilities, and review stages so everyone knows what is being delivered.</p>
                     </div>
                   </div>
 
                   <div className="benchmark-entry">
                     <div className="benchmark-idx">03</div>
                     <div className="benchmark-content">
-                      <h4 className="benchmark-title">Sub-0.7s Speed Standard</h4>
-                      <p className="benchmark-desc">Every page pre-rendered on edge networks with 95+ Google Core Web Vitals scores, boosting conversion and SEO rankings.</p>
+                      <h4 className="benchmark-title">Choose Maintainable Solutions</h4>
+                      <p className="benchmark-desc">Consider updates, hosting, integrations, and future changes as part of the build rather than leaving them until launch.</p>
                     </div>
                   </div>
 
                   <div className="benchmark-entry">
                     <div className="benchmark-idx">04</div>
                     <div className="benchmark-content">
-                      <h4 className="benchmark-title">Versatile Architecture</h4>
-                      <p className="benchmark-desc">Bespoke WordPress themes, custom PHP 8+ portals, Wix setups, or Next.js frontends engineered with clean semantic code that any professional engineer can scale.</p>
+                      <h4 className="benchmark-title">Explain the Handoff</h4>
+                      <p className="benchmark-desc">Make ownership, account access, licenses, documentation, and ongoing support responsibilities clear in the proposal.</p>
                     </div>
                   </div>
                 </div>
@@ -194,10 +194,10 @@ export default function HomePage() {
       <section className="section-capabilities-fluid">
         <div className="rc-container">
           <div className="editorial-section-head reveal-on-scroll">
-            <span className="editorial-category-tag">02 // CAPABILITIES &amp; DISCIPLINES</span>
-            <h2 className="editorial-section-title">Interactive Capabilities Directory</h2>
+            <span className="editorial-category-tag">02 // WHAT WE DO</span>
+            <h2 className="editorial-section-title">Digital Services That Support Your Business</h2>
             <p className="editorial-section-subtitle">
-              Inspect our verified deliverables, modern technology architectures, and real business outcomes across each discipline.
+              Explore the type of support you need. We can help define the right scope if your project spans more than one service.
             </p>
           </div>
 
@@ -209,10 +209,10 @@ export default function HomePage() {
       <section className="section-platform-guide">
         <div className="rc-container">
           <div className="editorial-section-head reveal-on-scroll">
-            <span className="editorial-category-tag">03 // PLATFORM SELECTION GUIDE</span>
-            <h2 className="editorial-section-title">The Right Platform for Your Business Goals</h2>
+            <span className="editorial-category-tag">03 // CHOOSING A PLATFORM</span>
+            <h2 className="editorial-section-title">Start With the Requirement, Then Choose the Technology</h2>
             <p className="editorial-section-subtitle">
-              We select and engineer the technology stack that fits your operational requirements, internal team skills, and growth trajectory—with zero dogmatic lock-in.
+              Compare content editing, functionality, integrations, maintenance, and ongoing costs before choosing the platform for your website.
             </p>
           </div>
 
@@ -376,10 +376,10 @@ export default function HomePage() {
       <section className="section-truth-fluid">
         <div className="rc-container">
           <div className="editorial-section-head reveal-on-scroll">
-            <span className="editorial-category-tag">04 // TRANSPARENCY &amp; STANDARDS</span>
-            <h2 className="editorial-section-title">Our Working Approach &amp; Delivery Standards</h2>
+            <span className="editorial-category-tag">04 // HOW WE WORK</span>
+            <h2 className="editorial-section-title">Clear Decisions From the First Conversation</h2>
             <p className="editorial-section-subtitle">
-              How direct communication, clear milestones, and purposeful architecture keep your project focused, fast, and on budget.
+              A useful digital project needs more than a design or a technology choice. It needs an agreed purpose, a manageable scope, and clear responsibilities.
             </p>
           </div>
 
@@ -391,10 +391,10 @@ export default function HomePage() {
       <section className="section-lifecycle-fluid">
         <div className="rc-container">
           <div className="editorial-section-head reveal-on-scroll">
-            <span className="editorial-category-tag">05 // METHODOLOGY &amp; TIMELINE</span>
-            <h2 className="editorial-section-title">Transparent 4-Step Delivery Lifecycle</h2>
+            <span className="editorial-category-tag">05 // FROM IDEA TO LAUNCH</span>
+            <h2 className="editorial-section-title">A Project Process You Can Follow</h2>
             <p className="editorial-section-subtitle">
-              A straightforward, milestone-driven collaboration with tangible checkpoints, rapid iterations, and zero surprise billing.
+              The exact stages depend on the project. The stages below show how requirements, reviews, and responsibilities fit together.
             </p>
           </div>
 
@@ -403,13 +403,13 @@ export default function HomePage() {
               <div className="timeline-node-header">
                 <span className="timeline-step-num">01</span>
               </div>
-              <h3 className="timeline-step-title">Scope &amp; Flat Quote</h3>
+              <h3 className="timeline-step-title">Understand and Scope</h3>
               <p className="timeline-step-desc">
-                We jump on a focused 30-minute discovery call to map exact business objectives and technical requirements. You receive a guaranteed flat quote with zero hidden fees.
+                Discuss the business goal, existing setup, audience, required features, and available content. Agree a suitable approach and a proposal before work begins.
               </p>
               <div className="timeline-deliverable-line">
                 <span className="deliverable-arrow">↳</span>
-                <span className="deliverable-text">Milestone Output: Fixed Scope Roadmap</span>
+                <span className="deliverable-text">Milestone Output: Agreed scope and responsibilities.</span>
               </div>
             </div>
 
@@ -417,13 +417,13 @@ export default function HomePage() {
               <div className="timeline-node-header">
                 <span className="timeline-step-num">02</span>
               </div>
-              <h3 className="timeline-step-title">Interactive Prototype</h3>
+              <h3 className="timeline-step-title">Design and Review</h3>
               <p className="timeline-step-desc">
-                We design responsive Figma layouts and live clickable prototypes so you can test user flows and visual styling before a single line of backend code is committed.
+                Review the proposed layout or workflow and provide feedback at the agreed checkpoints. Resolve important content and functionality decisions before they become expensive to change.
               </p>
               <div className="timeline-deliverable-line">
                 <span className="deliverable-arrow">↳</span>
-                <span className="deliverable-text">Milestone Output: Clickable Prototype Sign-Off</span>
+                <span className="deliverable-text">Milestone Output: Approved design and user flow.</span>
               </div>
             </div>
 
@@ -431,13 +431,13 @@ export default function HomePage() {
               <div className="timeline-node-header">
                 <span className="timeline-step-num">03</span>
               </div>
-              <h3 className="timeline-step-title">Modular Platform Build</h3>
+              <h3 className="timeline-step-title">Build and Verify</h3>
               <p className="timeline-step-desc">
-                We develop clean semantic code—whether custom WordPress themes, tailored PHP/MySQL backends, Wix Studio setups, or Next.js frontends—rigorously tested across physical devices.
+                Develop the agreed scope and check the important journeys, content, responsive layouts, accessibility, and technical behavior.
               </p>
               <div className="timeline-deliverable-line">
                 <span className="deliverable-arrow">↳</span>
-                <span className="deliverable-text">Milestone Output: Sub-0.7s Core Web Vitals</span>
+                <span className="deliverable-text">Milestone Output: A reviewable version with test results.</span>
               </div>
             </div>
 
@@ -445,13 +445,13 @@ export default function HomePage() {
               <div className="timeline-node-header">
                 <span className="timeline-step-num">04</span>
               </div>
-              <h3 className="timeline-step-title">Turnkey Launch &amp; Handoff</h3>
+              <h3 className="timeline-step-title">Launch and Handoff</h3>
               <p className="timeline-step-desc">
-                Production rollout, SSL certification, Google Search Console indexing, and recorded video walkthroughs empowering your team with complete operational autonomy.
+                Complete the agreed release checks, confirm account access and responsibilities, and provide the handoff material included in the proposal.
               </p>
               <div className="timeline-deliverable-line">
                 <span className="deliverable-arrow">↳</span>
-                <span className="deliverable-text">Milestone Output: 100% IP &amp; 30-Day Warranty</span>
+                <span className="deliverable-text">Milestone Output: Approved release and handoff.</span>
               </div>
             </div>
           </div>
@@ -463,9 +463,9 @@ export default function HomePage() {
         <div className="rc-container">
           <div className="editorial-section-head reveal-on-scroll">
             <span className="editorial-category-tag">06 // CLARITY &amp; TRANSPARENCY</span>
-            <h2 className="editorial-section-title">Frequently Asked Questions</h2>
+            <h2 className="editorial-section-title">Questions Before You Start</h2>
             <p className="editorial-section-subtitle">
-              Straightforward answers about platform selection, source code ownership, technical stacks, and post-launch maintenance.
+              Straightforward answers about platform selection, source code ownership, project scoping, and ongoing maintenance.
             </p>
           </div>
 
@@ -478,10 +478,10 @@ export default function HomePage() {
         <div className="rc-container">
           <div className="editorial-split-header reveal-on-scroll">
             <div>
-              <span className="editorial-category-tag">07 // PERSPECTIVES &amp; ANALYSIS</span>
-              <h2 className="editorial-section-title">Engineering Perspectives</h2>
+              <span className="editorial-category-tag">07 // PRACTICAL GUIDES</span>
+              <h2 className="editorial-section-title">Useful Reading Before Your Next Digital Project</h2>
               <p className="editorial-section-subtitle">
-                Deep dives into modern web performance, custom software design, and digital brand equity.
+                Clear explanations of website choices, business tools, content planning, and maintaining your online presence.
               </p>
             </div>
             <Link href="/blog" className="btn-modern-primary" style={{ fontSize: '0.88rem', padding: '10px 22px' }}>
@@ -498,11 +498,11 @@ export default function HomePage() {
               </div>
               <h3 className="article-headline">
                 <Link href="/blog/wordpress-vs-nextjs-vs-wix-php-comparison-2026">
-                  WordPress, Custom PHP, Wix, or Next.js: How to Choose the Right Platform in 2026
+                  WordPress, PHP, Wix, or Next.js: Choosing a Platform
                 </Link>
               </h3>
               <p className="article-excerpt">
-                A practical guide for business owners comparing WordPress, custom PHP, Wix, and Next.js across speed, ease of editing, maintenance overhead, and total cost of ownership.
+                Compare editing needs, functionality, maintenance, and ongoing costs before choosing how your website will be built.
               </p>
               <Link href="/blog/wordpress-vs-nextjs-vs-wix-php-comparison-2026" className="article-read-link">
                 <span>Read Analysis</span>
@@ -517,11 +517,11 @@ export default function HomePage() {
               </div>
               <h3 className="article-headline">
                 <Link href="/blog/custom-wordpress-development-performance-guide">
-                  Why Custom WordPress Development Outperforms Pre-Built Themes in SEO &amp; Speed
+                  Custom WordPress Development: Benefits and Tradeoffs
                 </Link>
               </h3>
               <p className="article-excerpt">
-                Commercial themes bundle 40+ unneeded plugins that hurt your Google ranking. Discover how custom WordPress architecture with ACF Pro delivers blazing speeds and higher conversions.
+                Understand when a tailored WordPress approach helps, what it changes, and what still needs ongoing attention.
               </p>
               <Link href="/blog/custom-wordpress-development-performance-guide" className="article-read-link">
                 <span>Read Analysis</span>
@@ -536,11 +536,11 @@ export default function HomePage() {
               </div>
               <h3 className="article-headline">
                 <Link href="/blog/strategic-power-of-custom-php-web-development">
-                  The Enduring Power of Custom PHP: When Tailored Code Beats Bloated SaaS
+                  When a Custom PHP Application Makes Business Sense
                 </Link>
               </h3>
               <p className="article-excerpt">
-                Why growing companies choose custom PHP and MySQL for internal portals, quotation tools, and database applications without paying thousands in recurring monthly SaaS fees.
+                Evaluate a custom business tool against the workflow, integrations, ownership, and maintenance it will require.
               </p>
               <Link href="/blog/strategic-power-of-custom-php-web-development" className="article-read-link">
                 <span>Read Analysis</span>
@@ -556,26 +556,31 @@ export default function HomePage() {
         <div className="rc-container">
           <div className="cta-banner-full">
             <span className="rc-badge" style={{ marginBottom: 16, backgroundColor: 'rgba(255, 255, 255, 0.15)', color: '#FFFFFF', borderColor: 'rgba(255, 255, 255, 0.3)' }}>
-              Direct Builder Conversation
+              LET'S DISCUSS YOUR REQUIREMENT
             </span>
             <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', color: '#FFFFFF', marginBottom: 14 }}>
-              Ready to Build Something That Actually Performs?
+              What Would You Like Your Website or Digital Tools to Do Better?
             </h2>
             <p style={{ maxWidth: 640, margin: '0 auto 2.2rem auto', color: 'var(--hero-sub-color)', fontSize: '1.05rem', lineHeight: 1.7 }}>
-              No high-pressure sales reps. You will speak directly with a lead digital engineer to audit your current platform, map technical scope, and provide a clear milestone roadmap.
+              Tell us about your business, your current setup, and the problem you want to solve. We can help you define a suitable starting point.
             </p>
-            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 24 }}>
-              <ScheduleCallButton className="btn-pill-cyan" service="Discovery Consultation">
-                <span>Schedule Discovery Call</span>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: 14, flexWrap: 'wrap', marginBottom: 24 }}>
+              <StartProjectButton className="btn-pill-cyan">
+                <span>Discuss Your Project</span>
                 <ArrowRight size={16} />
-              </ScheduleCallButton>
+              </StartProjectButton>
+              <Link href="/contact" className="btn-pill-secondary" style={{ color: '#FFFFFF', borderColor: 'rgba(255, 255, 255, 0.3)' }}>
+                <span>Contact Us</span>
+              </Link>
             </div>
-            <div className="editorial-cta-trust" style={{ color: 'rgba(255, 255, 255, 0.65)' }}>
-              <span>Direct Engineer Access</span>
+            <div className="editorial-cta-trust" style={{ color: 'rgba(255, 255, 255, 0.75)' }}>
+              <span>Websites</span>
               <span className="trust-dot" style={{ color: 'rgba(255, 255, 255, 0.35)' }}>•</span>
-              <span>Production-Grade SLA</span>
+              <span>Custom Applications</span>
               <span className="trust-dot" style={{ color: 'rgba(255, 255, 255, 0.35)' }}>•</span>
-              <span>Fixed Milestones &amp; Scope</span>
+              <span>Social Content</span>
+              <span className="trust-dot" style={{ color: 'rgba(255, 255, 255, 0.35)' }}>•</span>
+              <span>Digital Presence</span>
             </div>
           </div>
         </div>

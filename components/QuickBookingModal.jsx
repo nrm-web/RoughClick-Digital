@@ -1,6 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import { X, Send, CheckCircle2, Calendar, ArrowRight } from 'lucide-react';
 import { SERVICE_SELECT_OPTIONS } from '@/data/services';
 import { BRAND_CONFIG } from '@/data/config';
@@ -116,27 +117,97 @@ export function InquiryModalProvider({ children }) {
     setBookingStatus({ submitting: false, submitted: false, error: null });
   };
 
-  // Close on Escape & Lock body scroll
+  const modalRef = useRef(null);
+  const previousActiveElement = useRef(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.rcOpenInquiryModal = openInquiryModal;
+      window.rcOpenBookingModal = openBookingModal;
+    }
+  }, []);
+
+  // Focus trap, Escape key handling, and Lock body scroll (RC-12)
   useEffect(() => {
     if (modalType) {
+      previousActiveElement.current = document.activeElement;
       document.body.style.overflow = 'hidden';
+
+      // Auto-focus first input or close button
+      const timer = setTimeout(() => {
+        if (modalRef.current) {
+          const focusables = modalRef.current.querySelectorAll(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          );
+          if (focusables.length > 0) {
+            focusables[0].focus();
+          }
+        }
+      }, 50);
+
       const handleKeyDown = (e) => {
-        if (e.key === 'Escape') closeModal();
+        if (e.key === 'Escape') {
+          closeModal();
+          return;
+        }
+
+        // Trap focus inside modal
+        if (e.key === 'Tab' && modalRef.current) {
+          const focusables = Array.from(
+            modalRef.current.querySelectorAll(
+              'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+            )
+          );
+          if (focusables.length === 0) return;
+
+          const firstEl = focusables[0];
+          const lastEl = focusables[focusables.length - 1];
+
+          if (e.shiftKey) {
+            if (document.activeElement === firstEl) {
+              lastEl.focus();
+              e.preventDefault();
+            }
+          } else {
+            if (document.activeElement === lastEl) {
+              firstEl.focus();
+              e.preventDefault();
+            }
+          }
+        }
       };
+
       window.addEventListener('keydown', handleKeyDown);
       return () => {
+        clearTimeout(timer);
         document.body.style.overflow = '';
         window.removeEventListener('keydown', handleKeyDown);
+        if (previousActiveElement.current && previousActiveElement.current.focus) {
+          previousActiveElement.current.focus();
+        }
       };
     } else {
       document.body.style.overflow = '';
     }
   }, [modalType]);
 
-  // Handle Project Inquiry Submit
+  // Handle Project Inquiry Submit (RC-11: Support Phone OR Email)
   const handleInquirySubmit = async (e) => {
     e.preventDefault();
-    if (!inquiryData.name.trim() || !inquiryData.phone.trim()) return;
+    if (!inquiryData.name.trim()) {
+      setInquiryStatus({ submitting: false, submitted: false, error: 'Please enter your name.' });
+      return;
+    }
+
+    const hasContact = Boolean(inquiryData.email.trim() || inquiryData.phone.trim());
+    if (!hasContact) {
+      setInquiryStatus({
+        submitting: false,
+        submitted: false,
+        error: 'Please provide either a phone number or an email address so our team can reach you.'
+      });
+      return;
+    }
 
     setInquiryStatus({ submitting: true, submitted: false, error: null });
 
@@ -192,15 +263,14 @@ export function InquiryModalProvider({ children }) {
       : 'Flexible / Earliest Available';
 
     const messageLines = [
-      'Hello RoughClick Digital! 👋',
+      'Hello RoughClick Digital. I would like to request a discovery call.',
       '',
-      'I would like to schedule a discovery call:',
-      `• *Name*: ${bookingData.name.trim()}`,
-      `• *Preferred Date*: ${formattedDate}`,
-      `• *Mobile*: ${bookingData.phone.trim()}`,
-      serviceContext ? `• *Scope / Purpose*: ${serviceContext}` : '• *Purpose*: Digital Project Consultation',
+      `Name: ${bookingData.name.trim()}`,
+      `Preferred date: ${formattedDate}`,
+      `Contact number: ${bookingData.phone.trim()}`,
+      serviceContext ? `Requirement: ${serviceContext}` : 'Requirement: Digital Project Consultation',
       '',
-      'Please connect with me to confirm timing.'
+      'Please confirm availability and a suitable time.'
     ];
 
     const messageText = messageLines.join('\n');
@@ -257,7 +327,7 @@ export function InquiryModalProvider({ children }) {
           aria-modal="true"
           aria-labelledby="inquiry-modal-title"
         >
-          <div className="inquiry-modal-card" onClick={(e) => e.stopPropagation()}>
+          <div className="inquiry-modal-card" ref={modalRef} tabIndex="-1" onClick={(e) => e.stopPropagation()}>
             <button
               type="button"
               onClick={closeModal}
@@ -309,7 +379,7 @@ export function InquiryModalProvider({ children }) {
                 </div>
 
                 {inquiryStatus.error && (
-                  <div className="inquiry-modal-error">
+                  <div className="inquiry-modal-error" role="alert">
                     {inquiryStatus.error}
                   </div>
                 )}
@@ -323,6 +393,7 @@ export function InquiryModalProvider({ children }) {
                       type="text"
                       id="inquiry-name"
                       name="name"
+                      autoComplete="name"
                       required
                       value={inquiryData.name}
                       onChange={(e) => setInquiryData((prev) => ({ ...prev, name: e.target.value }))}
@@ -334,12 +405,13 @@ export function InquiryModalProvider({ children }) {
 
                   <div className="inquiry-form-group">
                     <label htmlFor="inquiry-email" className="inquiry-form-label">
-                      Email Address
+                      Email Address <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>(Provide Phone or Email)</span>
                     </label>
                     <input
                       type="email"
                       id="inquiry-email"
                       name="email"
+                      autoComplete="email"
                       value={inquiryData.email}
                       onChange={(e) => setInquiryData((prev) => ({ ...prev, email: e.target.value }))}
                       placeholder="jane@company.com"
@@ -349,13 +421,13 @@ export function InquiryModalProvider({ children }) {
 
                   <div className="inquiry-form-group">
                     <label htmlFor="inquiry-phone" className="inquiry-form-label">
-                      Phone Number <span className="req-star">*</span>
+                      Phone Number <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>(Provide Phone or Email)</span>
                     </label>
                     <input
                       type="tel"
                       id="inquiry-phone"
                       name="phone"
-                      required
+                      autoComplete="tel"
                       value={inquiryData.phone}
                       onChange={(e) => setInquiryData((prev) => ({ ...prev, phone: e.target.value }))}
                       placeholder="Your phone number"
@@ -371,6 +443,7 @@ export function InquiryModalProvider({ children }) {
                       type="text"
                       id="inquiry-company"
                       name="company"
+                      autoComplete="organization"
                       value={inquiryData.company}
                       onChange={(e) => setInquiryData((prev) => ({ ...prev, company: e.target.value }))}
                       placeholder="Your Business Name"
@@ -437,6 +510,13 @@ export function InquiryModalProvider({ children }) {
                     />
                   </div>
 
+                  <div style={{ margin: '14px 0 16px', fontSize: '0.78rem', color: 'var(--text-muted)', lineHeight: 1.5, textAlign: 'center' }}>
+                    🔒 By inquiring, you agree to our{' '}
+                    <a href="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-accent)', textDecoration: 'underline' }}>
+                      Privacy Policy
+                    </a>. We never sell your contact information.
+                  </div>
+
                   <button
                     type="submit"
                     disabled={inquiryStatus.submitting}
@@ -471,12 +551,12 @@ export function InquiryModalProvider({ children }) {
           aria-modal="true"
           aria-labelledby="booking-modal-title"
         >
-          <div className="quick-booking-card" onClick={(e) => e.stopPropagation()}>
+          <div className="quick-booking-card" ref={modalRef} tabIndex="-1" onClick={(e) => e.stopPropagation()}>
             <button
               type="button"
               onClick={closeModal}
               className="quick-booking-close"
-              aria-label="Close booking popup"
+              aria-label="Close discovery call request"
             >
               <X size={18} />
             </button>
@@ -484,9 +564,9 @@ export function InquiryModalProvider({ children }) {
             {bookingStatus.submitted ? (
               <div className="quick-booking-success">
                 <CheckCircle2 size={48} className="success-check-icon" />
-                <h3 className="success-title">Connecting to WhatsApp...</h3>
+                <h3 className="success-title">Continue Your Request on WhatsApp</h3>
                 <p className="success-desc">
-                  We have prepared your discovery call request for <strong>{bookingData.name}</strong>. If WhatsApp did not open automatically, click the button below:
+                  Review and send the prepared message to request the call. The appointment is confirmed only after you receive a confirmation from RoughClick Digital.
                 </p>
                 <a
                   href={bookingWhatsappUrl}
@@ -496,7 +576,7 @@ export function InquiryModalProvider({ children }) {
                   style={{ textDecoration: 'none', marginTop: 16 }}
                 >
                   <WhatsAppIcon size={20} />
-                  <span>Open WhatsApp Directly</span>
+                  <span>Open WhatsApp Again</span>
                 </a>
                 <button
                   type="button"
@@ -509,19 +589,19 @@ export function InquiryModalProvider({ children }) {
             ) : (
               <>
                 <div className="quick-booking-header">
-                  <div className="quick-booking-eyebrow">QUICK BOOKING</div>
+                  <div className="quick-booking-eyebrow">DISCOVERY CALL</div>
                   <h2 id="booking-modal-title" className="quick-booking-title">
-                    Book via WhatsApp
+                    Request a Discovery Call
                   </h2>
                   <p className="quick-booking-subtitle">
-                    Select your preferred date &amp; details to connect with us instantly.
+                    Share your preferred date and contact number. We will confirm availability and the time separately.
                   </p>
                 </div>
 
                 <form onSubmit={handleBookingSubmit} className="quick-booking-form">
                   <div className="quick-booking-group">
                     <label htmlFor="qb-name" className="quick-booking-label">
-                      Your Name <span className="req-star">*</span>
+                      Your name <span className="req-star">*</span>
                     </label>
                     <input
                       type="text"
@@ -538,7 +618,7 @@ export function InquiryModalProvider({ children }) {
 
                   <div className="quick-booking-group">
                     <label htmlFor="qb-date" className="quick-booking-label">
-                      Preferred Booking Date <span className="req-star">*</span>
+                      Preferred date <span className="req-star">*</span>
                     </label>
                     <div
                       className="quick-booking-date-wrapper"
@@ -573,11 +653,14 @@ export function InquiryModalProvider({ children }) {
                       />
                       <Calendar size={18} className="calendar-icon-amber" />
                     </div>
+                    <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: 5 }}>
+                      This is a preference, not a confirmed appointment.
+                    </div>
                   </div>
 
                   <div className="quick-booking-group">
                     <label htmlFor="qb-phone" className="quick-booking-label">
-                      Mobile Number <span className="req-star">*</span>
+                      Phone or WhatsApp number <span className="req-star">*</span>
                     </label>
                     <input
                       type="tel"
@@ -586,9 +669,19 @@ export function InquiryModalProvider({ children }) {
                       required
                       value={bookingData.phone}
                       onChange={(e) => setBookingData((prev) => ({ ...prev, phone: e.target.value }))}
-                      placeholder="e.g. 98765 43210"
+                      placeholder="e.g. +91 98765 43210"
                       className="quick-booking-input"
                     />
+                    <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: 5 }}>
+                      Include your country code.
+                    </div>
+                  </div>
+
+                  <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginBottom: 14, lineHeight: 1.5 }}>
+                    We use these details to respond to your call request. Read our{' '}
+                    <Link href="/privacy" onClick={closeModal} style={{ color: 'var(--color-accent-dark, #096357)', textDecoration: 'underline' }}>
+                      Privacy Policy
+                    </Link>.
                   </div>
 
                   <button
@@ -600,8 +693,8 @@ export function InquiryModalProvider({ children }) {
                     <span>{bookingStatus.submitting ? 'Opening WhatsApp...' : 'Continue to WhatsApp'}</span>
                   </button>
 
-                  <div className="quick-booking-footer-note">
-                    Takes 20 seconds. No spam.
+                  <div className="quick-booking-footer-note" style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: 12, textAlign: 'center', lineHeight: 1.5 }}>
+                    Opens WhatsApp with your request prepared. Review the message and select Send.
                   </div>
                 </form>
               </>

@@ -5,36 +5,36 @@ import { Plus, Minus } from 'lucide-react';
 
 const FAQS = [
   {
-    q: 'How long does a bespoke website or application take to build?',
-    a: 'Most custom marketing websites take between 2 to 4 weeks from the initial scope call to production launch. Custom web applications and operational portals typically take 4 to 8 weeks depending on database models and user role complexity. We provide a guaranteed milestone schedule before starting, so you always know what is happening when.'
+    q: 'Which platform is right for my website?',
+    a: 'That depends on what the website needs to do, how often you will update it, who will manage it, and the budget for building and maintaining it. We can compare suitable options before you commit to a platform.'
   },
   {
-    q: 'Do you build custom WordPress websites, or do you only work with Next.js?',
-    a: 'We build across both ecosystems! We believe in selecting the right architecture for your business rather than forcing one tool onto every project. If your team needs an intuitive editorial interface with rich blogging, WooCommerce e-commerce, or frequent in-house publishing, we engineer custom WordPress themes with Advanced Custom Fields (ACF Pro)—completely free of slow pre-built themes and plugin bloat. For high-growth tech platforms and digital brands demanding sub-second edge speeds, we engineer Next.js web applications. We also build fast Wix Studio sites and custom PHP applications.'
+    q: 'Can you improve an existing website?',
+    a: 'Yes. A review can identify issues with content, layout, accessibility, performance, enquiries, or maintainability. The recommendation may be targeted improvements or a broader rebuild, depending on the existing setup.'
   },
   {
-    q: 'Can you develop or maintain custom PHP web applications?',
-    a: 'Yes, absolutely. We have extensive expertise in custom PHP 8+ and relational database architectures (MySQL/PostgreSQL). If your company needs a proprietary internal operations portal, quotation generator, inventory tracker, or client portal without paying thousands in recurring monthly per-seat SaaS subscription fees, we engineer tailor-made PHP web applications. We also modernize, debug, and maintain existing legacy PHP codebases.'
+    q: 'Do you work with WordPress, PHP, Wix, and Next.js?',
+    a: 'These are part of the current service offering. The platform and development approach are chosen around the agreed requirement rather than applied automatically to every project.'
   },
   {
-    q: 'How do I know whether WordPress, Custom PHP, Wix, or Next.js is right for my project?',
-    a: 'During our discovery session, we evaluate your content update frequency, internal team skills, budget, and growth timeline. As a rule of thumb: WordPress is ideal for content-heavy sites and WooCommerce stores; custom PHP is best for proprietary business logic and database tools; Wix Studio is great for fast-launch marketing sites with zero server maintenance; and Next.js is optimal for high-performance SaaS platforms and digital products requiring peak Core Web Vitals.'
+    q: 'Can our team update the website after launch?',
+    a: 'Where content editing is part of the scope, the project can include an appropriate editing workflow. We will explain which items your team can manage and which changes need development support.'
   },
   {
-    q: 'Can our internal team update blog posts, services, and copy without touching code?',
-    a: 'Absolutely. We architect our solutions with intuitive content structures (such as headless CMS integrations, custom WordPress ACF fields, or clean modular schemas). Your team can publish new articles, swap service descriptions, update pricing, and upload images effortlessly without any technical background.'
+    q: 'How much will the project cost, and how long will it take?',
+    a: 'A meaningful estimate needs an agreed scope, content requirements, integrations, and review process. Your proposal should identify the planned work, dependencies, costs, and schedule. Changes to that scope may affect the estimate.'
   },
   {
-    q: 'Can you migrate our existing slow WordPress or PHP website without downtime?',
-    a: 'Yes. We specialize in zero-downtime website migrations. Whether you are moving from a sluggish shared hosting setup to a modern cloud server, redesigning a bloated WordPress site into a clean custom theme, or migrating a legacy PHP database, we handle the entire transition. We implement 301 redirect mappings to ensure your existing Google search rankings and backlinks are 100% preserved.'
+    q: 'Who owns the website and accounts?',
+    a: 'The proposal should explain ownership and access for custom work, domains, hosting, content, and third-party services. Platform subscriptions, licensed assets, plugins, and other third-party software remain subject to their own terms.'
   },
   {
-    q: 'Do I own the code, design files, and repository rights once we finish?',
-    a: 'Yes, 100%. Upon project completion and final sign-off, all source code, GitHub repository access, database schemas, Figma design tokens, and digital assets belong entirely to your company. We never hold code hostage, and there are zero proprietary lock-in fees.'
+    q: 'Do you provide maintenance and ongoing updates?',
+    a: 'Ongoing support can be scoped separately for website upkeep, content updates, social publishing, or profile maintenance. The included tasks, responsibilities, and any additional costs should be agreed in advance.'
   },
   {
-    q: 'What happens after the project launches? Do you provide ongoing maintenance?',
-    a: 'Every project includes a 30-day post-launch warranty with live performance and error monitoring. Following launch, we offer flexible month-to-month digital upkeep packages covering security patches, CMS core and plugin updates, Google Business Profile local SEO ranking upkeep, daily automated backups, and rapid graphic/content revisions.'
+    q: 'Can you guarantee rankings, traffic, or a particular speed score?',
+    a: 'These outcomes depend on the implementation, content, competition, hosting, devices, networks, and other factors. We can define appropriate checks and optimization work, but a platform choice or technical score alone does not guarantee business results.'
   }
 ];
 

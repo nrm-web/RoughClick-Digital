@@ -14,7 +14,11 @@ function checkAdminAuth() {
 
 function escapeCsvField(val) {
   if (val === null || val === undefined) return '""';
-  const str = String(val).replace(/"/g, '""');
+  let str = String(val).replace(/"/g, '""');
+  // Neutralize spreadsheet formula injection (=, +, -, @, \t, \r)
+  if (/^[=\+\-@\t\r]/.test(str)) {
+    str = "'" + str;
+  }
   return `"${str}"`;
 }
 

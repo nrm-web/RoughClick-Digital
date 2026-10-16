@@ -40,13 +40,13 @@ export default function BlogListClient({ initialPosts = [] }) {
         <div className="rc-container" style={{ position: 'relative', zIndex: 2 }}>
           <div style={{ maxWidth: 780 }}>
             <span className="rc-badge" style={{ marginBottom: 14 }}>
-              Knowledge Hub & Insights
+              ROUGHCLICK DIGITAL GUIDES
             </span>
             <h1 className="hero-title" style={{ fontSize: 'clamp(2.2rem, 4.4vw, 3.4rem)' }}>
-              Perspectives on <span className="accent">Tech, Design & Digital Presence</span>
+              Practical Guides for Your Next Digital Project
             </h1>
             <p className="hero-subcopy" style={{ fontSize: '1.08rem' }}>
-              Practical insights on web architecture, social media consistency, local business profile optimization, and integrated digital strategies.
+              Understand website options, business applications, content planning, and ongoing digital upkeep before deciding what your business needs.
             </p>
           </div>
 
@@ -75,8 +75,8 @@ export default function BlogListClient({ initialPosts = [] }) {
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="Search perspectives by keyword or topic..."
-                aria-label="Search perspectives by keyword or topic"
+                placeholder="Search by topic or question"
+                aria-label="Search articles"
                 style={{
                   width: '100%',
                   padding: '12px 16px 12px 42px',
@@ -146,7 +146,7 @@ export default function BlogListClient({ initialPosts = [] }) {
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                   <Sparkles size={18} style={{ color: 'var(--color-accent)' }} />
-                  <span className="rc-badge">Featured Perspective</span>
+                  <span className="rc-badge">Featured Guide</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 16, fontSize: '0.82rem', color: 'var(--text-muted)' }}>
                   <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
@@ -187,7 +187,7 @@ export default function BlogListClient({ initialPosts = [] }) {
                   className="btn-modern-primary"
                   style={{ fontSize: '0.86rem', padding: '10px 20px' }}
                 >
-                  <span>Read Full Article</span>
+                  <span>Read Article</span>
                   <ArrowRight size={15} />
                 </Link>
               </div>
@@ -201,7 +201,7 @@ export default function BlogListClient({ initialPosts = [] }) {
         <div className="rc-container">
           <div style={{ marginBottom: 28, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <h3 style={{ fontSize: '1.4rem', color: 'var(--text-primary)' }}>
-              {selectedCategory === 'All' ? 'All Perspectives' : `${selectedCategory} Articles`}
+              {selectedCategory === 'All' ? 'Latest Articles' : `${selectedCategory} Articles`}
               <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)', fontWeight: 400, marginLeft: 10 }}>
                 ({filteredArticles.length} {filteredArticles.length === 1 ? 'article' : 'articles'})
               </span>
@@ -217,9 +217,9 @@ export default function BlogListClient({ initialPosts = [] }) {
               border: '1px solid var(--border-card)'
             }}>
               <BookOpen size={40} style={{ color: 'var(--color-accent)', margin: '0 auto 12px auto' }} />
-              <h4 style={{ fontSize: '1.2rem', marginBottom: 8, color: 'var(--text-heading)' }}>No Articles Found</h4>
+              <h4 style={{ fontSize: '1.2rem', marginBottom: 8, color: 'var(--text-heading)' }}>No Articles Match Your Search</h4>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-                No perspectives match "{searchTerm}". Try another keyword or reset the category filter.
+                Try another word or choose a different category.
               </p>
               <button
                 type="button"
@@ -227,7 +227,7 @@ export default function BlogListClient({ initialPosts = [] }) {
                 className="btn-modern-secondary"
                 style={{ marginTop: 16, fontSize: '0.84rem' }}
               >
-                Reset Filters
+                Clear Search and Filters
               </button>
             </div>
           ) : (
@@ -317,7 +317,7 @@ export default function BlogListClient({ initialPosts = [] }) {
                           fontSize: '0.82rem'
                         }}
                       >
-                        <span>Read</span>
+                        <span>Read Article</span>
                         <ArrowRight size={13} />
                       </Link>
                     </div>
