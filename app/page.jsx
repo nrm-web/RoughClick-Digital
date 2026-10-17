@@ -71,14 +71,18 @@ export default function HomePage() {
             <div className="hero-visual-frame">
               <div className="floating-hero-badge badge-pos-top-left" aria-hidden="true">
                 <span className="badge-pulse-indicator" />
-                <span className="badge-text-primary">Built for Your Business</span>
-                <span className="badge-text-secondary">Websites, applications, and digital presence</span>
+                <div className="badge-text-col">
+                  <span className="badge-text-primary">Built for Your Business</span>
+                  <span className="badge-text-secondary">Websites, applications, and digital presence</span>
+                </div>
               </div>
 
               <div className="floating-hero-badge badge-pos-bottom-right" aria-hidden="true">
                 <span className="badge-pulse-indicator" />
-                <span className="badge-text-primary">From Plan to Launch</span>
-                <span className="badge-text-secondary">Design, development, and handoff</span>
+                <div className="badge-text-col">
+                  <span className="badge-text-primary">From Plan to Launch</span>
+                  <span className="badge-text-secondary">Design, development, and handoff</span>
+                </div>
               </div>
 
               <div className="hero-visual-light-wrap">
@@ -88,8 +92,8 @@ export default function HomePage() {
                   <img
                     src="/brand/hero_option_devices.webp"
                     alt="RoughClick Digital Ecosystem Showcase"
-                    width={440}
-                    height={330}
+                    width={620}
+                    height={346}
                     fetchPriority="high"
                     decoding="async"
                     className="hero-visual-img"
@@ -104,8 +108,8 @@ export default function HomePage() {
                   <img
                     src="/brand/hero_option_devices_gold.webp"
                     alt="RoughClick Digital Luxury Ecosystem Showcase"
-                    width={440}
-                    height={330}
+                    width={620}
+                    height={346}
                     fetchPriority="high"
                     decoding="async"
                     className="hero-visual-img"
