@@ -1095,8 +1095,71 @@ a {
 }
 
 @media (max-width: 768px) {
+  .hero-visual-frame {
+    margin-top: 16px;
+    margin-bottom: 12px;
+  }
+
   .floating-hero-badge {
-    display: none;
+    display: flex;
+    padding: 7px 12px;
+    gap: 8px;
+    border-radius: 12px;
+    max-width: calc(100% - 24px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+  }
+
+  .badge-pos-top-left {
+    top: -10px;
+    left: 8px;
+  }
+
+  .badge-pos-bottom-right {
+    bottom: -10px;
+    right: 8px;
+  }
+
+  .badge-text-primary {
+    font-size: 0.76rem;
+    line-height: 1.2;
+  }
+
+  .badge-text-secondary {
+    font-size: 0.68rem;
+    line-height: 1.3;
+  }
+
+  .badge-pulse-indicator {
+    width: 7px;
+    height: 7px;
+  }
+}
+
+@media (max-width: 440px) {
+  .floating-hero-badge {
+    padding: 6px 10px;
+    gap: 7px;
+    border-radius: 10px;
+  }
+
+  .badge-pos-top-left {
+    top: -8px;
+    left: 6px;
+  }
+
+  .badge-pos-bottom-right {
+    bottom: -8px;
+    right: 6px;
+  }
+
+  .badge-text-primary {
+    font-size: 0.72rem;
+  }
+
+  .badge-text-secondary {
+    font-size: 0.65rem;
   }
 }
 
