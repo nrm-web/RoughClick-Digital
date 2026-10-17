@@ -748,11 +748,28 @@ a {
 
 .hero-main-title {
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 3.4vw, 3.1rem);
+  font-size: clamp(1.85rem, 2.4vw, 2.42rem);
   font-weight: 900;
-  line-height: 1.14;
+  line-height: 1.18;
   color: var(--hero-title-color);
   letter-spacing: -0.02em;
+}
+
+.hero-title-prefix {
+  display: block;
+  white-space: nowrap;
+}
+
+.hero-title-accent {
+  display: block;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .hero-title-prefix,
+  .hero-title-accent {
+    white-space: normal;
+  }
 }
 
 @keyframes textGradientFlow {

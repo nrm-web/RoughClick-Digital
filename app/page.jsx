@@ -35,7 +35,8 @@ export default function HomePage() {
               </div>
 
               <h1 className="hero-main-title">
-                Websites and Digital Tools <span className="text-cyan">Built Around Your Business</span>
+                <span className="hero-title-prefix">Websites and Digital Tools</span>{' '}
+                <span className="text-cyan hero-title-accent">Built Around Your Business</span>
               </h1>
 
               <p className="hero-subtext">
