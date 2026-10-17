@@ -2340,6 +2340,7 @@ a {
   padding-top: 24px;
   font-size: 0.78rem;
   color: var(--footer-text);
+  padding-right: 70px;
 }
 
 /* ==========================================================================
@@ -2521,8 +2522,10 @@ a {
   .modern-blog-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .footer-columns-grid {
+  .footer-columns-grid,
+  .footer-columns-grid.no-social {
     grid-template-columns: repeat(2, 1fr);
+    gap: 32px 24px;
   }
 }
 
@@ -2545,8 +2548,16 @@ a {
   .modern-blog-grid {
     grid-template-columns: 1fr;
   }
-  .footer-columns-grid {
+  .footer-columns-grid,
+  .footer-columns-grid.no-social {
     grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .footer-bottom-bar {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+    padding-bottom: 72px;
   }
   .section-header-flex {
     flex-direction: column;
