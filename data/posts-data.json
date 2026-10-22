@@ -11,7 +11,7 @@
       "Next.js",
       "Platform Choice"
     ],
-    "date": "Oct 2026",
+    "date": "Sep 2026",
     "readTime": "5 min read",
     "author": "RoughClick Digital",
     "featured": true,
@@ -25,7 +25,7 @@
     "coverImage": "",
     "createdAt": "2026-10-16T14:08:48.449Z",
     "updatedAt": "2026-10-16T14:08:48.450Z",
-    "publishedAt": "2026-10-16T14:08:48.450Z"
+    "publishedAt": "2026-09-18T10:00:00.000Z"
   },
   {
     "id": "post-2",
@@ -39,7 +39,7 @@
       "Web Development",
       "Maintenance"
     ],
-    "date": "Oct 2026",
+    "date": "Sep 2026",
     "readTime": "4 min read",
     "author": "RoughClick Digital",
     "featured": false,
@@ -52,8 +52,8 @@
     "canonicalUrl": "",
     "coverImage": "",
     "createdAt": "2026-10-13T14:08:48.450Z",
-    "updatedAt": "2026-10-16T14:08:48.450Z",
-    "publishedAt": "2026-10-13T14:08:48.450Z"
+    "updatedAt": "2026-10-13T14:08:48.450Z",
+    "publishedAt": "2026-09-17T10:00:00.000Z"
   },
   {
     "id": "post-3",

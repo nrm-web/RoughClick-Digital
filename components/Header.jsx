@@ -38,9 +38,21 @@ export default function Header() {
     const prevActiveElement = document.activeElement;
     const focusableSelector = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
     
+    // Helper to get only visible, interactable elements inside drawer
+    const getVisibleFocusableElements = () => {
+      if (!drawerRef.current) return [];
+      const nodes = drawerRef.current.querySelectorAll(focusableSelector);
+      return Array.from(nodes).filter((el) => {
+        if (el.disabled || el.getAttribute('aria-hidden') === 'true') return false;
+        const style = window.getComputedStyle(el);
+        if (style.display === 'none' || style.visibility === 'hidden') return false;
+        return el.offsetParent !== null || style.position === 'fixed';
+      });
+    };
+
     // Focus first focusable item inside drawer
     const timer = setTimeout(() => {
-      const focusable = drawerRef.current?.querySelectorAll(focusableSelector);
+      const focusable = getVisibleFocusableElements();
       if (focusable && focusable.length > 0) {
         focusable[0].focus();
       }
@@ -56,7 +68,7 @@ export default function Header() {
       }
 
       if (e.key === 'Tab') {
-        const elements = drawerRef.current?.querySelectorAll(focusableSelector);
+        const elements = getVisibleFocusableElements();
         if (!elements || elements.length === 0) return;
         const first = elements[0];
         const last = elements[elements.length - 1];
@@ -104,11 +116,6 @@ export default function Header() {
             href="/"
             className="header-brand-logo"
             aria-label="RoughClick Digital"
-            onClick={() => {
-              if (typeof window !== 'undefined') {
-                window.dispatchEvent(new CustomEvent('rc-trigger-preloader'));
-              }
-            }}
           >
             <div className="header-logo-image-box">
               <img
@@ -134,11 +141,6 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   className={`header-nav-link ${isActive ? 'active' : ''}`}
-                  onClick={() => {
-                    if (typeof window !== 'undefined') {
-                      window.dispatchEvent(new CustomEvent('rc-trigger-preloader'));
-                    }
-                  }}
                 >
                   {link.label}
                 </Link>
@@ -167,11 +169,6 @@ export default function Header() {
             <Link
               href="/contact"
               className="btn-header-pill"
-              onClick={() => {
-                if (typeof window !== 'undefined') {
-                  window.dispatchEvent(new CustomEvent('rc-trigger-preloader'));
-                }
-              }}
             >
               <span>Discuss Your Project</span>
               <ArrowRight size={15} />

@@ -127,7 +127,7 @@ export default function ServicesPage() {
                     backgroundColor: 'var(--bg-card)',
                     border: '1px solid var(--border-card)',
                     borderRadius: 16,
-                    padding: 'clamp(24px, 4vw, 48px)',
+                    padding: 'clamp(16px, 4vw, 48px)',
                     boxShadow: '0 8px 30px rgba(0, 0, 0, 0.04)',
                     scrollMarginTop: '100px'
                   }}
@@ -190,7 +190,7 @@ export default function ServicesPage() {
                     </div>
                     <div style={{
                       display: 'grid',
-                      gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                      gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))',
                       gap: 14
                     }}>
                       {category.benefits.map((benefit, bIdx) => (
@@ -212,7 +212,7 @@ export default function ServicesPage() {
                         style={{
                           border: '1px solid var(--border-subtle)',
                           borderRadius: 12,
-                          padding: '24px',
+                          padding: 'clamp(14px, 3vw, 24px)',
                           backgroundColor: 'var(--bg-card)',
                           marginBottom: 20
                         }}
@@ -232,7 +232,7 @@ export default function ServicesPage() {
 
                         <div style={{
                           display: 'grid',
-                          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))',
                           gap: 16
                         }}>
                           {group.services.map((srv, sIdx) => (
@@ -281,7 +281,7 @@ export default function ServicesPage() {
                       lineHeight: 1.6
                     }}>
                       <strong style={{ color: 'var(--text-heading)' }}>Proposal Details: </strong>
-                      {category.proposalNote}
+                      {category.proposalNote.replace(/^What the proposal should specify:\s*/i, '')}
                     </div>
                   )}
 
@@ -297,7 +297,7 @@ export default function ServicesPage() {
                       lineHeight: 1.6
                     }}>
                       <strong style={{ color: 'var(--text-muted)' }}>Scope Notice: </strong>
-                      {category.scopeNote}
+                      {category.scopeNote.replace(/^Important scope note:\s*/i, '')}
                     </div>
                   )}
 

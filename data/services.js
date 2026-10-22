@@ -176,7 +176,7 @@ export const SERVICE_CATEGORIES = [
   },
   {
     id: "social-media-management",
-    aliases: ["social-media-post-updating", "business-profile-services", "local-seo", "complete-digital-presence"],
+    aliases: ["digital-presence-support", "social-media-post-updating", "business-profile-services", "local-seo", "complete-digital-presence"],
     number: "04",
     tag: "Channel Upkeep & Profile Sync",
     title: "Social Media Management and Digital Presence",

@@ -60,6 +60,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: `${cleanTitle} | RoughClick Digital`,
       description,
+      url: `https://roughclick.com/blog/${params.slug}`,
       type: 'article',
       publishedTime: post.publishedAt || post.createdAt,
       authors: [post.author || 'RoughClick Editorial']

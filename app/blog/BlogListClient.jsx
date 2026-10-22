@@ -108,7 +108,7 @@ export default function BlogListClient({ initialPosts = [] }) {
                       cursor: 'pointer',
                       transition: 'all 0.2s ease',
                       backgroundColor: isActive ? 'var(--color-accent)' : 'var(--bg-card)',
-                      color: isActive ? 'var(--btn-pill-color)' : 'var(--text-heading)',
+                      color: isActive ? '#062A22' : 'var(--text-heading)',
                       border: isActive ? '2px outset rgb(0, 0, 0)' : '1px solid var(--border-card)'
                     }}
                   >

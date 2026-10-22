@@ -86,6 +86,9 @@ export function InquiryModalProvider({ children }) {
 
   // Open Project Inquiry Form popup
   const openInquiryModal = (service = '', options = {}) => {
+    if (typeof document !== 'undefined' && document.activeElement) {
+      previousActiveElement.current = document.activeElement;
+    }
     setServiceContext(service);
     const matched = findMatchingService(service);
     const shouldHide = options.hideServiceSelect === true;
@@ -100,6 +103,9 @@ export function InquiryModalProvider({ children }) {
 
   // Open Schedule Discovery Call popup (Date picker & WhatsApp)
   const openBookingModal = (service = 'Discovery Call') => {
+    if (typeof document !== 'undefined' && document.activeElement) {
+      previousActiveElement.current = document.activeElement;
+    }
     setServiceContext(service);
     setBookingDateType('text');
     setBookingStatus({ submitting: false, submitted: false, error: null });
@@ -112,9 +118,17 @@ export function InquiryModalProvider({ children }) {
   };
 
   const closeModal = () => {
+    const returnTarget = previousActiveElement.current;
     setModalType(null);
     setInquiryStatus({ submitting: false, submitted: false, error: null });
     setBookingStatus({ submitting: false, submitted: false, error: null });
+    if (returnTarget && typeof returnTarget.focus === 'function') {
+      setTimeout(() => {
+        try {
+          returnTarget.focus();
+        } catch {}
+      }, 50);
+    }
   };
 
   const modalRef = useRef(null);

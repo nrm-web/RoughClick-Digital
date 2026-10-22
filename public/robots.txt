@@ -1,9 +1,14 @@
 User-agent: *
 Allow: /
+Disallow: /admin
 Disallow: /admin/
+Disallow: /admin-blog
 Disallow: /admin-blog/
+Disallow: /admin-inquiries
 Disallow: /admin-inquiries/
+Disallow: /api/admin
 Disallow: /api/admin/
+Disallow: /api/admin-posts
 Disallow: /api/admin-posts/
 
 Sitemap: https://roughclick.com/sitemap.xml

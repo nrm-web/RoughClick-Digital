@@ -24,31 +24,91 @@ export async function POST(request) {
       );
     }
 
-    // 2. Payload size bounds (reject payloads > 32KB - RC-05)
-    const contentLength = parseInt(request.headers.get('content-length') || '0', 10);
-    if (contentLength > 32768) {
+    // 2. Strict payload size bounds (read stream bytes directly, max 32KB - U06)
+    const rawBody = await request.text();
+    if (new TextEncoder().encode(rawBody).length > 32768) {
       return NextResponse.json(
         { error: 'Payload too large. Please shorten your message.' },
         { status: 413 }
       );
     }
 
-    const body = await request.json();
-    const { name, email, phone, company, service, message } = body;
-
-    if (!name || !name.trim()) {
-      return NextResponse.json({ error: 'Please enter your name.' }, { status: 400 });
+    let body;
+    try {
+      body = JSON.parse(rawBody);
+    } catch {
+      return NextResponse.json(
+        { error: 'Invalid JSON body.' },
+        { status: 400 }
+      );
     }
 
-    const hasPhone = Boolean(phone && phone.trim());
-    const hasEmail = Boolean(email && email.trim());
+    if (!body || typeof body !== 'object' || Array.isArray(body)) {
+      return NextResponse.json(
+        { error: 'Request body must be an object.' },
+        { status: 400 }
+      );
+    }
+
+    // Anti-spam honeypot detection (U06)
+    if (body.bot_field || body.website_url) {
+      return NextResponse.json(
+        { error: 'Spam submission detected.' },
+        { status: 400 }
+      );
+    }
+
+    const { name, email, phone, company, service, message } = body;
+
+    // Strict schema & type validations (U06)
+    if (typeof name !== 'string' || !name.trim()) {
+      return NextResponse.json({ error: 'Please enter your name.', field: 'name' }, { status: 400 });
+    }
+    if (name.trim().length > 120) {
+      return NextResponse.json({ error: 'Name must be 120 characters or less.', field: 'name' }, { status: 400 });
+    }
+
+    const hasPhone = typeof phone === 'string' && Boolean(phone.trim());
+    const hasEmail = typeof email === 'string' && Boolean(email.trim());
+
     if (!hasPhone && !hasEmail) {
-      return NextResponse.json({ error: 'Please provide either a phone number or an email address so we can reach you.' }, { status: 400 });
+      return NextResponse.json(
+        { error: 'Please provide either a phone number or an email address so we can reach you.' },
+        { status: 400 }
+      );
+    }
+
+    if (hasEmail) {
+      const emailTrim = email.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (emailTrim.length > 254 || !emailRegex.test(emailTrim)) {
+        return NextResponse.json({ error: 'Please provide a valid email address.', field: 'email' }, { status: 400 });
+      }
+    }
+
+    if (hasPhone) {
+      const phoneTrim = phone.trim();
+      const digitCount = (phoneTrim.match(/\d/g) || []).length;
+      if (phoneTrim.length > 30 || digitCount < 6) {
+        return NextResponse.json({ error: 'Please provide a valid phone number (at least 6 digits).', field: 'phone' }, { status: 400 });
+      }
+    }
+
+    if (company && typeof company === 'string' && company.trim().length > 150) {
+      return NextResponse.json({ error: 'Organization name must be 150 characters or less.', field: 'company' }, { status: 400 });
+    }
+
+    if (message && typeof message === 'string' && message.trim().length > 5000) {
+      return NextResponse.json({ error: 'Message must be 5000 characters or less.', field: 'message' }, { status: 400 });
+    }
+
+    if (service && typeof service === 'string' && service.trim().length > 120) {
+      return NextResponse.json({ error: 'Service title exceeds maximum allowed length.', field: 'service' }, { status: 400 });
     }
 
     const cleanEmail = hasEmail ? email.trim() : `${(phone || 'lead').replace(/\D/g, '')}@lead.roughclick.com`;
     const cleanPhone = hasPhone ? phone.trim() : 'Email provided only';
-    const cleanMessage = (message && message.trim()) ? message.trim() : `Direct Consultation Request. Reach via: ${hasPhone ? phone.trim() : email.trim()}`;
+    const cleanMessage = (message && typeof message === 'string' && message.trim()) ? message.trim() : `Direct Consultation Request. Reach via: ${hasPhone ? phone.trim() : email.trim()}`;
 
     // 3. Save inquiry to persistent storage with atomic durability (RC-01, RC-02)
     const inquiry = await saveInquiry({

@@ -11,6 +11,7 @@ export const metadata = {
   openGraph: {
     title: 'Practical Digital Guides | RoughClick Digital',
     description: 'Practical guidance on website platforms, custom applications, social content, local business profiles, and ongoing digital upkeep.',
+    url: 'https://roughclick.com/blog',
     type: 'website'
   }
 };

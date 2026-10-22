@@ -241,8 +241,10 @@ runTest('RC-24: .env.example contains complete inventory of operational variable
   assert(envExample.includes('NEXT_PUBLIC_SITE_URL='), 'NEXT_PUBLIC_SITE_URL must be documented');
   assert(envExample.includes('ADMIN_SESSION_SECRET='), 'ADMIN_SESSION_SECRET must be documented');
   assert(envExample.includes('RESEND_API_KEY='), 'RESEND_API_KEY must be documented');
+  assert(envExample.includes('RESEND_FROM_EMAIL='), 'RESEND_FROM_EMAIL must be documented');
   assert(envExample.includes('KV_REST_API_URL='), 'KV_REST_API_URL must be documented');
   assert(envExample.includes('KV_REST_API_TOKEN='), 'KV_REST_API_TOKEN must be documented');
+  assert(envExample.includes('GITHUB_TOKEN='), 'GITHUB_TOKEN must be documented');
 });
 
 // -----------------------------------------------------------------------------
@@ -260,8 +262,9 @@ runTest('RC-26: Security headers configured in next.config.js, markdown links sa
   assert(blogSlugCode.includes('.replace(/</g, \'\\\\u003c\')'), 'JSON-LD less-than script termination escaping must be present');
 });
 
+const percent = totalTests > 0 ? Math.round((passedTests / totalTests) * 100) : 0;
 console.log('\n=============================================================');
-console.log(`TEST RESULTS: ${passedTests}/${totalTests} TESTS PASSED (100%)`);
+console.log(`TEST RESULTS: ${passedTests}/${totalTests} TESTS PASSED (${percent}%)`);
 console.log('=============================================================\n');
 
 if (passedTests !== totalTests) {

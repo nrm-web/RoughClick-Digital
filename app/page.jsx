@@ -14,8 +14,33 @@ export const metadata = {
 };
 
 export default function HomePage() {
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'RoughClick Digital',
+    url: 'https://roughclick.com',
+    logo: 'https://roughclick.com/brand/roughclick-modern-dark.svg',
+    description: 'Websites, custom applications, social content, and digital presence support shaped around your business.',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Coimbatore',
+      addressRegion: 'Tamil Nadu',
+      addressCountry: 'IN'
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+91-6379166158',
+      contactType: 'customer service',
+      email: 'info@roughclick.com'
+    }
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
       {/* 1. HERO SECTION */}
       <section className="modern-hero">
         <HeroParticles />
@@ -152,7 +177,7 @@ export default function HomePage() {
             <div className="manifesto-right-col">
               <div className="editorial-benchmarks-ledger reveal-card">
                 <div className="benchmarks-header">
-                  <span className="benchmarks-header-title">WORKING PRINCIPLES</span>
+                  <h3 className="benchmarks-header-title" style={{ margin: 0, fontSize: 'inherit', fontWeight: 'inherit', display: 'inline-block' }}>WORKING PRINCIPLES</h3>
                   <span className="benchmarks-header-tag">CLEAR COMMITMENTS</span>
                 </div>
 
@@ -233,24 +258,24 @@ export default function HomePage() {
                 </div>
                 <h3 className="platform-card-title">Custom WordPress &amp; WooCommerce</h3>
                 <p className="platform-card-desc">
-                  Ideal for businesses needing an intuitive editorial dashboard where non-technical team members can publish articles, update pages, and manage online stores with ease.
+                  Ideal for businesses needing structured content editing where team members can publish articles, update pages, and manage online stores with clear workflows.
                 </p>
                 <ul className="platform-features-list">
                   <li className="platform-feature-item">
                     <Check size={14} />
-                    <span>ACF Pro custom fields (zero visual builder bloat)</span>
+                    <span>Structured content editing for your team</span>
                   </li>
                   <li className="platform-feature-item">
                     <Check size={14} />
-                    <span>WooCommerce custom checkout &amp; payment gateway</span>
+                    <span>WooCommerce store and agreed checkout integrations</span>
                   </li>
                   <li className="platform-feature-item">
                     <Check size={14} />
-                    <span>Sub-second page speeds with optimized caching</span>
+                    <span>Custom themes or selected tools matched to the requirement</span>
                   </li>
                   <li className="platform-feature-item">
                     <Check size={14} />
-                    <span>Full custom theme ownership &amp; client-managed hosting</span>
+                    <span>Hosting, licenses, maintenance and handoff agreed in the proposal</span>
                   </li>
                 </ul>
               </div>
@@ -271,24 +296,24 @@ export default function HomePage() {
                 </div>
                 <h3 className="platform-card-title">Custom PHP &amp; Database Systems</h3>
                 <p className="platform-card-desc">
-                  Ideal for companies requiring proprietary business tools, quotation calculators, multi-role client portals, and automated workflows without paying expensive monthly SaaS fees.
+                  Ideal for businesses requiring tailored functionality, workflow automation, custom databases, and client portals scoped to their exact operational needs.
                 </p>
                 <ul className="platform-features-list">
                   <li className="platform-feature-item">
                     <Check size={14} />
-                    <span>Tailored PHP 8+ MVC backend built for your workflow</span>
+                    <span>Backend functionality shaped around a defined workflow</span>
                   </li>
                   <li className="platform-feature-item">
                     <Check size={14} />
-                    <span>High-performance MySQL / PostgreSQL relational data</span>
+                    <span>Database design and agreed external integrations</span>
                   </li>
                   <li className="platform-feature-item">
                     <Check size={14} />
-                    <span>Custom RESTful APIs connecting external software</span>
+                    <span>User roles and access suited to the application</span>
                   </li>
                   <li className="platform-feature-item">
                     <Check size={14} />
-                    <span>Zero recurring per-user SaaS license fees</span>
+                    <span>Development, hosting and maintenance costs scoped clearly</span>
                   </li>
                 </ul>
               </div>
@@ -309,24 +334,24 @@ export default function HomePage() {
                 </div>
                 <h3 className="platform-card-title">Wix Studio &amp; Low-Code CMS</h3>
                 <p className="platform-card-desc">
-                  Ideal for boutique creative portfolios, local service businesses, and rapid-launch marketing campaign pages that need polished design with zero server maintenance.
+                  Ideal for boutique creative portfolios, local service businesses, and rapid-launch marketing campaign pages that need polished design with managed infrastructure.
                 </p>
                 <ul className="platform-features-list">
                   <li className="platform-feature-item">
                     <Check size={14} />
-                    <span>Rapid turnaround: launch high-converting pages quickly</span>
+                    <span>Rapid turnaround: launch polished pages matched to the requirement</span>
                   </li>
                   <li className="platform-feature-item">
                     <Check size={14} />
-                    <span>Fully managed cloud hosting, SSL &amp; security patches</span>
+                    <span>Fully managed cloud hosting, SSL, and platform security updates</span>
                   </li>
                   <li className="platform-feature-item">
                     <Check size={14} />
-                    <span>Granular responsive layout control across viewports</span>
+                    <span>Responsive layout design across mobile, tablet, and desktop viewports</span>
                   </li>
                   <li className="platform-feature-item">
                     <Check size={14} />
-                    <span>Visual CMS allowing effortless client copy edits</span>
+                    <span>Visual CMS allowing structured team copy and asset updates</span>
                   </li>
                 </ul>
               </div>
@@ -340,31 +365,31 @@ export default function HomePage() {
             <div className="editorial-platform-card reveal-card">
               <div>
                 <div className="platform-card-header">
-                  <span className="platform-badge">Maximum Speed &amp; Scale</span>
+                  <span className="platform-badge">High Performance &amp; Scale</span>
                   <div className="platform-icon-wrap">
                     <AnimatedZap size={18} />
                   </div>
                 </div>
                 <h3 className="platform-card-title">Next.js &amp; React Platforms</h3>
                 <p className="platform-card-desc">
-                  Ideal for high-growth tech startups, SaaS landing platforms, and enterprise digital products demanding instant page rendering and peak Google Core Web Vitals.
+                  Ideal for modern web platforms and applications demanding high-performance rendering, custom interactive tools, and scalable component architecture.
                 </p>
                 <ul className="platform-features-list">
                   <li className="platform-feature-item">
                     <Check size={14} />
-                    <span>Sub-700ms LCP speeds on global edge CDN networks</span>
+                    <span>High-performance page rendering on edge CDN networks</span>
                   </li>
                   <li className="platform-feature-item">
                     <Check size={14} />
-                    <span>Automated JSON-LD schemas &amp; OpenGraph previews</span>
+                    <span>Clean technical SEO foundations and structured metadata</span>
                   </li>
                   <li className="platform-feature-item">
                     <Check size={14} />
-                    <span>Headless CMS integrations (Sanity, Strapi, WordPress)</span>
+                    <span>Integrations with headless CMS, databases, and third-party APIs</span>
                   </li>
                   <li className="platform-feature-item">
                     <Check size={14} />
-                    <span>Fluid interactive animations and component scalability</span>
+                    <span>Component-based architecture built for reliable scalability</span>
                   </li>
                 </ul>
               </div>
