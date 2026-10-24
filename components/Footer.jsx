@@ -38,6 +38,11 @@ export default function Footer() {
             <Link
               href="/"
               aria-label="RoughClick Digital Home"
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  window.dispatchEvent(new CustomEvent('rc-trigger-preloader'));
+                }
+              }}
             >
               <img
                 src="/brand/roughclick-modern-dark.svg"

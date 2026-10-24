@@ -116,6 +116,11 @@ export default function Header() {
             href="/"
             className="header-brand-logo"
             aria-label="RoughClick Digital"
+            onClick={() => {
+              if (typeof window !== 'undefined') {
+                window.dispatchEvent(new CustomEvent('rc-trigger-preloader'));
+              }
+            }}
           >
             <div className="header-logo-image-box">
               <img
@@ -141,6 +146,11 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   className={`header-nav-link ${isActive ? 'active' : ''}`}
+                  onClick={() => {
+                    if (typeof window !== 'undefined') {
+                      window.dispatchEvent(new CustomEvent('rc-trigger-preloader'));
+                    }
+                  }}
                 >
                   {link.label}
                 </Link>
@@ -169,6 +179,11 @@ export default function Header() {
             <Link
               href="/contact"
               className="btn-header-pill"
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  window.dispatchEvent(new CustomEvent('rc-trigger-preloader'));
+                }
+              }}
             >
               <span>Discuss Your Project</span>
               <ArrowRight size={15} />
