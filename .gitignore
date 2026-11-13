@@ -20,24 +20,36 @@
 .windsurf/
 .cascade/
 .copilot/
+.cline/
+.roo/
+.chat/
 brain/
 scratch/
 *prompt*
 *prompts*
 *skill*
 *skills*
+*.prompt*
+*.agent*
+*.skill*
 !node_modules/
 !app/
 !app/**
 *.prompt.md
 *.agent.md
 *.skill.md
+*.rules.md
+*.rule.md
 SKILL.md
 PROMPT.md
 AGENT.md
+AGENTS.md
+RULES.md
+RULE.md
 walkthrough.md
 implementation_plan.md
 task.md
+instructions.md
 
 # ------------------------------------------------------------------------------
 # 2. Dependencies & Package Managers
@@ -115,6 +127,9 @@ coverage/
 CLIENT APPROVED/
 CLIENT_DELIVERABLES_LOGOS/
 CLIENT_READY_LOGOS_FOR_WHATSAPP/
+Client files/
+client review/
+TechieAndrew*
 branding/
 assets/
 concept-1-luxury/
