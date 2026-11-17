@@ -56,11 +56,21 @@ export const metadata = {
     siteName: 'RoughClick Digital',
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: `${SITE_URL}/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        alt: 'RoughClick Digital — Ideas in Motion',
+        type: 'image/jpeg',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Websites, Applications & Digital Services | RoughClick Digital',
-    description: 'RoughClick Digital helps businesses plan and build websites, custom applications, social content, and ongoing digital presence support.'
+    description: 'RoughClick Digital helps businesses plan and build websites, custom applications, social content, and ongoing digital presence support.',
+    images: [`${SITE_URL}/og-image.jpg`],
   }
 };
 
